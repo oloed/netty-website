@@ -1,0 +1,8 @@
+tmp
+*.swp
+_site
+_tmp
+.sass-cache
+_rewrite.log
+.rvmrc
+
