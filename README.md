@@ -16,3 +16,9 @@ Modify the web site as you wish, and start an embedded web server using Awestruc
 
     $ cd netty-website
     $ awestruct --auto --server
+
+You might want to install `rb-fsevent` so that Awestruct notices the file system changes immediately to update the output.  You will see the following message:
+
+    FSSM -> An optimized backend is available for this platform!
+    FSSM ->     gem install rb-fsevent
+
