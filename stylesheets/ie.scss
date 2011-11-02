@@ -16,11 +16,16 @@ body.bp {
 }
 
 
-#quicklinks a {
-  background-image: none !important;
-  padding: {
-    left: 2px !important;
-    right: 2px !important;
+#quicklinks {
+  .highlight {
+    background-color: lighten(#ffb300, 15%);
+  }
+  a {
+    background-image: none !important;
+    padding: {
+      left: 2px !important;
+      right: 2px !important;
+    }
   }
 }
 
