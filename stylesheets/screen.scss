@@ -193,15 +193,11 @@ body.bp {
       blockquote {
       	font-size: 10px;
       	@include border-radius;
-      	&:first-letter {
-      	  background: url(../images/quote-open.gif) no-repeat left top;
-      	  padding-left: 16px;
-      	}
+      	text-indent: 0px;
+      	background: url(../images/quote-open.gif) no-repeat 8px 8px;
       	background-color: lighten(#4b5767, 60%);
       	margin: 0 0 0 6px;
-      	padding: 8px 12px;
-      	padding-left: 24px;
-      	text-indent: -16px;
+      	padding: 8px 12px 8px 24px;
       	-webkit-hyphens: auto;
       	-moz-hyphens: auto;
       	hyphens: auto;
