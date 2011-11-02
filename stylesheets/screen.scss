@@ -14,6 +14,14 @@
 @import "compass/typography/links/unstyled-link";
 @import "compass/typography/links/link-colors";
 
+$color0: darken(saturate(#4b5767, 10%), 10%);
+$color1: lighten($color0, 20%);
+$color2: lighten($color0, 50%);
+$color3: lighten($color0, 65%);
+$color4: #ffb300;
+
+$header-color: $color0;
+
 body.bp {
   @include blueprint-typography(true);
   @include blueprint-utilities;
@@ -30,7 +38,7 @@ body.bp {
     height: 64px;
     border-bottom: {
       width: 1px;
-      color: lighten(#4b5767, 20%);
+      color: $color2;
       style: solid;
     }
 
@@ -48,7 +56,7 @@ body.bp {
         height: 64px;
         padding-top: 5px;
         margin-left: 70px;
-        color: darken(#4b5767, 10%);
+        color: $color0;
 
         .large {
           line-height: 18px;
@@ -62,7 +70,7 @@ body.bp {
           line-height: 1em;
           display: block;
           margin-left: 41px;
-          @include opacity(0.8);
+          color: $color1;
         }
       }
     }
@@ -70,32 +78,41 @@ body.bp {
 
     #navbar {
       @include column(2 * $blueprint-grid-columns / 4);
-      height: 64px;
-      float: left;
+      margin: 37px 0 0 0;
       text-align: center;
 
       ul {
-      	margin: 38px 0 0 0;
+      	margin: 0;
       	padding: 0;
       	list-style: none;
+
       	li {
-      	  display: inline;
-      	  text-align: left;
-          font: {
-            size: 16px;
-            weight: bold;
+      	  display: inline-block;
+      	  text-align: center;
+
+      	  padding: 1px 16px 1px 16px;
+      	  margin: 0px;
+      	  overflow: hidden;
+      	  border-color: transparent;
+      	  border-style: solid;
+      	  border-width: 1px;
+          @include border-top-radius;
+
+          &:hover {
+            @include transition;
+      	    background-color: $color4;
+      	    border-color: $color2;
           }
+
           a {
-            @include link-colors(darken(#4b5767, 10%), white);
+            @include link-colors($color0);
             @include text-shadow;
-            text-decoration: none;
-      	    padding: 4px 16px 4px 16px;
-      	    margin: 0px;// 2px 0px 2px;
-            @include border-top-radius;
-            &:hover {
-              @include transition;
-      	      background-color: darken(#4b5767, 10%); //lighten(#4b5767, 50%);
+            font: {
+              size: 16px;
+              weight: bold;
             }
+            text-decoration: none;
+
 	  }
 	}
       }
@@ -110,7 +127,7 @@ body.bp {
       	input {
       	  height: 27px;
       	  font-size: 13px;
-      	  border-color: lighten(#4b5767, 20%);
+      	  border-color: $color2;
       	  padding-left: 4px;
           @include border-top-radius;
       	}
@@ -121,8 +138,8 @@ body.bp {
       	input {
       	  font-size: 12px;
       	  height: 27px;
-      	  background: #4b5767;
-      	  border: #4b5767 solid 1px;
+      	  background: $color0;
+      	  border: $color2 solid 1px;
       	  color: white;
       	  padding: 2px 4px;
           @include border-top-radius;
@@ -153,12 +170,15 @@ body.bp {
       	li {
       	  border: {
       	    style: solid;
-      	    color: #4b5767;
+      	    color: $color0;
       	    width: 1px;
 	  }
-	  @include background-image(linear-gradient(lighten(#4b5767, 70%), lighten(#4b5767, 50%)));
+	  @include background-image(linear-gradient(lighten($color2, 40%), $color2));
+	  &.highlight {
+	    @include background-image(linear-gradient(lighten($color4, 40%), $color4));
+	  }
 	  @include border-radius;
-	  margin: 0 0 10px 6px;
+	  margin: 0 22px 10px 6px;
 	  padding: 8px 12px;
 	  text-transform: uppercase;
 	  a {
@@ -195,8 +215,8 @@ body.bp {
       	@include border-radius;
       	text-indent: 0px;
       	background: url(../images/quote-open.gif) no-repeat 8px 8px;
-      	background-color: lighten(#4b5767, 60%);
-      	margin: 0 0 0 6px;
+      	background-color: $color3;
+      	margin: 0 22px 0 6px;
       	padding: 8px 12px 8px 24px;
       	-webkit-hyphens: auto;
       	-moz-hyphens: auto;
@@ -205,6 +225,7 @@ body.bp {
       }
       .author {
       	margin-top: 4px;
+      	margin-right: 22px;
       	text-align: right;
       	font-size: 11px;
       	&:before {
@@ -213,6 +234,7 @@ body.bp {
       }
       .readmore {
       	text-align: right;
+      	margin-right: 22px;
       	font-size: 10px;
       }
     }
@@ -223,17 +245,17 @@ body.bp {
     margin: 8px 0 24px 0;
     border-top: {
       width: 1px;
-      color: lighten(#4b5767, 20%);
+      color: $color2;
       style: solid;
     }
     text-align: right;
-    color: #4b5767;
+    color: $color0;
     font: {
       style: italic;
       size: 10px;
     }
     a {
-      @include link-colors(#4b5767);
+      @include link-colors($color0);
     }
   }
 }
