@@ -45,6 +45,7 @@ body.bp {
     #logo {
       @include column($blueprint-grid-columns / 4);
       height: 64px;
+      text-align: left;
 
       img {
         float: left;
@@ -180,6 +181,7 @@ body.bp {
   #sidebar {
     $sidebar-columns: floor($blueprint-grid-columns / 4);
     @include column($sidebar-columns, true);
+    text-align: left;
 
     #quicklinks {
       margin-bottom: 20px;
