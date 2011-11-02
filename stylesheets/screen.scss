@@ -47,11 +47,11 @@ body.bp {
       height: 64px;
 
       img {
-      	float: left;
+        float: left;
       }
 
       #project_name {
-      	@include text-shadow;
+        @include text-shadow;
         width: 128px;
         height: 64px;
         padding-top: 5px;
@@ -82,26 +82,26 @@ body.bp {
       text-align: center;
 
       ul {
-      	margin: 0;
-      	padding: 0;
-      	list-style: none;
+        margin: 0;
+        padding: 0;
+        list-style: none;
 
-      	li {
-      	  display: inline-block;
-      	  text-align: center;
+        li {
+          display: inline-block;
+          text-align: center;
 
-      	  padding: 1px 16px 1px 16px;
-      	  margin: 0px;
-      	  overflow: hidden;
-      	  border-color: transparent;
-      	  border-style: solid;
-      	  border-width: 1px;
+          padding: 1px 16px 1px 16px;
+          margin: 0px;
+          overflow: hidden;
+          border-color: transparent;
+          border-style: solid;
+          border-width: 1px;
           @include border-top-radius;
 
           &:hover {
             @include transition;
-      	    background-color: $color4;
-      	    border-color: $color2;
+            background-color: $color4;
+            border-color: $color2;
           }
 
           a {
@@ -113,41 +113,50 @@ body.bp {
             }
             text-decoration: none;
 
-	  }
-	}
+          }
+        }
       }
     }
 
     #searchbar {
       @include column($blueprint-grid-columns / 4, true);
-      text-align: right;
-      margin-top: 34px;
+      margin: 0;
+      padding: 38px 0 0 5px;
 
       .gsc-input {
-      	input {
-      	  height: 27px;
-      	  font-size: 13px;
-      	  border-color: $color2;
-      	  padding-left: 4px;
+        margin: 0;
+        padding: 0;
+        input {
+          margin: 0 0 0 11px;
+          padding: 0 0 0 4px;
+          width: 148px;
+          height: 27px;
+          font-size: 13px;
+          border-color: $color2;
           @include border-top-radius;
-      	}
+        }
       }
       .gsc-search-button {
-      	margin: 0;
-      	padding: 0;
-      	input {
-      	  font-size: 12px;
-      	  height: 27px;
-      	  background: $color0;
-      	  border: $color2 solid 1px;
-      	  color: white;
-      	  padding: 2px 4px;
+        margin: 0;
+        padding: 0;
+        input {
+          margin: 0;
+          padding: 2px 4px;
+          width: 54px;
+          height: 27px;
+          font: {
+            size: 12px;
+            weight: bold;
+          }
+          color: $color0;
+          border: $color2 solid 1px;
           @include border-top-radius;
-	}
+          @include background-image(linear-gradient(lighten($color2, 40%), lighten($color2, 10%), $color2));
+        }
       }
       .gsc-clear-button {
-      	margin: 0;
-      	padding: 4px;
+        margin: 0;
+        padding: 0 0 0 7px;
       }
     }
   }
@@ -164,78 +173,78 @@ body.bp {
     #quicklinks {
       margin-bottom: 20px;
       ul {
-      	list-style: none;
-      	margin: 0;
-      	padding: 0;
-      	li {
-      	  border: {
-      	    style: solid;
-      	    color: $color0;
-      	    width: 1px;
-	  }
-	  @include background-image(linear-gradient(lighten($color2, 40%), lighten($color2, 10%), $color2));
-	  &.highlight {
-	    @include background-image(linear-gradient(lighten($color4, 40%), lighten($color4, 10%), $color4));
-	  }
-	  @include border-radius;
-	  margin: 0 22px 10px 6px;
-	  padding: 8px 12px;
-	  text-transform: uppercase;
-	  a {
-	    @include link-colors(black);
-	    @include text-shadow;
-	    font-size: 14px;
-	    font-weight: bold;
-	    text-decoration: none;
-	    padding: {
-	      left: 22px;
-	      bottom: 22px;
-	    }
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          border: {
+            style: solid;
+            color: $color0;
+            width: 1px;
+          }
+          @include background-image(linear-gradient(lighten($color2, 40%), lighten($color2, 10%), $color2));
+          &.highlight {
+            @include background-image(linear-gradient(lighten($color4, 40%), lighten($color4, 10%), $color4));
+          }
+          @include border-radius;
+          margin: 0 22px 10px 6px;
+          padding: 8px 12px;
+          text-transform: uppercase;
+          a {
+            @include link-colors(black);
+            @include text-shadow;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: {
+              left: 22px;
+              bottom: 22px;
+            }
 
-	    &#download_now {
-	      background: url(../images/downloads.png) no-repeat 0px 0px;
-	      @include background-size(16px);
-	    }
-	    &#view_on_github {
-	      background: url(../images/github.png) no-repeat 0px 0px;
-	      @include background-size(16px);
-	    }
-	    &#follow_us_at_twitter {
-	      background: url(../images/twitter.png) no-repeat 0px 0px;
-	      @include background-size(16px);
-	    }
-	  }
-	}
+            &#download_now {
+              background: url(../images/downloads.png) no-repeat 0px 0px;
+              @include background-size(16px);
+            }
+            &#view_on_github {
+              background: url(../images/github.png) no-repeat 0px 0px;
+              @include background-size(16px);
+            }
+            &#follow_us_at_twitter {
+              background: url(../images/twitter.png) no-repeat 0px 0px;
+              @include background-size(16px);
+            }
+          }
+        }
       }
     }
 
     #testimonial {
       blockquote {
-      	font-size: 10px;
-      	@include border-radius;
-      	text-indent: 0px;
-      	background: url(../images/quote-open.gif) no-repeat 8px 8px;
-      	background-color: $color3;
-      	margin: 0 22px 0 6px;
-      	padding: 8px 12px 8px 24px;
-      	-webkit-hyphens: auto;
-      	-moz-hyphens: auto;
-      	hyphens: auto;
-      	text-align: justify;
+        font-size: 10px;
+        @include border-radius;
+        text-indent: 0px;
+        background: url(../images/quote-open.gif) no-repeat 8px 8px;
+        background-color: $color3;
+        margin: 0 22px 0 6px;
+        padding: 8px 12px 8px 24px;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+        text-align: justify;
       }
       .author {
-      	margin-top: 4px;
-      	margin-right: 22px;
-      	text-align: right;
-      	font-size: 11px;
-      	&:before {
-	  content: "-- ";
-	}
+        margin-top: 4px;
+        margin-right: 22px;
+        text-align: right;
+        font-size: 11px;
+        &:before {
+          content: "-- ";
+        }
       }
       .readmore {
-      	text-align: right;
-      	margin-right: 22px;
-      	font-size: 10px;
+        text-align: right;
+        margin-right: 22px;
+        font-size: 10px;
       }
     }
   }
