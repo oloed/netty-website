@@ -18,7 +18,7 @@ $color0: darken(saturate(#4b5767, 10%), 10%);
 $color1: lighten($color0, 20%);
 $color2: lighten($color0, 50%);
 $color3: lighten($color0, 65%);
-$color4: #ffb300;
+$color4: lighten(#ffb300, 15%);
 
 $header-color: $color0;
 
@@ -173,9 +173,9 @@ body.bp {
       	    color: $color0;
       	    width: 1px;
 	  }
-	  @include background-image(linear-gradient(lighten($color2, 40%), $color2));
+	  @include background-image(linear-gradient(lighten($color2, 40%), lighten($color2, 10%), $color2));
 	  &.highlight {
-	    @include background-image(linear-gradient(lighten($color4, 40%), $color4));
+	    @include background-image(linear-gradient(lighten($color4, 40%), lighten($color4, 10%), $color4));
 	  }
 	  @include border-radius;
 	  margin: 0 22px 10px 6px;
