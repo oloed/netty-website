@@ -6,6 +6,60 @@
     %link{ :rel=>'stylesheet', :type=>'text/css', :href=>'/stylesheets/print.css', :media=>'print' }
     /[if lt IE 8]
       %link{ :rel=>'stylesheet', :type=>'text/css', :href=>'/stylesheets/ie.css', :media=>'screen, projection' }
+    %link{ :rel=>'shortcut icon', :href=>'/images/favicon.ico' }
   %body.bp
     #container
-      ~ content
+      #header
+        #logo
+          %img{ :src=>'images/logo.png' }
+          %h1#project_name
+            %span.large Netty
+            %span.small project
+        #navbar
+          %ul
+            %li
+              %a{ :href=>'/' } Home
+            %li
+              %a{ :href=>'/docs/' } Documentation
+            %li
+              %a{ :href=>'/community/' } Community
+            %li
+              %a{ :href=>'/blog/' } Blog
+        #searchbar
+          #cse-search-form
+          %script{ :src=>"//www.google.com/jsapi", :type=>"text/javascript" }
+          :javascript
+            google.load('search', '1', {language : 'en'});
+            google.setOnLoadCallback(function() {
+              var customSearchControl = new google.search.CustomSearchControl('016348183754172014713:rhhtb6ffqhg');
+              customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
+              var options = new google.search.DrawOptions();
+              options.setAutoComplete(true);
+              options.enableSearchboxOnly("http://www.google.com/cse?cx=016348183754172014713:rhhtb6ffqhg");
+              customSearchControl.draw('cse-search-form', options);
+            }, true);
+          %link{ :rel=>"stylesheet", :href=>"//www.google.com/cse/style/look/default.css", :type=>"text/css" }
+      #content
+        ~ content
+      #sidebar
+        #quicklinks
+          %ul
+            %li
+              %a{ :href=>'/downloads' } Download now
+            %li
+              %a{ :href=>'https://github.com/netty/netty/' } View on Github
+            %li
+              %a{ :href=>'https://twitter.com/netty_project' } Follow us at Twitter
+
+        #testimonial
+          %blockquote{ :lang=>'en' }
+            Netty proved instrumental in the architecture of a replacement of an existing high-speed server that parses and caches live streaming quotes. Under stress tests, the new server could parse and store in excess of 260,000 quotes/sec, a figure not remotely possible with blocking I/O. Netty's well-documented API, excellent examples and first-class support made development a pleasure and unlocked the power of Java NIO. It is, hands-down, my first choice for a networking library.
+          .author
+            Greg Haines, Ned Davis Research, Inc.
+          .readmore
+            %a{ :href=>'/testimonials' } (Read more..)
+        
+      #footer
+        .legal
+          <a href="/">The #{site.title} project</a> is a member of the <a href="http://jboss.org/">JBoss Community</a>.
+          Copyright 2009-2011 <a href="http://www.redhat.com/">Red Hat, Inc.</a>
