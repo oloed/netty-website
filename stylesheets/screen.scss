@@ -7,6 +7,8 @@
 @import "compass/css3/opacity";
 @import "compass/css3/text-shadow";
 @import "compass/css3/border-radius";
+@import "compass/css3/background-size";
+@import "compass/css3/transition";
 
 @import "compass/typography/links/hover-link";
 @import "compass/typography/links/unstyled-link";
@@ -84,14 +86,15 @@ body.bp {
             weight: bold;
           }
           a {
-            @include link-colors(darken(#4b5767, 10%));
+            @include link-colors(darken(#4b5767, 10%), white);
             @include text-shadow;
             text-decoration: none;
       	    padding: 4px 16px 4px 16px;
       	    margin: 0px;// 2px 0px 2px;
+            @include border-top-radius;
             &:hover {
-      	      background-color: lighten(#4b5767, 50%);
-              @include border-top-radius;
+              @include transition;
+      	      background-color: darken(#4b5767, 10%); //lighten(#4b5767, 50%);
             }
 	  }
 	}
@@ -156,7 +159,7 @@ body.bp {
 	  @include background-image(linear-gradient(lighten(#4b5767, 70%), lighten(#4b5767, 50%)));
 	  @include border-radius;
 	  margin: 0 0 10px 6px;
-	  padding: 8px 16px;
+	  padding: 8px 12px;
 	  text-transform: uppercase;
 	  a {
 	    @include link-colors(black);
@@ -164,6 +167,23 @@ body.bp {
 	    font-size: 14px;
 	    font-weight: bold;
 	    text-decoration: none;
+	    padding: {
+	      left: 22px;
+	      bottom: 22px;
+	    }
+
+	    &#download_now {
+	      background: url(../images/downloads.png) no-repeat 0px 0px;
+	      @include background-size(16px);
+	    }
+	    &#view_on_github {
+	      background: url(../images/github.png) no-repeat 0px 0px;
+	      @include background-size(16px);
+	    }
+	    &#follow_us_at_twitter {
+	      background: url(../images/twitter.png) no-repeat 0px 0px;
+	      @include background-size(16px);
+	    }
 	  }
 	}
       }
