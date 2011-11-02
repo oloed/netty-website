@@ -34,7 +34,7 @@ body.bp {
 
   #header {
     margin: 24px 0 8px 0;
-    padding-bottom: 0px;
+    padding-bottom: 0;
     height: 64px;
     border-bottom: {
       width: 1px;
@@ -55,7 +55,7 @@ body.bp {
         width: 128px;
         height: 64px;
         padding-top: 5px;
-        margin-left: 70px;
+        margin: 0 0 0 70px;
         color: $color0;
 
         .large {
@@ -69,7 +69,7 @@ body.bp {
           font-size: 28px;
           line-height: 1em;
           display: block;
-          margin-left: 41px;
+          margin: 0 0 0 41px;
           color: $color1;
         }
       }
@@ -78,7 +78,7 @@ body.bp {
 
     #navbar {
       @include column(2 * $blueprint-grid-columns / 4);
-      margin: 37px 0 0 0;
+      padding: 37px 0 0 0;
       text-align: center;
 
       ul {
@@ -88,10 +88,11 @@ body.bp {
 
         li {
           display: inline-block;
+          *display:inline; /* IE hack */
           text-align: center;
 
           padding: 1px 16px 1px 16px;
-          margin: 0px;
+          margin: 0;
           overflow: hidden;
           border-color: transparent;
           border-style: solid;
@@ -120,43 +121,52 @@ body.bp {
 
     #searchbar {
       @include column($blueprint-grid-columns / 4, true);
-      margin: 0;
-      padding: 38px 0 0 5px;
+      margin: 0 0 0 6px;
+      width: 224px;
+      padding: 38px 0 0 0;
+      text-align: right;
+
+      #cse-search-form div {
+          margin-right: 0;
+      	  padding-right: 0;
+
+	}
+
+      #cse-search-form * {
+        form, table {
+          margin:0;
+      	  padding:0;
+        }
+        form {
+      	  display: inline;
+      	  margin: 0;
+      	  padding: 0;
+	}
+        table {
+          idth: 224px;
+	}
+	td {
+	  margin: 0;
+	  padding: 0;
+	}
+      }
+
+      .gsc-branding {
+      	display: none;
+      }
 
       .gsc-input {
+      	width: 224px;
         margin: 0;
-        padding: 0;
-        input {
-          margin: 0 0 0 11px;
-          padding: 0 0 0 4px;
-          width: 148px;
-          height: 27px;
-          font-size: 13px;
-          border-color: $color2;
-          @include border-top-radius;
-        }
+        padding: 6px 4px;
+        height: 27px;
+        font-size: 13px;
+        border-color: $color2;
+        @include border-top-radius;
+        background-position: center !important;
       }
-      .gsc-search-button {
-        margin: 0;
-        padding: 0;
-        input {
-          margin: 0;
-          padding: 2px 4px;
-          width: 54px;
-          height: 27px;
-          font: {
-            size: 12px;
-            weight: bold;
-          }
-          color: $color0;
-          border: $color2 solid 1px;
-          @include border-top-radius;
-          @include background-image(linear-gradient(lighten($color2, 40%), lighten($color2, 10%), $color2));
-        }
-      }
-      .gsc-clear-button {
-        margin: 0;
-        padding: 0 0 0 7px;
+      .gsc-search-button, .gsc-clear-button {
+      	display: none;
       }
     }
   }
@@ -164,6 +174,7 @@ body.bp {
   #content {
     $content-columns: ceil(3 * $blueprint-grid-columns / 4);
     @include column($content-columns);
+    text-align: left;
   }
 
   #sidebar {
@@ -187,7 +198,7 @@ body.bp {
             @include background-image(linear-gradient(lighten($color4, 40%), lighten($color4, 10%), $color4));
           }
           @include border-radius;
-          margin: 0 22px 10px 6px;
+          margin: 0 0 10px 6px;
           padding: 8px 12px;
           text-transform: uppercase;
           a {
@@ -202,15 +213,15 @@ body.bp {
             }
 
             &#download_now {
-              background: url(../images/downloads.png) no-repeat 0px 0px;
+              background: url(../images/downloads.png) no-repeat 0 0;
               @include background-size(16px);
             }
             &#view_on_github {
-              background: url(../images/github.png) no-repeat 0px 0px;
+              background: url(../images/github.png) no-repeat 0 0;
               @include background-size(16px);
             }
             &#follow_us_at_twitter {
-              background: url(../images/twitter.png) no-repeat 0px 0px;
+              background: url(../images/twitter.png) no-repeat 0 0;
               @include background-size(16px);
             }
           }
@@ -222,10 +233,10 @@ body.bp {
       blockquote {
         font-size: 10px;
         @include border-radius;
-        text-indent: 0px;
+        text-indent: 0;
         background: url(../images/quote-open.gif) no-repeat 8px 8px;
         background-color: $color3;
-        margin: 0 22px 0 6px;
+        margin: 0 0 0 6px;
         padding: 8px 12px 8px 24px;
         -webkit-hyphens: auto;
         -moz-hyphens: auto;
@@ -234,7 +245,7 @@ body.bp {
       }
       .author {
         margin-top: 4px;
-        margin-right: 22px;
+        margin-right: 0;
         text-align: right;
         font-size: 11px;
         &:before {
@@ -243,7 +254,7 @@ body.bp {
       }
       .readmore {
         text-align: right;
-        margin-right: 22px;
+        margin-right: 0;
         font-size: 10px;
       }
     }

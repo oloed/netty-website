@@ -14,3 +14,13 @@ body.bp {
   // .my-container
   //   text-align: left
 }
+
+
+#quicklinks a {
+  background-image: none !important;
+  padding: {
+    left: 2px !important;
+    right: 2px !important;
+  }
+}
+
