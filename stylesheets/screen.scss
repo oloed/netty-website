@@ -30,10 +30,11 @@ body.bp {
 
   #container {
     @include container;
+    background: url(../images/header.png) no-repeat right top;
   }
 
   #header {
-    margin: 24px 0 8px 0;
+    margin: 8px 0 8px 0;
     padding-bottom: 0;
     height: 64px;
     border-bottom: {
@@ -46,6 +47,11 @@ body.bp {
       @include column($blueprint-grid-columns / 4);
       height: 64px;
       text-align: left;
+      
+      a {
+      	text-decoration: none;
+        @include link-colors($color0);
+      }
 
       img {
         float: left;
@@ -225,6 +231,10 @@ body.bp {
               background: url(../images/github.png) no-repeat 0 0;
               @include background-size(16px);
             }
+            &#stackoverflow {
+              background: url(../images/stackoverflow.png) no-repeat 0 0;
+              @include background-size(16px);
+            }
             &#follow_us_at_twitter {
               background: url(../images/twitter.png) no-repeat 0 0;
               @include background-size(16px);
@@ -324,9 +334,9 @@ body.bp #content {
 
   .deck {
     color: $color0;
-    font-size: 16px;
-    text-align:center;
-    margin: 2px 0 4px 0;
+    font-size: 18px;
+    text-align: center;
+    margin: 6px 0 4px 0;
   }
 
   .deck em {
