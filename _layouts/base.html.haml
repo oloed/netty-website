@@ -2,11 +2,22 @@
   %head
     %title
       #{site.title}: #{page.title}
+
+    %link{ :rel=>'shortcut icon', :href=>'/images/favicon.ico' }
+
     %link{ :rel=>'stylesheet', :type=>'text/css', :href=>'/stylesheets/screen.css', :media=>'screen, projection' }
     %link{ :rel=>'stylesheet', :type=>'text/css', :href=>'/stylesheets/print.css', :media=>'print' }
     /[if IE]
       %link{ :rel=>'stylesheet', :type=>'text/css', :href=>'/stylesheets/ie.css', :media=>'screen, projection' }
-    %link{ :rel=>'shortcut icon', :href=>'/images/favicon.ico' }
+
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>'http://alexgorbatchev.com/pub/sh/current/styles/shCore.css' }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>'http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css' }
+    %script{ :type=>'text/javascript', :src=>'http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js' }
+    %script{ :type=>'text/javascript', :src=>'http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPlain.js' }
+    %script{ :type=>'text/javascript', :src=>'http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js' }
+    %script{ :type=>'text/javascript', :src=>'http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js' }
+    %script{ :type=>'text/javascript', :src=>'http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJava.js' }
+
   %body.bp
     #container
       #header
@@ -63,3 +74,6 @@
         .legal
           <a href="/">The #{site.title} project</a> is a member of the <a href="http://jboss.org/">JBoss Community</a>.
           Copyright 2009-2011 <a href="http://www.redhat.com/">Red Hat, Inc.</a>
+      :javascript
+        SyntaxHighlighter.all()
+

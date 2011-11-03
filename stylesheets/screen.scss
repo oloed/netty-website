@@ -316,6 +316,12 @@ body.bp #content {
     margin: 0 14px 14px 24px;
   }
 
+  pre {
+    margin: 0 14px 14px 24px;
+    white-space: pre-wrap;
+    padding: 8px;
+  }
+
   .deck {
     color: $color0;
     font-size: 16px;
