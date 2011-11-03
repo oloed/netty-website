@@ -176,7 +176,7 @@ body.bp {
     $content-columns: ceil(3 * $blueprint-grid-columns / 4);
     @include column($content-columns);
     text-align: left;
-    padding-top: 4px;
+    padding: 4px 0px 0px 0px;
   }
 
   #sidebar {
@@ -297,11 +297,11 @@ form.bp {
 
 body.bp #content {
   h1, h2 {
-    margin: 0 0 4px 0;
+    margin: 0 0 4px 10px;
   }
 
   h3, h4, h5, h6 {
-    margin: 0 0 10px 0;
+    margin: 0 0 10px 12px;
   }
 
   p {
@@ -312,7 +312,7 @@ body.bp #content {
   }
 
   p, ul, ol {
-    margin: 0 14px 14px 14px;
+    margin: 0 14px 14px 24px;
   }
 
   .deck {

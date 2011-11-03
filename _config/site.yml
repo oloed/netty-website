@@ -2,5 +2,5 @@ title: Netty project
 base_url: http://netty.io/
 stableReleaseVersion: 3.2.6.Final
 stableReleaseDate: 22-Oct-2011
-unstableReleaseVersion:
-unstableReleaseDate: 
+#unstableReleaseVersion: 4.0.0.Alpha1
+#unstableReleaseDate: 25-Dec-2011
