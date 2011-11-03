@@ -315,7 +315,7 @@ body.bp #content {
     margin: 0 0 10px 12px;
   }
 
-  p {
+  p, blockquote {
     text-align: justify;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
@@ -324,6 +324,13 @@ body.bp #content {
 
   p, ul, ol {
     margin: 0 14px 14px 24px;
+  }
+
+  div {
+    margin: {
+      left: 24px;
+      right: 14px;
+    }
   }
 
   pre {
@@ -337,12 +344,42 @@ body.bp #content {
     font-size: 18px;
     text-align: center;
     margin: 6px 0 4px 0;
+
+    em {
+      background-color: $color4;
+      @include border-radius;
+      padding: 0.05em 0.25em 0.1em 0.25em;
+    }
   }
 
-  .deck em {
-    background-color: $color4;
+  blockquote {
     @include border-radius;
-    padding: 0.05em 0.25em 0.1em 0.25em;
+    text-indent: 0;
+    color: black;
+    background: url(../images/quote-open.gif) no-repeat 8px 8px;
+    background-color: $color3;
+    margin: 0 14 0 24px;
+    padding: 10px 20px 1px 24px;
+    font-style: normal;
+
+    p {
+      margin: 0 0 0.8em 0;
+    }
+    ul {
+      margin-top: 0.8em;
+      margin-left: 0.8em;
+    }
+  }
+
+  .author {
+    text-align: right;
+    &:before {
+      content: "\2014"; 
+    }
+    margin: {
+      top: 0.3em;
+      bottom: 1.3em;
+    }
   }
 }
 
