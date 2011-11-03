@@ -49,6 +49,7 @@ body.bp {
 
       img {
         float: left;
+        padding-left: 8px;
       }
 
       #project_name {
@@ -56,7 +57,7 @@ body.bp {
         width: 128px;
         height: 64px;
         padding-top: 5px;
-        margin: 0 0 0 70px;
+        margin: 0 0 0 76px;
         color: $color0;
 
         .large {
@@ -318,6 +319,8 @@ body.bp #content {
   .deck {
     color: $color0;
     font-size: 16px;
+    text-align:center;
+    margin: 2px 0 4px 0;
   }
 
   .deck em {
