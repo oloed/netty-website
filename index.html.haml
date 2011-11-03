@@ -3,4 +3,66 @@ title: Home
 layout: base
 ---
 
-%h1 You're awestruct.
+%p.deck
+  The Netty project provides <em>an asynchronous event-driven network application framework</em> for rapid development of maintainable high performance protocol servers &amp; clients.
+  %div{ :style=>'text-align: center; margin: 0; padding: 0' }
+    %img{ :src=>'images/architecture.png' }
+
+%p Netty is a NIO client server framework which enables quick and easy development of network applications such as protocol servers and clients. It greatly simplifies and streamlines network programming such as TCP and UDP socket server.
+
+%p 'Quick and easy' doesn't mean that a resulting application will suffer from a maintainability or a performance issue. Netty has been designed carefully with the experiences earned from the implementation of a lot of protocols such as FTP, SMTP, HTTP, and various binary and text-based legacy protocols. As a result, Netty has succeeded to find a way to achieve ease of development, performance, stability, and flexibility without a compromise.
+
+%h2 Status and Pointers
+
+%p 
+  - if ( site.unstableReleaseVersion )
+    <a href='downloads/'><strong>#{site.unstableReleaseVersion}</strong></a> and <a href='downloads/'><strong>#{site.stableReleaseVersion}</strong></a> have been released on #{site.unstableReleaseDate} and #{site.stableReleaseDate} respectively.
+  - else 
+    <a href='downloads/'><strong>#{site.stableReleaseVersion}</strong></a> has been released on #{site.stableReleaseDate}.
+    
+  Please feel free to browse the <a href='docs/'>documentation</a>, check out the <a href='testimonials/'>testimonials</a> from the satisfied, grab a <a href='downloads/'>download</a>, and join us on our <a href='community/'>community</a> to open the future of network application development!
+
+%h2 Features
+
+%p Netty was designed and written from scratch to provide the best experience in network application development:
+
+%h3 Design  
+
+%ul
+  %li Unified API for various transport types - blocking and non-blocking socket
+  %li Based on a flexible and extensible event model which allows clear separation of concerns
+  %li Highly customizable thread model - single thread, one or more thread pools such as SEDA
+  %li True connectionless datagram socket support (since 3.1)
+
+%h3 Ease of use     
+
+%ul
+  %li Well-documented Javadoc, user guide and examples
+  %li No more big fat monolithic core which has unnecessary features
+  %li No additional dependencies but JDK 1.5 (or above)
+
+%h3 Performance     
+
+%ul
+  %li Better throughput, lower latency
+  %li Less resource consumption
+  %li Minimized unnecessary memory copy
+
+%h3 Robustness      
+
+%ul
+  %li No more OutOfMemoryError due to fast, slow or overloaded connection.
+  %li No more unfair read / write ratio often found in a NIO application under high speed network
+
+%h3 Security        
+
+%ul
+  %li Complete SSL/TLS and StartTLS support
+  %li Runs OK in a restricted environment such as Applet
+
+%h3 Community       
+
+%ul
+  %li Release early, release often
+  %li The author has been writing similar frameworks since 2003 and he still finds your <a href='community/'>feed back</a> precious!
+

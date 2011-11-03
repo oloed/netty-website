@@ -129,35 +129,35 @@ body.bp {
 
       #cse-search-form div {
           margin-right: 0;
-      	  padding-right: 0;
+          padding-right: 0;
 
-	}
+      }
 
       #cse-search-form * {
         form, table {
           margin:0;
-      	  padding:0;
+          padding:0;
         }
         form {
-      	  display: inline;
-      	  margin: 0;
-      	  padding: 0;
-	}
+          display: inline;
+          margin: 0;
+          padding: 0;
+        }
         table {
           idth: 224px;
-	}
-	td {
-	  margin: 0;
-	  padding: 0;
-	}
+        }
+        td {
+          margin: 0;
+          padding: 0;
+        }
       }
 
       .gsc-branding {
-      	display: none;
+        display: none;
       }
 
       .gsc-input {
-      	width: 224px;
+        width: 224px;
         margin: 0;
         padding: 6px 4px;
         height: 27px;
@@ -167,7 +167,7 @@ body.bp {
         background-position: center !important;
       }
       .gsc-search-button, .gsc-clear-button {
-      	display: none;
+        display: none;
       }
     }
   }
@@ -176,6 +176,7 @@ body.bp {
     $content-columns: ceil(3 * $blueprint-grid-columns / 4);
     @include column($content-columns);
     text-align: left;
+    padding-top: 4px;
   }
 
   #sidebar {
@@ -184,6 +185,7 @@ body.bp {
     text-align: left;
 
     #quicklinks {
+      padding-top: 4px;
       margin-bottom: 20px;
       ul {
         list-style: none;
@@ -232,6 +234,13 @@ body.bp {
     }
 
     #testimonial {
+      h2 {
+        font-size: 17px;
+        margin: 0 0 0 11px;
+        &:after {
+          content: ':';
+        }
+      }
       blockquote {
         font-size: 10px;
         @include border-radius;
@@ -284,5 +293,37 @@ body.bp {
 
 form.bp {
   @include blueprint-form;
+}
+
+body.bp #content {
+  h1, h2 {
+    margin: 0 0 4px 0;
+  }
+
+  h3, h4, h5, h6 {
+    margin: 0 0 10px 0;
+  }
+
+  p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+  }
+
+  p, ul, ol {
+    margin: 0 14px 14px 14px;
+  }
+
+  .deck {
+    color: $color0;
+    font-size: 16px;
+  }
+
+  .deck em {
+    background-color: $color4;
+    @include border-radius;
+    padding: 0.05em 0.25em 0.1em 0.25em;
+  }
 }
 
