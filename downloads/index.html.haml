@@ -1,0 +1,66 @@
+---
+title: Downloads
+layout: base
+---
+
+%h2 Downloads
+
+%p.notice
+  Netty is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>. Please see the enclosed <tt>NOTICE.txt</tt>, <tt>COPYRIGHT.txt</tt>, and <tt>LICENSE.txt</tt> for more information.
+
+%ul
+  %li
+    Stable release: <a href="netty-#{site.stableReleaseVersion}-dist.tar.bz2"><tt>netty-#{site.stableReleaseVersion}-dist.tar.bz2</tt></a>
+    %span.small
+      (#{site.stableReleaseDate})
+  - if ( site.unstableReleaseVersion )
+    %li
+      Unstable release: <a href="netty-#{site.unstableReleaseVersion}-dist.tar.bz2"><tt>netty-#{site.unstableReleaseVersion}-dist.tar.bz2</tt></a>
+      %span.small
+        (#{site.unstableReleaseDate})
+
+%h3 Dependencies
+
+%p Please note that Netty has <em>no mandatory external dependencies</em>. JDK 1.5 or above is all that you need to run Netty. However, the unstable releases might require a newer JDK version.
+
+%h3 Getting notified on a new release
+
+%p You can either subscribe to <a href="../blog/">our official blog</a> or follow <a href="https://twitter.com/netty_project">@netty_project</a> at Twitter.
+
+%h3 Downloading from Maven 2 repository
+
+%p First off, add the following repository section to your <tt>pom.xml</tt> or <tt>~/.m2/settings.xml</tt>:
+
+%pre.brush:.xml
+  :escaped
+    <repositories>
+      ...
+      <repository>
+        <id>repository.jboss.org</id>
+        <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>
+      </repository>
+      ...
+    </repositories>
+
+%p And then add the following dependency section to your <tt>pom.xml</tt>:
+
+%pre.brush:.xml
+  :escaped
+    <dependencies>
+      ...
+      <dependency>
+        <groupId>org.jboss.netty</groupId>
+        <artifactId>netty</artifactId>
+        <version>X.Y.Z.Q</version>
+        <scope>compile</scope>
+      </dependency>
+      ...
+    </dependencies>
+
+%h3 Previous releases
+
+%p All previous releases can be downloaded from <a href="deprecated.html">here</a>.
+

@@ -1,0 +1,16 @@
+---
+title: Deprecated Releases
+layout: base
+---
+
+%h2 Deprecated Releases
+
+%p.notice
+  The files listed here are <em>deprecated</em>.  All users are encouraged to upgrade to <a href="../downloads/">the latest version</a>.
+
+%ul
+  - Dir.glob("downloads/*.bz2").sort{|x,y| y <=> x }.each do |f|
+    - if !f.include?(site.stableReleaseVersion)
+      - f.sub!(/^downloads\//, '')
+      %li <a href="#{f}"><tt>#{f}</tt></a>
+
