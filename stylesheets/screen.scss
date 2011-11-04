@@ -235,6 +235,10 @@ body.bp {
               background: url(../images/stackoverflow.png) no-repeat 0 0;
               @include background-size(16px);
             }
+            &#chat_with_us {
+              background: url(../images/chat.png) no-repeat 0 0;
+              @include background-size(16px);
+            }
             &#follow_us_at_twitter {
               background: url(../images/twitter.png) no-repeat 0 0;
               @include background-size(16px);
