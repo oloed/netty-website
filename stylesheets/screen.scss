@@ -436,11 +436,15 @@ body.bp #content {
   .pagination-links, .post-navigation {
     font-size: 12px;
     margin: 0 12px;
-    padding: 6px 0;
+    padding: 6px 0 0 0;
     border-top: $color3 solid 1px;
     .current-page {
       font-weight: bold;
     }
+  }
+  .archive-links {
+    font-size: 12px;
+    margin: 0 12px;
   }
   .pagination-links:before {
     content: 'Pages: ';
