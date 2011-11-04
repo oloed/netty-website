@@ -10,6 +10,8 @@
 @import "compass/css3/background-size";
 @import "compass/css3/transition";
 
+@import "compass/reset/utilities";
+
 @import "compass/typography/links/hover-link";
 @import "compass/typography/links/unstyled-link";
 @import "compass/typography/links/link-colors";
@@ -465,11 +467,33 @@ body.bp #content {
     .body {
       margin: 12px 0 0 0;
     }
+    .comments {
+      margin: 12px;
+
+      div, p, blockquote, pre, span, form {
+      	margin: {
+      	  left: 0;
+      	  right: 0;
+	}
+      }
+      h1, h2, h3, h4, h5, h6, ul {
+        margin: 0;
+      }
+      .idc-c-t-inner textarea {
+      	width: 100% !important;
+      }
+      #idc-cover {
+      	margin-bottom: 0;
+      }
+      .idc-right {
+      	float: right;
+      }
+    }
   }
 
   .pagination-links, .post-navigation {
     font-size: 12px;
-    margin: 0 12px;
+    margin: 8px 12px 0px 12px;
     padding: 6px 0 0 0;
     border-top: $color3 solid 1px;
     .current-page {

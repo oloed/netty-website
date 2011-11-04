@@ -1,6 +1,8 @@
 title: Netty
 base_url: http://netty.io/
 google_analytics: UA-95307-5
+intense_debate_base_url: http://netty.io
+intense_debate_acct: 8711a51dc3ab2b8f5538b6be02a5d4fd
 
 stableReleaseVersion: 3.2.6.Final
 stableReleaseDate: 22-Oct-2011

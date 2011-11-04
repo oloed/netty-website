@@ -7,8 +7,8 @@ layout: base
     #{page.author} on #{page.date.strftime( '%d %B %Y' )}
   .body
     ~ content
-  //.comments
-  //  = page.intense_debate_comments
+  .comments
+    = page.intense_debate_comments
 
 .post-navigation
   .previous
