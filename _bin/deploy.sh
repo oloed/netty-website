@@ -31,14 +31,16 @@ if [[ ! ${GIT_STATUS} =~ (working directory clean) ]]; then
   exit 1
 fi
 
-git pull --ff-only
-
 popd
 
 rm -fr "$SRC"
 
 pushd "$BIN/.."
 awestruct -g
+popd
+
+pushd "$DST"
+git pull --ff-only
 popd
 
 "$BIN/inject-google-analytics.sh"
