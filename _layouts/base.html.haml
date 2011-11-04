@@ -25,13 +25,13 @@
           <a href="/"><img src="/images/logo.png" /><h1 id="project_name"><span class="large">Netty</span><span class="small">project</span></a></h1></a>
         #navbar
           %ul
-            %li
+            %li{ :class=>"#{'current' if page.url =~ /^\/(index\..*|$)/}" }
               %a{ :href=>'/' } Home
-            %li
+            %li{ :class=>"#{'current' if page.url =~ /^\/docs\/.*/}" }
               %a{ :href=>'/docs/' } Documentation
-            %li
+            %li{ :class=>"#{'current' if page.url =~ /^\/community\/.*/}" }
               %a{ :href=>'/community/' } Get Involved
-            %li
+            %li{ :class=>"#{'current' if page.url =~ /^\/blog\/.*/}" }
               %a{ :href=>'/blog/' } Blog
         #searchbar
           #cse-search-form
