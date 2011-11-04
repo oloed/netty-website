@@ -408,5 +408,42 @@ body.bp #content {
       }
     }
   }
+
+  .post {
+    margin: 0;
+    h2 {
+      margin-bottom: 0;
+      a {
+      	text-decoration: none;
+      	@include link-colors($color0);
+      }
+    }
+    .author {
+      text-align: left;
+      font-size: 12px;
+      margin: 0 12px;
+      padding-bottom: 6px;
+      &:before {
+      	content: 'Posted by ';
+      }
+      border-bottom: $color3 solid 1px;
+    }
+    .body {
+      margin: 12px 0 0 0;
+    }
+  }
+
+  .pagination-links, .post-navigation {
+    font-size: 12px;
+    margin: 0 12px;
+    padding: 6px 0;
+    border-top: $color3 solid 1px;
+    .current-page {
+      font-weight: bold;
+    }
+  }
+  .pagination-links:before {
+    content: 'Pages: ';
+  }
 }
 

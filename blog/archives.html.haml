@@ -1,0 +1,13 @@
+---
+title: Blog Archive
+layout: base
+---
+
+%h2 Blog Archive
+
+%ul
+  - for post in site.posts
+    %li
+      %a{:href=>post.url}= post.title
+      %span.small #{post.date.strftime( '%d %B %Y' )}
+
