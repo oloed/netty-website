@@ -31,5 +31,5 @@ Run the `_bin/deploy.sh` script with the path to [the Github Pages repository](h
     $ cd netty-website
     $ _bin/deploy.sh ../netty.github.com
 
-The script above assumes that your local Github Pages repository is located at `../netty.github.com`.
+The example above copies the generated web site into the local Github Pages repository located at `../netty.github.com`, and pushes all the changes to origin.
 
