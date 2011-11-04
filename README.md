@@ -24,3 +24,12 @@ When running Awestruct, you will see the following message:
 
 Do not install `rb-fsevent`.  It will make Awestruct not detect newly created files so that the new files are not rendered.
 
+### How to deploy the web site
+
+Run the `_bin/deploy.sh` script with the path to [the Github Pages repository](https://github.com/netty/netty.github.com/):
+
+    $ cd netty-website
+    $ _bin/deploy.sh ../netty.github.com
+
+The script above assumes that your local Github Pages repository is located at `../netty.github.com`.
+
