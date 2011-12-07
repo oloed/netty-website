@@ -398,62 +398,6 @@ body.bp #content {
     }
   }
 
-  #stableReleaseDocs, #unstableReleaseDocs {
-      display: block;
-      float: left;
-      width: 292px !important;
-      border: $color1 solid 1px;
-      padding: 10px 16px;
-      @include border-radius;
-      @include background-image(linear-gradient(lighten($color2, 40%), lighten($color2, 10%), $color2));
-
-      h3 {
-        text-align: center;
-        font-size: 20px;
-        margin: 0 0 8px 0;
-      }
-      ul {
-        margin: 0 0 0 0;
-      }
-  }
-
-  #stableReleaseDocs {
-      margin: 0 8px 8px 28px;
-  }
-  #unstableReleaseDocs {
-      margin: 0 0 8px 8px;
-  }
-
-  .panel-wrapper {
-    margin: 8px 0 8px 82px;
-    .panel {
-      display: block;
-      float: left;
-      width: 224px !important;
-      border: $color1 solid 1px;
-      margin: 12px 8px 0px 8px;
-      padding: 6px 16px 10px 16px;
-      @include border-radius;
-      @include background-image(linear-gradient(lighten($color2, 40%), lighten($color2, 10%), $color2));
-
-      h2 {
-        text-align: center;
-        font-size: 20px;
-        margin: 0 0 4px 0;
-      }
-      p {
-        margin: 0 0 0 0;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        hyphens: auto;
-      }
-      em {
-      	font-style: normal;
-      	font-weight: bold;
-      }
-    }
-  }
-
   .post {
     margin: 0 0 12px 0;
     h2 {
