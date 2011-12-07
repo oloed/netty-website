@@ -12,7 +12,7 @@ layout: base
     .body
       = post.content
     .comments
-      = post.intense_debate_comments_link
+      = page.disqus_comments_link
 
 = page.posts.links
 .archive-links
@@ -23,4 +23,6 @@ layout: base
 
 .notice{ :style=>'margin: 0 12px; ' }
   Wrote something related with Netty? <a href="mailto:netty@googlegroups.com">Let us know!</a> We will let you publish your post here.
+
+= page.disqus_comments_count
 
