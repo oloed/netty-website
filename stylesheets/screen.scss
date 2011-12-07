@@ -449,7 +449,7 @@ body.bp #content {
   }
 
   .post {
-    margin: 0;
+    margin: 0 0 12px 0;
     h2 {
       margin-bottom: 0;
       a {
@@ -457,50 +457,88 @@ body.bp #content {
       	@include link-colors($color0);
       }
     }
-    .author {
-      text-align: left;
-      font-size: 12px;
-      margin: 0 12px;
-      padding-bottom: 6px;
-      &:before {
-      	content: 'Posted by ';
-      }
-      border-bottom: $color3 solid 1px;
-    }
     .body {
-      margin: 12px 0 0 0;
-    }
-    .comments {
-      margin: 12px;
-
-      div, p, blockquote, pre, span, form {
-      	margin: {
-      	  left: 0;
-      	  right: 0;
+      @include border-radius;
+      background-color: $color3;
+      padding: 14px 10px 6px 0px;
+      margin-left: 10px;
+      #share-links {
+      	float: right;
+      	width: 110px;
+      	margin: 0 0 0 8px;
+      	padding: 0 !important;
+      	div {
+      	  margin: 0 !important;
 	}
       }
-      h1, h2, h3, h4, h5, h6, ul {
+    }
+
+    .footer {
+      margin: 0 0 0 12px;
+      padding: 4px 0 0 0;
+      .author {
+        display: inline;
+        font-size: 12px;
         margin: 0;
+        &:before {
+          content: 'Posted by ';
+        }
       }
-      .idc-c-t-inner textarea {
-      	width: 100% !important;
-      }
-      #idc-cover {
-      	margin-bottom: 0;
-      }
-      .idc-right {
+      .comments-link {
       	float: right;
+      	font-size: 12px;
+      }
+      .comments {
+      	clear: both;
+        margin: 6px 12px 0 0;
+        padding-top: 8px;
+        border-top: $color2 solid 1px;
+
+	#dsq-global-toolbar {
+	  margin: 0 !important;
+	  padding: 0 !important;
+
+	  .dsq-global-toolbar-left, .dsq-global-toolbar-right {
+	    margin: 0 !important;
+	    padding: 0 !important;
+	    li {
+	    margin-bottom: 0;
+	    padding-bottom: 0;
+	    }
+	  }
+	}
+
+	.dsq-comment {
+	  margin-bottom: 0;
+	}
+
+	#dsq-footer {
+	  display: none;
+	}
+
+        div, p, blockquote, pre, span, form {
+          margin: {
+            left: 0;
+            right: 0;
+          }
+        }
+        h1, h2, h3, h4, h5, h6, ul {
+          margin: 0 0 12px 0;
+        }
       }
     }
   }
 
   .pagination-links, .post-navigation {
     font-size: 12px;
-    margin: 8px 12px 0px 12px;
+    margin: 8px 12px 0 0;
     padding: 6px 0 0 0;
     border-top: $color3 solid 1px;
     .current-page {
       font-weight: bold;
+    }
+    .previous, .next {
+      margin: 0;
     }
   }
   .archive-links {
@@ -509,6 +547,10 @@ body.bp #content {
   }
   .pagination-links:before {
     content: 'Pages: ';
+  }
+
+  .notice {
+    margin-left: 12px;
   }
 }
 

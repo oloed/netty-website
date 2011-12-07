@@ -3,16 +3,20 @@ title: Blog
 layout: base
 ---
 
+.notice
+  Wrote something related with Netty? <a href="mailto:netty@googlegroups.com">Let us know!</a> We will let you publish your post here.
+
 - for post in page.posts
   .post
     %h2
       %a{:href=>post.url}= post.title
-    .author
-      #{post.author} on #{post.date.strftime( '%d %B %Y' )}
     .body
       = post.content
-    .comments
-      = post.disqus_comments_link
+    .footer
+      .comments-link
+        = post.disqus_comments_link
+      .author
+        #{post.author} on #{post.date.strftime( '%d %B %Y' )}
 
 = page.posts.links
 .archive-links
@@ -20,9 +24,6 @@ layout: base
   &middot;
   %a{ :href=>'http://feeds.feedburner.com/netty_project' } RSS Feed
 
-
-.notice{ :style=>'margin: 0 12px; ' }
-  Wrote something related with Netty? <a href="mailto:netty@googlegroups.com">Let us know!</a> We will let you publish your post here.
 
 = page.disqus_comments_count
 
