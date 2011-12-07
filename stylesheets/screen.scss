@@ -502,5 +502,23 @@ body.bp #content {
   .notice {
     margin-left: 12px;
   }
+
+  #goog-fixurl {
+    text-align: left;
+    margin: 0;
+  }
+  #goog-wm {
+    text-align: left;
+    margin: 0;
+
+    .content {
+      margin: 0;
+      padding: 0;
+      
+      h3 b {
+      	font-weight: normal;
+      }
+    }
+  }
 }
 
