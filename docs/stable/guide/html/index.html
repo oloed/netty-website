@@ -118,7 +118,7 @@
                   <h3>2. The Solution</h3>
                </div>
                <p>
-                  <em class="firstterm"><a href="http://www.jboss.org/netty/">The Netty project</a></em> is
+                  <em class="firstterm"><a href="http://netty.io/">The Netty project</a></em> is
                   an effort to provide an asynchronous event-driven network application
                   framework and tooling for the rapid development of maintainable
                   high-performance · high-scalability protocol servers and clients.
@@ -212,7 +212,7 @@
                   The minimum requirements to run the examples which are introduced in
                   this chapter are only two; the latest version of Netty and JDK 1.5 or
                   above.  The latest version of Netty is available in
-                  <a href="http://www.jboss.org/netty/downloads.html">the project download page</a>.  To download
+                  <a href="http://netty.io/downloads/">the project download page</a>.  To download
                   the right version of JDK, please refer to your preferred JDK vendor's web
                   site.
                   
@@ -222,7 +222,7 @@
                   in this chapter.  Please refer to the API reference whenever you want to
                   know more about them.  All class names in this document are linked to the
                   online API reference for your convenience.  Also, please don't hesitate to
-                  <a href="http://www.jboss.org/netty/community.html">contact the Netty project community</a> and
+                  <a href="http://netty.io/community/">contact the Netty project community</a> and
                   let us know if there's any incorrect information, errors in grammar and
                   typo, and if you have a good idea to improve the documentation.
                   
@@ -246,17 +246,17 @@
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>package org.jboss.netty.example.discard;
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class DiscardServerHandler extends <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {<a name="example.discard.co1" id="example.discard.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/1.png" alt="1" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class DiscardServerHandler extends <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {<a name="example.discard.co1" id="example.discard.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/1.png" alt="1" border="0" />
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    @Override
-<span class="linenumber">  6</span><span class="linenumber-separator"> </span>    public void messageReceived(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {<a name="example.discard.co2" id="example.discard.co2"></a><img src="http://docbook.github.com/release/2.0.3/base/img/2.png" alt="2" border="0" />
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>    public void messageReceived(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {<a name="example.discard.co2" id="example.discard.co2"></a><img src="http://docbook.github.com/release/2.0.3/base/img/2.png" alt="2" border="0" />
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    }
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    @Override
-<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>    public void exceptionCaught(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> e) {<a name="example.discard.co3" id="example.discard.co3"></a><img src="http://docbook.github.com/release/2.0.3/base/img/3.png" alt="3" border="0" />
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>    public void exceptionCaught(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> e) {<a name="example.discard.co3" id="example.discard.co3"></a><img src="http://docbook.github.com/release/2.0.3/base/img/3.png" alt="3" border="0" />
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        e.getCause().printStackTrace();
 <span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> ch = e.getChannel();
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> ch = e.getChannel();
 <span class="linenumber"> 14</span><span class="linenumber-separator"> </span>        ch.close();
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    }
 <span class="linenumber"> 16</span><span class="linenumber-separator"> </span>}</pre></div>
@@ -270,10 +270,10 @@
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
                               <code class="classname">DiscardServerHandler</code> extends
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a>, which is an implementation of
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a>.  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> provides various event
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a>, which is an implementation of
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a>.  <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> provides various event
                               handler methods that you can override.  For now, it is just enough
-                              to extend <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> rather than to implement
+                              to extend <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> rather than to implement
                               the handler interfaces by yourself.
                               
                            </p>
@@ -287,7 +287,7 @@
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
                               We override the <code class="methodname">messageReceived</code> event
-                              handler method here.  This method is called with a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a>,
+                              handler method here.  This method is called with a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a>,
                               which contains the received data, whenever new data is received
                               from a client.  In this example, we ignore the received data by doing
                               nothing to implement the DISCARD protocol.
@@ -303,7 +303,7 @@
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
                               <code class="methodname">exceptionCaught</code> event handler method is
-                              called with an <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> when an exception was raised by
+                              called with an <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> when an exception was raised by
                               Netty due to I/O error or by a handler implementation due to the
                               exception thrown while processing events.  In most cases, the
                               caught exception should be logged and its associated channel
@@ -331,16 +331,16 @@
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>public class DiscardServer {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>    public static void main(String[] args) throws Exception {
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> factory =
-<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>            new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/socket/nio/NioServerSocketChannelFactory.html"><code class="classname">NioServerSocketChannelFactory</code></a><a name="example.discard2.co1" id="example.discard2.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/4.png" alt="4" border="0" />(
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> factory =
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>            new <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/socket/nio/NioServerSocketChannelFactory.html"><code class="classname">NioServerSocketChannelFactory</code></a><a name="example.discard2.co1" id="example.discard2.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/4.png" alt="4" border="0" />(
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>                    Executors.newCachedThreadPool(),
 <span class="linenumber"> 12</span><span class="linenumber-separator"> </span>                    Executors.newCachedThreadPool());
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>
-<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a> bootstrap = new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a><a name="example.discard2.co2" id="example.discard2.co2"></a><img src="http://docbook.github.com/release/2.0.3/base/img/5.png" alt="5" border="0" />(factory);
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a> bootstrap = new <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a><a name="example.discard2.co2" id="example.discard2.co2"></a><img src="http://docbook.github.com/release/2.0.3/base/img/5.png" alt="5" border="0" />(factory);
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>
-<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>        bootstrap.setPipelineFactory(new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>() {<a name="example.discard2.co3" id="example.discard2.co3"></a><img src="http://docbook.github.com/release/2.0.3/base/img/6.png" alt="6" border="0" />
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>            public <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> getPipeline() {
-<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>                return <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.pipeline(new DiscardServerHandler());
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>        bootstrap.setPipelineFactory(new <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>() {<a name="example.discard2.co3" id="example.discard2.co3"></a><img src="http://docbook.github.com/release/2.0.3/base/img/6.png" alt="6" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            public <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> getPipeline() {
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>                return <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.pipeline(new DiscardServerHandler());
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>            }
 <span class="linenumber"> 20</span><span class="linenumber-separator"> </span>        });
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>
@@ -359,12 +359,12 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> is a factory which creates and manages <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> is a factory which creates and manages <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s
                               and its related resources.  It processes all I/O requests and
-                              performs I/O to generate <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a>s.  Netty provides various
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> implementations.  We are implementing a server-side
+                              performs I/O to generate <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a>s.  Netty provides various
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> implementations.  We are implementing a server-side
                               application in this example, and therefore
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/socket/nio/NioServerSocketChannelFactory.html"><code class="classname">NioServerSocketChannelFactory</code></a> was used.  Another thing to note is
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/socket/nio/NioServerSocketChannelFactory.html"><code class="classname">NioServerSocketChannelFactory</code></a> was used.  Another thing to note is
                               that it does not create I/O threads by itself.  It is supposed to
                               acquire threads from the thread pool you specified in the
                               constructor, and it gives you more control over how threads should
@@ -381,8 +381,8 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a> is a helper class that sets up a server. You can
-                              set up the server using a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> directly.  However, please note
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a> is a helper class that sets up a server. You can
+                              set up the server using a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> directly.  However, please note
                               that this is a tedious process and you do not need to do that in most
                               cases.
                               
@@ -396,9 +396,9 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              Here, we configure the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>.  Whenever a new
-                              connection is accepted by the server, a new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> will be
-                              created by the specified <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>.  The new pipeline
+                              Here, we configure the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>.  Whenever a new
+                              connection is accepted by the server, a new <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> will be
+                              created by the specified <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>.  The new pipeline
                               contains the <code class="classname">DiscardServerHandler</code>.  As the
                               application gets complicated, it is likely that you will add more
                               handlers to the pipeline and extract this anonymous class into a top
@@ -414,14 +414,14 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              You can also set the parameters which are specific to the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>
+                              You can also set the parameters which are specific to the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>
                               implementation.  We are writing a TCP/IP server, so we are allowed
                               to set the socket options such as <code class="literal">tcpNoDelay</code> and
                               <code class="literal">keepAlive</code>.  Please note that the
                               <code class="literal">"child."</code> prefix was added to all options.  It
-                              means the options will be applied to the accepted <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s instead
-                              of the options of the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/socket/ServerSocketChannel.html"><code class="interfacename">ServerSocketChannel</code></a>.  You could do the
-                              following to set the options of the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/socket/ServerSocketChannel.html"><code class="interfacename">ServerSocketChannel</code></a>:
+                              means the options will be applied to the accepted <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s instead
+                              of the options of the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/socket/ServerSocketChannel.html"><code class="interfacename">ServerSocketChannel</code></a>.  You could do the
+                              following to set the options of the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/socket/ServerSocketChannel.html"><code class="interfacename">ServerSocketChannel</code></a>:
                               
                               <div class="programlisting"><pre>bootstrap.setOption("reuseAddress", true);</pre></div>
                               
@@ -470,7 +470,7 @@
                   
                </p>
                <p>
-                  We already know that <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> is generated whenever data is
+                  We already know that <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> is generated whenever data is
                   received and the <code class="methodname">messageReceived</code> handler method
                   will be invoked.  Let us put some code into the
                   <code class="methodname">messageReceived</code> method of the
@@ -478,8 +478,8 @@
                   
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>@Override
-<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void messageReceived(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>    <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a><a name="example.discard3.co1" id="example.discard3.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/9.png" alt="9" border="0" /> buf = (ChannelBuffer) e.getMessage();
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void messageReceived(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a><a name="example.discard3.co1" id="example.discard3.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/9.png" alt="9" border="0" /> buf = (ChannelBuffer) e.getMessage();
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>    while(buf.readable()) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        System.out.println((char) buf.readByte());
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>        System.out.flush();
@@ -495,18 +495,18 @@
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
                               It is safe to assume the message type in socket transports is always
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>.  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> is a fundamental data structure
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>.  <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> is a fundamental data structure
                               which stores a sequence of bytes in Netty.  It's similar to NIO
                               <code class="classname">ByteBuffer</code>, but it is easier to use and more
                               flexible.  For example, Netty allows you to create a composite
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> which combines multiple <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>s reducing
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> which combines multiple <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>s reducing
                               the number of unnecessary memory copy.
                               
                            </p>
                            <p>
                               Although it resembles to NIO <code class="classname">ByteBuffer</code> a lot,
                               it is highly recommended to refer to the API reference.  Learning how
-                              to use <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> correctly is a critical step in using Netty
+                              to use <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> correctly is a critical step in using Netty
                               without difficulty.  
                               
                            </p>
@@ -546,8 +546,8 @@
                   
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>@Override
-<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void messageReceived(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>    <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a><a name="example.echo.co1" id="example.echo.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/10.png" alt="10"
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void messageReceived(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a><a name="example.echo.co1" id="example.echo.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/10.png" alt="10"
                           border="0" /> ch = e.getChannel();
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>    ch.write(e.getMessage());
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>}</pre></div>
@@ -561,9 +561,9 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              A <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a> object has a reference to its associated <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>.
-                              Here, the returned <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> represents the connection which received
-                              the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a>.  We can get the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> and call the
+                              A <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a> object has a reference to its associated <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>.
+                              Here, the returned <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> represents the connection which received
+                              the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a>.  We can get the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> and call the
                               <code class="methodname">write</code> method to write something back to
                               the remote peer. 
                               
@@ -608,31 +608,31 @@
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>package org.jboss.netty.example.time;
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeServerHandler extends <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeServerHandler extends <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    @Override
-<span class="linenumber">  6</span><span class="linenumber-separator"> </span>    public void channelConnected(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelStateEvent.html"><code class="interfacename">ChannelStateEvent</code></a> e) {<a name="example.time.co1" id="example.time.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/11.png" alt="11"
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>    public void channelConnected(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelStateEvent.html"><code class="interfacename">ChannelStateEvent</code></a> e) {<a name="example.time.co1" id="example.time.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/11.png" alt="11"
                           border="0" />
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> ch = e.getChannel();
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> ch = e.getChannel();
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>        
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> time = <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>.buffer(4);<a name="example.time.co2" id="example.time.co2"></a><img src="http://docbook.github.com/release/2.0.3/base/img/12.png" alt="12"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> time = <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>.buffer(4);<a name="example.time.co2" id="example.time.co2"></a><img src="http://docbook.github.com/release/2.0.3/base/img/12.png" alt="12"
                           border="0" />
 <span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        time.writeInt((int) (System.currentTimeMillis() / 1000));
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        
-<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> f = ch.write(time);<a name="example.time.co3" id="example.time.co3"></a><img src="http://docbook.github.com/release/2.0.3/base/img/13.png" alt="13"
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> f = ch.write(time);<a name="example.time.co3" id="example.time.co3"></a><img src="http://docbook.github.com/release/2.0.3/base/img/13.png" alt="13"
                           border="0" />
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        
-<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>        f.addListener(new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a>() {<a name="example.time.co4" id="example.time.co4"></a><img src="http://docbook.github.com/release/2.0.3/base/img/14.png" alt="14"
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>        f.addListener(new <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a>() {<a name="example.time.co4" id="example.time.co4"></a><img src="http://docbook.github.com/release/2.0.3/base/img/14.png" alt="14"
                           border="0" />
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>            public void operationComplete(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> future) {
-<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>                <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> ch = future.getChannel();
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            public void operationComplete(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> future) {
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>                <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> ch = future.getChannel();
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>                ch.close();
 <span class="linenumber"> 18</span><span class="linenumber-separator"> </span>            }
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        });
 <span class="linenumber"> 20</span><span class="linenumber-separator"> </span>    }
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>
 <span class="linenumber"> 22</span><span class="linenumber-separator"> </span>    @Override
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>    public void exceptionCaught(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> e) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    public void exceptionCaught(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> e) {
 <span class="linenumber"> 24</span><span class="linenumber-separator"> </span>        e.getCause().printStackTrace();
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        e.getChannel().close();
 <span class="linenumber"> 26</span><span class="linenumber-separator"> </span>    }
@@ -664,22 +664,22 @@
                            <p>
                               To send a new message, we need to allocate a new buffer which will
                               contain the message.  We are going to write a 32-bit integer, and
-                              therefore we need a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> whose capacity is
-                              <code class="literal">4</code> bytes.  The <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a> helper class is
+                              therefore we need a <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> whose capacity is
+                              <code class="literal">4</code> bytes.  The <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a> helper class is
                               used to allocate a new buffer.  Besides the
-                              <code class="methodname">buffer</code> method, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a> provides a
-                              lot of useful methods related to the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>.  For more
+                              <code class="methodname">buffer</code> method, <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a> provides a
+                              lot of useful methods related to the <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>.  For more
                               information, please refer to the API reference.
                               
                            </p>
                            <p>
                               On the other hand, it is a good idea to use static imports for
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>:
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>:
                               
-                              <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>import static org.jboss.netty.buffer.<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>.*;
+                              <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>import static org.jboss.netty.buffer.<a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>.*;
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>...
-<span class="linenumber">   </span><span class="linenumber-separator"> </span><a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>  dynamicBuf = dynamicBuffer(256);
-<span class="linenumber">  4</span><span class="linenumber-separator"> </span><a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> ordinaryBuf = buffer(1024);</pre></div>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span><a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>  dynamicBuf = dynamicBuffer(256);
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span><a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> ordinaryBuf = buffer(1024);</pre></div>
                               
                            </p>
                         </td>
@@ -698,10 +698,10 @@
                            <p>
                               But wait, where's the <code class="methodname">flip</code>?  Didn't we used
                               to call <code class="methodname">ByteBuffer.flip()</code> before sending a
-                              message in NIO?  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> does not have such a method because
+                              message in NIO?  <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> does not have such a method because
                               it has two pointers; one for read operations and the other for write
                               operations.  The writer index increases when you write something to
-                              a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> while the reader index does not change.  The reader
+                              a <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> while the reader index does not change.  The reader
                               index and the writer index represents where the message starts and
                               ends respectively.
                               
@@ -719,23 +719,23 @@
                            </p>
                            <p>
                               Another point to note is that the <code class="methodname">write</code>
-                              method returns a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>.  A <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> represents an
+                              method returns a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>.  A <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> represents an
                               I/O operation which has not yet occurred.  It means, any requested
                               operation might not have been performed yet because all operations
                               are asynchronous in Netty.  For example, the following code might
                               close the connection even before a message is sent:
                               
                            </p>
-                           <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span><a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> ch = ...;
+                           <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span><a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> ch = ...;
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>ch.write(message);
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>ch.close();</pre></div>
                            <p>
                               Therefore, you need to call the <code class="methodname">close</code>
-                              method after the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>, which was returned by the
+                              method after the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>, which was returned by the
                               <code class="methodname">write</code> method, notifies you when the write
                               operation has been done.  Please note that, <code class="methodname">close</code>
                               also might not close the connection immediately, and it returns a
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>.
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>.
                               
                            </p>
                         </td>
@@ -749,16 +749,16 @@
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
                               How do we get notified when the write request is finished then?
-                              This is as simple as adding a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a> to the returned
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>.  Here, we created a new anonymous <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a>
-                              which closes the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> when the operation is done.
+                              This is as simple as adding a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a> to the returned
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>.  Here, we created a new anonymous <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a>
+                              which closes the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> when the operation is done.
                               
                            </p>
                            <p>
                               Alternatively, you could simplify the code using a pre-defined
                               listener:
                               
-                              <div class="programlisting"><pre>f.addListener(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a>.CLOSE);</pre></div>
+                              <div class="programlisting"><pre>f.addListener(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a>.CLOSE);</pre></div>
                               
                            </p>
                         </td>
@@ -779,7 +779,7 @@
                </p>
                <p>
                   The biggest and only difference between a server and a client in Netty
-                  is that different <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/Bootstrap.html"><code class="classname">Bootstrap</code></a> and <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> are required.  Please
+                  is that different <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/Bootstrap.html"><code class="classname">Bootstrap</code></a> and <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> are required.  Please
                   take a look at the following code:
                   
                </p>
@@ -794,17 +794,17 @@
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        String host = args[0];
 <span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        int port = Integer.parseInt(args[1]);
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>
-<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> factory =
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>            new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/socket/nio/NioClientSocketChannelFactory.html"><code class="classname">NioClientSocketChannelFactory</code></a><a name="example.time2.co1" id="example.time2.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/15.png" alt="15"
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> factory =
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            new <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/socket/nio/NioClientSocketChannelFactory.html"><code class="classname">NioClientSocketChannelFactory</code></a><a name="example.time2.co1" id="example.time2.co1"></a><img src="http://docbook.github.com/release/2.0.3/base/img/15.png" alt="15"
                           border="0" />(
 <span class="linenumber"> 14</span><span class="linenumber-separator"> </span>                    Executors.newCachedThreadPool(),
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>                    Executors.newCachedThreadPool());
 <span class="linenumber"> 16</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a> bootstrap = new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a><a name="example.time2.co2" id="example.time2.co2"></a>(16)(factory);
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a> bootstrap = new <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a><a name="example.time2.co2" id="example.time2.co2"></a>(16)(factory);
 <span class="linenumber"> 18</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        bootstrap.setPipelineFactory(new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>() {
-<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>            public <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> getPipeline() {
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>                return <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.pipeline(new TimeClientHandler());
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        bootstrap.setPipelineFactory(new <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>() {
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>            public <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> getPipeline() {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>                return <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.pipeline(new TimeClientHandler());
 <span class="linenumber"> 22</span><span class="linenumber-separator"> </span>            }
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        });
 <span class="linenumber"> 24</span><span class="linenumber-separator"> </span>        
@@ -824,8 +824,8 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/socket/nio/NioClientSocketChannelFactory.html"><code class="classname">NioClientSocketChannelFactory</code></a>, instead of <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/socket/nio/NioServerSocketChannelFactory.html"><code class="classname">NioServerSocketChannelFactory</code></a>
-                              was used to create a client-side <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>. 
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/socket/nio/NioClientSocketChannelFactory.html"><code class="classname">NioClientSocketChannelFactory</code></a>, instead of <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/socket/nio/NioServerSocketChannelFactory.html"><code class="classname">NioServerSocketChannelFactory</code></a>
+                              was used to create a client-side <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>. 
                               
                            </p>
                         </td>
@@ -837,7 +837,7 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a> is a client-side counterpart of <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a>.
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a> is a client-side counterpart of <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a>.
                               
                            </p>
                         </td>
@@ -850,7 +850,7 @@
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
                               Please note that there's no <code class="literal">"child."</code> prefix.
-                              A client-side <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/socket/SocketChannel.html"><code class="interfacename">SocketChannel</code></a> does not have a parent.
+                              A client-side <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/socket/SocketChannel.html"><code class="interfacename">SocketChannel</code></a> does not have a parent.
                               
                            </p>
                         </td>
@@ -872,7 +872,7 @@
                </div>
                <p>
                   As you can see, it is not really different from the server side startup.
-                  What about the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> implementation?  It should receive a
+                  What about the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> implementation?  It should receive a
                   32-bit integer from the server, translate it into a human readable format,
                   print the translated time, and close the connection:
                   
@@ -881,18 +881,18 @@
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>import java.util.Date;
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeClientHandler extends <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeClientHandler extends <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    @Override
-<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    public void messageReceived(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buf = (<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>) e.getMessage();
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    public void messageReceived(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buf = (<a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>) e.getMessage();
 <span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        long currentTimeMillis = buf.readInt() * 1000L;
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        System.out.println(new Date(currentTimeMillis));
 <span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        e.getChannel().close();
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    }
 <span class="linenumber"> 14</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    @Override
-<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>    public void exceptionCaught(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> e) {
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>    public void exceptionCaught(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> e) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        e.getCause().printStackTrace();
 <span class="linenumber"> 18</span><span class="linenumber-separator"> </span>        e.getChannel().close();
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    }
@@ -978,17 +978,17 @@
                   </p>
                   <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>package org.jboss.netty.example.time;
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>import static org.jboss.netty.buffer.<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>.*;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>import static org.jboss.netty.buffer.<a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>.*;
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>import java.util.Date;
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeClientHandler extends <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeClientHandler extends <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>    private final <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buf = dynamicBuffer();<a name="example.time3.co1" id="example.time3.co1"></a>(19)
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    private final <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buf = dynamicBuffer();<a name="example.time3.co1" id="example.time3.co1"></a>(19)
 <span class="linenumber"> 10</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    @Override
-<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>    public void messageReceived(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> m = (<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>) e.getMessage();
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>    public void messageReceived(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> m = (<a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>) e.getMessage();
 <span class="linenumber"> 14</span><span class="linenumber-separator"> </span>        buf.writeBytes(m);<a name="example.time3.co2" id="example.time3.co2"></a>(20)
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        
 <span class="linenumber"> 16</span><span class="linenumber-separator"> </span>        if (buf.readableBytes() &gt;= 4) {<a name="example.time3.co3" id="example.time3.co3"></a>(21)
@@ -999,7 +999,7 @@
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    }
 <span class="linenumber"> 22</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    @Override
-<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>    public void exceptionCaught(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> e) {
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>    public void exceptionCaught(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ExceptionEvent.html"><code class="interfacename">ExceptionEvent</code></a> e) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        e.getCause().printStackTrace();
 <span class="linenumber"> 26</span><span class="linenumber-separator"> </span>        e.getChannel().close();
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    }
@@ -1013,7 +1013,7 @@
                            </td>
                            <td class="callout-body" valign="baseline" align="left">
                               <p>
-                                 A <em class="firstterm">dynamic buffer</em> is a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> which
+                                 A <em class="firstterm">dynamic buffer</em> is a <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> which
                                  increases its capacity on demand.  It's very useful when you don't
                                  know the length of the message.
                                  
@@ -1063,14 +1063,14 @@
                      Although the first solution has resolved the problem with the TIME
                      client, the modified handler does not look that clean.  Imagine a more
                      complicated protocol which is composed of multiple fields such as a
-                     variable length field.  Your <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> implementation will
+                     variable length field.  Your <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> implementation will
                      become unmaintainable very quickly.
                      
                   </p>
                   <p>
-                     As you may have noticed, you can add more than one <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> to
-                     a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>, and therefore, you can split one monolithic
-                     <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> into multiple modular ones to reduce the complexity of
+                     As you may have noticed, you can add more than one <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> to
+                     a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>, and therefore, you can split one monolithic
+                     <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> into multiple modular ones to reduce the complexity of
                      your application.  For example, you could split
                      <code class="classname">TimeClientHandler</code> into two handlers:
                      
@@ -1100,11 +1100,11 @@
                   </p>
                   <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>package org.jboss.netty.example.time;
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeDecoder extends <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a><a name="example.time4.co1" id="example.time4.co1"></a>(22) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeDecoder extends <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a><a name="example.time4.co1" id="example.time4.co1"></a>(22) {
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    @Override
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>    protected Object decode(
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>            <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> channel, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buffer)<a name="example.time4.co2" id="example.time4.co2"></a>(23) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> channel, <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buffer)<a name="example.time4.co2" id="example.time4.co2"></a>(23) {
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>            
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        if (buffer.readableBytes() &lt; 4) {
 <span class="linenumber"> 10</span><span class="linenumber-separator"> </span>            return null; <a name="example.time4.co3" id="example.time4.co3"></a>(24)
@@ -1122,7 +1122,7 @@
                            </td>
                            <td class="callout-body" valign="baseline" align="left">
                               <p>
-                                 <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> is an implementation of <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> which
+                                 <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> is an implementation of <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> which
                                  makes it easy to which deals with the fragmentation issue.
                                  
                               </p>
@@ -1135,7 +1135,7 @@
                            </td>
                            <td class="callout-body" valign="baseline" align="left">
                               <p>
-                                 <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> calls <code class="methodname">decode</code> method with
+                                 <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> calls <code class="methodname">decode</code> method with
                                  an internally maintained cumulative buffer whenever new data is
                                  received.
                                  
@@ -1150,7 +1150,7 @@
                            <td class="callout-body" valign="baseline" align="left">
                               <p>
                                  If <code class="literal">null</code> is returned, it means there's not 
-                                 enough data yet.  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> will call again when there is a
+                                 enough data yet.  <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> will call again when there is a
                                  sufficient amount of data.
                                  
                               </p>
@@ -1165,9 +1165,9 @@
                               <p>
                                  If non-<code class="literal">null</code> is returned, it means the
                                  <code class="methodname">decode</code> method has decoded a message
-                                 successfully.  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> will discard the read part of its
+                                 successfully.  <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> will discard the read part of its
                                  internal cumulative buffer.  Please remember that you don't need
-                                 to decode multiple messages.  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> will keep calling
+                                 to decode multiple messages.  <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> will keep calling
                                  the <code class="methodname">decoder</code> method until it returns
                                  <code class="literal">null</code>.
                                  
@@ -1177,32 +1177,32 @@
                      </table>
                   </div>
                   <p>
-                     Now that we have another handler to insert into the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>,
-                     we should modify the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a> implementation in the
+                     Now that we have another handler to insert into the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>,
+                     we should modify the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a> implementation in the
                      <code class="classname">TimeClient</code>:
                      
                   </p>
-                  <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>        bootstrap.setPipelineFactory(new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>() {
-<span class="linenumber">  2</span><span class="linenumber-separator"> </span>            public <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> getPipeline() {
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>                return <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.pipeline(
+                  <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>        bootstrap.setPipelineFactory(new <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipelineFactory.html"><code class="interfacename">ChannelPipelineFactory</code></a>() {
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>            public <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> getPipeline() {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>                return <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.pipeline(
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>                        new TimeDecoder(),
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>                        new TimeClientHandler());
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>            }
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        });</pre></div>
                   <p>
                      If you are an adventurous person, you might want to try the
-                     <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/replay/ReplayingDecoder.html"><code class="classname">ReplayingDecoder</code></a> which simplifies the decoder even more.  You will
+                     <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/replay/ReplayingDecoder.html"><code class="classname">ReplayingDecoder</code></a> which simplifies the decoder even more.  You will
                      need to consult the API reference for more information though.
                      
                   </p>
                   <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>package org.jboss.netty.example.time;
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeDecoder extends <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/replay/ReplayingDecoder.html"><code class="classname">ReplayingDecoder</code></a>&lt;<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/replay/VoidEnum.html"><code class="classname">VoidEnum</code></a>&gt; {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeDecoder extends <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/replay/ReplayingDecoder.html"><code class="classname">ReplayingDecoder</code></a>&lt;<a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/replay/VoidEnum.html"><code class="classname">VoidEnum</code></a>&gt; {
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    @Override
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>    protected Object decode(
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>            <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> channel,
-<span class="linenumber">  8</span><span class="linenumber-separator"> </span>            <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buffer, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/replay/VoidEnum.html"><code class="classname">VoidEnum</code></a> state) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> channel,
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>            <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buffer, <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/replay/VoidEnum.html"><code class="classname">VoidEnum</code></a> state) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>            
 <span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        return buffer.readBytes(4);
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    }
@@ -1243,19 +1243,19 @@
                   </h3>
                </div>
                <p>
-                  All the examples we have reviewed so far used a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> as a
+                  All the examples we have reviewed so far used a <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> as a
                   primary data structure of a protocol message.  In this section, we will
                   improve the TIME protocol client and server example to use a 
                   <a href="http://en.wikipedia.org/wiki/POJO">POJO</a> instead of a
-                  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>.
+                  <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>.
                   
                </p>
                <p>
-                  The advantage of using a POJO in your <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> is obvious;
+                  The advantage of using a POJO in your <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> is obvious;
                   your handler becomes more maintainable and reusable by separating the
-                  code which extracts information from <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> out from the
+                  code which extracts information from <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> out from the
                   handler.  In the TIME client and server examples, we read only one
-                  32-bit integer and it is not a major issue to use <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> directly.
+                  32-bit integer and it is not a major issue to use <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> directly.
                   However, you will find it is necessary to make the separation as you
                   implement a real world protocol.
                   
@@ -1286,12 +1286,12 @@
 <span class="linenumber"> 20</span><span class="linenumber-separator"> </span>}</pre></div>
                <p>
                   We can now revise the <code class="classname">TimeDecoder</code> to return
-                  a <code class="classname">UnixTime</code> instead of a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>. 
+                  a <code class="classname">UnixTime</code> instead of a <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>. 
                   
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>@Override
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>protected Object decode(
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> channel, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buffer) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> channel, <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buffer) {
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>    if (buffer.readableBytes() &lt; 4) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        return null;
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>    }
@@ -1307,10 +1307,10 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> and <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/replay/ReplayingDecoder.html"><code class="classname">ReplayingDecoder</code></a> allow you to return an object
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/frame/FrameDecoder.html"><code class="classname">FrameDecoder</code></a> and <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/replay/ReplayingDecoder.html"><code class="classname">ReplayingDecoder</code></a> allow you to return an object
                               of any type.  If they were restricted to return only a
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>, we would have to insert another <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a>
-                              which transforms a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> into a
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>, we would have to insert another <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a>
+                              which transforms a <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> into a
                               <code class="classname">UnixTime</code>.
                               
                            </p>
@@ -1320,11 +1320,11 @@
                </div>
                <p>
                   With the updated decoder, the <code class="classname">TimeClientHandler</code>
-                  does not use <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> anymore:
+                  does not use <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> anymore:
                   
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>@Override
-<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void messageReceived(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void messageReceived(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> e) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    UnixTime m = (UnixTime) e.getMessage();
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>    System.out.println(m);
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    e.getChannel().close();
@@ -1336,32 +1336,32 @@
                   
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>@Override
-<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void channelConnected(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelStateEvent.html"><code class="interfacename">ChannelStateEvent</code></a> e) {
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void channelConnected(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelStateEvent.html"><code class="interfacename">ChannelStateEvent</code></a> e) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    UnixTime time = new UnixTime(System.currentTimeMillis() / 1000);
-<span class="linenumber">  4</span><span class="linenumber-separator"> </span>    <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> f = e.getChannel().write(time);
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>    f.addListener(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a>.CLOSE);
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>    <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> f = e.getChannel().write(time);
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    f.addListener(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFutureListener.html"><code class="interfacename">ChannelFutureListener</code></a>.CLOSE);
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>}</pre></div>
                <p>
                   Now, the only missing piece is an encoder, which is an implementation of
-                  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> that translates a <code class="classname">UnixTime</code> back
-                  into a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>.  It's much simpler than writing a decoder because
+                  <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a> that translates a <code class="classname">UnixTime</code> back
+                  into a <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>.  It's much simpler than writing a decoder because
                   there's no need to deal with packet fragmentation and assembly when
                   encoding a message.
                   
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>package org.jboss.netty.example.time;
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>    
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>import static org.jboss.netty.buffer.<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>.*;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>import static org.jboss.netty.buffer.<a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>.*;
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeEncoder extends <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeEncoder extends <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>    public void writeRequested(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a><a name="example.time6.co1" id="example.time6.co1"></a>(27) e) {
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    public void writeRequested(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a><a name="example.time6.co1" id="example.time6.co1"></a>(27) e) {
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>        UnixTime time = (UnixTime) e.getMessage();
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        
-<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buf = buffer(4);
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> buf = buffer(4);
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        buf.writeInt(time.getValue());
 <span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.write(ctx, e.getFuture(), buf);<a name="example.time6.co2" id="example.time6.co2"></a>(28)
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.write(ctx, e.getFuture(), buf);<a name="example.time6.co2" id="example.time6.co2"></a>(28)
 <span class="linenumber"> 14</span><span class="linenumber-separator"> </span>    }
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>}</pre></div>
                <div class="calloutlist">
@@ -1375,12 +1375,12 @@
                            <p>
                               An encoder overrides the <code class="methodname">writeRequested</code>
                               method to intercept a write request.  Please note that the
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> parameter here is the same type which was specified
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> parameter here is the same type which was specified
                               in <code class="methodname">messageReceived</code> but they are interpreted
-                              differently.  A <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a> can be either an
+                              differently.  A <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a> can be either an
                               <em class="firstterm">upstream</em> or <em class="firstterm">downstream</em>
                               event depending on the direction where the event flows.
-                              For instance, a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> can be an upstream event when called
+                              For instance, a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> can be an upstream event when called
                               for <code class="methodname">messageReceived</code> or a downstream event
                               when called for <code class="methodname">writeRequested</code>.
                               Please refer to the API reference to learn more about the difference
@@ -1396,22 +1396,22 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              Once done with transforming a POJO into a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>, you should
-                              forward the new buffer to the previous <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelDownstreamHandler.html"><code class="interfacename">ChannelDownstreamHandler</code></a> in
-                              the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>.  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a> provides various helper methods
-                              which generates and sends a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a>.  In this example,
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a><code class="literal">.write(...)</code> method creates a new
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> and sends it to the previous <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelDownstreamHandler.html"><code class="interfacename">ChannelDownstreamHandler</code></a>
-                              in the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>.
+                              Once done with transforming a POJO into a <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>, you should
+                              forward the new buffer to the previous <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelDownstreamHandler.html"><code class="interfacename">ChannelDownstreamHandler</code></a> in
+                              the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>.  <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a> provides various helper methods
+                              which generates and sends a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a>.  In this example,
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a><code class="literal">.write(...)</code> method creates a new
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> and sends it to the previous <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelDownstreamHandler.html"><code class="interfacename">ChannelDownstreamHandler</code></a>
+                              in the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>.
                               
                            </p>
                            <p>
                               On the other hand, it is a good idea to use static imports for
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>:
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>:
                               
-                              <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>import static org.jboss.netty.channel.<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.*;
+                              <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>import static org.jboss.netty.channel.<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channels.html"><code class="classname">Channels</code></a>.*;
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>...
-<span class="linenumber">   </span><span class="linenumber-separator"> </span><a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> pipeline = pipeline();
+<span class="linenumber">   </span><span class="linenumber-separator"> </span><a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> pipeline = pipeline();
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>write(ctx, e.getFuture(), buf);
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>fireChannelDisconnected(ctx);</pre></div>
                               
@@ -1422,7 +1422,7 @@
                </div>
                <p>
                   The last task left is to insert a <code class="classname">TimeEncoder</code>
-                  into the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> on the server side, and it is left as a
+                  into the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a> on the server side, and it is left as a
                   trivial exercise.
                   
                </p>
@@ -1439,7 +1439,7 @@
                   that the application doesn't exit but just keep running doing nothing.
                   Looking from the full stack trace, you will also find a couple I/O threads
                   are running.  To shut down the I/O threads and let the application exit
-                  gracefully, you need to release the resources allocated by <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>.
+                  gracefully, you need to release the resources allocated by <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>.
                   
                </p>
                <p>
@@ -1463,7 +1463,7 @@
                         </li>
                         <li>
                            <p>
-                              Release all resources used by <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>.
+                              Release all resources used by <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>.
                               
                            </p>
                         </li>
@@ -1475,7 +1475,7 @@
                   To apply the three steps above to the <code class="classname">TimeClient</code>,
                   <code class="methodname">TimeClient.main()</code> could shut itself down
                   gracefully by closing the only one client connection and releasing all
-                  resources used by <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>:
+                  resources used by <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>:
                   
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>package org.jboss.netty.example.time;
@@ -1483,10 +1483,10 @@
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeClient {
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>    public static void main(String[] args) throws Exception {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        ...
-<span class="linenumber">  6</span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> factory = ...;
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a> bootstrap = ...;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> factory = ...;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a> bootstrap = ...;
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>        ...
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> future<a name="example.time7.co1" id="example.time7.co1"></a>(29) = bootstrap.connect(...);
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> future<a name="example.time7.co1" id="example.time7.co1"></a>(29) = bootstrap.connect(...);
 <span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        future.awaitUninterruptibly();<a name="example.time7.co2" id="example.time7.co2"></a>(30)
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        if (!future.isSuccess()) {
 <span class="linenumber"> 12</span><span class="linenumber-separator"> </span>            future.getCause().printStackTrace();<a name="example.time7.co3" id="example.time7.co3"></a>(31)
@@ -1504,9 +1504,9 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              The <code class="methodname">connect</code> method of <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a>
-                              returns a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> which notifies when a connection attempt
-                              succeeds or fails.  It also has a reference to the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> which
+                              The <code class="methodname">connect</code> method of <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ClientBootstrap.html"><code class="classname">ClientBootstrap</code></a>
+                              returns a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> which notifies when a connection attempt
+                              succeeds or fails.  It also has a reference to the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> which
                               is associated with the connection attempt.
                               
                            </p>
@@ -1519,7 +1519,7 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              Wait for the returned <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> to determine if the connection
+                              Wait for the returned <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> to determine if the connection
                               attempt was successful or not.
                               
                            </p>
@@ -1533,7 +1533,7 @@
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
                               If failed, we print the cause of the failure to know why it failed.
-                              the <code class="methodname">getCause()</code> method of <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> will
+                              the <code class="methodname">getCause()</code> method of <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> will
                               return the cause of the failure if the connection attempt was neither
                               successful nor cancelled.
                               
@@ -1549,13 +1549,13 @@
                            <p>
                               Now that the connection attempt is over, we need to wait until the
                               connection is closed by waiting for the <code class="varname">closeFuture</code>
-                              of the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>.  Every <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> has its own <code class="varname">closeFuture</code>
+                              of the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>.  Every <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> has its own <code class="varname">closeFuture</code>
                               so that you are notified and can perform a certain action on closure.
                               
                            </p>
                            <p>
                               Even if the connection attempt has failed the <code class="varname">closeFuture</code>
-                              will be notified because the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> will be closed automatically
+                              will be notified because the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> will be closed automatically
                               when the connection attempt fails.
                               
                            </p>
@@ -1569,7 +1569,7 @@
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
                               All connections have been closed at this point.  The only task left
-                              is to release the resources being used by <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>.  It is as
+                              is to release the resources being used by <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>.  It is as
                               simple as calling its <code class="methodname">releaseExternalResources()</code>
                               method.  All resources including the NIO <code class="classname">Selector</code>s
                               and thread pools will be shut down and terminated automatically.
@@ -1584,26 +1584,26 @@
                   server?  You need to unbind from the port and close all open accepted
                   connections.  To do this, you need a data structure that keeps track of
                   the list of active connections, and it's not a trivial task.  Fortunately,
-                  there is a solution, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a>.
+                  there is a solution, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a>.
                   
                </p>
                <p>
-                  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> is a special extension of Java collections API which
-                  represents a set of open <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s.  If a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> is added to a
-                  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> and the added <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> is closed, the closed <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>
-                  is removed from its <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> automatically.  You can also perform
-                  an operation on all <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s in the same group.  For instance, you can
-                  close all <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s in a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> when you shut down your server.
+                  <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> is a special extension of Java collections API which
+                  represents a set of open <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s.  If a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> is added to a
+                  <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> and the added <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> is closed, the closed <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>
+                  is removed from its <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> automatically.  You can also perform
+                  an operation on all <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s in the same group.  For instance, you can
+                  close all <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s in a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> when you shut down your server.
                   
                </p>
                <p>
                   To keep track of open sockets, you need to modify the
-                  <code class="classname">TimeServerHandler</code> to add a new open <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> to
-                  the global <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a>, <code class="varname">TimeServer.allChannels</code>:
+                  <code class="classname">TimeServerHandler</code> to add a new open <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> to
+                  the global <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a>, <code class="varname">TimeServer.allChannels</code>:
                   
                </p>
                <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>@Override
-<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void channelOpen(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelStateEvent.html"><code class="interfacename">ChannelStateEvent</code></a> e) {
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>public void channelOpen(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelStateEvent.html"><code class="interfacename">ChannelStateEvent</code></a> e) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    TimeServer.allChannels.add(e.getChannel());<a name="example.time8.co1" id="example.time8.co1"></a>(34)
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>}</pre></div>
                <div class="calloutlist">
@@ -1615,7 +1615,7 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              Yes, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> is thread-safe.
+                              Yes, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> is thread-safe.
                               
                            </p>
                         </td>
@@ -1623,7 +1623,7 @@
                   </table>
                </div>
                <p>
-                  Now that the list of all active <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s are maintained automatically,
+                  Now that the list of all active <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s are maintained automatically,
                   shutting down a server is as easy as shutting down a client:
                   
                </p>
@@ -1631,17 +1631,17 @@
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>public class TimeServer {
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>    static final <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> allChannels = new <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/DefaultChannelGroup.html"><code class="classname">DefaultChannelGroup</code></a>("time-server"<a name="example.time9.co1" id="example.time9.co1"></a>(35));
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    static final <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> allChannels = new <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/DefaultChannelGroup.html"><code class="classname">DefaultChannelGroup</code></a>("time-server"<a name="example.time9.co1" id="example.time9.co1"></a>(35));
 <span class="linenumber">  6</span><span class="linenumber-separator"> </span>
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>    public static void main(String[] args) throws Exception {
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>        ...
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> factory = ...;
-<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a> bootstrap = ...;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a> factory = ...;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a> bootstrap = ...;
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        ...
-<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> channel<a name="example.time9.co2" id="example.time9.co2"></a>(36) = bootstrap.bind(...);
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> channel<a name="example.time9.co2" id="example.time9.co2"></a>(36) = bootstrap.bind(...);
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        allChannels.add(channel);<a name="example.time9.co3" id="example.time9.co3"></a>(37)
 <span class="linenumber"> 14</span><span class="linenumber-separator"> </span>        waitForShutdownCommand();<a name="example.time9.co4" id="example.time9.co4"></a>(38)
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroupFuture.html"><code class="interfacename">ChannelGroupFuture</code></a> future = allChannels.close();<a name="example.time9.co5" id="example.time9.co5"></a>(39)
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroupFuture.html"><code class="interfacename">ChannelGroupFuture</code></a> future = allChannels.close();<a name="example.time9.co5" id="example.time9.co5"></a>(39)
 <span class="linenumber"> 16</span><span class="linenumber-separator"> </span>        future.awaitUninterruptibly();
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        factory.releaseExternalResources();
 <span class="linenumber"> 18</span><span class="linenumber-separator"> </span>    }
@@ -1655,7 +1655,7 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/DefaultChannelGroup.html"><code class="classname">DefaultChannelGroup</code></a> requires the name of the group as a constructor
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/DefaultChannelGroup.html"><code class="classname">DefaultChannelGroup</code></a> requires the name of the group as a constructor
                               parameter.  The group name is solely used to distinguish one group
                               from others.
                               
@@ -1669,10 +1669,10 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              The <code class="methodname">bind</code> method of <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a>
-                              returns a server side <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> which is bound to the specified
+                              The <code class="methodname">bind</code> method of <a href="http://netty.io/docs/stable/api/org/jboss/netty/bootstrap/ServerBootstrap.html"><code class="classname">ServerBootstrap</code></a>
+                              returns a server side <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> which is bound to the specified
                               local address.  Calling the <code class="methodname">close()</code> method
-                              of the returned <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> will make the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> unbind from the
+                              of the returned <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> will make the <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> unbind from the
                               bound local address.
                               
                            </p>
@@ -1685,9 +1685,9 @@
                         </td>
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
-                              Any type of <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s can be added to a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> regardless if
+                              Any type of <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s can be added to a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a> regardless if
                               it is either server side, client-side, or accepted.  Therefore,
-                              you can close the bound <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> along with the accepted <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s
+                              you can close the bound <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> along with the accepted <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>s
                               in one shot when the server shuts down.
                               
                            </p>
@@ -1715,11 +1715,11 @@
                         <td class="callout-body" valign="baseline" align="left">
                            <p>
                               You can perform the same operation on all channels in the same 
-                              <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a>.  In this case, we close all channels, which means
-                              the bound server-side <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> will be unbound and all accepted
+                              <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroup.html"><code class="interfacename">ChannelGroup</code></a>.  In this case, we close all channels, which means
+                              the bound server-side <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a> will be unbound and all accepted
                               connections will be closed asynchronously.  To notify when all
-                              connections were closed successfully, it returns a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/group/ChannelGroupFuture.html"><code class="interfacename">ChannelGroupFuture</code></a>
-                              which has a similar role with <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>.
+                              connections were closed successfully, it returns a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/group/ChannelGroupFuture.html"><code class="interfacename">ChannelGroupFuture</code></a>
+                              which has a similar role with <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a>.
                               
                            </p>
                         </td>
@@ -1739,7 +1739,7 @@
                   to write a fully working network application on top of Netty.  More
                   questions you may have will be covered in the upcoming chapters and the
                   revised version of this chapter.  Please also note that the
-                  <a href="http://www.jboss.org/netty/community.html">community</a> is always waiting for your
+                  <a href="http://netty.io/community/">community</a> is always waiting for your
                   questions and ideas to help you and keep improving Netty based on your
                   feed back.
                   
@@ -1783,7 +1783,7 @@
                   Netty uses its own buffer API instead of NIO <code class="classname">ByteBuffer</code>
                   to represent a sequence of bytes. This approach has significant advantages
                   over using <code class="classname">ByteBuffer</code>.  Netty's new buffer type,
-                  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> has been designed from the ground up to address the problems
+                  <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> has been designed from the ground up to address the problems
                   of <code class="classname">ByteBuffer</code> and to meet the daily needs of
                   network application developers.  To list a few cool features:
                   
@@ -1826,7 +1826,7 @@
                </p>
                <p>
                   For more information, please refer to the
-                  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/buffer/package-summary.html#package_description"><code class="literal">org.jboss.netty.buffer</code> package description</a>.
+                  <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/package-summary.html#package_description"><code class="literal">org.jboss.netty.buffer</code> package description</a>.
                   
                </p>
             </section>
@@ -1873,7 +1873,7 @@
                   
                </p>
                <p>
-                  Netty has a universal asynchronous I/O interface called a <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>, which
+                  Netty has a universal asynchronous I/O interface called a <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/Channel.html"><code class="interfacename">Channel</code></a>, which
                   abstracts away all operations required for point-to-point communication.
                   That is, once you wrote your application on one Netty transport, your
                   application can run on other Netty transports.  Netty provides a number
@@ -1907,7 +1907,7 @@
                      </ul>
                   </div>
                   Switching from one transport to another usually takes just a couple
-                  lines of changes such as choosing a different <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>
+                  lines of changes such as choosing a different <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFactory.html"><code class="interfacename">ChannelFactory</code></a>
                   implementation.
                   
                </p>
@@ -1935,16 +1935,16 @@
                   
                </p>
                <p>
-                  A <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a> is handled by a list of <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a>s in a
-                  <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>. The pipeline implements an advanced form of the
+                  A <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a> is handled by a list of <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandler.html"><code class="interfacename">ChannelHandler</code></a>s in a
+                  <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>. The pipeline implements an advanced form of the
                   <a href="http://java.sun.com/blueprints/corej2eepatterns/Patterns/InterceptingFilter.html">Intercepting Filter</a>
                   pattern to give a user full control over how an event is handled and how
                   the handlers in the pipeline interact with each other.  For example,
                   you can define what to do when data is read from a socket:
                   
                </p>
-               <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>public class MyReadHandler implements <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
-<span class="linenumber">  2</span><span class="linenumber-separator"> </span>    public void messageReceived(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> evt) {
+               <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>public class MyReadHandler implements <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>    public void messageReceived(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> evt) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        Object message = evt.getMessage();
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>        // Do something with the received message.
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        ...
@@ -1957,8 +1957,8 @@
                   You can also define what to do when a handler receives a write request:
                   
                </p>
-               <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>public class MyWriteHandler implements <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
-<span class="linenumber">  2</span><span class="linenumber-separator"> </span>    public void writeRequested(<a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> evt) {
+               <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>public class MyWriteHandler implements <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/SimpleChannelHandler.html"><code class="classname">SimpleChannelHandler</code></a> {
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>    public void writeRequested(<a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelHandlerContext.html"><code class="interfacename">ChannelHandlerContext</code></a> ctx, <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/MessageEvent.html"><code class="interfacename">MessageEvent</code></a> evt) {
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        Object message = evt.getMessage();
 <span class="linenumber">  4</span><span class="linenumber-separator"> </span>        // Do something with the message to be written.
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        ...
@@ -1969,7 +1969,7 @@
 <span class="linenumber"> 10</span><span class="linenumber-separator"> </span>}</pre></div>
                <p>
                   For more information on the event model, please refer to the
-                  API documentation of <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a> and <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>.
+                  API documentation of <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelEvent.html"><code class="interfacename">ChannelEvent</code></a> and <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>.
                   
                </p>
             </section>
@@ -2027,9 +2027,9 @@
                      
                   </p>
                   <p>
-                     In Netty, <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/ssl/SslHandler.html"><code class="classname">SslHandler</code></a> takes care of all the gory details and pitfalls
+                     In Netty, <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/ssl/SslHandler.html"><code class="classname">SslHandler</code></a> takes care of all the gory details and pitfalls
                      of <code class="classname">SSLEngine</code>.  All you need to do is to configure
-                     the <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/ssl/SslHandler.html"><code class="classname">SslHandler</code></a> and insert it into your <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>.  It also
+                     the <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/ssl/SslHandler.html"><code class="classname">SslHandler</code></a> and insert it into your <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html"><code class="interfacename">ChannelPipeline</code></a>.  It also
                      allows you to implement advanced features like
                      <a href="http://en.wikipedia.org/wiki/Starttls">StartTLS</a>
                      very easily.
@@ -2104,11 +2104,11 @@
                   <p>
                      <a href="http://code.google.com/apis/protocolbuffers/docs/overview.html">Google Protocol Buffers</a>
                      are an ideal solution for the rapid implementation of a highly efficient
-                     binary protocols that evolve over time.  With <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/protobuf/ProtobufEncoder.html"><code class="classname">ProtobufEncoder</code></a> and
-                     <a href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/handler/codec/protobuf/ProtobufDecoder.html"><code class="classname">ProtobufDecoder</code></a>, you can turn the message classes generated by the
+                     binary protocols that evolve over time.  With <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/protobuf/ProtobufEncoder.html"><code class="classname">ProtobufEncoder</code></a> and
+                     <a href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/protobuf/ProtobufDecoder.html"><code class="classname">ProtobufDecoder</code></a>, you can turn the message classes generated by the
                      Google Protocol Buffers Compiler (protoc) into Netty codec.  Please take
                      a look into the
-                     <a href="http://docs.jboss.org/netty/3.2/xref/org/jboss/netty/example/localtime/package-summary.html">'LocalTime' example</a>
+                     <a href="http://netty.io/docs/stable/xref/org/jboss/netty/example/localtime/package-summary.html">'LocalTime' example</a>
                      that shows how easily you can create a high-performing binary protocol
                      client and server from the
                      <a href="http://anonsvn.jboss.org/repos/netty/trunk/src/main/java/org/jboss/netty/example/localtime/LocalTimeProtocol.proto">sample protocol definition</a>.
@@ -2134,7 +2134,7 @@
                   You might still have unanswered questions about what the overall
                   architecture looks like exactly and how each of the features work
                   together.  If so, it is a good idea to
-                  <a href="http://www.jboss.org/netty/community.html">talk to us</a> to improve this guide.
+                  <a href="http://netty.io/community/">talk to us</a> to improve this guide.
                   
                </p>
             </section>
