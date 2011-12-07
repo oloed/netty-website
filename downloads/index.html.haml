@@ -5,24 +5,15 @@ layout: base
 
 %h2 Downloads
 
-%p.notice
-  Netty is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>. Please see the enclosed <tt>NOTICE.txt</tt>, <tt>COPYRIGHT.txt</tt>, and <tt>LICENSE.txt</tt> for more information.
+%p Netty is dis&shy;trib&shy;uted un&shy;der <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Li&shy;cense, v2.0</a>. Please see the en&shy;closed <tt>NOTICE.txt</tt> for more in&shy;fo.
 
-#stableReleaseDocs
-  %h3
-    Stable release
-    %span.small (#{site.stableReleaseDate})
-  %ul
-    %li <a href="netty-#{site.stableReleaseVersion}-dist.tar.bz2"><tt>netty-#{site.stableReleaseVersion}-dist.tar.bz2</tt></a>
-- if ( site.unstableReleaseVersion )
-  #unstableReleaseDocs
-    %h3 
-      Unstable release
-      %span.small (#{site.unstableReleaseDate})
-    %ul
-      %li <a href="netty-#{site.unstableReleaseVersion}-dist.tar.bz2"><tt>netty-#{site.unstableReleaseVersion}-dist.tar.bz2</tt></a>
+%ul
+  - if ( site.unstableReleaseVersion )
+    %li <a href="netty-#{site.unstableReleaseVersion}-dist.tar.bz2"><tt>netty-#{site.unstableReleaseVersion}-dist.tar.bz2</tt></a> (Unstable, #{site.unstableReleaseDate})
+  - if ( site.stableReleaseVersion )
+    %li <a href="netty-#{site.stableReleaseVersion}-dist.tar.bz2"><tt>netty-#{site.stableReleaseVersion}-dist.tar.bz2</tt></a> (Stable, #{site.stableReleaseDate})
 
-%p.clear <a href="https://github.com/netty/netty/issues/milestones?state=closed">Changelogs</a> and <a href="https://github.com/netty/netty/issues/milestones?state=open">road map</a> are available in our issue tracker.
+%p <a href="https://github.com/netty/netty/issues/milestones?state=closed">Changelogs</a> and <a href="https://github.com/netty/netty/issues/milestones?state=open">road map</a> are available in our issue tracker.
 
 %h3 Dependencies
 
