@@ -7,8 +7,7 @@ To contribute to the project documentation, simply fork this repository and issu
 
 Your system must have a working Ruby installation because Awestruct is written in Ruby.  You can install Awestruct using the `gem` command:
 
-    $ gem install awestruct -- --with-cflags=-w
-
+    $ gem install awestruct disqus rb-fsevent -- --with-cflags=-w
 
 
 ### Step 2. Fork netty-website Repository
@@ -28,7 +27,6 @@ Optionally, you may wish to create a branch if you are planning multiple contrib
     $ git checkout -b <branchName> upstream/master
 
 
-
 ### Step 3. Making Changes and Testing
 
 Modify the web site files as you wish.
@@ -41,13 +39,6 @@ To test locally, start the embedded web server using Awestruct.
 The web site will be available at `http://localhost:4242/`
 
 When the embedded Awestruct web server is running, changes you make will trigger a re-generation of the web site. Wait for this to complete before refreshing your browser to see your changes.
-
-Also, when running Awestruct, you will see the following message:
-
-    FSSM -> An optimized backend is available for this platform!
-    FSSM ->     gem install rb-fsevent
-
-Do not install `rb-fsevent`.  It will make Awestruct not detect newly created files so that the new files are not rendered.
 
 
 ### Step 4. Committing your changes
@@ -63,7 +54,6 @@ Next, push your changes back to your fork on github. You only need to supply a b
 Lastly, submit a pull request from your repository. Make sure to make the pull request using the branch you used for the guide.
 
 
-
 ### Step 5. Deploying the web site
 
 Only those with commit access will be able to perform this step.
@@ -74,6 +64,4 @@ Run the `_bin/deploy.sh` script with the path to [the Github Pages repository](h
     $ _bin/deploy.sh ../netty.github.com
 
 The example above copies the generated web site into the local Github Pages repository located at `../netty.github.com`, and pushes all the changes to origin.
-
-
 
