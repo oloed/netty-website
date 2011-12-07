@@ -6,36 +6,34 @@ layout: base
 %h2 Documentation
 
 %p
-  Please get started with the user guide and the API reference.  Also, please join <a href="../community/">the community</a> to get more information.
+  Get started with the user guide and the API reference.  Also, join <a href="../community/">the community</a> to get more information.
 
-#stableReleaseDocs
-  %h3 Stable release (#{site.stableReleaseVersion})
-  %ul
+%ul
+  - if ( site.unstableReleaseVersion )
     %li
-      %a{ :href=>"stable/guide/html/" } User Guide (HTML, one page per chapter)
-    %li
-      %a{ :href=>"stable/guide/html_single/" } User Guide (HTML, all in one page)
-    %li 
-      %a{ :href=>"stable/guide/pdf/netty.pdf" } User Guide (PDF)
-    %li
-      %a{ :href=>"stable/api/" } API Reference (Javadoc)
-    %li
-      %a{ :href=>"stable/xref/" } Source Code (Xref)
+      <b>Unstable release</b> (#{site.unstableReleaseVersion})
+      %ul
+        %li
+          %a{ :href=>"unstable/guide/html/" } User Guide (HTML)
+        %li 
+          %a{ :href=>"unstable/guide/pdf/netty.pdf" } User Guide (PDF)
+        %li
+          %a{ :href=>"unstable/api/" } API Reference (Javadoc)
+        %li
+          %a{ :href=>"unstable/xref/" } Source Code (Xref)
 
-- if ( site.unstableReleaseVersion )
-  #unstableReleaseDocs
-    %h3 Unstable release (#{site.unstableReleaseVersion})
-    %ul
-      %li
-        %a{ :href=>"unstable/guide/html/" } User Guide (HTML, one page per chapter)
-      %li
-        %a{ :href=>"unstable/guide/html_single/" } User Guide (HTML, all in one page)
-      %li 
-        %a{ :href=>"unstable/guide/pdf/netty.pdf" } User Guide (PDF)
-      %li
-        %a{ :href=>"unstable/api/" } API Reference (Javadoc)
-      %li
-        %a{ :href=>"unstable/xref/" } Source Code (Xref)
+  - if ( site.stableReleaseVersion )
+    %li
+      <b>Stable release</b> (#{site.stableReleaseVersion})
+      %ul
+        %li
+          %a{ :href=>"stable/guide/html/" } User Guide (HTML)
+        %li 
+          %a{ :href=>"stable/guide/pdf/netty.pdf" } User Guide (PDF)
+        %li
+          %a{ :href=>"stable/api/" } API Reference (Javadoc)
+        %li
+          %a{ :href=>"stable/xref/" } Source Code (Xref)
 
 %h2.clear Examples
 
