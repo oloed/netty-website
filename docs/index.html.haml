@@ -12,30 +12,30 @@ layout: base
   %h3 Stable release (#{site.stableReleaseVersion})
   %ul
     %li
-      %a{ :href=>"#{site.stableReleaseVersion}/guide/html/" } User Guide (HTML, one page per chapter)
+      %a{ :href=>"stable/guide/html/" } User Guide (HTML, one page per chapter)
     %li
-      %a{ :href=>"#{site.stableReleaseVersion}/guide/html_single/" } User Guide (HTML, all in one page)
+      %a{ :href=>"stable/guide/html_single/" } User Guide (HTML, all in one page)
     %li 
-      %a{ :href=>"#{site.stableReleaseVersion}/guide/pdf/netty.pdf" } User Guide (PDF)
+      %a{ :href=>"stable/guide/pdf/netty.pdf" } User Guide (PDF)
     %li
-      %a{ :href=>"#{site.stableReleaseVersion}/api/" } API Reference (Javadoc)
+      %a{ :href=>"stable/api/" } API Reference (Javadoc)
     %li
-      %a{ :href=>"#{site.stableReleaseVersion}/xref/" } Source Code (Xref)
+      %a{ :href=>"stable/xref/" } Source Code (Xref)
 
 - if ( site.unstableReleaseVersion )
   #unstableReleaseDocs
     %h3 Unstable release (#{site.unstableReleaseVersion})
     %ul
       %li
-        %a{ :href=>"#{site.unstableReleaseVersion}/guide/html/" } User Guide (HTML, one page per chapter)
+        %a{ :href=>"unstable/guide/html/" } User Guide (HTML, one page per chapter)
       %li
-        %a{ :href=>"#{site.unstableReleaseVersion}/guide/html_single/" } User Guide (HTML, all in one page)
+        %a{ :href=>"unstable/guide/html_single/" } User Guide (HTML, all in one page)
       %li 
-        %a{ :href=>"#{site.unstableReleaseVersion}/guide/pdf/netty.pdf" } User Guide (PDF)
+        %a{ :href=>"unstable/guide/pdf/netty.pdf" } User Guide (PDF)
       %li
-        %a{ :href=>"#{site.unstableReleaseVersion}/api/" } API Reference (Javadoc)
+        %a{ :href=>"unstable/api/" } API Reference (Javadoc)
       %li
-        %a{ :href=>"#{site.unstableReleaseVersion}/xref/" } Source Code (Xref)
+        %a{ :href=>"unstable/xref/" } Source Code (Xref)
 
 %h2.clear Examples
 
@@ -44,38 +44,38 @@ layout: base
 %h3 Fundamental     
 
 %ul
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/echo/package-summary.html">Echo</a> - the very basic client and server
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/discard/package-summary.html">Discard</a> - prevent OutOfMemoryError which is caused by writing too fast
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/uptime/package-summary.html">UpTime</a> - implement reliable client-side reconnection
+  %li <a href="stable/xref/org/jboss/netty/example/echo/package-summary.html">Echo</a> - the very basic client and server
+  %li <a href="stable/xref/org/jboss/netty/example/discard/package-summary.html">Discard</a> - prevent OutOfMemoryError which is caused by writing too fast
+  %li <a href="stable/xref/org/jboss/netty/example/uptime/package-summary.html">UpTime</a> - implement reliable client-side reconnection
 
 %h3 Text protocols  
 
 %ul
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/telnet/package-summary.html">Telnet</a> - a classic line-based network application
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/qotm/package-summary.html">Quote of the Moment</a> - broadcast UDP/IP client and server
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/securechat/package-summary.html">SecureChat</a> - an SSL-based chat server derived from the Telnet example
+  %li <a href="stable/xref/org/jboss/netty/example/telnet/package-summary.html">Telnet</a> - a classic line-based network application
+  %li <a href="stable/xref/org/jboss/netty/example/qotm/package-summary.html">Quote of the Moment</a> - broadcast UDP/IP client and server
+  %li <a href="stable/xref/org/jboss/netty/example/securechat/package-summary.html">SecureChat</a> - an SSL-based chat server derived from the Telnet example
 
 %h3 Binary protocols        
 
 %ul
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/objectecho/package-summary.html">ObjectEcho</a> - exchange serializable Java objects
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/factorial/package-summary.html">Factorial</a> - write a stateful client / server based on custom binary protocol
+  %li <a href="stable/xref/org/jboss/netty/example/objectecho/package-summary.html">ObjectEcho</a> - exchange serializable Java objects
+  %li <a href="stable/xref/org/jboss/netty/example/factorial/package-summary.html">Factorial</a> - write a stateful client / server based on custom binary protocol
 
 %h3 HTTP    
 
 %ul
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/http/snoop/package-summary.html">HTTP (Snoop)</a> - build your own extremely light-weight HTTP client and server
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/http/file/package-summary.html">HTTP (File Server)</a> - asynchronous large file streaming in HTTP
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/http/websocket/package-summary.html">Web Sockets</a> - add two-way full-duplex communication channels to HTTP using Web Sockets protocol
+  %li <a href="stable/xref/org/jboss/netty/example/http/snoop/package-summary.html">HTTP (Snoop)</a> - build your own extremely light-weight HTTP client and server
+  %li <a href="stable/xref/org/jboss/netty/example/http/file/package-summary.html">HTTP (File Server)</a> - asynchronous large file streaming in HTTP
+  %li <a href="stable/xref/org/jboss/netty/example/http/websocket/package-summary.html">Web Sockets</a> - add two-way full-duplex communication channels to HTTP using Web Sockets protocol
 
 %h3 Cool stuff      
 
 %ul
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/localtime/package-summary.html">LocalTime</a> - rapid protocol prototyping with Google Protocol Buffers integration
+  %li <a href="stable/xref/org/jboss/netty/example/localtime/package-summary.html">LocalTime</a> - rapid protocol prototyping with Google Protocol Buffers integration
 
 %h3 Advanced        
 
 %ul
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/proxy/package-summary.html">Proxy Server</a> - write a highly efficient NIO proxy server
-  %li <a href="#{site.stableReleaseVersion}/xref/org/jboss/netty/example/portunification/package-summary.html">Port Unification</a> - run heterogenous services listening on a single port
+  %li <a href="stable/xref/org/jboss/netty/example/proxy/package-summary.html">Proxy Server</a> - write a highly efficient NIO proxy server
+  %li <a href="stable/xref/org/jboss/netty/example/portunification/package-summary.html">Port Unification</a> - run heterogenous services listening on a single port
 
