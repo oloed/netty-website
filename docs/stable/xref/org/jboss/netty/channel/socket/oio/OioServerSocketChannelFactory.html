@@ -9,17 +9,17 @@
 <div id="overview"><a href="../../../../../../../api/org/jboss/netty/channel/socket/oio/OioServerSocketChannelFactory.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2009 Red Hat, Inc.</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * Red Hat licenses this file to you under the Apache License, version 2.0</em>
-<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * (the "License"); you may not use this file except in compliance with the</em>
-<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * License.  You may obtain a copy of the License at:</em>
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *    <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
-<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment"> * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment"> * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the</em>
 <a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_comment"> * License for the specific language governing permissions and limitations</em>
 <a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_comment"> * under the License.</em>
 <a class="jxr_linenumber" name="15" href="#15">15</a>  <em class="jxr_comment"> */</em>
@@ -91,48 +91,43 @@
 <a class="jxr_linenumber" name="81" href="#81">81</a>  <em class="jxr_javadoccomment"> * do not support asynchronous operations.  Any I/O requests such as</em>
 <a class="jxr_linenumber" name="82" href="#82">82</a>  <em class="jxr_javadoccomment"> * {@code "write"} will be performed in a blocking manner.</em>
 <a class="jxr_linenumber" name="83" href="#83">83</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="84" href="#84">84</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="http://www.jboss.org/netty/" target="alexandria_uri">http://www.jboss.org/netty/</a>"&gt;The Netty Project&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="85" href="#85">85</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="http://gleamynode.net/" target="alexandria_uri">http://gleamynode.net/</a>"&gt;Trustin Lee&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="86" href="#86">86</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="87" href="#87">87</a>  <em class="jxr_javadoccomment"> * @version $Rev: 2080 $, $Date: 2010-01-26 18:04:19 +0900 (Tue, 26 Jan 2010) $</em>
-<a class="jxr_linenumber" name="88" href="#88">88</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="89" href="#89">89</a>  <em class="jxr_javadoccomment"> * @apiviz.landmark</em>
-<a class="jxr_linenumber" name="90" href="#90">90</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="91" href="#91">91</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/jboss/netty/channel/socket/oio/OioServerSocketChannelFactory.html">OioServerSocketChannelFactory</a> <strong class="jxr_keyword">implements</strong> <a href="../../../../../../org/jboss/netty/channel/socket/ServerSocketChannelFactory.html">ServerSocketChannelFactory</a> {
-<a class="jxr_linenumber" name="92" href="#92">92</a>  
-<a class="jxr_linenumber" name="93" href="#93">93</a>      <strong class="jxr_keyword">final</strong> Executor bossExecutor;
-<a class="jxr_linenumber" name="94" href="#94">94</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Executor workerExecutor;
-<a class="jxr_linenumber" name="95" href="#95">95</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelSink.html">ChannelSink</a> sink;
-<a class="jxr_linenumber" name="96" href="#96">96</a>  
-<a class="jxr_linenumber" name="97" href="#97">97</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="98" href="#98">98</a>  <em class="jxr_javadoccomment">     * Creates a new instance.</em>
-<a class="jxr_linenumber" name="99" href="#99">99</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="100" href="#100">100</a> <em class="jxr_javadoccomment">     * @param bossExecutor</em>
-<a class="jxr_linenumber" name="101" href="#101">101</a> <em class="jxr_javadoccomment">     *        the {@link Executor} which will execute the boss threads</em>
-<a class="jxr_linenumber" name="102" href="#102">102</a> <em class="jxr_javadoccomment">     * @param workerExecutor</em>
-<a class="jxr_linenumber" name="103" href="#103">103</a> <em class="jxr_javadoccomment">     *        the {@link Executor} which will execute the I/O worker threads</em>
-<a class="jxr_linenumber" name="104" href="#104">104</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="105" href="#105">105</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/jboss/netty/channel/socket/oio/OioServerSocketChannelFactory.html">OioServerSocketChannelFactory</a>(
-<a class="jxr_linenumber" name="106" href="#106">106</a>             Executor bossExecutor, Executor workerExecutor) {
-<a class="jxr_linenumber" name="107" href="#107">107</a>         <strong class="jxr_keyword">if</strong> (bossExecutor == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="108" href="#108">108</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> NullPointerException(<span class="jxr_string">"bossExecutor"</span>);
-<a class="jxr_linenumber" name="109" href="#109">109</a>         }
-<a class="jxr_linenumber" name="110" href="#110">110</a>         <strong class="jxr_keyword">if</strong> (workerExecutor == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="111" href="#111">111</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> NullPointerException(<span class="jxr_string">"workerExecutor"</span>);
-<a class="jxr_linenumber" name="112" href="#112">112</a>         }
-<a class="jxr_linenumber" name="113" href="#113">113</a>         <strong class="jxr_keyword">this</strong>.bossExecutor = bossExecutor;
-<a class="jxr_linenumber" name="114" href="#114">114</a>         <strong class="jxr_keyword">this</strong>.workerExecutor = workerExecutor;
-<a class="jxr_linenumber" name="115" href="#115">115</a>         sink = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/channel/socket/oio/OioServerSocketPipelineSink.html">OioServerSocketPipelineSink</a>(workerExecutor);
-<a class="jxr_linenumber" name="116" href="#116">116</a>     }
-<a class="jxr_linenumber" name="117" href="#117">117</a> 
-<a class="jxr_linenumber" name="118" href="#118">118</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/jboss/netty/channel/socket/ServerSocketChannel.html">ServerSocketChannel</a> newChannel(<a href="../../../../../../org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a> pipeline) {
-<a class="jxr_linenumber" name="119" href="#119">119</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/channel/socket/oio/OioServerSocketChannel.html">OioServerSocketChannel</a>(<strong class="jxr_keyword">this</strong>, pipeline, sink);
-<a class="jxr_linenumber" name="120" href="#120">120</a>     }
-<a class="jxr_linenumber" name="121" href="#121">121</a> 
-<a class="jxr_linenumber" name="122" href="#122">122</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> releaseExternalResources() {
-<a class="jxr_linenumber" name="123" href="#123">123</a>         ExecutorUtil.terminate(bossExecutor, workerExecutor);
-<a class="jxr_linenumber" name="124" href="#124">124</a>     }
-<a class="jxr_linenumber" name="125" href="#125">125</a> }
+<a class="jxr_linenumber" name="84" href="#84">84</a>  <em class="jxr_javadoccomment"> * @apiviz.landmark</em>
+<a class="jxr_linenumber" name="85" href="#85">85</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="86" href="#86">86</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/jboss/netty/channel/socket/oio/OioServerSocketChannelFactory.html">OioServerSocketChannelFactory</a> <strong class="jxr_keyword">implements</strong> <a href="../../../../../../org/jboss/netty/channel/socket/ServerSocketChannelFactory.html">ServerSocketChannelFactory</a> {
+<a class="jxr_linenumber" name="87" href="#87">87</a>  
+<a class="jxr_linenumber" name="88" href="#88">88</a>      <strong class="jxr_keyword">final</strong> Executor bossExecutor;
+<a class="jxr_linenumber" name="89" href="#89">89</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Executor workerExecutor;
+<a class="jxr_linenumber" name="90" href="#90">90</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelSink.html">ChannelSink</a> sink;
+<a class="jxr_linenumber" name="91" href="#91">91</a>  
+<a class="jxr_linenumber" name="92" href="#92">92</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="93" href="#93">93</a>  <em class="jxr_javadoccomment">     * Creates a new instance.</em>
+<a class="jxr_linenumber" name="94" href="#94">94</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="95" href="#95">95</a>  <em class="jxr_javadoccomment">     * @param bossExecutor</em>
+<a class="jxr_linenumber" name="96" href="#96">96</a>  <em class="jxr_javadoccomment">     *        the {@link Executor} which will execute the boss threads</em>
+<a class="jxr_linenumber" name="97" href="#97">97</a>  <em class="jxr_javadoccomment">     * @param workerExecutor</em>
+<a class="jxr_linenumber" name="98" href="#98">98</a>  <em class="jxr_javadoccomment">     *        the {@link Executor} which will execute the I/O worker threads</em>
+<a class="jxr_linenumber" name="99" href="#99">99</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="100" href="#100">100</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/jboss/netty/channel/socket/oio/OioServerSocketChannelFactory.html">OioServerSocketChannelFactory</a>(
+<a class="jxr_linenumber" name="101" href="#101">101</a>             Executor bossExecutor, Executor workerExecutor) {
+<a class="jxr_linenumber" name="102" href="#102">102</a>         <strong class="jxr_keyword">if</strong> (bossExecutor == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="103" href="#103">103</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> NullPointerException(<span class="jxr_string">"bossExecutor"</span>);
+<a class="jxr_linenumber" name="104" href="#104">104</a>         }
+<a class="jxr_linenumber" name="105" href="#105">105</a>         <strong class="jxr_keyword">if</strong> (workerExecutor == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="106" href="#106">106</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> NullPointerException(<span class="jxr_string">"workerExecutor"</span>);
+<a class="jxr_linenumber" name="107" href="#107">107</a>         }
+<a class="jxr_linenumber" name="108" href="#108">108</a>         <strong class="jxr_keyword">this</strong>.bossExecutor = bossExecutor;
+<a class="jxr_linenumber" name="109" href="#109">109</a>         <strong class="jxr_keyword">this</strong>.workerExecutor = workerExecutor;
+<a class="jxr_linenumber" name="110" href="#110">110</a>         sink = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/channel/socket/oio/OioServerSocketPipelineSink.html">OioServerSocketPipelineSink</a>(workerExecutor);
+<a class="jxr_linenumber" name="111" href="#111">111</a>     }
+<a class="jxr_linenumber" name="112" href="#112">112</a> 
+<a class="jxr_linenumber" name="113" href="#113">113</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/jboss/netty/channel/socket/ServerSocketChannel.html">ServerSocketChannel</a> newChannel(<a href="../../../../../../org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a> pipeline) {
+<a class="jxr_linenumber" name="114" href="#114">114</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/channel/socket/oio/OioServerSocketChannel.html">OioServerSocketChannel</a>(<strong class="jxr_keyword">this</strong>, pipeline, sink);
+<a class="jxr_linenumber" name="115" href="#115">115</a>     }
+<a class="jxr_linenumber" name="116" href="#116">116</a> 
+<a class="jxr_linenumber" name="117" href="#117">117</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> releaseExternalResources() {
+<a class="jxr_linenumber" name="118" href="#118">118</a>         ExecutorUtil.terminate(bossExecutor, workerExecutor);
+<a class="jxr_linenumber" name="119" href="#119">119</a>     }
+<a class="jxr_linenumber" name="120" href="#120">120</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

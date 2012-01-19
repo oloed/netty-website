@@ -9,17 +9,17 @@
 <div id="overview"><a href="../../../../../api/org/jboss/netty/channel/ChannelHandler.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2009 Red Hat, Inc.</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * Red Hat licenses this file to you under the Apache License, version 2.0</em>
-<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * (the "License"); you may not use this file except in compliance with the</em>
-<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * License.  You may obtain a copy of the License at:</em>
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *    <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
-<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment"> * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment"> * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the</em>
 <a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_comment"> * License for the specific language governing permissions and limitations</em>
 <a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_comment"> * under the License.</em>
 <a class="jxr_linenumber" name="15" href="#15">15</a>  <em class="jxr_comment"> */</em>
@@ -213,40 +213,31 @@
 <a class="jxr_linenumber" name="203" href="#203">203</a> <em class="jxr_javadoccomment"> * out what a upstream event and a downstream event are, what fundamental</em>
 <a class="jxr_linenumber" name="204" href="#204">204</a> <em class="jxr_javadoccomment"> * differences they have, and how they flow in a pipeline.</em>
 <a class="jxr_linenumber" name="205" href="#205">205</a> <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="206" href="#206">206</a> <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="http://www.jboss.org/netty/" target="alexandria_uri">http://www.jboss.org/netty/</a>"&gt;The Netty Project&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="207" href="#207">207</a> <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="http://gleamynode.net/" target="alexandria_uri">http://gleamynode.net/</a>"&gt;Trustin Lee&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="208" href="#208">208</a> <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="209" href="#209">209</a> <em class="jxr_javadoccomment"> * @version $Rev: 2152 $, $Date: 2010-02-17 17:22:45 +0900 (Wed, 17 Feb 2010) $</em>
-<a class="jxr_linenumber" name="210" href="#210">210</a> <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="211" href="#211">211</a> <em class="jxr_javadoccomment"> * @apiviz.landmark</em>
-<a class="jxr_linenumber" name="212" href="#212">212</a> <em class="jxr_javadoccomment"> * @apiviz.exclude ^org\.jboss\.netty\.handler\..*$</em>
-<a class="jxr_linenumber" name="213" href="#213">213</a> <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="214" href="#214">214</a> <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> <a href="../../../../org/jboss/netty/channel/ChannelHandler.html">ChannelHandler</a> {
-<a class="jxr_linenumber" name="215" href="#215">215</a> 
-<a class="jxr_linenumber" name="216" href="#216">216</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="217" href="#217">217</a> <em class="jxr_javadoccomment">     * Indicates that the same instance of the annotated {@link ChannelHandler}</em>
-<a class="jxr_linenumber" name="218" href="#218">218</a> <em class="jxr_javadoccomment">     * can be added to one or more {@link ChannelPipeline}s multiple times</em>
-<a class="jxr_linenumber" name="219" href="#219">219</a> <em class="jxr_javadoccomment">     * without a race condition.</em>
-<a class="jxr_linenumber" name="220" href="#220">220</a> <em class="jxr_javadoccomment">     * &lt;p&gt;</em>
-<a class="jxr_linenumber" name="221" href="#221">221</a> <em class="jxr_javadoccomment">     * If this annotation is not specified, you have to create a new handler</em>
-<a class="jxr_linenumber" name="222" href="#222">222</a> <em class="jxr_javadoccomment">     * instance every time you add it to a pipeline because it has unshared</em>
-<a class="jxr_linenumber" name="223" href="#223">223</a> <em class="jxr_javadoccomment">     * state such as member variables.</em>
-<a class="jxr_linenumber" name="224" href="#224">224</a> <em class="jxr_javadoccomment">     * &lt;p&gt;</em>
-<a class="jxr_linenumber" name="225" href="#225">225</a> <em class="jxr_javadoccomment">     * This annotation is provided for documentation purpose, just like</em>
-<a class="jxr_linenumber" name="226" href="#226">226</a> <em class="jxr_javadoccomment">     * &lt;a href="<a href="http://www.javaconcurrencyinpractice.com/annotations/doc/" target="alexandria_uri">http://www.javaconcurrencyinpractice.com/annotations/doc/</a>"&gt;the JCIP annotations&lt;/a&gt;.</em>
-<a class="jxr_linenumber" name="227" href="#227">227</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="228" href="#228">228</a> <em class="jxr_javadoccomment">     * @author &lt;a href="<a href="http://www.jboss.org/netty/" target="alexandria_uri">http://www.jboss.org/netty/</a>"&gt;The Netty Project&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="229" href="#229">229</a> <em class="jxr_javadoccomment">     * @author &lt;a href="<a href="http://gleamynode.net/" target="alexandria_uri">http://gleamynode.net/</a>"&gt;Trustin Lee&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="230" href="#230">230</a> <em class="jxr_javadoccomment">     * @version $Rev: 2152 $, $Date: 2010-02-17 17:22:45 +0900 (Wed, 17 Feb 2010) $</em>
-<a class="jxr_linenumber" name="231" href="#231">231</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="232" href="#232">232</a>     @Inherited
-<a class="jxr_linenumber" name="233" href="#233">233</a>     @Documented
-<a class="jxr_linenumber" name="234" href="#234">234</a>     @Target(ElementType.TYPE)
-<a class="jxr_linenumber" name="235" href="#235">235</a>     @Retention(RetentionPolicy.RUNTIME)
-<a class="jxr_linenumber" name="236" href="#236">236</a>     <strong class="jxr_keyword">public</strong> @<strong class="jxr_keyword">interface</strong> <a href="../../../../org/jboss/netty/channel/ChannelHandler.html">Sharable</a> {
-<a class="jxr_linenumber" name="237" href="#237">237</a>         <em class="jxr_comment">// no value</em>
-<a class="jxr_linenumber" name="238" href="#238">238</a>     }
-<a class="jxr_linenumber" name="239" href="#239">239</a> }
+<a class="jxr_linenumber" name="206" href="#206">206</a> <em class="jxr_javadoccomment"> * @apiviz.landmark</em>
+<a class="jxr_linenumber" name="207" href="#207">207</a> <em class="jxr_javadoccomment"> * @apiviz.exclude ^org\.jboss\.netty\.handler\..*$</em>
+<a class="jxr_linenumber" name="208" href="#208">208</a> <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="209" href="#209">209</a> <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> <a href="../../../../org/jboss/netty/channel/ChannelHandler.html">ChannelHandler</a> {
+<a class="jxr_linenumber" name="210" href="#210">210</a> 
+<a class="jxr_linenumber" name="211" href="#211">211</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="212" href="#212">212</a> <em class="jxr_javadoccomment">     * Indicates that the same instance of the annotated {@link ChannelHandler}</em>
+<a class="jxr_linenumber" name="213" href="#213">213</a> <em class="jxr_javadoccomment">     * can be added to one or more {@link ChannelPipeline}s multiple times</em>
+<a class="jxr_linenumber" name="214" href="#214">214</a> <em class="jxr_javadoccomment">     * without a race condition.</em>
+<a class="jxr_linenumber" name="215" href="#215">215</a> <em class="jxr_javadoccomment">     * &lt;p&gt;</em>
+<a class="jxr_linenumber" name="216" href="#216">216</a> <em class="jxr_javadoccomment">     * If this annotation is not specified, you have to create a new handler</em>
+<a class="jxr_linenumber" name="217" href="#217">217</a> <em class="jxr_javadoccomment">     * instance every time you add it to a pipeline because it has unshared</em>
+<a class="jxr_linenumber" name="218" href="#218">218</a> <em class="jxr_javadoccomment">     * state such as member variables.</em>
+<a class="jxr_linenumber" name="219" href="#219">219</a> <em class="jxr_javadoccomment">     * &lt;p&gt;</em>
+<a class="jxr_linenumber" name="220" href="#220">220</a> <em class="jxr_javadoccomment">     * This annotation is provided for documentation purpose, just like</em>
+<a class="jxr_linenumber" name="221" href="#221">221</a> <em class="jxr_javadoccomment">     * &lt;a href="<a href="http://www.javaconcurrencyinpractice.com/annotations/doc/" target="alexandria_uri">http://www.javaconcurrencyinpractice.com/annotations/doc/</a>"&gt;the JCIP annotations&lt;/a&gt;.</em>
+<a class="jxr_linenumber" name="222" href="#222">222</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="223" href="#223">223</a>     @Inherited
+<a class="jxr_linenumber" name="224" href="#224">224</a>     @Documented
+<a class="jxr_linenumber" name="225" href="#225">225</a>     @Target(ElementType.TYPE)
+<a class="jxr_linenumber" name="226" href="#226">226</a>     @Retention(RetentionPolicy.RUNTIME)
+<a class="jxr_linenumber" name="227" href="#227">227</a>     <strong class="jxr_keyword">public</strong> @<strong class="jxr_keyword">interface</strong> <a href="../../../../org/jboss/netty/channel/ChannelHandler.html">Sharable</a> {
+<a class="jxr_linenumber" name="228" href="#228">228</a>         <em class="jxr_comment">// no value</em>
+<a class="jxr_linenumber" name="229" href="#229">229</a>     }
+<a class="jxr_linenumber" name="230" href="#230">230</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

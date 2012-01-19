@@ -9,17 +9,17 @@
 <div id="overview"><a href="../../../../../api/org/jboss/netty/channel/ChannelHandlerContext.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2009 Red Hat, Inc.</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * Red Hat licenses this file to you under the Apache License, version 2.0</em>
-<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * (the "License"); you may not use this file except in compliance with the</em>
-<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * License.  You may obtain a copy of the License at:</em>
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *    <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
-<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment"> * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment"> * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the</em>
 <a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_comment"> * License for the specific language governing permissions and limitations</em>
 <a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_comment"> * under the License.</em>
 <a class="jxr_linenumber" name="15" href="#15">15</a>  <em class="jxr_comment"> */</em>
@@ -61,7 +61,7 @@
 <a class="jxr_linenumber" name="51" href="#51">51</a>  <em class="jxr_javadoccomment"> *     public void login(String username, password) {</em>
 <a class="jxr_linenumber" name="52" href="#52">52</a>  <em class="jxr_javadoccomment"> *         {@link Channels}.write(</em>
 <a class="jxr_linenumber" name="53" href="#53">53</a>  <em class="jxr_javadoccomment"> *                 &lt;b&gt;this.ctx&lt;/b&gt;,</em>
-<a class="jxr_linenumber" name="54" href="#54">54</a>  <em class="jxr_javadoccomment"> *                 {@link Channels}.succeededFuture(&lt;b&gt;this.ctx&lt;/t&gt;.getChannel()&lt;/b&gt;),</em>
+<a class="jxr_linenumber" name="54" href="#54">54</a>  <em class="jxr_javadoccomment"> *                 {@link Channels}.succeededFuture(&lt;b&gt;this.ctx.getChannel()&lt;/b&gt;),</em>
 <a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment"> *                 new LoginMessage(username, password));</em>
 <a class="jxr_linenumber" name="56" href="#56">56</a>  <em class="jxr_javadoccomment"> *     }</em>
 <a class="jxr_linenumber" name="57" href="#57">57</a>  <em class="jxr_javadoccomment"> *     ...</em>
@@ -127,85 +127,80 @@
 <a class="jxr_linenumber" name="117" href="#117">117</a> <em class="jxr_javadoccomment"> * event are, what fundamental differences they have, how they flow in a</em>
 <a class="jxr_linenumber" name="118" href="#118">118</a> <em class="jxr_javadoccomment"> * pipeline,  and how to handle the event in your application.</em>
 <a class="jxr_linenumber" name="119" href="#119">119</a> <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="120" href="#120">120</a> <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="http://www.jboss.org/netty/" target="alexandria_uri">http://www.jboss.org/netty/</a>"&gt;The Netty Project&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="121" href="#121">121</a> <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="http://gleamynode.net/" target="alexandria_uri">http://gleamynode.net/</a>"&gt;Trustin Lee&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="122" href="#122">122</a> <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="123" href="#123">123</a> <em class="jxr_javadoccomment"> * @version $Rev: 2157 $, $Date: 2010-02-17 17:37:38 +0900 (Wed, 17 Feb 2010) $</em>
-<a class="jxr_linenumber" name="124" href="#124">124</a> <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="125" href="#125">125</a> <em class="jxr_javadoccomment"> * @apiviz.owns org.jboss.netty.channel.ChannelHandler</em>
-<a class="jxr_linenumber" name="126" href="#126">126</a> <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="127" href="#127">127</a> <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> <a href="../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> {
-<a class="jxr_linenumber" name="128" href="#128">128</a> 
-<a class="jxr_linenumber" name="129" href="#129">129</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="130" href="#130">130</a> <em class="jxr_javadoccomment">     * Returns the {@link Channel} that the {@link ChannelPipeline} belongs to.</em>
-<a class="jxr_linenumber" name="131" href="#131">131</a> <em class="jxr_javadoccomment">     * This method is a shortcut to &lt;tt&gt;getPipeline().getChannel()&lt;/tt&gt;.</em>
-<a class="jxr_linenumber" name="132" href="#132">132</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="133" href="#133">133</a>     <a href="../../../../org/jboss/netty/channel/Channel.html">Channel</a> getChannel();
-<a class="jxr_linenumber" name="134" href="#134">134</a> 
-<a class="jxr_linenumber" name="135" href="#135">135</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="136" href="#136">136</a> <em class="jxr_javadoccomment">     * Returns the {@link ChannelPipeline} that the {@link ChannelHandler}</em>
-<a class="jxr_linenumber" name="137" href="#137">137</a> <em class="jxr_javadoccomment">     * belongs to.</em>
-<a class="jxr_linenumber" name="138" href="#138">138</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="139" href="#139">139</a>     <a href="../../../../org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a> getPipeline();
-<a class="jxr_linenumber" name="140" href="#140">140</a> 
-<a class="jxr_linenumber" name="141" href="#141">141</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="142" href="#142">142</a> <em class="jxr_javadoccomment">     * Returns the name of the {@link ChannelHandler} in the</em>
-<a class="jxr_linenumber" name="143" href="#143">143</a> <em class="jxr_javadoccomment">     * {@link ChannelPipeline}.</em>
-<a class="jxr_linenumber" name="144" href="#144">144</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="145" href="#145">145</a>     String getName();
-<a class="jxr_linenumber" name="146" href="#146">146</a> 
-<a class="jxr_linenumber" name="147" href="#147">147</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="148" href="#148">148</a> <em class="jxr_javadoccomment">     * Returns the {@link ChannelHandler} that this context object is</em>
-<a class="jxr_linenumber" name="149" href="#149">149</a> <em class="jxr_javadoccomment">     * serving.</em>
-<a class="jxr_linenumber" name="150" href="#150">150</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="151" href="#151">151</a>     <a href="../../../../org/jboss/netty/channel/ChannelHandler.html">ChannelHandler</a> getHandler();
-<a class="jxr_linenumber" name="152" href="#152">152</a> 
-<a class="jxr_linenumber" name="153" href="#153">153</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="154" href="#154">154</a> <em class="jxr_javadoccomment">     * Returns {@code true} if and only if the {@link ChannelHandler} is an</em>
-<a class="jxr_linenumber" name="155" href="#155">155</a> <em class="jxr_javadoccomment">     * instance of {@link ChannelUpstreamHandler}.</em>
-<a class="jxr_linenumber" name="156" href="#156">156</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="157" href="#157">157</a>     <strong class="jxr_keyword">boolean</strong> canHandleUpstream();
-<a class="jxr_linenumber" name="158" href="#158">158</a> 
-<a class="jxr_linenumber" name="159" href="#159">159</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="160" href="#160">160</a> <em class="jxr_javadoccomment">     * Returns {@code true} if and only if the {@link ChannelHandler} is an</em>
-<a class="jxr_linenumber" name="161" href="#161">161</a> <em class="jxr_javadoccomment">     * instance of {@link ChannelDownstreamHandler}.</em>
-<a class="jxr_linenumber" name="162" href="#162">162</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="163" href="#163">163</a>     <strong class="jxr_keyword">boolean</strong> canHandleDownstream();
-<a class="jxr_linenumber" name="164" href="#164">164</a> 
-<a class="jxr_linenumber" name="165" href="#165">165</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="166" href="#166">166</a> <em class="jxr_javadoccomment">     * Sends the specified {@link ChannelEvent} to the</em>
-<a class="jxr_linenumber" name="167" href="#167">167</a> <em class="jxr_javadoccomment">     * {@link ChannelUpstreamHandler} which is placed in the closest upstream</em>
-<a class="jxr_linenumber" name="168" href="#168">168</a> <em class="jxr_javadoccomment">     * from the handler associated with this context.  It is recommended to use</em>
-<a class="jxr_linenumber" name="169" href="#169">169</a> <em class="jxr_javadoccomment">     * the shortcut methods in {@link Channels} rather than calling this method</em>
-<a class="jxr_linenumber" name="170" href="#170">170</a> <em class="jxr_javadoccomment">     * directly.</em>
-<a class="jxr_linenumber" name="171" href="#171">171</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="172" href="#172">172</a>     <strong class="jxr_keyword">void</strong> sendUpstream(<a href="../../../../org/jboss/netty/channel/ChannelEvent.html">ChannelEvent</a> e);
-<a class="jxr_linenumber" name="173" href="#173">173</a> 
-<a class="jxr_linenumber" name="174" href="#174">174</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="175" href="#175">175</a> <em class="jxr_javadoccomment">     * Sends the specified {@link ChannelEvent} to the</em>
-<a class="jxr_linenumber" name="176" href="#176">176</a> <em class="jxr_javadoccomment">     * {@link ChannelDownstreamHandler} which is placed in the closest</em>
-<a class="jxr_linenumber" name="177" href="#177">177</a> <em class="jxr_javadoccomment">     * downstream from the handler associated with this context.  It is</em>
-<a class="jxr_linenumber" name="178" href="#178">178</a> <em class="jxr_javadoccomment">     * recommended to use the shortcut methods in {@link Channels} rather than</em>
-<a class="jxr_linenumber" name="179" href="#179">179</a> <em class="jxr_javadoccomment">     * calling this method directly.</em>
-<a class="jxr_linenumber" name="180" href="#180">180</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="181" href="#181">181</a>     <strong class="jxr_keyword">void</strong> sendDownstream(<a href="../../../../org/jboss/netty/channel/ChannelEvent.html">ChannelEvent</a> e);
-<a class="jxr_linenumber" name="182" href="#182">182</a> 
-<a class="jxr_linenumber" name="183" href="#183">183</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="184" href="#184">184</a> <em class="jxr_javadoccomment">     * Retrieves an object which is {@link #setAttachment(Object) attached} to</em>
-<a class="jxr_linenumber" name="185" href="#185">185</a> <em class="jxr_javadoccomment">     * this context.</em>
-<a class="jxr_linenumber" name="186" href="#186">186</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="187" href="#187">187</a> <em class="jxr_javadoccomment">     * @return {@code null} if no object was attached or</em>
-<a class="jxr_linenumber" name="188" href="#188">188</a> <em class="jxr_javadoccomment">     *                      {@code null} was attached</em>
-<a class="jxr_linenumber" name="189" href="#189">189</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="190" href="#190">190</a>     Object getAttachment();
-<a class="jxr_linenumber" name="191" href="#191">191</a> 
-<a class="jxr_linenumber" name="192" href="#192">192</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="193" href="#193">193</a> <em class="jxr_javadoccomment">     * Attaches an object to this context to store a stateful information</em>
-<a class="jxr_linenumber" name="194" href="#194">194</a> <em class="jxr_javadoccomment">     * specific to the {@link ChannelHandler} which is associated with this</em>
-<a class="jxr_linenumber" name="195" href="#195">195</a> <em class="jxr_javadoccomment">     * context.</em>
-<a class="jxr_linenumber" name="196" href="#196">196</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="197" href="#197">197</a>     <strong class="jxr_keyword">void</strong> setAttachment(Object attachment);
-<a class="jxr_linenumber" name="198" href="#198">198</a> }
+<a class="jxr_linenumber" name="120" href="#120">120</a> <em class="jxr_javadoccomment"> * @apiviz.owns org.jboss.netty.channel.ChannelHandler</em>
+<a class="jxr_linenumber" name="121" href="#121">121</a> <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="122" href="#122">122</a> <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> <a href="../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> {
+<a class="jxr_linenumber" name="123" href="#123">123</a> 
+<a class="jxr_linenumber" name="124" href="#124">124</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="125" href="#125">125</a> <em class="jxr_javadoccomment">     * Returns the {@link Channel} that the {@link ChannelPipeline} belongs to.</em>
+<a class="jxr_linenumber" name="126" href="#126">126</a> <em class="jxr_javadoccomment">     * This method is a shortcut to &lt;tt&gt;getPipeline().getChannel()&lt;/tt&gt;.</em>
+<a class="jxr_linenumber" name="127" href="#127">127</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="128" href="#128">128</a>     <a href="../../../../org/jboss/netty/channel/Channel.html">Channel</a> getChannel();
+<a class="jxr_linenumber" name="129" href="#129">129</a> 
+<a class="jxr_linenumber" name="130" href="#130">130</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="131" href="#131">131</a> <em class="jxr_javadoccomment">     * Returns the {@link ChannelPipeline} that the {@link ChannelHandler}</em>
+<a class="jxr_linenumber" name="132" href="#132">132</a> <em class="jxr_javadoccomment">     * belongs to.</em>
+<a class="jxr_linenumber" name="133" href="#133">133</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="134" href="#134">134</a>     <a href="../../../../org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a> getPipeline();
+<a class="jxr_linenumber" name="135" href="#135">135</a> 
+<a class="jxr_linenumber" name="136" href="#136">136</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="137" href="#137">137</a> <em class="jxr_javadoccomment">     * Returns the name of the {@link ChannelHandler} in the</em>
+<a class="jxr_linenumber" name="138" href="#138">138</a> <em class="jxr_javadoccomment">     * {@link ChannelPipeline}.</em>
+<a class="jxr_linenumber" name="139" href="#139">139</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="140" href="#140">140</a>     String getName();
+<a class="jxr_linenumber" name="141" href="#141">141</a> 
+<a class="jxr_linenumber" name="142" href="#142">142</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="143" href="#143">143</a> <em class="jxr_javadoccomment">     * Returns the {@link ChannelHandler} that this context object is</em>
+<a class="jxr_linenumber" name="144" href="#144">144</a> <em class="jxr_javadoccomment">     * serving.</em>
+<a class="jxr_linenumber" name="145" href="#145">145</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="146" href="#146">146</a>     <a href="../../../../org/jboss/netty/channel/ChannelHandler.html">ChannelHandler</a> getHandler();
+<a class="jxr_linenumber" name="147" href="#147">147</a> 
+<a class="jxr_linenumber" name="148" href="#148">148</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="149" href="#149">149</a> <em class="jxr_javadoccomment">     * Returns {@code true} if and only if the {@link ChannelHandler} is an</em>
+<a class="jxr_linenumber" name="150" href="#150">150</a> <em class="jxr_javadoccomment">     * instance of {@link ChannelUpstreamHandler}.</em>
+<a class="jxr_linenumber" name="151" href="#151">151</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="152" href="#152">152</a>     <strong class="jxr_keyword">boolean</strong> canHandleUpstream();
+<a class="jxr_linenumber" name="153" href="#153">153</a> 
+<a class="jxr_linenumber" name="154" href="#154">154</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="155" href="#155">155</a> <em class="jxr_javadoccomment">     * Returns {@code true} if and only if the {@link ChannelHandler} is an</em>
+<a class="jxr_linenumber" name="156" href="#156">156</a> <em class="jxr_javadoccomment">     * instance of {@link ChannelDownstreamHandler}.</em>
+<a class="jxr_linenumber" name="157" href="#157">157</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="158" href="#158">158</a>     <strong class="jxr_keyword">boolean</strong> canHandleDownstream();
+<a class="jxr_linenumber" name="159" href="#159">159</a> 
+<a class="jxr_linenumber" name="160" href="#160">160</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="161" href="#161">161</a> <em class="jxr_javadoccomment">     * Sends the specified {@link ChannelEvent} to the</em>
+<a class="jxr_linenumber" name="162" href="#162">162</a> <em class="jxr_javadoccomment">     * {@link ChannelUpstreamHandler} which is placed in the closest upstream</em>
+<a class="jxr_linenumber" name="163" href="#163">163</a> <em class="jxr_javadoccomment">     * from the handler associated with this context.  It is recommended to use</em>
+<a class="jxr_linenumber" name="164" href="#164">164</a> <em class="jxr_javadoccomment">     * the shortcut methods in {@link Channels} rather than calling this method</em>
+<a class="jxr_linenumber" name="165" href="#165">165</a> <em class="jxr_javadoccomment">     * directly.</em>
+<a class="jxr_linenumber" name="166" href="#166">166</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="167" href="#167">167</a>     <strong class="jxr_keyword">void</strong> sendUpstream(<a href="../../../../org/jboss/netty/channel/ChannelEvent.html">ChannelEvent</a> e);
+<a class="jxr_linenumber" name="168" href="#168">168</a> 
+<a class="jxr_linenumber" name="169" href="#169">169</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="170" href="#170">170</a> <em class="jxr_javadoccomment">     * Sends the specified {@link ChannelEvent} to the</em>
+<a class="jxr_linenumber" name="171" href="#171">171</a> <em class="jxr_javadoccomment">     * {@link ChannelDownstreamHandler} which is placed in the closest</em>
+<a class="jxr_linenumber" name="172" href="#172">172</a> <em class="jxr_javadoccomment">     * downstream from the handler associated with this context.  It is</em>
+<a class="jxr_linenumber" name="173" href="#173">173</a> <em class="jxr_javadoccomment">     * recommended to use the shortcut methods in {@link Channels} rather than</em>
+<a class="jxr_linenumber" name="174" href="#174">174</a> <em class="jxr_javadoccomment">     * calling this method directly.</em>
+<a class="jxr_linenumber" name="175" href="#175">175</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="176" href="#176">176</a>     <strong class="jxr_keyword">void</strong> sendDownstream(<a href="../../../../org/jboss/netty/channel/ChannelEvent.html">ChannelEvent</a> e);
+<a class="jxr_linenumber" name="177" href="#177">177</a> 
+<a class="jxr_linenumber" name="178" href="#178">178</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="179" href="#179">179</a> <em class="jxr_javadoccomment">     * Retrieves an object which is {@link #setAttachment(Object) attached} to</em>
+<a class="jxr_linenumber" name="180" href="#180">180</a> <em class="jxr_javadoccomment">     * this context.</em>
+<a class="jxr_linenumber" name="181" href="#181">181</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="182" href="#182">182</a> <em class="jxr_javadoccomment">     * @return {@code null} if no object was attached or</em>
+<a class="jxr_linenumber" name="183" href="#183">183</a> <em class="jxr_javadoccomment">     *                      {@code null} was attached</em>
+<a class="jxr_linenumber" name="184" href="#184">184</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="185" href="#185">185</a>     Object getAttachment();
+<a class="jxr_linenumber" name="186" href="#186">186</a> 
+<a class="jxr_linenumber" name="187" href="#187">187</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="188" href="#188">188</a> <em class="jxr_javadoccomment">     * Attaches an object to this context to store a stateful information</em>
+<a class="jxr_linenumber" name="189" href="#189">189</a> <em class="jxr_javadoccomment">     * specific to the {@link ChannelHandler} which is associated with this</em>
+<a class="jxr_linenumber" name="190" href="#190">190</a> <em class="jxr_javadoccomment">     * context.</em>
+<a class="jxr_linenumber" name="191" href="#191">191</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="192" href="#192">192</a>     <strong class="jxr_keyword">void</strong> setAttachment(Object attachment);
+<a class="jxr_linenumber" name="193" href="#193">193</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
