@@ -23,32 +23,16 @@ layout: base
 
 %p You can either subscribe to <a href="../blog/">our official blog</a> or follow <a href="https://twitter.com/netty_project">@netty_project</a> at Twitter.
 
-%h3 Downloading from Maven 2 repository
+%h3 Downloading from the Maven central repository
 
-%p First off, add the following repository section to your <tt>pom.xml</tt> or <tt>~/.m2/settings.xml</tt>:
-
-%pre.brush:.xml
-  :escaped
-    <repositories>
-      ...
-      <repository>
-        <id>repository.jboss.org</id>
-        <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
-        <snapshots>
-          <enabled>false</enabled>
-        </snapshots>
-      </repository>
-      ...
-    </repositories>
-
-%p And then add the following dependency section to your <tt>pom.xml</tt>:
+%p Add the following dependency section to your <tt>pom.xml</tt>:
 
 %pre.brush:.xml
   :escaped
     <dependencies>
       ...
       <dependency>
-        <groupId>org.jboss.netty</groupId>
+        <groupId>io.netty</groupId>
         <artifactId>netty</artifactId>
         <version>X.Y.Z.Q</version>
         <scope>compile</scope>
