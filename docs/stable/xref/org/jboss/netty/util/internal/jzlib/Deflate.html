@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US" lang="en_US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de_DE" lang="de_DE">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>Deflate xref</title>
@@ -1308,9 +1308,9 @@
 <a class="jxr_linenumber" name="1298" href="#1298">1298</a>         <strong class="jxr_keyword">return</strong> lookahead;
 <a class="jxr_linenumber" name="1299" href="#1299">1299</a>     }
 <a class="jxr_linenumber" name="1300" href="#1300">1300</a> 
-<a class="jxr_linenumber" name="1301" href="#1301">1301</a>     <strong class="jxr_keyword">int</strong> deflateInit(<a href="../../../../../../org/jboss/netty/util/internal/jzlib/ZStream.html">ZStream</a> strm, <strong class="jxr_keyword">int</strong> level, <strong class="jxr_keyword">int</strong> bits, <a href="../../../../../../org/jboss/netty/util/internal/jzlib/JZlib.html">WrapperType</a> wrapperType) {
+<a class="jxr_linenumber" name="1301" href="#1301">1301</a>     <strong class="jxr_keyword">int</strong> deflateInit(<a href="../../../../../../org/jboss/netty/util/internal/jzlib/ZStream.html">ZStream</a> strm, <strong class="jxr_keyword">int</strong> level, <strong class="jxr_keyword">int</strong> bits, <strong class="jxr_keyword">int</strong> memLevel, <a href="../../../../../../org/jboss/netty/util/internal/jzlib/JZlib.html">WrapperType</a> wrapperType) {
 <a class="jxr_linenumber" name="1302" href="#1302">1302</a>         <strong class="jxr_keyword">return</strong> deflateInit2(strm, level, JZlib.Z_DEFLATED, bits,
-<a class="jxr_linenumber" name="1303" href="#1303">1303</a>                 JZlib.DEF_MEM_LEVEL, JZlib.Z_DEFAULT_STRATEGY, wrapperType);
+<a class="jxr_linenumber" name="1303" href="#1303">1303</a>                 memLevel, JZlib.Z_DEFAULT_STRATEGY, wrapperType);
 <a class="jxr_linenumber" name="1304" href="#1304">1304</a>     }
 <a class="jxr_linenumber" name="1305" href="#1305">1305</a> 
 <a class="jxr_linenumber" name="1306" href="#1306">1306</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> deflateInit2(<a href="../../../../../../org/jboss/netty/util/internal/jzlib/ZStream.html">ZStream</a> strm, <strong class="jxr_keyword">int</strong> level, <strong class="jxr_keyword">int</strong> method, <strong class="jxr_keyword">int</strong> windowBits,

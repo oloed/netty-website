@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US" lang="en_US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de_DE" lang="de_DE">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>OrderedMemoryAwareThreadPoolExecutor xref</title>
@@ -270,7 +270,7 @@
 <a class="jxr_linenumber" name="260" href="#260">260</a>             <a href="../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> se = (ChannelStateEvent) e;
 <a class="jxr_linenumber" name="261" href="#261">261</a>             <strong class="jxr_keyword">if</strong> (se.getState() == ChannelState.OPEN &amp;&amp;
 <a class="jxr_linenumber" name="262" href="#262">262</a>                 !channel.isOpen()) {
-<a class="jxr_linenumber" name="263" href="#263">263</a>                 childExecutors.remove(channel);
+<a class="jxr_linenumber" name="263" href="#263">263</a>                 removeChildExecutor(key);
 <a class="jxr_linenumber" name="264" href="#264">264</a>             }
 <a class="jxr_linenumber" name="265" href="#265">265</a>         }
 <a class="jxr_linenumber" name="266" href="#266">266</a>         <strong class="jxr_keyword">return</strong> executor;
