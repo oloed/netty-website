@@ -617,7 +617,7 @@
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>        
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> time = <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffers.html"><code class="classname">ChannelBuffers</code></a>.buffer(4);<a name="example.time.co2" id="example.time.co2"></a><img src="http://docbook.github.com/release/2.0.3/base/img/12.png" alt="12"
                           border="0" />
-<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        time.writeInt((int) (System.currentTimeMillis() / 1000));
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>        time.writeInt((int) (System.currentTimeMillis() / 1000L + 2208988800L));
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>        
 <span class="linenumber"> 12</span><span class="linenumber-separator"> </span>        <a href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelFuture.html"><code class="interfacename">ChannelFuture</code></a> f = ch.write(time);<a name="example.time.co3" id="example.time.co3"></a><img src="http://docbook.github.com/release/2.0.3/base/img/13.png" alt="13"
                           border="0" />
@@ -765,6 +765,13 @@
                      </tr>
                   </table>
                </div>
+               <p>
+                  To test if our time server works as expected, you can use the UNIX <strong class="command">rdate</strong> command:
+                  
+                  <div class="programlisting"><pre>$ rdate -o &lt;port&gt; -p &lt;host&gt;</pre></div>
+                  where port is the port number you specified in the <code class="methodname">main()</code> method and host is usually <code class="literal">localhost</code>.
+                  
+               </p>
             </section>
             <section id="start.9" class="section">
                <div class="section-titlepage">
