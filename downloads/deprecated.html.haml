@@ -10,7 +10,7 @@ layout: base
 
 %ul
   - Dir.glob("downloads/*.bz2").sort{|x,y| y <=> x }.each do |f|
-    - if !f.include?(site.stableReleaseVersion)
+    - unless f.include?(site.stableReleaseVersion) or site.unstableReleaseVersion and f.include?(site.unstableReleaseVersion)
       - f.sub!(/^downloads\//, '')
       %li <a href="#{f}"><tt>#{f}</tt></a>
 

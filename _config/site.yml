@@ -8,6 +8,6 @@ disqus: netty0
 stableReleaseVersion: 3.3.1.Final
 stableReleaseDate: 04-Feb-2012
 
-#unstableReleaseVersion: 4.0.0.Alpha1
-#unstableReleaseDate: 25-Dec-2011
+unstableReleaseVersion: 3.4.0.Alpha1
+unstableReleaseDate: 02-Mar-2012
 
