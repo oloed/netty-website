@@ -20,29 +20,30 @@ fi
 
 set -e
 
+function ensure_clean_copy {
+  GIT_STATUS="$(git status 2> /dev/null)"
+  if [[ ! ${GIT_STATUS} =~ (working directory clean) ]]; then
+    echo "Working directory not clean: $PWD"
+    exit 1
+  fi
+  if [[ ${GIT_STATUS} =~ (Your branch is) ]]; then
+    echo "Working directory has unpushed changes: $PWD"
+    exit 1
+  fi
+}
+
 # Make sure netty-website is clean
-pushd "$SRC/.."
-GIT_STATUS="$(git status 2> /dev/null)"
-if [[ ! ${GIT_STATUS} =~ (working directory clean) ]]; then
-  echo "Working directory not clean: $PWD"
-  exit 1
-fi
+pushd "$BIN/.."
+ensure_clean_copy
 popd
 
 # Make sure netty.github.com is clean
 pushd "$DST"
-
 if ! git remote -v | grep -qF 'git@github.com:netty/netty.github.com.git'; then
   echo "Not a netty.github.com repository: $PWD"
   exit 1
 fi
-
-GIT_STATUS="$(git status 2> /dev/null)"
-if [[ ! ${GIT_STATUS} =~ (working directory clean) ]]; then
-  echo "Working directory not clean: $DST"
-  exit 1
-fi
-
+ensure_clean_copy
 popd
 
 # Generate the web site
