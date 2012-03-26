@@ -39,7 +39,7 @@ popd
 
 # Make sure netty.github.com is clean
 pushd "$DST"
-if ! git remote -v | grep git@github.com[:/]netty/netty.github.com.git; then
+if ! git remote -v | grep -q git@github.com[:/]netty/netty.github.com.git; then
   echo "Not a netty.github.com repository: $PWD"
   exit 1
 fi
