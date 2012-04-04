@@ -195,73 +195,99 @@
 <a class="jxr_linenumber" name="185" href="#185">185</a>     }
 <a class="jxr_linenumber" name="186" href="#186">186</a> 
 <a class="jxr_linenumber" name="187" href="#187">187</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> initialize(<a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx) {
-<a class="jxr_linenumber" name="188" href="#188">188</a>         <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> state = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a>();
-<a class="jxr_linenumber" name="189" href="#189">189</a>         ctx.setAttachment(state);
-<a class="jxr_linenumber" name="190" href="#190">190</a>         <strong class="jxr_keyword">if</strong> (timeoutMillis &gt; 0) {
-<a class="jxr_linenumber" name="191" href="#191">191</a>             state.timeout = timer.newTimeout(<strong class="jxr_keyword">new</strong> <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">ReadTimeoutTask</a>(ctx), timeoutMillis, TimeUnit.MILLISECONDS);
-<a class="jxr_linenumber" name="192" href="#192">192</a>         }
-<a class="jxr_linenumber" name="193" href="#193">193</a>     }
-<a class="jxr_linenumber" name="194" href="#194">194</a> 
-<a class="jxr_linenumber" name="195" href="#195">195</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> destroy(<a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx) {
-<a class="jxr_linenumber" name="196" href="#196">196</a>         <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> state = (State) ctx.getAttachment();
-<a class="jxr_linenumber" name="197" href="#197">197</a>         <strong class="jxr_keyword">if</strong> (state.timeout != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="198" href="#198">198</a>             state.timeout.cancel();
-<a class="jxr_linenumber" name="199" href="#199">199</a>             state.timeout = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="200" href="#200">200</a>         }
-<a class="jxr_linenumber" name="201" href="#201">201</a>     }
-<a class="jxr_linenumber" name="202" href="#202">202</a> 
-<a class="jxr_linenumber" name="203" href="#203">203</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> readTimedOut(<a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx) <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="204" href="#204">204</a>         Channels.fireExceptionCaught(ctx, EXCEPTION);
-<a class="jxr_linenumber" name="205" href="#205">205</a>     }
-<a class="jxr_linenumber" name="206" href="#206">206</a> 
-<a class="jxr_linenumber" name="207" href="#207">207</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">ReadTimeoutTask</a> <strong class="jxr_keyword">implements</strong> <a href="../../../../../org/jboss/netty/util/TimerTask.html">TimerTask</a> {
-<a class="jxr_linenumber" name="208" href="#208">208</a> 
-<a class="jxr_linenumber" name="209" href="#209">209</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx;
-<a class="jxr_linenumber" name="210" href="#210">210</a> 
-<a class="jxr_linenumber" name="211" href="#211">211</a>         <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">ReadTimeoutTask</a>(<a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx) {
-<a class="jxr_linenumber" name="212" href="#212">212</a>             <strong class="jxr_keyword">this</strong>.ctx = ctx;
-<a class="jxr_linenumber" name="213" href="#213">213</a>         }
-<a class="jxr_linenumber" name="214" href="#214">214</a> 
-<a class="jxr_linenumber" name="215" href="#215">215</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> run(<a href="../../../../../org/jboss/netty/util/Timeout.html">Timeout</a> timeout) <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="216" href="#216">216</a>             <strong class="jxr_keyword">if</strong> (timeout.isCancelled()) {
-<a class="jxr_linenumber" name="217" href="#217">217</a>                 <strong class="jxr_keyword">return</strong>;
-<a class="jxr_linenumber" name="218" href="#218">218</a>             }
-<a class="jxr_linenumber" name="219" href="#219">219</a> 
-<a class="jxr_linenumber" name="220" href="#220">220</a>             <strong class="jxr_keyword">if</strong> (!ctx.getChannel().isOpen()) {
-<a class="jxr_linenumber" name="221" href="#221">221</a>                 <strong class="jxr_keyword">return</strong>;
-<a class="jxr_linenumber" name="222" href="#222">222</a>             }
-<a class="jxr_linenumber" name="223" href="#223">223</a> 
-<a class="jxr_linenumber" name="224" href="#224">224</a>             <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> state = (State) ctx.getAttachment();
-<a class="jxr_linenumber" name="225" href="#225">225</a>             <strong class="jxr_keyword">long</strong> currentTime = System.currentTimeMillis();
-<a class="jxr_linenumber" name="226" href="#226">226</a>             <strong class="jxr_keyword">long</strong> nextDelay = timeoutMillis - (currentTime - state.lastReadTime);
-<a class="jxr_linenumber" name="227" href="#227">227</a>             <strong class="jxr_keyword">if</strong> (nextDelay &lt;= 0) {
-<a class="jxr_linenumber" name="228" href="#228">228</a>                 <em class="jxr_comment">// Read timed out - set a new timeout and notify the callback.</em>
-<a class="jxr_linenumber" name="229" href="#229">229</a>                 state.timeout =
-<a class="jxr_linenumber" name="230" href="#230">230</a>                     timer.newTimeout(<strong class="jxr_keyword">this</strong>, timeoutMillis, TimeUnit.MILLISECONDS);
-<a class="jxr_linenumber" name="231" href="#231">231</a>                 <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="232" href="#232">232</a>                     <em class="jxr_comment">// FIXME This should be called from an I/O thread.</em>
-<a class="jxr_linenumber" name="233" href="#233">233</a>                     <em class="jxr_comment">//       To be fixed in Netty 4.</em>
-<a class="jxr_linenumber" name="234" href="#234">234</a>                     readTimedOut(ctx);
-<a class="jxr_linenumber" name="235" href="#235">235</a>                 } <strong class="jxr_keyword">catch</strong> (Throwable t) {
-<a class="jxr_linenumber" name="236" href="#236">236</a>                     fireExceptionCaught(ctx, t);
-<a class="jxr_linenumber" name="237" href="#237">237</a>                 }
-<a class="jxr_linenumber" name="238" href="#238">238</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="239" href="#239">239</a>                 <em class="jxr_comment">// Read occurred before the timeout - set a new timeout with shorter delay.</em>
-<a class="jxr_linenumber" name="240" href="#240">240</a>                 state.timeout =
-<a class="jxr_linenumber" name="241" href="#241">241</a>                     timer.newTimeout(<strong class="jxr_keyword">this</strong>, nextDelay, TimeUnit.MILLISECONDS);
-<a class="jxr_linenumber" name="242" href="#242">242</a>             }
-<a class="jxr_linenumber" name="243" href="#243">243</a>         }
-<a class="jxr_linenumber" name="244" href="#244">244</a>     }
-<a class="jxr_linenumber" name="245" href="#245">245</a> 
-<a class="jxr_linenumber" name="246" href="#246">246</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> {
-<a class="jxr_linenumber" name="247" href="#247">247</a>         <strong class="jxr_keyword">volatile</strong> <a href="../../../../../org/jboss/netty/util/Timeout.html">Timeout</a> timeout;
-<a class="jxr_linenumber" name="248" href="#248">248</a>         <strong class="jxr_keyword">volatile</strong> <strong class="jxr_keyword">long</strong> lastReadTime = System.currentTimeMillis();
-<a class="jxr_linenumber" name="249" href="#249">249</a> 
-<a class="jxr_linenumber" name="250" href="#250">250</a>         <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a>() {
-<a class="jxr_linenumber" name="251" href="#251">251</a>             <strong class="jxr_keyword">super</strong>();
-<a class="jxr_linenumber" name="252" href="#252">252</a>         }
-<a class="jxr_linenumber" name="253" href="#253">253</a>     }
-<a class="jxr_linenumber" name="254" href="#254">254</a> }
+<a class="jxr_linenumber" name="188" href="#188">188</a>         <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> state = state(ctx);
+<a class="jxr_linenumber" name="189" href="#189">189</a> 
+<a class="jxr_linenumber" name="190" href="#190">190</a>         <em class="jxr_comment">// Avoid the case where destroy() is called before scheduling timeouts.</em>
+<a class="jxr_linenumber" name="191" href="#191">191</a>         <em class="jxr_comment">// See: https://github.com/netty/netty/issues/143</em>
+<a class="jxr_linenumber" name="192" href="#192">192</a>         <strong class="jxr_keyword">if</strong> (state.destroyed) {
+<a class="jxr_linenumber" name="193" href="#193">193</a>             <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="194" href="#194">194</a>         }
+<a class="jxr_linenumber" name="195" href="#195">195</a> 
+<a class="jxr_linenumber" name="196" href="#196">196</a>         <strong class="jxr_keyword">if</strong> (timeoutMillis &gt; 0) {
+<a class="jxr_linenumber" name="197" href="#197">197</a>             state.timeout = timer.newTimeout(<strong class="jxr_keyword">new</strong> <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">ReadTimeoutTask</a>(ctx), timeoutMillis, TimeUnit.MILLISECONDS);
+<a class="jxr_linenumber" name="198" href="#198">198</a>         }
+<a class="jxr_linenumber" name="199" href="#199">199</a>     }
+<a class="jxr_linenumber" name="200" href="#200">200</a> 
+<a class="jxr_linenumber" name="201" href="#201">201</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> destroy(<a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx) {
+<a class="jxr_linenumber" name="202" href="#202">202</a>         <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> state;
+<a class="jxr_linenumber" name="203" href="#203">203</a>         <strong class="jxr_keyword">synchronized</strong> (ctx) {
+<a class="jxr_linenumber" name="204" href="#204">204</a>             state = state(ctx);
+<a class="jxr_linenumber" name="205" href="#205">205</a>             state.destroyed = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="206" href="#206">206</a>         }
+<a class="jxr_linenumber" name="207" href="#207">207</a> 
+<a class="jxr_linenumber" name="208" href="#208">208</a>         <strong class="jxr_keyword">if</strong> (state.timeout != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="209" href="#209">209</a>             state.timeout.cancel();
+<a class="jxr_linenumber" name="210" href="#210">210</a>             state.timeout = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="211" href="#211">211</a>         }
+<a class="jxr_linenumber" name="212" href="#212">212</a>     }
+<a class="jxr_linenumber" name="213" href="#213">213</a> 
+<a class="jxr_linenumber" name="214" href="#214">214</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> state(<a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx) {
+<a class="jxr_linenumber" name="215" href="#215">215</a>         <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> state;
+<a class="jxr_linenumber" name="216" href="#216">216</a>         <strong class="jxr_keyword">synchronized</strong> (ctx) {
+<a class="jxr_linenumber" name="217" href="#217">217</a>             <em class="jxr_comment">// FIXME: It could have been better if there is setAttachmentIfAbsent().</em>
+<a class="jxr_linenumber" name="218" href="#218">218</a>             state = (State) ctx.getAttachment();
+<a class="jxr_linenumber" name="219" href="#219">219</a>             <strong class="jxr_keyword">if</strong> (state != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="220" href="#220">220</a>                 <strong class="jxr_keyword">return</strong> state;
+<a class="jxr_linenumber" name="221" href="#221">221</a>             }
+<a class="jxr_linenumber" name="222" href="#222">222</a>             state = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a>();
+<a class="jxr_linenumber" name="223" href="#223">223</a>             ctx.setAttachment(state);
+<a class="jxr_linenumber" name="224" href="#224">224</a>         }
+<a class="jxr_linenumber" name="225" href="#225">225</a>         <strong class="jxr_keyword">return</strong> state;
+<a class="jxr_linenumber" name="226" href="#226">226</a>     }
+<a class="jxr_linenumber" name="227" href="#227">227</a> 
+<a class="jxr_linenumber" name="228" href="#228">228</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> readTimedOut(<a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="229" href="#229">229</a>         Channels.fireExceptionCaught(ctx, EXCEPTION);
+<a class="jxr_linenumber" name="230" href="#230">230</a>     }
+<a class="jxr_linenumber" name="231" href="#231">231</a> 
+<a class="jxr_linenumber" name="232" href="#232">232</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">ReadTimeoutTask</a> <strong class="jxr_keyword">implements</strong> <a href="../../../../../org/jboss/netty/util/TimerTask.html">TimerTask</a> {
+<a class="jxr_linenumber" name="233" href="#233">233</a> 
+<a class="jxr_linenumber" name="234" href="#234">234</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx;
+<a class="jxr_linenumber" name="235" href="#235">235</a> 
+<a class="jxr_linenumber" name="236" href="#236">236</a>         <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">ReadTimeoutTask</a>(<a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx) {
+<a class="jxr_linenumber" name="237" href="#237">237</a>             <strong class="jxr_keyword">this</strong>.ctx = ctx;
+<a class="jxr_linenumber" name="238" href="#238">238</a>         }
+<a class="jxr_linenumber" name="239" href="#239">239</a> 
+<a class="jxr_linenumber" name="240" href="#240">240</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> run(<a href="../../../../../org/jboss/netty/util/Timeout.html">Timeout</a> timeout) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="241" href="#241">241</a>             <strong class="jxr_keyword">if</strong> (timeout.isCancelled()) {
+<a class="jxr_linenumber" name="242" href="#242">242</a>                 <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="243" href="#243">243</a>             }
+<a class="jxr_linenumber" name="244" href="#244">244</a> 
+<a class="jxr_linenumber" name="245" href="#245">245</a>             <strong class="jxr_keyword">if</strong> (!ctx.getChannel().isOpen()) {
+<a class="jxr_linenumber" name="246" href="#246">246</a>                 <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="247" href="#247">247</a>             }
+<a class="jxr_linenumber" name="248" href="#248">248</a> 
+<a class="jxr_linenumber" name="249" href="#249">249</a>             <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> state = (State) ctx.getAttachment();
+<a class="jxr_linenumber" name="250" href="#250">250</a>             <strong class="jxr_keyword">long</strong> currentTime = System.currentTimeMillis();
+<a class="jxr_linenumber" name="251" href="#251">251</a>             <strong class="jxr_keyword">long</strong> nextDelay = timeoutMillis - (currentTime - state.lastReadTime);
+<a class="jxr_linenumber" name="252" href="#252">252</a>             <strong class="jxr_keyword">if</strong> (nextDelay &lt;= 0) {
+<a class="jxr_linenumber" name="253" href="#253">253</a>                 <em class="jxr_comment">// Read timed out - set a new timeout and notify the callback.</em>
+<a class="jxr_linenumber" name="254" href="#254">254</a>                 state.timeout =
+<a class="jxr_linenumber" name="255" href="#255">255</a>                     timer.newTimeout(<strong class="jxr_keyword">this</strong>, timeoutMillis, TimeUnit.MILLISECONDS);
+<a class="jxr_linenumber" name="256" href="#256">256</a>                 <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="257" href="#257">257</a>                     <em class="jxr_comment">// FIXME This should be called from an I/O thread.</em>
+<a class="jxr_linenumber" name="258" href="#258">258</a>                     <em class="jxr_comment">//       To be fixed in Netty 4.</em>
+<a class="jxr_linenumber" name="259" href="#259">259</a>                     readTimedOut(ctx);
+<a class="jxr_linenumber" name="260" href="#260">260</a>                 } <strong class="jxr_keyword">catch</strong> (Throwable t) {
+<a class="jxr_linenumber" name="261" href="#261">261</a>                     fireExceptionCaught(ctx, t);
+<a class="jxr_linenumber" name="262" href="#262">262</a>                 }
+<a class="jxr_linenumber" name="263" href="#263">263</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="264" href="#264">264</a>                 <em class="jxr_comment">// Read occurred before the timeout - set a new timeout with shorter delay.</em>
+<a class="jxr_linenumber" name="265" href="#265">265</a>                 state.timeout =
+<a class="jxr_linenumber" name="266" href="#266">266</a>                     timer.newTimeout(<strong class="jxr_keyword">this</strong>, nextDelay, TimeUnit.MILLISECONDS);
+<a class="jxr_linenumber" name="267" href="#267">267</a>             }
+<a class="jxr_linenumber" name="268" href="#268">268</a>         }
+<a class="jxr_linenumber" name="269" href="#269">269</a>     }
+<a class="jxr_linenumber" name="270" href="#270">270</a> 
+<a class="jxr_linenumber" name="271" href="#271">271</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a> {
+<a class="jxr_linenumber" name="272" href="#272">272</a>         <strong class="jxr_keyword">volatile</strong> <a href="../../../../../org/jboss/netty/util/Timeout.html">Timeout</a> timeout;
+<a class="jxr_linenumber" name="273" href="#273">273</a>         <strong class="jxr_keyword">volatile</strong> <strong class="jxr_keyword">long</strong> lastReadTime = System.currentTimeMillis();
+<a class="jxr_linenumber" name="274" href="#274">274</a>         <strong class="jxr_keyword">volatile</strong> <strong class="jxr_keyword">boolean</strong> destroyed;
+<a class="jxr_linenumber" name="275" href="#275">275</a> 
+<a class="jxr_linenumber" name="276" href="#276">276</a>         <a href="../../../../../org/jboss/netty/handler/timeout/ReadTimeoutHandler.html">State</a>() {
+<a class="jxr_linenumber" name="277" href="#277">277</a>             <strong class="jxr_keyword">super</strong>();
+<a class="jxr_linenumber" name="278" href="#278">278</a>         }
+<a class="jxr_linenumber" name="279" href="#279">279</a>     }
+<a class="jxr_linenumber" name="280" href="#280">280</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
