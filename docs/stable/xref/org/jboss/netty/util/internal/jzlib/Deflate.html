@@ -106,7 +106,7 @@
 <a class="jxr_linenumber" name="96" href="#96">96</a>              <span class="jxr_string">"data error"</span>, <em class="jxr_comment">// Z_DATA_ERROR    (-3)</em>
 <a class="jxr_linenumber" name="97" href="#97">97</a>              <span class="jxr_string">"insufficient memory"</span>, <em class="jxr_comment">// Z_MEM_ERROR     (-4)</em>
 <a class="jxr_linenumber" name="98" href="#98">98</a>              <span class="jxr_string">"buffer error"</span>, <em class="jxr_comment">// Z_BUF_ERROR     (-5)</em>
-<a class="jxr_linenumber" name="99" href="#99">99</a>              <span class="jxr_string">"incompatible version"</span>,<em class="jxr_comment">// Z_VERSION_ERROR (-6)</em>
+<a class="jxr_linenumber" name="99" href="#99">99</a>              <span class="jxr_string">"incompatible version"</span>, <em class="jxr_comment">// Z_VERSION_ERROR (-6)</em>
 <a class="jxr_linenumber" name="100" href="#100">100</a>             <span class="jxr_string">""</span> };
 <a class="jxr_linenumber" name="101" href="#101">101</a> 
 <a class="jxr_linenumber" name="102" href="#102">102</a>     <em class="jxr_comment">// block not completed, need more input or more output</em>
@@ -352,7 +352,7 @@
 <a class="jxr_linenumber" name="342" href="#342">342</a> 
 <a class="jxr_linenumber" name="343" href="#343">343</a>     <em class="jxr_comment">// Scan a literal or distance tree to determine the frequencies of the codes</em>
 <a class="jxr_linenumber" name="344" href="#344">344</a>     <em class="jxr_comment">// in the bit length tree.</em>
-<a class="jxr_linenumber" name="345" href="#345">345</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> scan_tree(<strong class="jxr_keyword">short</strong>[] tree,<em class="jxr_comment">// the tree to be scanned</em>
+<a class="jxr_linenumber" name="345" href="#345">345</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> scan_tree(<strong class="jxr_keyword">short</strong>[] tree, <em class="jxr_comment">// the tree to be scanned</em>
 <a class="jxr_linenumber" name="346" href="#346">346</a>             <strong class="jxr_keyword">int</strong> max_code <em class="jxr_comment">// and its largest code of non zero frequency</em>
 <a class="jxr_linenumber" name="347" href="#347">347</a>     ) {
 <a class="jxr_linenumber" name="348" href="#348">348</a>         <strong class="jxr_keyword">int</strong> n; <em class="jxr_comment">// iterates over all tree elements</em>
@@ -447,7 +447,7 @@
 <a class="jxr_linenumber" name="437" href="#437">437</a> 
 <a class="jxr_linenumber" name="438" href="#438">438</a>     <em class="jxr_comment">// Send a literal or distance tree in compressed form, using the codes in</em>
 <a class="jxr_linenumber" name="439" href="#439">439</a>     <em class="jxr_comment">// bl_tree.</em>
-<a class="jxr_linenumber" name="440" href="#440">440</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> send_tree(<strong class="jxr_keyword">short</strong>[] tree,<em class="jxr_comment">// the tree to be sent</em>
+<a class="jxr_linenumber" name="440" href="#440">440</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> send_tree(<strong class="jxr_keyword">short</strong>[] tree, <em class="jxr_comment">// the tree to be sent</em>
 <a class="jxr_linenumber" name="441" href="#441">441</a>             <strong class="jxr_keyword">int</strong> max_code <em class="jxr_comment">// and its largest code of non zero frequency</em>
 <a class="jxr_linenumber" name="442" href="#442">442</a>     ) {
 <a class="jxr_linenumber" name="443" href="#443">443</a>         <strong class="jxr_keyword">int</strong> n; <em class="jxr_comment">// iterates over all tree elements</em>
@@ -503,28 +503,28 @@
 <a class="jxr_linenumber" name="493" href="#493">493</a> 
 <a class="jxr_linenumber" name="494" href="#494">494</a>     <em class="jxr_comment">// Output a byte on the stream.</em>
 <a class="jxr_linenumber" name="495" href="#495">495</a>     <em class="jxr_comment">// IN assertion: there is enough room in pending_buf.</em>
-<a class="jxr_linenumber" name="496" href="#496">496</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> put_byte(byte[] p, <strong class="jxr_keyword">int</strong> start, <strong class="jxr_keyword">int</strong> len) {
+<a class="jxr_linenumber" name="496" href="#496">496</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> put_byte(byte[] p, <strong class="jxr_keyword">int</strong> start, <strong class="jxr_keyword">int</strong> len) {
 <a class="jxr_linenumber" name="497" href="#497">497</a>         System.arraycopy(p, start, pending_buf, pending, len);
 <a class="jxr_linenumber" name="498" href="#498">498</a>         pending += len;
 <a class="jxr_linenumber" name="499" href="#499">499</a>     }
 <a class="jxr_linenumber" name="500" href="#500">500</a> 
-<a class="jxr_linenumber" name="501" href="#501">501</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> put_byte(byte c) {
+<a class="jxr_linenumber" name="501" href="#501">501</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> put_byte(byte c) {
 <a class="jxr_linenumber" name="502" href="#502">502</a>         pending_buf[pending ++] = c;
 <a class="jxr_linenumber" name="503" href="#503">503</a>     }
 <a class="jxr_linenumber" name="504" href="#504">504</a> 
-<a class="jxr_linenumber" name="505" href="#505">505</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> put_<strong class="jxr_keyword">short</strong>(<strong class="jxr_keyword">int</strong> w) {
+<a class="jxr_linenumber" name="505" href="#505">505</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> put_<strong class="jxr_keyword">short</strong>(<strong class="jxr_keyword">int</strong> w) {
 <a class="jxr_linenumber" name="506" href="#506">506</a>         put_byte((byte) w<em class="jxr_comment">/*<em class="jxr_comment">&amp;0xff*/</em>);</em>
 <a class="jxr_linenumber" name="507" href="#507">507</a>         put_byte((byte) (w &gt;&gt;&gt; 8));
 <a class="jxr_linenumber" name="508" href="#508">508</a>     }
 <a class="jxr_linenumber" name="509" href="#509">509</a> 
-<a class="jxr_linenumber" name="510" href="#510">510</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> putShortMSB(<strong class="jxr_keyword">int</strong> b) {
+<a class="jxr_linenumber" name="510" href="#510">510</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> putShortMSB(<strong class="jxr_keyword">int</strong> b) {
 <a class="jxr_linenumber" name="511" href="#511">511</a>         put_byte((byte) (b &gt;&gt; 8));
 <a class="jxr_linenumber" name="512" href="#512">512</a>         put_byte((byte) b<em class="jxr_comment">/*<em class="jxr_comment">&amp;0xff*/</em>);</em>
 <a class="jxr_linenumber" name="513" href="#513">513</a>     }
 <a class="jxr_linenumber" name="514" href="#514">514</a> 
-<a class="jxr_linenumber" name="515" href="#515">515</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> send_code(<strong class="jxr_keyword">int</strong> c, <strong class="jxr_keyword">short</strong>[] tree) {
+<a class="jxr_linenumber" name="515" href="#515">515</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> send_code(<strong class="jxr_keyword">int</strong> c, <strong class="jxr_keyword">short</strong>[] tree) {
 <a class="jxr_linenumber" name="516" href="#516">516</a>         <strong class="jxr_keyword">int</strong> c2 = c * 2;
-<a class="jxr_linenumber" name="517" href="#517">517</a>         send_bits((tree[c2] &amp; 0xffff), (tree[c2 + 1] &amp; 0xffff));
+<a class="jxr_linenumber" name="517" href="#517">517</a>         send_bits(tree[c2] &amp; 0xffff, tree[c2 + 1] &amp; 0xffff);
 <a class="jxr_linenumber" name="518" href="#518">518</a>     }
 <a class="jxr_linenumber" name="519" href="#519">519</a> 
 <a class="jxr_linenumber" name="520" href="#520">520</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> send_bits(<strong class="jxr_keyword">int</strong> value, <strong class="jxr_keyword">int</strong> length) {
@@ -816,7 +816,7 @@
 <a class="jxr_linenumber" name="806" href="#806">806</a>             <strong class="jxr_keyword">int</strong> stored_len, <em class="jxr_comment">// length of input block</em>
 <a class="jxr_linenumber" name="807" href="#807">807</a>             <strong class="jxr_keyword">boolean</strong> eof <em class="jxr_comment">// true if this is the last block for a file</em>
 <a class="jxr_linenumber" name="808" href="#808">808</a>     ) {
-<a class="jxr_linenumber" name="809" href="#809">809</a>         <strong class="jxr_keyword">int</strong> opt_lenb, <strong class="jxr_keyword">static</strong>_lenb;<em class="jxr_comment">// opt_len and static_len in bytes</em>
+<a class="jxr_linenumber" name="809" href="#809">809</a>         <strong class="jxr_keyword">int</strong> opt_lenb, <strong class="jxr_keyword">static</strong>_lenb; <em class="jxr_comment">// opt_len and static_len in bytes</em>
 <a class="jxr_linenumber" name="810" href="#810">810</a>         <strong class="jxr_keyword">int</strong> max_blindex = 0; <em class="jxr_comment">// index of last bit length code of non zero freq</em>
 <a class="jxr_linenumber" name="811" href="#811">811</a> 
 <a class="jxr_linenumber" name="812" href="#812">812</a>         <em class="jxr_comment">// Build the Huffman trees unless a stored block is forced</em>

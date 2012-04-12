@@ -9,19 +9,19 @@
 <div id="overview"><a href="../../../../../../../api/org/jboss/netty/handler/codec/spdy/SpdySessionHandler.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 Twitter, Inc.</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * Licensed under the Apache License, Version 2.0 (the "License"); you may</em>
-<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * not use this file except in compliance with the License. You may obtain</em>
-<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * a copy of the License at</em>
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *     <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
-<a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS,</em>
-<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</em>
-<a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_comment"> * See the License for the specific language governing permissions and</em>
-<a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_comment"> * limitations under the License.</em>
+<a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment"> * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the</em>
+<a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_comment"> * License for the specific language governing permissions and limitations</em>
+<a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_comment"> * under the License.</em>
 <a class="jxr_linenumber" name="15" href="#15">15</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="16" href="#16">16</a>  <strong class="jxr_keyword">package</strong> org.jboss.netty.handler.codec.spdy;
 <a class="jxr_linenumber" name="17" href="#17">17</a>  
@@ -388,123 +388,119 @@
 <a class="jxr_linenumber" name="378" href="#378">378</a> <em class="jxr_comment">     * Helper functions</em>
 <a class="jxr_linenumber" name="379" href="#379">379</a> <em class="jxr_comment">     */</em>
 <a class="jxr_linenumber" name="380" href="#380">380</a> 
-<a class="jxr_linenumber" name="381" href="#381">381</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> isServerID(<strong class="jxr_keyword">int</strong> ID) {
-<a class="jxr_linenumber" name="382" href="#382">382</a>         <strong class="jxr_keyword">return</strong> ID % 2 == 0;
-<a class="jxr_linenumber" name="383" href="#383">383</a>     }
-<a class="jxr_linenumber" name="384" href="#384">384</a> 
-<a class="jxr_linenumber" name="385" href="#385">385</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> isRemoteInitiatedID(<strong class="jxr_keyword">int</strong> ID) {
-<a class="jxr_linenumber" name="386" href="#386">386</a>         <strong class="jxr_keyword">boolean</strong> serverID = isServerID(ID);
-<a class="jxr_linenumber" name="387" href="#387">387</a>         <strong class="jxr_keyword">return</strong> (server &amp;&amp; !serverID) || (!server &amp;&amp; serverID);
-<a class="jxr_linenumber" name="388" href="#388">388</a>     }
-<a class="jxr_linenumber" name="389" href="#389">389</a> 
-<a class="jxr_linenumber" name="390" href="#390">390</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">synchronized</strong> <strong class="jxr_keyword">void</strong> updateConcurrentStreams(<a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySettingsFrame.html">SpdySettingsFrame</a> settings, <strong class="jxr_keyword">boolean</strong> remote) {
-<a class="jxr_linenumber" name="391" href="#391">391</a>         <strong class="jxr_keyword">int</strong> newConcurrentStreams = settings.getValue(SpdySettingsFrame.SETTINGS_MAX_CONCURRENT_STREAMS);
-<a class="jxr_linenumber" name="392" href="#392">392</a>         <strong class="jxr_keyword">if</strong> (remote) {
-<a class="jxr_linenumber" name="393" href="#393">393</a>             remoteConcurrentStreams = newConcurrentStreams;
-<a class="jxr_linenumber" name="394" href="#394">394</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="395" href="#395">395</a>             localConcurrentStreams = newConcurrentStreams;
+<a class="jxr_linenumber" name="381" href="#381">381</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> isRemoteInitiatedID(<strong class="jxr_keyword">int</strong> ID) {
+<a class="jxr_linenumber" name="382" href="#382">382</a>         <strong class="jxr_keyword">boolean</strong> serverID = SpdyCodecUtil.isServerID(ID);
+<a class="jxr_linenumber" name="383" href="#383">383</a>         <strong class="jxr_keyword">return</strong> (server &amp;&amp; !serverID) || (!server &amp;&amp; serverID);
+<a class="jxr_linenumber" name="384" href="#384">384</a>     }
+<a class="jxr_linenumber" name="385" href="#385">385</a> 
+<a class="jxr_linenumber" name="386" href="#386">386</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">synchronized</strong> <strong class="jxr_keyword">void</strong> updateConcurrentStreams(<a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySettingsFrame.html">SpdySettingsFrame</a> settings, <strong class="jxr_keyword">boolean</strong> remote) {
+<a class="jxr_linenumber" name="387" href="#387">387</a>         <strong class="jxr_keyword">int</strong> newConcurrentStreams = settings.getValue(SpdySettingsFrame.SETTINGS_MAX_CONCURRENT_STREAMS);
+<a class="jxr_linenumber" name="388" href="#388">388</a>         <strong class="jxr_keyword">if</strong> (remote) {
+<a class="jxr_linenumber" name="389" href="#389">389</a>             remoteConcurrentStreams = newConcurrentStreams;
+<a class="jxr_linenumber" name="390" href="#390">390</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="391" href="#391">391</a>             localConcurrentStreams = newConcurrentStreams;
+<a class="jxr_linenumber" name="392" href="#392">392</a>         }
+<a class="jxr_linenumber" name="393" href="#393">393</a>         <strong class="jxr_keyword">if</strong> (localConcurrentStreams == remoteConcurrentStreams) {
+<a class="jxr_linenumber" name="394" href="#394">394</a>             maxConcurrentStreams = localConcurrentStreams;
+<a class="jxr_linenumber" name="395" href="#395">395</a>             <strong class="jxr_keyword">return</strong>;
 <a class="jxr_linenumber" name="396" href="#396">396</a>         }
-<a class="jxr_linenumber" name="397" href="#397">397</a>         <strong class="jxr_keyword">if</strong> (localConcurrentStreams == remoteConcurrentStreams) {
-<a class="jxr_linenumber" name="398" href="#398">398</a>             maxConcurrentStreams = localConcurrentStreams;
+<a class="jxr_linenumber" name="397" href="#397">397</a>         <strong class="jxr_keyword">if</strong> (localConcurrentStreams == 0) {
+<a class="jxr_linenumber" name="398" href="#398">398</a>             maxConcurrentStreams = remoteConcurrentStreams;
 <a class="jxr_linenumber" name="399" href="#399">399</a>             <strong class="jxr_keyword">return</strong>;
 <a class="jxr_linenumber" name="400" href="#400">400</a>         }
-<a class="jxr_linenumber" name="401" href="#401">401</a>         <strong class="jxr_keyword">if</strong> (localConcurrentStreams == 0) {
-<a class="jxr_linenumber" name="402" href="#402">402</a>             maxConcurrentStreams = remoteConcurrentStreams;
+<a class="jxr_linenumber" name="401" href="#401">401</a>         <strong class="jxr_keyword">if</strong> (remoteConcurrentStreams == 0) {
+<a class="jxr_linenumber" name="402" href="#402">402</a>             maxConcurrentStreams = localConcurrentStreams;
 <a class="jxr_linenumber" name="403" href="#403">403</a>             <strong class="jxr_keyword">return</strong>;
 <a class="jxr_linenumber" name="404" href="#404">404</a>         }
-<a class="jxr_linenumber" name="405" href="#405">405</a>         <strong class="jxr_keyword">if</strong> (remoteConcurrentStreams == 0) {
-<a class="jxr_linenumber" name="406" href="#406">406</a>             maxConcurrentStreams = localConcurrentStreams;
-<a class="jxr_linenumber" name="407" href="#407">407</a>             <strong class="jxr_keyword">return</strong>;
-<a class="jxr_linenumber" name="408" href="#408">408</a>         }
-<a class="jxr_linenumber" name="409" href="#409">409</a>         <strong class="jxr_keyword">if</strong> (localConcurrentStreams &gt; remoteConcurrentStreams) {
-<a class="jxr_linenumber" name="410" href="#410">410</a>             maxConcurrentStreams = remoteConcurrentStreams;
-<a class="jxr_linenumber" name="411" href="#411">411</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="412" href="#412">412</a>             maxConcurrentStreams = localConcurrentStreams;
-<a class="jxr_linenumber" name="413" href="#413">413</a>         }
-<a class="jxr_linenumber" name="414" href="#414">414</a>     }
-<a class="jxr_linenumber" name="415" href="#415">415</a> 
-<a class="jxr_linenumber" name="416" href="#416">416</a>     <em class="jxr_comment">// need to synchronize accesses to sentGoAwayFrame and lastGoodStreamID</em>
-<a class="jxr_linenumber" name="417" href="#417">417</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">synchronized</strong> <strong class="jxr_keyword">boolean</strong> acceptStream(
-<a class="jxr_linenumber" name="418" href="#418">418</a>             <strong class="jxr_keyword">int</strong> streamID, <strong class="jxr_keyword">boolean</strong> remoteSideClosed, <strong class="jxr_keyword">boolean</strong> localSideClosed) {
-<a class="jxr_linenumber" name="419" href="#419">419</a>         <em class="jxr_comment">// Cannot initiate any new streams after receiving or sending GOAWAY</em>
-<a class="jxr_linenumber" name="420" href="#420">420</a>         <strong class="jxr_keyword">if</strong> (receivedGoAwayFrame || sentGoAwayFrame) {
+<a class="jxr_linenumber" name="405" href="#405">405</a>         <strong class="jxr_keyword">if</strong> (localConcurrentStreams &gt; remoteConcurrentStreams) {
+<a class="jxr_linenumber" name="406" href="#406">406</a>             maxConcurrentStreams = remoteConcurrentStreams;
+<a class="jxr_linenumber" name="407" href="#407">407</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="408" href="#408">408</a>             maxConcurrentStreams = localConcurrentStreams;
+<a class="jxr_linenumber" name="409" href="#409">409</a>         }
+<a class="jxr_linenumber" name="410" href="#410">410</a>     }
+<a class="jxr_linenumber" name="411" href="#411">411</a> 
+<a class="jxr_linenumber" name="412" href="#412">412</a>     <em class="jxr_comment">// need to synchronize accesses to sentGoAwayFrame and lastGoodStreamID</em>
+<a class="jxr_linenumber" name="413" href="#413">413</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">synchronized</strong> <strong class="jxr_keyword">boolean</strong> acceptStream(
+<a class="jxr_linenumber" name="414" href="#414">414</a>             <strong class="jxr_keyword">int</strong> streamID, <strong class="jxr_keyword">boolean</strong> remoteSideClosed, <strong class="jxr_keyword">boolean</strong> localSideClosed) {
+<a class="jxr_linenumber" name="415" href="#415">415</a>         <em class="jxr_comment">// Cannot initiate any new streams after receiving or sending GOAWAY</em>
+<a class="jxr_linenumber" name="416" href="#416">416</a>         <strong class="jxr_keyword">if</strong> (receivedGoAwayFrame || sentGoAwayFrame) {
+<a class="jxr_linenumber" name="417" href="#417">417</a>             <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="418" href="#418">418</a>         }
+<a class="jxr_linenumber" name="419" href="#419">419</a>         <strong class="jxr_keyword">if</strong> ((maxConcurrentStreams != 0) &amp;&amp;
+<a class="jxr_linenumber" name="420" href="#420">420</a>            (spdySession.numActiveStreams() &gt;= maxConcurrentStreams)) {
 <a class="jxr_linenumber" name="421" href="#421">421</a>             <strong class="jxr_keyword">return</strong> false;
 <a class="jxr_linenumber" name="422" href="#422">422</a>         }
-<a class="jxr_linenumber" name="423" href="#423">423</a>         <strong class="jxr_keyword">if</strong> ((maxConcurrentStreams != 0) &amp;&amp;
-<a class="jxr_linenumber" name="424" href="#424">424</a>            (spdySession.numActiveStreams() &gt;= maxConcurrentStreams)) {
-<a class="jxr_linenumber" name="425" href="#425">425</a>             <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="423" href="#423">423</a>         spdySession.acceptStream(streamID, remoteSideClosed, localSideClosed);
+<a class="jxr_linenumber" name="424" href="#424">424</a>         <strong class="jxr_keyword">if</strong> (isRemoteInitiatedID(streamID)) {
+<a class="jxr_linenumber" name="425" href="#425">425</a>             lastGoodStreamID = streamID;
 <a class="jxr_linenumber" name="426" href="#426">426</a>         }
-<a class="jxr_linenumber" name="427" href="#427">427</a>         spdySession.acceptStream(streamID, remoteSideClosed, localSideClosed);
-<a class="jxr_linenumber" name="428" href="#428">428</a>         <strong class="jxr_keyword">if</strong> (isRemoteInitiatedID(streamID)) {
-<a class="jxr_linenumber" name="429" href="#429">429</a>             lastGoodStreamID = streamID;
-<a class="jxr_linenumber" name="430" href="#430">430</a>         }
-<a class="jxr_linenumber" name="431" href="#431">431</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
-<a class="jxr_linenumber" name="432" href="#432">432</a>     }
-<a class="jxr_linenumber" name="433" href="#433">433</a> 
-<a class="jxr_linenumber" name="434" href="#434">434</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> halfCloseStream(<strong class="jxr_keyword">int</strong> streamID, <strong class="jxr_keyword">boolean</strong> remote) {
-<a class="jxr_linenumber" name="435" href="#435">435</a>         <strong class="jxr_keyword">if</strong> (remote) {
-<a class="jxr_linenumber" name="436" href="#436">436</a>             spdySession.closeRemoteSide(streamID);
-<a class="jxr_linenumber" name="437" href="#437">437</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="438" href="#438">438</a>             spdySession.closeLocalSide(streamID);
-<a class="jxr_linenumber" name="439" href="#439">439</a>         }
-<a class="jxr_linenumber" name="440" href="#440">440</a>         <strong class="jxr_keyword">if</strong> ((closeSessionFuture != <strong class="jxr_keyword">null</strong>) &amp;&amp; spdySession.noActiveStreams()) {
-<a class="jxr_linenumber" name="441" href="#441">441</a>             closeSessionFuture.setSuccess();
-<a class="jxr_linenumber" name="442" href="#442">442</a>         }
-<a class="jxr_linenumber" name="443" href="#443">443</a>     }
-<a class="jxr_linenumber" name="444" href="#444">444</a> 
-<a class="jxr_linenumber" name="445" href="#445">445</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> removeStream(<strong class="jxr_keyword">int</strong> streamID) {
-<a class="jxr_linenumber" name="446" href="#446">446</a>         spdySession.removeStream(streamID);
-<a class="jxr_linenumber" name="447" href="#447">447</a>         <strong class="jxr_keyword">if</strong> ((closeSessionFuture != <strong class="jxr_keyword">null</strong>) &amp;&amp; spdySession.noActiveStreams()) {
-<a class="jxr_linenumber" name="448" href="#448">448</a>             closeSessionFuture.setSuccess();
-<a class="jxr_linenumber" name="449" href="#449">449</a>         }
-<a class="jxr_linenumber" name="450" href="#450">450</a>     }
-<a class="jxr_linenumber" name="451" href="#451">451</a> 
-<a class="jxr_linenumber" name="452" href="#452">452</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> sendGoAwayFrame(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e) {
-<a class="jxr_linenumber" name="453" href="#453">453</a>         <em class="jxr_comment">// Avoid NotYetConnectedException</em>
-<a class="jxr_linenumber" name="454" href="#454">454</a>         <strong class="jxr_keyword">if</strong> (!e.getChannel().isConnected()) {
-<a class="jxr_linenumber" name="455" href="#455">455</a>             ctx.sendDownstream(e);
-<a class="jxr_linenumber" name="456" href="#456">456</a>             <strong class="jxr_keyword">return</strong>;
-<a class="jxr_linenumber" name="457" href="#457">457</a>         }
-<a class="jxr_linenumber" name="458" href="#458">458</a> 
-<a class="jxr_linenumber" name="459" href="#459">459</a>         <a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> future = sendGoAwayFrame(ctx, e.getChannel(), <strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="460" href="#460">460</a>         <strong class="jxr_keyword">if</strong> (spdySession.noActiveStreams()) {
-<a class="jxr_linenumber" name="461" href="#461">461</a>             future.addListener(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySessionHandler.html">ClosingChannelFutureListener</a>(ctx, e));
-<a class="jxr_linenumber" name="462" href="#462">462</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="463" href="#463">463</a>             closeSessionFuture = Channels.future(e.getChannel());
-<a class="jxr_linenumber" name="464" href="#464">464</a>             closeSessionFuture.addListener(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySessionHandler.html">ClosingChannelFutureListener</a>(ctx, e));
-<a class="jxr_linenumber" name="465" href="#465">465</a>         }
-<a class="jxr_linenumber" name="466" href="#466">466</a>     }
-<a class="jxr_linenumber" name="467" href="#467">467</a> 
-<a class="jxr_linenumber" name="468" href="#468">468</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">synchronized</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> sendGoAwayFrame(
-<a class="jxr_linenumber" name="469" href="#469">469</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/Channel.html">Channel</a> channel, SocketAddress remoteAddress) {
-<a class="jxr_linenumber" name="470" href="#470">470</a>         <strong class="jxr_keyword">if</strong> (!sentGoAwayFrame) {
-<a class="jxr_linenumber" name="471" href="#471">471</a>             sentGoAwayFrame = <strong class="jxr_keyword">true</strong>;
-<a class="jxr_linenumber" name="472" href="#472">472</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> future = Channels.future(channel);
-<a class="jxr_linenumber" name="473" href="#473">473</a>             Channels.write(ctx, future, <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/spdy/DefaultSpdyGoAwayFrame.html">DefaultSpdyGoAwayFrame</a>(lastGoodStreamID));
-<a class="jxr_linenumber" name="474" href="#474">474</a>             <strong class="jxr_keyword">return</strong> future;
-<a class="jxr_linenumber" name="475" href="#475">475</a>         }
-<a class="jxr_linenumber" name="476" href="#476">476</a>         <strong class="jxr_keyword">return</strong> Channels.succeededFuture(channel);
-<a class="jxr_linenumber" name="477" href="#477">477</a>     }
-<a class="jxr_linenumber" name="478" href="#478">478</a> 
-<a class="jxr_linenumber" name="479" href="#479">479</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySessionHandler.html">ClosingChannelFutureListener</a> <strong class="jxr_keyword">implements</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelFutureListener.html">ChannelFutureListener</a> {
-<a class="jxr_linenumber" name="480" href="#480">480</a> 
-<a class="jxr_linenumber" name="481" href="#481">481</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx;
-<a class="jxr_linenumber" name="482" href="#482">482</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e;
-<a class="jxr_linenumber" name="483" href="#483">483</a> 
-<a class="jxr_linenumber" name="484" href="#484">484</a>         <a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySessionHandler.html">ClosingChannelFutureListener</a>(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e) {
-<a class="jxr_linenumber" name="485" href="#485">485</a>             <strong class="jxr_keyword">this</strong>.ctx = ctx;
-<a class="jxr_linenumber" name="486" href="#486">486</a>             <strong class="jxr_keyword">this</strong>.e = e;
-<a class="jxr_linenumber" name="487" href="#487">487</a>         }
-<a class="jxr_linenumber" name="488" href="#488">488</a> 
-<a class="jxr_linenumber" name="489" href="#489">489</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> operationComplete(<a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> sentGoAwayFuture) <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="490" href="#490">490</a>             <strong class="jxr_keyword">if</strong> (!(sentGoAwayFuture.getCause() instanceof ClosedChannelException)) {
-<a class="jxr_linenumber" name="491" href="#491">491</a>                 Channels.close(ctx, e.getFuture());
-<a class="jxr_linenumber" name="492" href="#492">492</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="493" href="#493">493</a>                 e.getFuture().setSuccess();
-<a class="jxr_linenumber" name="494" href="#494">494</a>             }
-<a class="jxr_linenumber" name="495" href="#495">495</a>         }
-<a class="jxr_linenumber" name="496" href="#496">496</a>     }
-<a class="jxr_linenumber" name="497" href="#497">497</a> }
+<a class="jxr_linenumber" name="427" href="#427">427</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="428" href="#428">428</a>     }
+<a class="jxr_linenumber" name="429" href="#429">429</a> 
+<a class="jxr_linenumber" name="430" href="#430">430</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> halfCloseStream(<strong class="jxr_keyword">int</strong> streamID, <strong class="jxr_keyword">boolean</strong> remote) {
+<a class="jxr_linenumber" name="431" href="#431">431</a>         <strong class="jxr_keyword">if</strong> (remote) {
+<a class="jxr_linenumber" name="432" href="#432">432</a>             spdySession.closeRemoteSide(streamID);
+<a class="jxr_linenumber" name="433" href="#433">433</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="434" href="#434">434</a>             spdySession.closeLocalSide(streamID);
+<a class="jxr_linenumber" name="435" href="#435">435</a>         }
+<a class="jxr_linenumber" name="436" href="#436">436</a>         <strong class="jxr_keyword">if</strong> ((closeSessionFuture != <strong class="jxr_keyword">null</strong>) &amp;&amp; spdySession.noActiveStreams()) {
+<a class="jxr_linenumber" name="437" href="#437">437</a>             closeSessionFuture.setSuccess();
+<a class="jxr_linenumber" name="438" href="#438">438</a>         }
+<a class="jxr_linenumber" name="439" href="#439">439</a>     }
+<a class="jxr_linenumber" name="440" href="#440">440</a> 
+<a class="jxr_linenumber" name="441" href="#441">441</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> removeStream(<strong class="jxr_keyword">int</strong> streamID) {
+<a class="jxr_linenumber" name="442" href="#442">442</a>         spdySession.removeStream(streamID);
+<a class="jxr_linenumber" name="443" href="#443">443</a>         <strong class="jxr_keyword">if</strong> ((closeSessionFuture != <strong class="jxr_keyword">null</strong>) &amp;&amp; spdySession.noActiveStreams()) {
+<a class="jxr_linenumber" name="444" href="#444">444</a>             closeSessionFuture.setSuccess();
+<a class="jxr_linenumber" name="445" href="#445">445</a>         }
+<a class="jxr_linenumber" name="446" href="#446">446</a>     }
+<a class="jxr_linenumber" name="447" href="#447">447</a> 
+<a class="jxr_linenumber" name="448" href="#448">448</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> sendGoAwayFrame(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e) {
+<a class="jxr_linenumber" name="449" href="#449">449</a>         <em class="jxr_comment">// Avoid NotYetConnectedException</em>
+<a class="jxr_linenumber" name="450" href="#450">450</a>         <strong class="jxr_keyword">if</strong> (!e.getChannel().isConnected()) {
+<a class="jxr_linenumber" name="451" href="#451">451</a>             ctx.sendDownstream(e);
+<a class="jxr_linenumber" name="452" href="#452">452</a>             <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="453" href="#453">453</a>         }
+<a class="jxr_linenumber" name="454" href="#454">454</a> 
+<a class="jxr_linenumber" name="455" href="#455">455</a>         <a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> future = sendGoAwayFrame(ctx, e.getChannel(), <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="456" href="#456">456</a>         <strong class="jxr_keyword">if</strong> (spdySession.noActiveStreams()) {
+<a class="jxr_linenumber" name="457" href="#457">457</a>             future.addListener(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySessionHandler.html">ClosingChannelFutureListener</a>(ctx, e));
+<a class="jxr_linenumber" name="458" href="#458">458</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="459" href="#459">459</a>             closeSessionFuture = Channels.future(e.getChannel());
+<a class="jxr_linenumber" name="460" href="#460">460</a>             closeSessionFuture.addListener(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySessionHandler.html">ClosingChannelFutureListener</a>(ctx, e));
+<a class="jxr_linenumber" name="461" href="#461">461</a>         }
+<a class="jxr_linenumber" name="462" href="#462">462</a>     }
+<a class="jxr_linenumber" name="463" href="#463">463</a> 
+<a class="jxr_linenumber" name="464" href="#464">464</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">synchronized</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> sendGoAwayFrame(
+<a class="jxr_linenumber" name="465" href="#465">465</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/Channel.html">Channel</a> channel, SocketAddress remoteAddress) {
+<a class="jxr_linenumber" name="466" href="#466">466</a>         <strong class="jxr_keyword">if</strong> (!sentGoAwayFrame) {
+<a class="jxr_linenumber" name="467" href="#467">467</a>             sentGoAwayFrame = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="468" href="#468">468</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> future = Channels.future(channel);
+<a class="jxr_linenumber" name="469" href="#469">469</a>             Channels.write(ctx, future, <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/spdy/DefaultSpdyGoAwayFrame.html">DefaultSpdyGoAwayFrame</a>(lastGoodStreamID));
+<a class="jxr_linenumber" name="470" href="#470">470</a>             <strong class="jxr_keyword">return</strong> future;
+<a class="jxr_linenumber" name="471" href="#471">471</a>         }
+<a class="jxr_linenumber" name="472" href="#472">472</a>         <strong class="jxr_keyword">return</strong> Channels.succeededFuture(channel);
+<a class="jxr_linenumber" name="473" href="#473">473</a>     }
+<a class="jxr_linenumber" name="474" href="#474">474</a> 
+<a class="jxr_linenumber" name="475" href="#475">475</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySessionHandler.html">ClosingChannelFutureListener</a> <strong class="jxr_keyword">implements</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelFutureListener.html">ChannelFutureListener</a> {
+<a class="jxr_linenumber" name="476" href="#476">476</a> 
+<a class="jxr_linenumber" name="477" href="#477">477</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx;
+<a class="jxr_linenumber" name="478" href="#478">478</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e;
+<a class="jxr_linenumber" name="479" href="#479">479</a> 
+<a class="jxr_linenumber" name="480" href="#480">480</a>         <a href="../../../../../../org/jboss/netty/handler/codec/spdy/SpdySessionHandler.html">ClosingChannelFutureListener</a>(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e) {
+<a class="jxr_linenumber" name="481" href="#481">481</a>             <strong class="jxr_keyword">this</strong>.ctx = ctx;
+<a class="jxr_linenumber" name="482" href="#482">482</a>             <strong class="jxr_keyword">this</strong>.e = e;
+<a class="jxr_linenumber" name="483" href="#483">483</a>         }
+<a class="jxr_linenumber" name="484" href="#484">484</a> 
+<a class="jxr_linenumber" name="485" href="#485">485</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> operationComplete(<a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> sentGoAwayFuture) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="486" href="#486">486</a>             <strong class="jxr_keyword">if</strong> (!(sentGoAwayFuture.getCause() instanceof ClosedChannelException)) {
+<a class="jxr_linenumber" name="487" href="#487">487</a>                 Channels.close(ctx, e.getFuture());
+<a class="jxr_linenumber" name="488" href="#488">488</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="489" href="#489">489</a>                 e.getFuture().setSuccess();
+<a class="jxr_linenumber" name="490" href="#490">490</a>             }
+<a class="jxr_linenumber" name="491" href="#491">491</a>         }
+<a class="jxr_linenumber" name="492" href="#492">492</a>     }
+<a class="jxr_linenumber" name="493" href="#493">493</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

@@ -48,7 +48,7 @@
 <a class="jxr_linenumber" name="38" href="#38">38</a>  <em class="jxr_javadoccomment">     *            String to put in the frame</em>
 <a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="40" href="#40">40</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../../org/jboss/netty/handler/codec/http/websocketx/TextWebSocketFrame.html">TextWebSocketFrame</a>(String text) {
-<a class="jxr_linenumber" name="41" href="#41">41</a>          <strong class="jxr_keyword">if</strong> (text == <strong class="jxr_keyword">null</strong> || text.isEmpty()) {
+<a class="jxr_linenumber" name="41" href="#41">41</a>          <strong class="jxr_keyword">if</strong> (text == <strong class="jxr_keyword">null</strong> || text.length() == 0) {
 <a class="jxr_linenumber" name="42" href="#42">42</a>              setBinaryData(ChannelBuffers.EMPTY_BUFFER);
 <a class="jxr_linenumber" name="43" href="#43">43</a>          } <strong class="jxr_keyword">else</strong> {
 <a class="jxr_linenumber" name="44" href="#44">44</a>              setBinaryData(ChannelBuffers.copiedBuffer(text, CharsetUtil.UTF_8));
@@ -78,7 +78,7 @@
 <a class="jxr_linenumber" name="68" href="#68">68</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../../org/jboss/netty/handler/codec/http/websocketx/TextWebSocketFrame.html">TextWebSocketFrame</a>(<strong class="jxr_keyword">boolean</strong> finalFragment, <strong class="jxr_keyword">int</strong> rsv, String text) {
 <a class="jxr_linenumber" name="69" href="#69">69</a>          setFinalFragment(finalFragment);
 <a class="jxr_linenumber" name="70" href="#70">70</a>          setRsv(rsv);
-<a class="jxr_linenumber" name="71" href="#71">71</a>          <strong class="jxr_keyword">if</strong> (text == <strong class="jxr_keyword">null</strong> || text.isEmpty()) {
+<a class="jxr_linenumber" name="71" href="#71">71</a>          <strong class="jxr_keyword">if</strong> (text == <strong class="jxr_keyword">null</strong> || text.length() == 0) {
 <a class="jxr_linenumber" name="72" href="#72">72</a>              setBinaryData(ChannelBuffers.EMPTY_BUFFER);
 <a class="jxr_linenumber" name="73" href="#73">73</a>          } <strong class="jxr_keyword">else</strong> {
 <a class="jxr_linenumber" name="74" href="#74">74</a>              setBinaryData(ChannelBuffers.copiedBuffer(text, CharsetUtil.UTF_8));

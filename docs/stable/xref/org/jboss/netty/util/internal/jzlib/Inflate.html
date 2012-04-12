@@ -86,7 +86,7 @@
 <a class="jxr_linenumber" name="76" href="#76">76</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> GZIP_FNAME = 21;
 <a class="jxr_linenumber" name="77" href="#77">77</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> GZIP_FCOMMENT = 22;
 <a class="jxr_linenumber" name="78" href="#78">78</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> GZIP_FHCRC = 23;
-<a class="jxr_linenumber" name="79" href="#79">79</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> GZIP_CRC32= 24;
+<a class="jxr_linenumber" name="79" href="#79">79</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> GZIP_CRC32 = 24;
 <a class="jxr_linenumber" name="80" href="#80">80</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> GZIP_ISIZE = 25;
 <a class="jxr_linenumber" name="81" href="#81">81</a>  
 <a class="jxr_linenumber" name="82" href="#82">82</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> mode; <em class="jxr_comment">// current inflate mode</em>
@@ -315,7 +315,7 @@
 <a class="jxr_linenumber" name="305" href="#305">305</a>                     <strong class="jxr_keyword">break</strong>;
 <a class="jxr_linenumber" name="306" href="#306">306</a>                 } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (z.istate.wrapperType == WrapperType.ZLIB) {
 <a class="jxr_linenumber" name="307" href="#307">307</a>                     z.istate.mode = CHECK4;
-<a class="jxr_linenumber" name="308" href="#308">308</a>                 } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (z.istate.wrapperType == WrapperType.GZIP){
+<a class="jxr_linenumber" name="308" href="#308">308</a>                 } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (z.istate.wrapperType == WrapperType.GZIP) {
 <a class="jxr_linenumber" name="309" href="#309">309</a>                     gzipCRC32 = 0;
 <a class="jxr_linenumber" name="310" href="#310">310</a>                     gzipISize = 0;
 <a class="jxr_linenumber" name="311" href="#311">311</a>                     gzipBytesToRead = 4;

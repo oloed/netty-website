@@ -7,6 +7,7 @@ org.jboss.netty.channel.socket
 org.jboss.netty.channel.socket.http
 org.jboss.netty.channel.socket.nio
 org.jboss.netty.channel.socket.oio
+org.jboss.netty.handler.codec
 org.jboss.netty.handler.codec.base64
 org.jboss.netty.handler.codec.compression
 org.jboss.netty.handler.codec.embedder

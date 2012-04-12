@@ -93,7 +93,7 @@
 <a class="jxr_linenumber" name="83" href="#83">83</a>  
 <a class="jxr_linenumber" name="84" href="#84">84</a>          <em class="jxr_comment">// Prepare the HTTP request.</em>
 <a class="jxr_linenumber" name="85" href="#85">85</a>          <a href="../../../../../../org/jboss/netty/handler/codec/http/HttpRequest.html">HttpRequest</a> request = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/http/DefaultHttpRequest.html">DefaultHttpRequest</a>(
-<a class="jxr_linenumber" name="86" href="#86">86</a>                  HttpVersion.HTTP_1_1, HttpMethod.GET, uri.toASCIIString());
+<a class="jxr_linenumber" name="86" href="#86">86</a>                  HttpVersion.HTTP_1_1, HttpMethod.GET, uri.getRawPath());
 <a class="jxr_linenumber" name="87" href="#87">87</a>          request.setHeader(HttpHeaders.Names.HOST, host);
 <a class="jxr_linenumber" name="88" href="#88">88</a>          request.setHeader(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE);
 <a class="jxr_linenumber" name="89" href="#89">89</a>          request.setHeader(HttpHeaders.Names.ACCEPT_ENCODING, HttpHeaders.Values.GZIP);

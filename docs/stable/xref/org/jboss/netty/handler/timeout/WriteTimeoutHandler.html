@@ -163,7 +163,7 @@
 <a class="jxr_linenumber" name="153" href="#153">153</a>     }
 <a class="jxr_linenumber" name="154" href="#154">154</a> 
 <a class="jxr_linenumber" name="155" href="#155">155</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> writeTimedOut(<a href="../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx) <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="156" href="#156">156</a>         Channels.fireExceptionCaught(ctx, EXCEPTION);
+<a class="jxr_linenumber" name="156" href="#156">156</a>        Channels.fireExceptionCaughtLater(ctx, EXCEPTION);
 <a class="jxr_linenumber" name="157" href="#157">157</a>     }
 <a class="jxr_linenumber" name="158" href="#158">158</a> 
 <a class="jxr_linenumber" name="159" href="#159">159</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/handler/timeout/WriteTimeoutHandler.html">WriteTimeoutTask</a> <strong class="jxr_keyword">implements</strong> <a href="../../../../../org/jboss/netty/util/TimerTask.html">TimerTask</a> {

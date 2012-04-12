@@ -122,7 +122,7 @@
 <a class="jxr_linenumber" name="112" href="#112">112</a> <em class="jxr_javadoccomment">     *            text to store</em>
 <a class="jxr_linenumber" name="113" href="#113">113</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="114" href="#114">114</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setText(String text) {
-<a class="jxr_linenumber" name="115" href="#115">115</a>         <strong class="jxr_keyword">if</strong> (text == <strong class="jxr_keyword">null</strong> || text.isEmpty()) {
+<a class="jxr_linenumber" name="115" href="#115">115</a>         <strong class="jxr_keyword">if</strong> (text == <strong class="jxr_keyword">null</strong> || text.length() == 0) {
 <a class="jxr_linenumber" name="116" href="#116">116</a>             setBinaryData(ChannelBuffers.EMPTY_BUFFER);
 <a class="jxr_linenumber" name="117" href="#117">117</a>         } <strong class="jxr_keyword">else</strong> {
 <a class="jxr_linenumber" name="118" href="#118">118</a>             setBinaryData(ChannelBuffers.copiedBuffer(text, CharsetUtil.UTF_8));

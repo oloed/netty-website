@@ -526,40 +526,43 @@
 <a class="jxr_linenumber" name="516" href="#516">516</a>             <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="517" href="#517">517</a>                 task.run(<strong class="jxr_keyword">this</strong>);
 <a class="jxr_linenumber" name="518" href="#518">518</a>             } <strong class="jxr_keyword">catch</strong> (Throwable t) {
-<a class="jxr_linenumber" name="519" href="#519">519</a>                 logger.warn(
-<a class="jxr_linenumber" name="520" href="#520">520</a>                         <span class="jxr_string">"An exception was thrown by "</span> +
-<a class="jxr_linenumber" name="521" href="#521">521</a>                         TimerTask.<strong class="jxr_keyword">class</strong>.getSimpleName() + <span class="jxr_string">"."</span>, t);
-<a class="jxr_linenumber" name="522" href="#522">522</a>             }
-<a class="jxr_linenumber" name="523" href="#523">523</a>         }
+<a class="jxr_linenumber" name="519" href="#519">519</a>                 <strong class="jxr_keyword">if</strong> (logger.isWarnEnabled()) {
+<a class="jxr_linenumber" name="520" href="#520">520</a>                     logger.warn(
+<a class="jxr_linenumber" name="521" href="#521">521</a>                             <span class="jxr_string">"An exception was thrown by "</span> +
+<a class="jxr_linenumber" name="522" href="#522">522</a>                             TimerTask.<strong class="jxr_keyword">class</strong>.getSimpleName() + <span class="jxr_string">"."</span>, t);
+<a class="jxr_linenumber" name="523" href="#523">523</a>                 }
 <a class="jxr_linenumber" name="524" href="#524">524</a> 
-<a class="jxr_linenumber" name="525" href="#525">525</a>         @Override
-<a class="jxr_linenumber" name="526" href="#526">526</a>         <strong class="jxr_keyword">public</strong> String toString() {
-<a class="jxr_linenumber" name="527" href="#527">527</a>             <strong class="jxr_keyword">long</strong> currentTime = System.currentTimeMillis();
-<a class="jxr_linenumber" name="528" href="#528">528</a>             <strong class="jxr_keyword">long</strong> remaining = deadline - currentTime;
-<a class="jxr_linenumber" name="529" href="#529">529</a> 
-<a class="jxr_linenumber" name="530" href="#530">530</a>             StringBuilder buf = <strong class="jxr_keyword">new</strong> StringBuilder(192);
-<a class="jxr_linenumber" name="531" href="#531">531</a>             buf.append(getClass().getSimpleName());
-<a class="jxr_linenumber" name="532" href="#532">532</a>             buf.append('(');
-<a class="jxr_linenumber" name="533" href="#533">533</a> 
-<a class="jxr_linenumber" name="534" href="#534">534</a>             buf.append(<span class="jxr_string">"deadline: "</span>);
-<a class="jxr_linenumber" name="535" href="#535">535</a>             <strong class="jxr_keyword">if</strong> (remaining &gt; 0) {
-<a class="jxr_linenumber" name="536" href="#536">536</a>                 buf.append(remaining);
-<a class="jxr_linenumber" name="537" href="#537">537</a>                 buf.append(<span class="jxr_string">" ms later, "</span>);
-<a class="jxr_linenumber" name="538" href="#538">538</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (remaining &lt; 0) {
-<a class="jxr_linenumber" name="539" href="#539">539</a>                 buf.append(-remaining);
-<a class="jxr_linenumber" name="540" href="#540">540</a>                 buf.append(<span class="jxr_string">" ms ago, "</span>);
-<a class="jxr_linenumber" name="541" href="#541">541</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="542" href="#542">542</a>                 buf.append(<span class="jxr_string">"now, "</span>);
-<a class="jxr_linenumber" name="543" href="#543">543</a>             }
-<a class="jxr_linenumber" name="544" href="#544">544</a> 
-<a class="jxr_linenumber" name="545" href="#545">545</a>             <strong class="jxr_keyword">if</strong> (isCancelled()) {
-<a class="jxr_linenumber" name="546" href="#546">546</a>                 buf.append(<span class="jxr_string">", cancelled"</span>);
-<a class="jxr_linenumber" name="547" href="#547">547</a>             }
-<a class="jxr_linenumber" name="548" href="#548">548</a> 
-<a class="jxr_linenumber" name="549" href="#549">549</a>             <strong class="jxr_keyword">return</strong> buf.append(')').toString();
-<a class="jxr_linenumber" name="550" href="#550">550</a>         }
-<a class="jxr_linenumber" name="551" href="#551">551</a>     }
-<a class="jxr_linenumber" name="552" href="#552">552</a> }
+<a class="jxr_linenumber" name="525" href="#525">525</a>             }
+<a class="jxr_linenumber" name="526" href="#526">526</a>         }
+<a class="jxr_linenumber" name="527" href="#527">527</a> 
+<a class="jxr_linenumber" name="528" href="#528">528</a>         @Override
+<a class="jxr_linenumber" name="529" href="#529">529</a>         <strong class="jxr_keyword">public</strong> String toString() {
+<a class="jxr_linenumber" name="530" href="#530">530</a>             <strong class="jxr_keyword">long</strong> currentTime = System.currentTimeMillis();
+<a class="jxr_linenumber" name="531" href="#531">531</a>             <strong class="jxr_keyword">long</strong> remaining = deadline - currentTime;
+<a class="jxr_linenumber" name="532" href="#532">532</a> 
+<a class="jxr_linenumber" name="533" href="#533">533</a>             StringBuilder buf = <strong class="jxr_keyword">new</strong> StringBuilder(192);
+<a class="jxr_linenumber" name="534" href="#534">534</a>             buf.append(getClass().getSimpleName());
+<a class="jxr_linenumber" name="535" href="#535">535</a>             buf.append('(');
+<a class="jxr_linenumber" name="536" href="#536">536</a> 
+<a class="jxr_linenumber" name="537" href="#537">537</a>             buf.append(<span class="jxr_string">"deadline: "</span>);
+<a class="jxr_linenumber" name="538" href="#538">538</a>             <strong class="jxr_keyword">if</strong> (remaining &gt; 0) {
+<a class="jxr_linenumber" name="539" href="#539">539</a>                 buf.append(remaining);
+<a class="jxr_linenumber" name="540" href="#540">540</a>                 buf.append(<span class="jxr_string">" ms later, "</span>);
+<a class="jxr_linenumber" name="541" href="#541">541</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (remaining &lt; 0) {
+<a class="jxr_linenumber" name="542" href="#542">542</a>                 buf.append(-remaining);
+<a class="jxr_linenumber" name="543" href="#543">543</a>                 buf.append(<span class="jxr_string">" ms ago, "</span>);
+<a class="jxr_linenumber" name="544" href="#544">544</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="545" href="#545">545</a>                 buf.append(<span class="jxr_string">"now, "</span>);
+<a class="jxr_linenumber" name="546" href="#546">546</a>             }
+<a class="jxr_linenumber" name="547" href="#547">547</a> 
+<a class="jxr_linenumber" name="548" href="#548">548</a>             <strong class="jxr_keyword">if</strong> (isCancelled()) {
+<a class="jxr_linenumber" name="549" href="#549">549</a>                 buf.append(<span class="jxr_string">", cancelled"</span>);
+<a class="jxr_linenumber" name="550" href="#550">550</a>             }
+<a class="jxr_linenumber" name="551" href="#551">551</a> 
+<a class="jxr_linenumber" name="552" href="#552">552</a>             <strong class="jxr_keyword">return</strong> buf.append(')').toString();
+<a class="jxr_linenumber" name="553" href="#553">553</a>         }
+<a class="jxr_linenumber" name="554" href="#554">554</a>     }
+<a class="jxr_linenumber" name="555" href="#555">555</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

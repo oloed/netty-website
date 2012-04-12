@@ -147,7 +147,7 @@
 <a class="jxr_linenumber" name="137" href="#137">137</a>     <em class="jxr_comment">// TODO Make OMATPE focus on the case where Channel is the key.</em>
 <a class="jxr_linenumber" name="138" href="#138">138</a>     <em class="jxr_comment">//      Add a new less-efficient TPE that allows custom key.</em>
 <a class="jxr_linenumber" name="139" href="#139">139</a> 
-<a class="jxr_linenumber" name="140" href="#140">140</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> ConcurrentMap&lt;Object, Executor&gt; childExecutors = newChildExecutorMap();
+<a class="jxr_linenumber" name="140" href="#140">140</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">final</strong> ConcurrentMap&lt;Object, Executor&gt; childExecutors = newChildExecutorMap();
 <a class="jxr_linenumber" name="141" href="#141">141</a> 
 <a class="jxr_linenumber" name="142" href="#142">142</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="143" href="#143">143</a> <em class="jxr_javadoccomment">     * Creates a new instance.</em>
@@ -253,7 +253,7 @@
 <a class="jxr_linenumber" name="243" href="#243">243</a>         }
 <a class="jxr_linenumber" name="244" href="#244">244</a>     }
 <a class="jxr_linenumber" name="245" href="#245">245</a> 
-<a class="jxr_linenumber" name="246" href="#246">246</a>     <strong class="jxr_keyword">private</strong> Executor getChildExecutor(<a href="../../../../../org/jboss/netty/channel/ChannelEvent.html">ChannelEvent</a> e) {
+<a class="jxr_linenumber" name="246" href="#246">246</a>     <strong class="jxr_keyword">protected</strong> Executor getChildExecutor(<a href="../../../../../org/jboss/netty/channel/ChannelEvent.html">ChannelEvent</a> e) {
 <a class="jxr_linenumber" name="247" href="#247">247</a>         Object key = getChildExecutorKey(e);
 <a class="jxr_linenumber" name="248" href="#248">248</a>         Executor executor = childExecutors.get(key);
 <a class="jxr_linenumber" name="249" href="#249">249</a>         <strong class="jxr_keyword">if</strong> (executor == <strong class="jxr_keyword">null</strong>) {
@@ -289,7 +289,7 @@
 <a class="jxr_linenumber" name="279" href="#279">279</a>         afterExecute(r, t);
 <a class="jxr_linenumber" name="280" href="#280">280</a>     }
 <a class="jxr_linenumber" name="281" href="#281">281</a> 
-<a class="jxr_linenumber" name="282" href="#282">282</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/handler/execution/OrderedMemoryAwareThreadPoolExecutor.html">ChildExecutor</a> <strong class="jxr_keyword">implements</strong> Executor, Runnable {
+<a class="jxr_linenumber" name="282" href="#282">282</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/handler/execution/OrderedMemoryAwareThreadPoolExecutor.html">ChildExecutor</a> <strong class="jxr_keyword">implements</strong> Executor, Runnable {
 <a class="jxr_linenumber" name="283" href="#283">283</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Queue&lt;Runnable&gt; tasks = QueueFactory.createQueue(Runnable.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="284" href="#284">284</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> AtomicBoolean isRunning = <strong class="jxr_keyword">new</strong> AtomicBoolean();
 <a class="jxr_linenumber" name="285" href="#285">285</a>         
@@ -304,39 +304,47 @@
 <a class="jxr_linenumber" name="294" href="#294">294</a>         }
 <a class="jxr_linenumber" name="295" href="#295">295</a> 
 <a class="jxr_linenumber" name="296" href="#296">296</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> run() {
-<a class="jxr_linenumber" name="297" href="#297">297</a>             <em class="jxr_comment">// check if its already running by using CAS. If so just return here. So in the worst case the thread</em>
-<a class="jxr_linenumber" name="298" href="#298">298</a>             <em class="jxr_comment">// is executed and do nothing</em>
-<a class="jxr_linenumber" name="299" href="#299">299</a>             <strong class="jxr_keyword">if</strong> (isRunning.compareAndSet(false, <strong class="jxr_keyword">true</strong>)) {
-<a class="jxr_linenumber" name="300" href="#300">300</a>                 <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="301" href="#301">301</a>                     Thread thread = Thread.currentThread();
-<a class="jxr_linenumber" name="302" href="#302">302</a>                     <strong class="jxr_keyword">for</strong> (;;) {
-<a class="jxr_linenumber" name="303" href="#303">303</a>                         <strong class="jxr_keyword">final</strong> Runnable task = tasks.poll();
-<a class="jxr_linenumber" name="304" href="#304">304</a>                         <em class="jxr_comment">// if the task is null we should exit the loop</em>
-<a class="jxr_linenumber" name="305" href="#305">305</a>                         <strong class="jxr_keyword">if</strong> (task == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="306" href="#306">306</a>                             <strong class="jxr_keyword">break</strong>;
-<a class="jxr_linenumber" name="307" href="#307">307</a>                         }
-<a class="jxr_linenumber" name="308" href="#308">308</a>                         
-<a class="jxr_linenumber" name="309" href="#309">309</a>                         <strong class="jxr_keyword">boolean</strong> ran = false;
-<a class="jxr_linenumber" name="310" href="#310">310</a>                         beforeExecute(thread, task);
-<a class="jxr_linenumber" name="311" href="#311">311</a>                         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="312" href="#312">312</a>                             task.run();
-<a class="jxr_linenumber" name="313" href="#313">313</a>                             ran = <strong class="jxr_keyword">true</strong>;
-<a class="jxr_linenumber" name="314" href="#314">314</a>                             onAfterExecute(task, <strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="315" href="#315">315</a>                         } <strong class="jxr_keyword">catch</strong> (RuntimeException e) {
-<a class="jxr_linenumber" name="316" href="#316">316</a>                             <strong class="jxr_keyword">if</strong> (!ran) {
-<a class="jxr_linenumber" name="317" href="#317">317</a>                                 onAfterExecute(task, e);
-<a class="jxr_linenumber" name="318" href="#318">318</a>                             }
-<a class="jxr_linenumber" name="319" href="#319">319</a>                             <strong class="jxr_keyword">throw</strong> e;
-<a class="jxr_linenumber" name="320" href="#320">320</a>                         }
-<a class="jxr_linenumber" name="321" href="#321">321</a>                     }
-<a class="jxr_linenumber" name="322" href="#322">322</a>                 } <strong class="jxr_keyword">finally</strong> {
-<a class="jxr_linenumber" name="323" href="#323">323</a>                     <em class="jxr_comment">// set it back to not running</em>
-<a class="jxr_linenumber" name="324" href="#324">324</a>                     isRunning.set(false);
-<a class="jxr_linenumber" name="325" href="#325">325</a>                 }
-<a class="jxr_linenumber" name="326" href="#326">326</a>             }
-<a class="jxr_linenumber" name="327" href="#327">327</a>         }
-<a class="jxr_linenumber" name="328" href="#328">328</a>     }
-<a class="jxr_linenumber" name="329" href="#329">329</a> }
+<a class="jxr_linenumber" name="297" href="#297">297</a>             <strong class="jxr_keyword">boolean</strong> acquired = false;
+<a class="jxr_linenumber" name="298" href="#298">298</a> 
+<a class="jxr_linenumber" name="299" href="#299">299</a>             <em class="jxr_comment">// check if its already running by using CAS. If so just return here. So in the worst case the thread</em>
+<a class="jxr_linenumber" name="300" href="#300">300</a>             <em class="jxr_comment">// is executed and do nothing</em>
+<a class="jxr_linenumber" name="301" href="#301">301</a>             <strong class="jxr_keyword">if</strong> (isRunning.compareAndSet(false, <strong class="jxr_keyword">true</strong>)) {
+<a class="jxr_linenumber" name="302" href="#302">302</a>                 acquired = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="303" href="#303">303</a>                 <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="304" href="#304">304</a>                     Thread thread = Thread.currentThread();
+<a class="jxr_linenumber" name="305" href="#305">305</a>                     <strong class="jxr_keyword">for</strong> (;;) {
+<a class="jxr_linenumber" name="306" href="#306">306</a>                         <strong class="jxr_keyword">final</strong> Runnable task = tasks.poll();
+<a class="jxr_linenumber" name="307" href="#307">307</a>                         <em class="jxr_comment">// if the task is null we should exit the loop</em>
+<a class="jxr_linenumber" name="308" href="#308">308</a>                         <strong class="jxr_keyword">if</strong> (task == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="309" href="#309">309</a>                             <strong class="jxr_keyword">break</strong>;
+<a class="jxr_linenumber" name="310" href="#310">310</a>                         }
+<a class="jxr_linenumber" name="311" href="#311">311</a>                         
+<a class="jxr_linenumber" name="312" href="#312">312</a>                         <strong class="jxr_keyword">boolean</strong> ran = false;
+<a class="jxr_linenumber" name="313" href="#313">313</a>                         beforeExecute(thread, task);
+<a class="jxr_linenumber" name="314" href="#314">314</a>                         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="315" href="#315">315</a>                             task.run();
+<a class="jxr_linenumber" name="316" href="#316">316</a>                             ran = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="317" href="#317">317</a>                             onAfterExecute(task, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="318" href="#318">318</a>                         } <strong class="jxr_keyword">catch</strong> (RuntimeException e) {
+<a class="jxr_linenumber" name="319" href="#319">319</a>                             <strong class="jxr_keyword">if</strong> (!ran) {
+<a class="jxr_linenumber" name="320" href="#320">320</a>                                 onAfterExecute(task, e);
+<a class="jxr_linenumber" name="321" href="#321">321</a>                             }
+<a class="jxr_linenumber" name="322" href="#322">322</a>                             <strong class="jxr_keyword">throw</strong> e;
+<a class="jxr_linenumber" name="323" href="#323">323</a>                         }
+<a class="jxr_linenumber" name="324" href="#324">324</a>                     }
+<a class="jxr_linenumber" name="325" href="#325">325</a>                 } <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="326" href="#326">326</a>                     <em class="jxr_comment">// set it back to not running</em>
+<a class="jxr_linenumber" name="327" href="#327">327</a>                     isRunning.set(false);
+<a class="jxr_linenumber" name="328" href="#328">328</a>                 }
+<a class="jxr_linenumber" name="329" href="#329">329</a>                 
+<a class="jxr_linenumber" name="330" href="#330">330</a>                 <strong class="jxr_keyword">if</strong> (acquired &amp;&amp; !isRunning.get() &amp;&amp; tasks.peek() != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="331" href="#331">331</a>                     doUnorderedExecute(<strong class="jxr_keyword">this</strong>);
+<a class="jxr_linenumber" name="332" href="#332">332</a>                 }
+<a class="jxr_linenumber" name="333" href="#333">333</a> 
+<a class="jxr_linenumber" name="334" href="#334">334</a>             }
+<a class="jxr_linenumber" name="335" href="#335">335</a>         }
+<a class="jxr_linenumber" name="336" href="#336">336</a>     }
+<a class="jxr_linenumber" name="337" href="#337">337</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
