@@ -5,8 +5,8 @@ google_analytics: UA-95307-5
 
 disqus: netty0
 
-stableReleaseVersion: 3.4.0.Final
-stableReleaseDate: 12-Apr-2012
+stableReleaseVersion: 3.4.1.Final
+stableReleaseDate: 20-Apr-2012
 
 #unstableReleaseVersion: 3.4.0.Beta1
 #unstableReleaseDate: 04-Apr-2012
