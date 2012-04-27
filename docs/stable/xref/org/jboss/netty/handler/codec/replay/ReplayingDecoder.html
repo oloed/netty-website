@@ -484,152 +484,182 @@
 <a class="jxr_linenumber" name="474" href="#474">474</a>                 replayable = ReplayingDecoderBuffer.EMPTY_BUFFER;
 <a class="jxr_linenumber" name="475" href="#475">475</a>             }
 <a class="jxr_linenumber" name="476" href="#476">476</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="477" href="#477">477</a>             <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> cumulation = <strong class="jxr_keyword">this</strong>.cumulation;
-<a class="jxr_linenumber" name="478" href="#478">478</a>             assert cumulation.readable();
-<a class="jxr_linenumber" name="479" href="#479">479</a>             <strong class="jxr_keyword">if</strong> (cumulation.writableBytes() &lt; input.readableBytes()) {
-<a class="jxr_linenumber" name="480" href="#480">480</a>                 cumulation.discardReadBytes();
-<a class="jxr_linenumber" name="481" href="#481">481</a>             }
-<a class="jxr_linenumber" name="482" href="#482">482</a>             cumulation.writeBytes(input);
-<a class="jxr_linenumber" name="483" href="#483">483</a>             callDecode(ctx, e.getChannel(), cumulation, replayable, e.getRemoteAddress());
-<a class="jxr_linenumber" name="484" href="#484">484</a>             <strong class="jxr_keyword">if</strong> (!cumulation.readable()) {
-<a class="jxr_linenumber" name="485" href="#485">485</a>                 <strong class="jxr_keyword">this</strong>.cumulation = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="486" href="#486">486</a>                 replayable = ReplayingDecoderBuffer.EMPTY_BUFFER;
-<a class="jxr_linenumber" name="487" href="#487">487</a>             }
-<a class="jxr_linenumber" name="488" href="#488">488</a>         }
-<a class="jxr_linenumber" name="489" href="#489">489</a>     }
-<a class="jxr_linenumber" name="490" href="#490">490</a> 
-<a class="jxr_linenumber" name="491" href="#491">491</a>     @Override
-<a class="jxr_linenumber" name="492" href="#492">492</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> channelDisconnected(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx,
-<a class="jxr_linenumber" name="493" href="#493">493</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e) <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="494" href="#494">494</a>         cleanup(ctx, e);
-<a class="jxr_linenumber" name="495" href="#495">495</a>     }
-<a class="jxr_linenumber" name="496" href="#496">496</a> 
-<a class="jxr_linenumber" name="497" href="#497">497</a>     @Override
-<a class="jxr_linenumber" name="498" href="#498">498</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> channelClosed(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx,
-<a class="jxr_linenumber" name="499" href="#499">499</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e) <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="500" href="#500">500</a>         cleanup(ctx, e);
-<a class="jxr_linenumber" name="501" href="#501">501</a>     }
-<a class="jxr_linenumber" name="502" href="#502">502</a> 
-<a class="jxr_linenumber" name="503" href="#503">503</a>     @Override
-<a class="jxr_linenumber" name="504" href="#504">504</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> exceptionCaught(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/ExceptionEvent.html">ExceptionEvent</a> e)
-<a class="jxr_linenumber" name="505" href="#505">505</a>             <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="506" href="#506">506</a>         ctx.sendUpstream(e);
-<a class="jxr_linenumber" name="507" href="#507">507</a>     }
+<a class="jxr_linenumber" name="477" href="#477">477</a>             assert cumulation.readable();
+<a class="jxr_linenumber" name="478" href="#478">478</a>             <strong class="jxr_keyword">boolean</strong> fit = false;
+<a class="jxr_linenumber" name="479" href="#479">479</a>             
+<a class="jxr_linenumber" name="480" href="#480">480</a>             <strong class="jxr_keyword">int</strong> readable = input.readableBytes();
+<a class="jxr_linenumber" name="481" href="#481">481</a>             <strong class="jxr_keyword">int</strong> writable = cumulation.writableBytes();
+<a class="jxr_linenumber" name="482" href="#482">482</a>             <strong class="jxr_keyword">int</strong> w = writable - readable;
+<a class="jxr_linenumber" name="483" href="#483">483</a>             <strong class="jxr_keyword">if</strong> (w &lt; 0) {
+<a class="jxr_linenumber" name="484" href="#484">484</a>                 <strong class="jxr_keyword">int</strong> readerIndex = cumulation.readerIndex();
+<a class="jxr_linenumber" name="485" href="#485">485</a>                 <strong class="jxr_keyword">if</strong> (w + readerIndex &gt;= 0) {
+<a class="jxr_linenumber" name="486" href="#486">486</a>                     <em class="jxr_comment">// the input will fit if we discard all read bytes, so do it</em>
+<a class="jxr_linenumber" name="487" href="#487">487</a>                     cumulation.discardReadBytes();
+<a class="jxr_linenumber" name="488" href="#488">488</a>                     fit = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="489" href="#489">489</a>                 }
+<a class="jxr_linenumber" name="490" href="#490">490</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="491" href="#491">491</a> 
+<a class="jxr_linenumber" name="492" href="#492">492</a>                 <em class="jxr_comment">// ok the input fit into the cumulation buffer</em>
+<a class="jxr_linenumber" name="493" href="#493">493</a>                 fit = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="494" href="#494">494</a>             }
+<a class="jxr_linenumber" name="495" href="#495">495</a>             
+<a class="jxr_linenumber" name="496" href="#496">496</a>             <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buf;
+<a class="jxr_linenumber" name="497" href="#497">497</a>             <strong class="jxr_keyword">if</strong> (fit) {
+<a class="jxr_linenumber" name="498" href="#498">498</a>                 <em class="jxr_comment">// the input fit in the cumulation buffer so copy it over</em>
+<a class="jxr_linenumber" name="499" href="#499">499</a>                 buf = <strong class="jxr_keyword">this</strong>.cumulation;
+<a class="jxr_linenumber" name="500" href="#500">500</a>                 buf.writeBytes(input);
+<a class="jxr_linenumber" name="501" href="#501">501</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="502" href="#502">502</a>                 <em class="jxr_comment">// wrap the cumulation and input </em>
+<a class="jxr_linenumber" name="503" href="#503">503</a>                 buf = ChannelBuffers.wrappedBuffer(cumulation, input);
+<a class="jxr_linenumber" name="504" href="#504">504</a>                 <strong class="jxr_keyword">this</strong>.cumulation = buf;
+<a class="jxr_linenumber" name="505" href="#505">505</a>                 replayable = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/replay/ReplayingDecoderBuffer.html">ReplayingDecoderBuffer</a>(cumulation);
+<a class="jxr_linenumber" name="506" href="#506">506</a>             }
+<a class="jxr_linenumber" name="507" href="#507">507</a> 
 <a class="jxr_linenumber" name="508" href="#508">508</a> 
-<a class="jxr_linenumber" name="509" href="#509">509</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> callDecode(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> context, <a href="../../../../../../org/jboss/netty/channel/Channel.html">Channel</a> channel, <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> input, <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> replayableInput, SocketAddress remoteAddress) <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="510" href="#510">510</a>         <strong class="jxr_keyword">while</strong> (input.readable()) {
-<a class="jxr_linenumber" name="511" href="#511">511</a>             <strong class="jxr_keyword">int</strong> oldReaderIndex = checkpoint = input.readerIndex();
-<a class="jxr_linenumber" name="512" href="#512">512</a>             Object result = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="513" href="#513">513</a>             T oldState = state;
-<a class="jxr_linenumber" name="514" href="#514">514</a>             <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="515" href="#515">515</a>                 result = decode(context, channel, replayableInput, state);
-<a class="jxr_linenumber" name="516" href="#516">516</a>                 <strong class="jxr_keyword">if</strong> (result == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="517" href="#517">517</a>                     <strong class="jxr_keyword">if</strong> (oldReaderIndex == input.readerIndex() &amp;&amp; oldState == state) {
-<a class="jxr_linenumber" name="518" href="#518">518</a>                         <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalStateException(
-<a class="jxr_linenumber" name="519" href="#519">519</a>                                 <span class="jxr_string">"null cannot be returned if no data is consumed and state didn't change."</span>);
-<a class="jxr_linenumber" name="520" href="#520">520</a>                     } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="521" href="#521">521</a>                         <em class="jxr_comment">// Previous data has been discarded or caused state transition.</em>
-<a class="jxr_linenumber" name="522" href="#522">522</a>                         <em class="jxr_comment">// Probably it is reading on.</em>
-<a class="jxr_linenumber" name="523" href="#523">523</a>                         <strong class="jxr_keyword">continue</strong>;
-<a class="jxr_linenumber" name="524" href="#524">524</a>                     }
-<a class="jxr_linenumber" name="525" href="#525">525</a>                 }
-<a class="jxr_linenumber" name="526" href="#526">526</a>             } <strong class="jxr_keyword">catch</strong> (ReplayError replay) {
-<a class="jxr_linenumber" name="527" href="#527">527</a>                 <em class="jxr_comment">// Return to the checkpoint (or oldPosition) and retry.</em>
-<a class="jxr_linenumber" name="528" href="#528">528</a>                 <strong class="jxr_keyword">int</strong> checkpoint = <strong class="jxr_keyword">this</strong>.checkpoint;
-<a class="jxr_linenumber" name="529" href="#529">529</a>                 <strong class="jxr_keyword">if</strong> (checkpoint &gt;= 0) {
-<a class="jxr_linenumber" name="530" href="#530">530</a>                     input.readerIndex(checkpoint);
-<a class="jxr_linenumber" name="531" href="#531">531</a>                 } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="532" href="#532">532</a>                     <em class="jxr_comment">// Called by cleanup() - no need to maintain the readerIndex</em>
-<a class="jxr_linenumber" name="533" href="#533">533</a>                     <em class="jxr_comment">// anymore because the buffer has been released already.</em>
-<a class="jxr_linenumber" name="534" href="#534">534</a>                 }
-<a class="jxr_linenumber" name="535" href="#535">535</a>             }
-<a class="jxr_linenumber" name="536" href="#536">536</a> 
-<a class="jxr_linenumber" name="537" href="#537">537</a>             <strong class="jxr_keyword">if</strong> (result == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="538" href="#538">538</a>                 <em class="jxr_comment">// Seems like more data is required.</em>
-<a class="jxr_linenumber" name="539" href="#539">539</a>                 <em class="jxr_comment">// Let us wait for the next notification.</em>
-<a class="jxr_linenumber" name="540" href="#540">540</a>                 <strong class="jxr_keyword">break</strong>;
-<a class="jxr_linenumber" name="541" href="#541">541</a>             }
-<a class="jxr_linenumber" name="542" href="#542">542</a> 
-<a class="jxr_linenumber" name="543" href="#543">543</a>             <strong class="jxr_keyword">if</strong> (oldReaderIndex == input.readerIndex() &amp;&amp; oldState == state) {
-<a class="jxr_linenumber" name="544" href="#544">544</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalStateException(
-<a class="jxr_linenumber" name="545" href="#545">545</a>                         <span class="jxr_string">"decode() method must consume at least one byte "</span> +
-<a class="jxr_linenumber" name="546" href="#546">546</a>                         <span class="jxr_string">"if it returned a decoded message (caused by: "</span> +
-<a class="jxr_linenumber" name="547" href="#547">547</a>                         getClass() + <span class="jxr_string">")"</span>);
-<a class="jxr_linenumber" name="548" href="#548">548</a>             }
-<a class="jxr_linenumber" name="549" href="#549">549</a> 
-<a class="jxr_linenumber" name="550" href="#550">550</a>             <em class="jxr_comment">// A successful decode</em>
-<a class="jxr_linenumber" name="551" href="#551">551</a>             unfoldAndFireMessageReceived(context, result, remoteAddress);
-<a class="jxr_linenumber" name="552" href="#552">552</a>         }
-<a class="jxr_linenumber" name="553" href="#553">553</a>     }
-<a class="jxr_linenumber" name="554" href="#554">554</a> 
-<a class="jxr_linenumber" name="555" href="#555">555</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> unfoldAndFireMessageReceived(
-<a class="jxr_linenumber" name="556" href="#556">556</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> context, Object result, SocketAddress remoteAddress) {
-<a class="jxr_linenumber" name="557" href="#557">557</a>         <strong class="jxr_keyword">if</strong> (unfold) {
-<a class="jxr_linenumber" name="558" href="#558">558</a>             <strong class="jxr_keyword">if</strong> (result instanceof Object[]) {
-<a class="jxr_linenumber" name="559" href="#559">559</a>                 <strong class="jxr_keyword">for</strong> (Object r: (Object[]) result) {
-<a class="jxr_linenumber" name="560" href="#560">560</a>                     Channels.fireMessageReceived(context, r, remoteAddress);
-<a class="jxr_linenumber" name="561" href="#561">561</a>                 }
-<a class="jxr_linenumber" name="562" href="#562">562</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (result instanceof Iterable&lt;?&gt;) {
-<a class="jxr_linenumber" name="563" href="#563">563</a>                 <strong class="jxr_keyword">for</strong> (Object r: (Iterable&lt;?&gt;) result) {
-<a class="jxr_linenumber" name="564" href="#564">564</a>                     Channels.fireMessageReceived(context, r, remoteAddress);
-<a class="jxr_linenumber" name="565" href="#565">565</a>                 }
-<a class="jxr_linenumber" name="566" href="#566">566</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="567" href="#567">567</a>                 Channels.fireMessageReceived(context, result, remoteAddress);
+<a class="jxr_linenumber" name="509" href="#509">509</a>             callDecode(ctx, e.getChannel(), buf, replayable, e.getRemoteAddress());
+<a class="jxr_linenumber" name="510" href="#510">510</a>             <strong class="jxr_keyword">if</strong> (!buf.readable()) {
+<a class="jxr_linenumber" name="511" href="#511">511</a>                 <em class="jxr_comment">// nothing readable left so reset the state</em>
+<a class="jxr_linenumber" name="512" href="#512">512</a>                 <strong class="jxr_keyword">this</strong>.cumulation = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="513" href="#513">513</a>                 replayable = ReplayingDecoderBuffer.EMPTY_BUFFER;
+<a class="jxr_linenumber" name="514" href="#514">514</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="515" href="#515">515</a>                 <em class="jxr_comment">// create a new buffer and copy the readable buffer into it</em>
+<a class="jxr_linenumber" name="516" href="#516">516</a>                 <strong class="jxr_keyword">this</strong>.cumulation = newCumulationBuffer(ctx, buf.readableBytes());
+<a class="jxr_linenumber" name="517" href="#517">517</a>                 <strong class="jxr_keyword">this</strong>.cumulation.writeBytes(buf);
+<a class="jxr_linenumber" name="518" href="#518">518</a>                 replayable = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/replay/ReplayingDecoderBuffer.html">ReplayingDecoderBuffer</a>(<strong class="jxr_keyword">this</strong>.cumulation);
+<a class="jxr_linenumber" name="519" href="#519">519</a> 
+<a class="jxr_linenumber" name="520" href="#520">520</a>             }
+<a class="jxr_linenumber" name="521" href="#521">521</a>         }
+<a class="jxr_linenumber" name="522" href="#522">522</a>     }
+<a class="jxr_linenumber" name="523" href="#523">523</a> 
+<a class="jxr_linenumber" name="524" href="#524">524</a>     @Override
+<a class="jxr_linenumber" name="525" href="#525">525</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> channelDisconnected(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx,
+<a class="jxr_linenumber" name="526" href="#526">526</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="527" href="#527">527</a>         cleanup(ctx, e);
+<a class="jxr_linenumber" name="528" href="#528">528</a>     }
+<a class="jxr_linenumber" name="529" href="#529">529</a> 
+<a class="jxr_linenumber" name="530" href="#530">530</a>     @Override
+<a class="jxr_linenumber" name="531" href="#531">531</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> channelClosed(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx,
+<a class="jxr_linenumber" name="532" href="#532">532</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="533" href="#533">533</a>         cleanup(ctx, e);
+<a class="jxr_linenumber" name="534" href="#534">534</a>     }
+<a class="jxr_linenumber" name="535" href="#535">535</a> 
+<a class="jxr_linenumber" name="536" href="#536">536</a>     @Override
+<a class="jxr_linenumber" name="537" href="#537">537</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> exceptionCaught(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/ExceptionEvent.html">ExceptionEvent</a> e)
+<a class="jxr_linenumber" name="538" href="#538">538</a>             <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="539" href="#539">539</a>         ctx.sendUpstream(e);
+<a class="jxr_linenumber" name="540" href="#540">540</a>     }
+<a class="jxr_linenumber" name="541" href="#541">541</a> 
+<a class="jxr_linenumber" name="542" href="#542">542</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> callDecode(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> context, <a href="../../../../../../org/jboss/netty/channel/Channel.html">Channel</a> channel, <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> input, <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> replayableInput, SocketAddress remoteAddress) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="543" href="#543">543</a>         <strong class="jxr_keyword">while</strong> (input.readable()) {
+<a class="jxr_linenumber" name="544" href="#544">544</a>             <strong class="jxr_keyword">int</strong> oldReaderIndex = checkpoint = input.readerIndex();
+<a class="jxr_linenumber" name="545" href="#545">545</a>             Object result = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="546" href="#546">546</a>             T oldState = state;
+<a class="jxr_linenumber" name="547" href="#547">547</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="548" href="#548">548</a>                 result = decode(context, channel, replayableInput, state);
+<a class="jxr_linenumber" name="549" href="#549">549</a>                 <strong class="jxr_keyword">if</strong> (result == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="550" href="#550">550</a>                     <strong class="jxr_keyword">if</strong> (oldReaderIndex == input.readerIndex() &amp;&amp; oldState == state) {
+<a class="jxr_linenumber" name="551" href="#551">551</a>                         <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalStateException(
+<a class="jxr_linenumber" name="552" href="#552">552</a>                                 <span class="jxr_string">"null cannot be returned if no data is consumed and state didn't change."</span>);
+<a class="jxr_linenumber" name="553" href="#553">553</a>                     } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="554" href="#554">554</a>                         <em class="jxr_comment">// Previous data has been discarded or caused state transition.</em>
+<a class="jxr_linenumber" name="555" href="#555">555</a>                         <em class="jxr_comment">// Probably it is reading on.</em>
+<a class="jxr_linenumber" name="556" href="#556">556</a>                         <strong class="jxr_keyword">continue</strong>;
+<a class="jxr_linenumber" name="557" href="#557">557</a>                     }
+<a class="jxr_linenumber" name="558" href="#558">558</a>                 }
+<a class="jxr_linenumber" name="559" href="#559">559</a>             } <strong class="jxr_keyword">catch</strong> (ReplayError replay) {
+<a class="jxr_linenumber" name="560" href="#560">560</a>                 <em class="jxr_comment">// Return to the checkpoint (or oldPosition) and retry.</em>
+<a class="jxr_linenumber" name="561" href="#561">561</a>                 <strong class="jxr_keyword">int</strong> checkpoint = <strong class="jxr_keyword">this</strong>.checkpoint;
+<a class="jxr_linenumber" name="562" href="#562">562</a>                 <strong class="jxr_keyword">if</strong> (checkpoint &gt;= 0) {
+<a class="jxr_linenumber" name="563" href="#563">563</a>                     input.readerIndex(checkpoint);
+<a class="jxr_linenumber" name="564" href="#564">564</a>                 } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="565" href="#565">565</a>                     <em class="jxr_comment">// Called by cleanup() - no need to maintain the readerIndex</em>
+<a class="jxr_linenumber" name="566" href="#566">566</a>                     <em class="jxr_comment">// anymore because the buffer has been released already.</em>
+<a class="jxr_linenumber" name="567" href="#567">567</a>                 }
 <a class="jxr_linenumber" name="568" href="#568">568</a>             }
-<a class="jxr_linenumber" name="569" href="#569">569</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="570" href="#570">570</a>             Channels.fireMessageReceived(context, result, remoteAddress);
-<a class="jxr_linenumber" name="571" href="#571">571</a>         }
-<a class="jxr_linenumber" name="572" href="#572">572</a>     }
-<a class="jxr_linenumber" name="573" href="#573">573</a> 
-<a class="jxr_linenumber" name="574" href="#574">574</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> cleanup(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e)
-<a class="jxr_linenumber" name="575" href="#575">575</a>             <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="576" href="#576">576</a>         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="577" href="#577">577</a>             <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> cumulation = <strong class="jxr_keyword">this</strong>.cumulation;
-<a class="jxr_linenumber" name="578" href="#578">578</a>             <strong class="jxr_keyword">if</strong> (!needsCleanup) {
-<a class="jxr_linenumber" name="579" href="#579">579</a>                 <strong class="jxr_keyword">return</strong>;
-<a class="jxr_linenumber" name="580" href="#580">580</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="581" href="#581">581</a>                 needsCleanup = false;
-<a class="jxr_linenumber" name="582" href="#582">582</a>             }
-<a class="jxr_linenumber" name="583" href="#583">583</a> 
-<a class="jxr_linenumber" name="584" href="#584">584</a>             <strong class="jxr_keyword">this</strong>.cumulation = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="585" href="#585">585</a>             replayable.terminate();
-<a class="jxr_linenumber" name="586" href="#586">586</a> 
-<a class="jxr_linenumber" name="587" href="#587">587</a>             <strong class="jxr_keyword">if</strong> (cumulation != <strong class="jxr_keyword">null</strong> &amp;&amp; cumulation.readable()) {
-<a class="jxr_linenumber" name="588" href="#588">588</a>                 <em class="jxr_comment">// Make sure all data was read before notifying a closed channel.</em>
-<a class="jxr_linenumber" name="589" href="#589">589</a>                 callDecode(ctx, e.getChannel(), cumulation, replayable, <strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="590" href="#590">590</a>             }
-<a class="jxr_linenumber" name="591" href="#591">591</a> 
-<a class="jxr_linenumber" name="592" href="#592">592</a>             <em class="jxr_comment">// Call decodeLast() finally.  Please note that decodeLast() is</em>
-<a class="jxr_linenumber" name="593" href="#593">593</a>             <em class="jxr_comment">// called even if there's nothing more to read from the buffer to</em>
-<a class="jxr_linenumber" name="594" href="#594">594</a>             <em class="jxr_comment">// notify a user that the connection was closed explicitly.</em>
-<a class="jxr_linenumber" name="595" href="#595">595</a>             Object partiallyDecoded = decodeLast(ctx, e.getChannel(), replayable, state);
-<a class="jxr_linenumber" name="596" href="#596">596</a>             <strong class="jxr_keyword">if</strong> (partiallyDecoded != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="597" href="#597">597</a>                 unfoldAndFireMessageReceived(ctx, partiallyDecoded, <strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="598" href="#598">598</a>             }
-<a class="jxr_linenumber" name="599" href="#599">599</a>         } <strong class="jxr_keyword">catch</strong> (ReplayError replay) {
-<a class="jxr_linenumber" name="600" href="#600">600</a>             <em class="jxr_comment">// Ignore</em>
-<a class="jxr_linenumber" name="601" href="#601">601</a>         } <strong class="jxr_keyword">finally</strong> {
-<a class="jxr_linenumber" name="602" href="#602">602</a>             replayable = ReplayingDecoderBuffer.EMPTY_BUFFER;
-<a class="jxr_linenumber" name="603" href="#603">603</a>             ctx.sendUpstream(e);
+<a class="jxr_linenumber" name="569" href="#569">569</a> 
+<a class="jxr_linenumber" name="570" href="#570">570</a>             <strong class="jxr_keyword">if</strong> (result == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="571" href="#571">571</a>                 <em class="jxr_comment">// Seems like more data is required.</em>
+<a class="jxr_linenumber" name="572" href="#572">572</a>                 <em class="jxr_comment">// Let us wait for the next notification.</em>
+<a class="jxr_linenumber" name="573" href="#573">573</a>                 <strong class="jxr_keyword">break</strong>;
+<a class="jxr_linenumber" name="574" href="#574">574</a>             }
+<a class="jxr_linenumber" name="575" href="#575">575</a> 
+<a class="jxr_linenumber" name="576" href="#576">576</a>             <strong class="jxr_keyword">if</strong> (oldReaderIndex == input.readerIndex() &amp;&amp; oldState == state) {
+<a class="jxr_linenumber" name="577" href="#577">577</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalStateException(
+<a class="jxr_linenumber" name="578" href="#578">578</a>                         <span class="jxr_string">"decode() method must consume at least one byte "</span> +
+<a class="jxr_linenumber" name="579" href="#579">579</a>                         <span class="jxr_string">"if it returned a decoded message (caused by: "</span> +
+<a class="jxr_linenumber" name="580" href="#580">580</a>                         getClass() + <span class="jxr_string">")"</span>);
+<a class="jxr_linenumber" name="581" href="#581">581</a>             }
+<a class="jxr_linenumber" name="582" href="#582">582</a> 
+<a class="jxr_linenumber" name="583" href="#583">583</a>             <em class="jxr_comment">// A successful decode</em>
+<a class="jxr_linenumber" name="584" href="#584">584</a>             unfoldAndFireMessageReceived(context, result, remoteAddress);
+<a class="jxr_linenumber" name="585" href="#585">585</a>         }
+<a class="jxr_linenumber" name="586" href="#586">586</a>     }
+<a class="jxr_linenumber" name="587" href="#587">587</a> 
+<a class="jxr_linenumber" name="588" href="#588">588</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> unfoldAndFireMessageReceived(
+<a class="jxr_linenumber" name="589" href="#589">589</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> context, Object result, SocketAddress remoteAddress) {
+<a class="jxr_linenumber" name="590" href="#590">590</a>         <strong class="jxr_keyword">if</strong> (unfold) {
+<a class="jxr_linenumber" name="591" href="#591">591</a>             <strong class="jxr_keyword">if</strong> (result instanceof Object[]) {
+<a class="jxr_linenumber" name="592" href="#592">592</a>                 <strong class="jxr_keyword">for</strong> (Object r: (Object[]) result) {
+<a class="jxr_linenumber" name="593" href="#593">593</a>                     Channels.fireMessageReceived(context, r, remoteAddress);
+<a class="jxr_linenumber" name="594" href="#594">594</a>                 }
+<a class="jxr_linenumber" name="595" href="#595">595</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (result instanceof Iterable&lt;?&gt;) {
+<a class="jxr_linenumber" name="596" href="#596">596</a>                 <strong class="jxr_keyword">for</strong> (Object r: (Iterable&lt;?&gt;) result) {
+<a class="jxr_linenumber" name="597" href="#597">597</a>                     Channels.fireMessageReceived(context, r, remoteAddress);
+<a class="jxr_linenumber" name="598" href="#598">598</a>                 }
+<a class="jxr_linenumber" name="599" href="#599">599</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="600" href="#600">600</a>                 Channels.fireMessageReceived(context, result, remoteAddress);
+<a class="jxr_linenumber" name="601" href="#601">601</a>             }
+<a class="jxr_linenumber" name="602" href="#602">602</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="603" href="#603">603</a>             Channels.fireMessageReceived(context, result, remoteAddress);
 <a class="jxr_linenumber" name="604" href="#604">604</a>         }
 <a class="jxr_linenumber" name="605" href="#605">605</a>     }
 <a class="jxr_linenumber" name="606" href="#606">606</a> 
-<a class="jxr_linenumber" name="607" href="#607">607</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="608" href="#608">608</a> <em class="jxr_javadoccomment">     * Create a new {@link ChannelBuffer} which is used for the cumulation.</em>
-<a class="jxr_linenumber" name="609" href="#609">609</a> <em class="jxr_javadoccomment">     * Be aware that this MUST be a dynamic buffer. Sub-classes may override</em>
-<a class="jxr_linenumber" name="610" href="#610">610</a> <em class="jxr_javadoccomment">     * this to provide a dynamic {@link ChannelBuffer} which has some</em>
-<a class="jxr_linenumber" name="611" href="#611">611</a> <em class="jxr_javadoccomment">     * pre-allocated size that better fit their need.</em>
-<a class="jxr_linenumber" name="612" href="#612">612</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="613" href="#613">613</a> <em class="jxr_javadoccomment">     * @param ctx {@link ChannelHandlerContext} for this handler</em>
-<a class="jxr_linenumber" name="614" href="#614">614</a> <em class="jxr_javadoccomment">     * @return buffer the {@link ChannelBuffer} which is used for cumulation</em>
-<a class="jxr_linenumber" name="615" href="#615">615</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="616" href="#616">616</a>     <strong class="jxr_keyword">protected</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> newCumulationBuffer(
-<a class="jxr_linenumber" name="617" href="#617">617</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <strong class="jxr_keyword">int</strong> minimumCapacity) {
-<a class="jxr_linenumber" name="618" href="#618">618</a>         <a href="../../../../../../org/jboss/netty/buffer/ChannelBufferFactory.html">ChannelBufferFactory</a> factory = ctx.getChannel().getConfig().getBufferFactory();
-<a class="jxr_linenumber" name="619" href="#619">619</a>         <strong class="jxr_keyword">return</strong> ChannelBuffers.dynamicBuffer(
-<a class="jxr_linenumber" name="620" href="#620">620</a>                 factory.getDefaultOrder(), Math.max(minimumCapacity, 256), factory);
-<a class="jxr_linenumber" name="621" href="#621">621</a>     }
-<a class="jxr_linenumber" name="622" href="#622">622</a> }
+<a class="jxr_linenumber" name="607" href="#607">607</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> cleanup(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e)
+<a class="jxr_linenumber" name="608" href="#608">608</a>             <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="609" href="#609">609</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="610" href="#610">610</a>             <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> cumulation = <strong class="jxr_keyword">this</strong>.cumulation;
+<a class="jxr_linenumber" name="611" href="#611">611</a>             <strong class="jxr_keyword">if</strong> (!needsCleanup) {
+<a class="jxr_linenumber" name="612" href="#612">612</a>                 <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="613" href="#613">613</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="614" href="#614">614</a>                 needsCleanup = false;
+<a class="jxr_linenumber" name="615" href="#615">615</a>             }
+<a class="jxr_linenumber" name="616" href="#616">616</a> 
+<a class="jxr_linenumber" name="617" href="#617">617</a>             <strong class="jxr_keyword">this</strong>.cumulation = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="618" href="#618">618</a>             replayable.terminate();
+<a class="jxr_linenumber" name="619" href="#619">619</a> 
+<a class="jxr_linenumber" name="620" href="#620">620</a>             <strong class="jxr_keyword">if</strong> (cumulation != <strong class="jxr_keyword">null</strong> &amp;&amp; cumulation.readable()) {
+<a class="jxr_linenumber" name="621" href="#621">621</a>                 <em class="jxr_comment">// Make sure all data was read before notifying a closed channel.</em>
+<a class="jxr_linenumber" name="622" href="#622">622</a>                 callDecode(ctx, e.getChannel(), cumulation, replayable, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="623" href="#623">623</a>             }
+<a class="jxr_linenumber" name="624" href="#624">624</a> 
+<a class="jxr_linenumber" name="625" href="#625">625</a>             <em class="jxr_comment">// Call decodeLast() finally.  Please note that decodeLast() is</em>
+<a class="jxr_linenumber" name="626" href="#626">626</a>             <em class="jxr_comment">// called even if there's nothing more to read from the buffer to</em>
+<a class="jxr_linenumber" name="627" href="#627">627</a>             <em class="jxr_comment">// notify a user that the connection was closed explicitly.</em>
+<a class="jxr_linenumber" name="628" href="#628">628</a>             Object partiallyDecoded = decodeLast(ctx, e.getChannel(), replayable, state);
+<a class="jxr_linenumber" name="629" href="#629">629</a>             <strong class="jxr_keyword">if</strong> (partiallyDecoded != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="630" href="#630">630</a>                 unfoldAndFireMessageReceived(ctx, partiallyDecoded, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="631" href="#631">631</a>             }
+<a class="jxr_linenumber" name="632" href="#632">632</a>         } <strong class="jxr_keyword">catch</strong> (ReplayError replay) {
+<a class="jxr_linenumber" name="633" href="#633">633</a>             <em class="jxr_comment">// Ignore</em>
+<a class="jxr_linenumber" name="634" href="#634">634</a>         } <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="635" href="#635">635</a>             replayable = ReplayingDecoderBuffer.EMPTY_BUFFER;
+<a class="jxr_linenumber" name="636" href="#636">636</a>             ctx.sendUpstream(e);
+<a class="jxr_linenumber" name="637" href="#637">637</a>         }
+<a class="jxr_linenumber" name="638" href="#638">638</a>     }
+<a class="jxr_linenumber" name="639" href="#639">639</a> 
+<a class="jxr_linenumber" name="640" href="#640">640</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="641" href="#641">641</a> <em class="jxr_javadoccomment">     * Create a new {@link ChannelBuffer} which is used for the cumulation.</em>
+<a class="jxr_linenumber" name="642" href="#642">642</a> <em class="jxr_javadoccomment">     * Sub-classes may override this.</em>
+<a class="jxr_linenumber" name="643" href="#643">643</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="644" href="#644">644</a> <em class="jxr_javadoccomment">     * @param ctx {@link ChannelHandlerContext} for this handler</em>
+<a class="jxr_linenumber" name="645" href="#645">645</a> <em class="jxr_javadoccomment">     * @return buffer the {@link ChannelBuffer} which is used for cumulation</em>
+<a class="jxr_linenumber" name="646" href="#646">646</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="647" href="#647">647</a>     <strong class="jxr_keyword">protected</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> newCumulationBuffer(
+<a class="jxr_linenumber" name="648" href="#648">648</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <strong class="jxr_keyword">int</strong> minimumCapacity) {
+<a class="jxr_linenumber" name="649" href="#649">649</a>         <a href="../../../../../../org/jboss/netty/buffer/ChannelBufferFactory.html">ChannelBufferFactory</a> factory = ctx.getChannel().getConfig().getBufferFactory();
+<a class="jxr_linenumber" name="650" href="#650">650</a>         <strong class="jxr_keyword">return</strong> factory.getBuffer(Math.max(minimumCapacity, 256));
+<a class="jxr_linenumber" name="651" href="#651">651</a>     }
+<a class="jxr_linenumber" name="652" href="#652">652</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
