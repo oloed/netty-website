@@ -154,7 +154,7 @@
 <a class="jxr_linenumber" name="144" href="#144">144</a>             Executor bossExecutor =
 <a class="jxr_linenumber" name="145" href="#145">145</a>                 ((<a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketChannelFactory.html">NioServerSocketChannelFactory</a>) channel.getFactory()).bossExecutor;
 <a class="jxr_linenumber" name="146" href="#146">146</a>             DeadLockProofWorker.start(bossExecutor, 
-<a class="jxr_linenumber" name="147" href="#147">147</a>                     <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/util/ThreadRenamingRunnable.html">ThreadRenamingRunnable</a>(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioClientSocketPipelineSink.html">Boss</a>(channel), 
+<a class="jxr_linenumber" name="147" href="#147">147</a>                     <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/util/ThreadRenamingRunnable.html">ThreadRenamingRunnable</a>(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketPipelineSink.html">Boss</a>(channel), 
 <a class="jxr_linenumber" name="148" href="#148">148</a>                             <span class="jxr_string">"New I/O server boss #"</span> + id + <span class="jxr_string">" ("</span> + channel + ')'));
 <a class="jxr_linenumber" name="149" href="#149">149</a>             bossStarted = <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="150" href="#150">150</a>         } <strong class="jxr_keyword">catch</strong> (Throwable t) {
@@ -205,11 +205,11 @@
 <a class="jxr_linenumber" name="195" href="#195">195</a>         <strong class="jxr_keyword">return</strong> workerPool.nextWorker();
 <a class="jxr_linenumber" name="196" href="#196">196</a>     }
 <a class="jxr_linenumber" name="197" href="#197">197</a> 
-<a class="jxr_linenumber" name="198" href="#198">198</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioClientSocketPipelineSink.html">Boss</a> <strong class="jxr_keyword">implements</strong> Runnable {
+<a class="jxr_linenumber" name="198" href="#198">198</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketPipelineSink.html">Boss</a> <strong class="jxr_keyword">implements</strong> Runnable {
 <a class="jxr_linenumber" name="199" href="#199">199</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Selector selector;
 <a class="jxr_linenumber" name="200" href="#200">200</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketChannel.html">NioServerSocketChannel</a> channel;
 <a class="jxr_linenumber" name="201" href="#201">201</a> 
-<a class="jxr_linenumber" name="202" href="#202">202</a>         <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioClientSocketPipelineSink.html">Boss</a>(<a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketChannel.html">NioServerSocketChannel</a> channel) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="202" href="#202">202</a>         <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketPipelineSink.html">Boss</a>(<a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketChannel.html">NioServerSocketChannel</a> channel) <strong class="jxr_keyword">throws</strong> IOException {
 <a class="jxr_linenumber" name="203" href="#203">203</a>             <strong class="jxr_keyword">this</strong>.channel = channel;
 <a class="jxr_linenumber" name="204" href="#204">204</a> 
 <a class="jxr_linenumber" name="205" href="#205">205</a>             selector = Selector.open();
