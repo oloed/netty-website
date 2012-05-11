@@ -223,8 +223,8 @@
                   know more about them.  All class names in this document are linked to the
                   online API reference for your convenience.  Also, please don't hesitate to
                   <a href="http://netty.io/community/">contact the Netty project community</a> and
-                  let us know if there's any incorrect information, errors in grammar and
-                  typo, and if you have a good idea to improve the documentation.
+                  let us know if there's any incorrect information, errors in grammar or syntax,
+                  or if you have a good idea about how to improve the documentation.
                   
                </p>
             </section>
@@ -500,11 +500,11 @@
                               <code class="classname">ByteBuffer</code>, but it is easier to use and more
                               flexible.  For example, Netty allows you to create a composite
                               <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> which combines multiple <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a>s reducing
-                              the number of unnecessary memory copy.
+                              the number of unnecessary memory copies.
                               
                            </p>
                            <p>
-                              Although it resembles to NIO <code class="classname">ByteBuffer</code> a lot,
+                              Although it closely resembles NIO <code class="classname">ByteBuffer</code>,
                               it is highly recommended to refer to the API reference.  Learning how
                               to use <a href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html"><code class="interfacename">ChannelBuffer</code></a> correctly is a critical step in using Netty
                               without difficulty.  
@@ -516,7 +516,7 @@
                </div>
                <p>
                   If you run the <strong class="command">telnet</strong> command again, you will see the
-                  server prints what has received.
+                  server prints the contents of the message that it has received.
                   
                </p>
                <p>
