@@ -55,28 +55,30 @@
 <a class="jxr_linenumber" name="45" href="#45">45</a>      <strong class="jxr_keyword">void</strong> setLast(<strong class="jxr_keyword">boolean</strong> last);
 <a class="jxr_linenumber" name="46" href="#46">46</a>  
 <a class="jxr_linenumber" name="47" href="#47">47</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="48" href="#48">48</a>  <em class="jxr_javadoccomment">     * Returns {@code true} if the data in this frame has been compressed.</em>
+<a class="jxr_linenumber" name="48" href="#48">48</a>  <em class="jxr_javadoccomment">     * @deprecated Removed from SPDY specification.</em>
 <a class="jxr_linenumber" name="49" href="#49">49</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="50" href="#50">50</a>      <strong class="jxr_keyword">boolean</strong> isCompressed();
-<a class="jxr_linenumber" name="51" href="#51">51</a>  
-<a class="jxr_linenumber" name="52" href="#52">52</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="53" href="#53">53</a>  <em class="jxr_javadoccomment">     * Sets if the data in this frame has been compressed.</em>
-<a class="jxr_linenumber" name="54" href="#54">54</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="55" href="#55">55</a>      <strong class="jxr_keyword">void</strong> setCompressed(<strong class="jxr_keyword">boolean</strong> compressed);
-<a class="jxr_linenumber" name="56" href="#56">56</a>  
-<a class="jxr_linenumber" name="57" href="#57">57</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="58" href="#58">58</a>  <em class="jxr_javadoccomment">     * Returns the data payload of this frame.  If there is no data payload</em>
-<a class="jxr_linenumber" name="59" href="#59">59</a>  <em class="jxr_javadoccomment">     * {@link ChannelBuffers#EMPTY_BUFFER} is returned.</em>
-<a class="jxr_linenumber" name="60" href="#60">60</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="61" href="#61">61</a>      <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> getData();
-<a class="jxr_linenumber" name="62" href="#62">62</a>  
-<a class="jxr_linenumber" name="63" href="#63">63</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="64" href="#64">64</a>  <em class="jxr_javadoccomment">     * Sets the data payload of this frame.  If {@code null} is specified,</em>
-<a class="jxr_linenumber" name="65" href="#65">65</a>  <em class="jxr_javadoccomment">     * the data payload will be set to {@link ChannelBuffers#EMPTY_BUFFER}.</em>
-<a class="jxr_linenumber" name="66" href="#66">66</a>  <em class="jxr_javadoccomment">     * The data payload cannot exceed 16777215 bytes.</em>
-<a class="jxr_linenumber" name="67" href="#67">67</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="68" href="#68">68</a>      <strong class="jxr_keyword">void</strong> setData(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> data);
-<a class="jxr_linenumber" name="69" href="#69">69</a>  }
+<a class="jxr_linenumber" name="50" href="#50">50</a>      @Deprecated
+<a class="jxr_linenumber" name="51" href="#51">51</a>      <strong class="jxr_keyword">boolean</strong> isCompressed();
+<a class="jxr_linenumber" name="52" href="#52">52</a>  
+<a class="jxr_linenumber" name="53" href="#53">53</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="54" href="#54">54</a>  <em class="jxr_javadoccomment">     * @deprecated Removed from SPDY specification.</em>
+<a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="56" href="#56">56</a>      @Deprecated
+<a class="jxr_linenumber" name="57" href="#57">57</a>      <strong class="jxr_keyword">void</strong> setCompressed(<strong class="jxr_keyword">boolean</strong> compressed);
+<a class="jxr_linenumber" name="58" href="#58">58</a>  
+<a class="jxr_linenumber" name="59" href="#59">59</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="60" href="#60">60</a>  <em class="jxr_javadoccomment">     * Returns the data payload of this frame.  If there is no data payload</em>
+<a class="jxr_linenumber" name="61" href="#61">61</a>  <em class="jxr_javadoccomment">     * {@link ChannelBuffers#EMPTY_BUFFER} is returned.</em>
+<a class="jxr_linenumber" name="62" href="#62">62</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="63" href="#63">63</a>      <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> getData();
+<a class="jxr_linenumber" name="64" href="#64">64</a>  
+<a class="jxr_linenumber" name="65" href="#65">65</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="66" href="#66">66</a>  <em class="jxr_javadoccomment">     * Sets the data payload of this frame.  If {@code null} is specified,</em>
+<a class="jxr_linenumber" name="67" href="#67">67</a>  <em class="jxr_javadoccomment">     * the data payload will be set to {@link ChannelBuffers#EMPTY_BUFFER}.</em>
+<a class="jxr_linenumber" name="68" href="#68">68</a>  <em class="jxr_javadoccomment">     * The data payload cannot exceed 16777215 bytes.</em>
+<a class="jxr_linenumber" name="69" href="#69">69</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="70" href="#70">70</a>      <strong class="jxr_keyword">void</strong> setData(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> data);
+<a class="jxr_linenumber" name="71" href="#71">71</a>  }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

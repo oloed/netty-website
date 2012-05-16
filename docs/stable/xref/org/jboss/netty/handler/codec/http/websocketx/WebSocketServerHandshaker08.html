@@ -166,42 +166,48 @@
 <a class="jxr_linenumber" name="156" href="#156">156</a>         res.addHeader(Names.UPGRADE, WEBSOCKET.toLowerCase());
 <a class="jxr_linenumber" name="157" href="#157">157</a>         res.addHeader(Names.CONNECTION, Names.UPGRADE);
 <a class="jxr_linenumber" name="158" href="#158">158</a>         res.addHeader(Names.SEC_WEBSOCKET_ACCEPT, accept);
-<a class="jxr_linenumber" name="159" href="#159">159</a>         String protocol = req.getHeader(Names.SEC_WEBSOCKET_PROTOCOL);
-<a class="jxr_linenumber" name="160" href="#160">160</a>         <strong class="jxr_keyword">if</strong> (protocol != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="161" href="#161">161</a>             res.addHeader(Names.SEC_WEBSOCKET_PROTOCOL, selectSubprotocol(protocol));
-<a class="jxr_linenumber" name="162" href="#162">162</a>         }
-<a class="jxr_linenumber" name="163" href="#163">163</a> 
-<a class="jxr_linenumber" name="164" href="#164">164</a>         <a href="../../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> future = channel.write(res);
-<a class="jxr_linenumber" name="165" href="#165">165</a> 
-<a class="jxr_linenumber" name="166" href="#166">166</a>         <em class="jxr_comment">// Upgrade the connection and send the handshake response.</em>
-<a class="jxr_linenumber" name="167" href="#167">167</a>         <a href="../../../../../../../org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a> p = channel.getPipeline();
-<a class="jxr_linenumber" name="168" href="#168">168</a>         <strong class="jxr_keyword">if</strong> (p.get(HttpChunkAggregator.<strong class="jxr_keyword">class</strong>) != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="169" href="#169">169</a>             p.remove(HttpChunkAggregator.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="170" href="#170">170</a>         }
+<a class="jxr_linenumber" name="159" href="#159">159</a>         String subprotocols = req.getHeader(Names.SEC_WEBSOCKET_PROTOCOL);
+<a class="jxr_linenumber" name="160" href="#160">160</a>         <strong class="jxr_keyword">if</strong> (subprotocols != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="161" href="#161">161</a>             String selectedSubprotocol = selectSubprotocol(subprotocols);
+<a class="jxr_linenumber" name="162" href="#162">162</a>             <strong class="jxr_keyword">if</strong> (selectedSubprotocol == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="163" href="#163">163</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/jboss/netty/handler/codec/http/websocketx/WebSocketHandshakeException.html">WebSocketHandshakeException</a>(<span class="jxr_string">"Requested subprotocol(s) not supported: "</span> + subprotocols);
+<a class="jxr_linenumber" name="164" href="#164">164</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="165" href="#165">165</a>                 res.addHeader(Names.SEC_WEBSOCKET_PROTOCOL, selectedSubprotocol);
+<a class="jxr_linenumber" name="166" href="#166">166</a>                 <strong class="jxr_keyword">this</strong>.setSelectedSubprotocol(selectedSubprotocol);
+<a class="jxr_linenumber" name="167" href="#167">167</a>             }
+<a class="jxr_linenumber" name="168" href="#168">168</a>         }
+<a class="jxr_linenumber" name="169" href="#169">169</a> 
+<a class="jxr_linenumber" name="170" href="#170">170</a>         <a href="../../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> future = channel.write(res);
 <a class="jxr_linenumber" name="171" href="#171">171</a> 
-<a class="jxr_linenumber" name="172" href="#172">172</a>         p.replace(HttpRequestDecoder.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"wsdecoder"</span>, 
-<a class="jxr_linenumber" name="173" href="#173">173</a>                 <strong class="jxr_keyword">new</strong> WebSocket08FrameDecoder(<strong class="jxr_keyword">true</strong>, allowExtensions, <strong class="jxr_keyword">this</strong>.getMaxFramePayloadLength()));
-<a class="jxr_linenumber" name="174" href="#174">174</a>         p.replace(HttpResponseEncoder.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"wsencoder"</span>, <strong class="jxr_keyword">new</strong> WebSocket08FrameEncoder(false));
-<a class="jxr_linenumber" name="175" href="#175">175</a> 
-<a class="jxr_linenumber" name="176" href="#176">176</a>         <strong class="jxr_keyword">return</strong> future;
-<a class="jxr_linenumber" name="177" href="#177">177</a>     }
-<a class="jxr_linenumber" name="178" href="#178">178</a> 
-<a class="jxr_linenumber" name="179" href="#179">179</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="180" href="#180">180</a> <em class="jxr_javadoccomment">     * Echo back the closing frame and close the connection</em>
-<a class="jxr_linenumber" name="181" href="#181">181</a> <em class="jxr_javadoccomment">     * </em>
-<a class="jxr_linenumber" name="182" href="#182">182</a> <em class="jxr_javadoccomment">     * @param channel</em>
-<a class="jxr_linenumber" name="183" href="#183">183</a> <em class="jxr_javadoccomment">     *            Channel</em>
-<a class="jxr_linenumber" name="184" href="#184">184</a> <em class="jxr_javadoccomment">     * @param frame</em>
-<a class="jxr_linenumber" name="185" href="#185">185</a> <em class="jxr_javadoccomment">     *            Web Socket frame that was received</em>
-<a class="jxr_linenumber" name="186" href="#186">186</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="187" href="#187">187</a>     @Override
-<a class="jxr_linenumber" name="188" href="#188">188</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> close(<a href="../../../../../../../org/jboss/netty/channel/Channel.html">Channel</a> channel, <a href="../../../../../../../org/jboss/netty/handler/codec/http/websocketx/CloseWebSocketFrame.html">CloseWebSocketFrame</a> frame) {
-<a class="jxr_linenumber" name="189" href="#189">189</a>         <a href="../../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> f = channel.write(frame);
-<a class="jxr_linenumber" name="190" href="#190">190</a>         f.addListener(ChannelFutureListener.CLOSE);
-<a class="jxr_linenumber" name="191" href="#191">191</a>         <strong class="jxr_keyword">return</strong> f;
-<a class="jxr_linenumber" name="192" href="#192">192</a>     }
-<a class="jxr_linenumber" name="193" href="#193">193</a> 
-<a class="jxr_linenumber" name="194" href="#194">194</a> }
+<a class="jxr_linenumber" name="172" href="#172">172</a>         <em class="jxr_comment">// Upgrade the connection and send the handshake response.</em>
+<a class="jxr_linenumber" name="173" href="#173">173</a>         <a href="../../../../../../../org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a> p = channel.getPipeline();
+<a class="jxr_linenumber" name="174" href="#174">174</a>         <strong class="jxr_keyword">if</strong> (p.get(HttpChunkAggregator.<strong class="jxr_keyword">class</strong>) != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="175" href="#175">175</a>             p.remove(HttpChunkAggregator.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="176" href="#176">176</a>         }
+<a class="jxr_linenumber" name="177" href="#177">177</a> 
+<a class="jxr_linenumber" name="178" href="#178">178</a>         p.replace(HttpRequestDecoder.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"wsdecoder"</span>, 
+<a class="jxr_linenumber" name="179" href="#179">179</a>                 <strong class="jxr_keyword">new</strong> WebSocket08FrameDecoder(<strong class="jxr_keyword">true</strong>, allowExtensions, <strong class="jxr_keyword">this</strong>.getMaxFramePayloadLength()));
+<a class="jxr_linenumber" name="180" href="#180">180</a>         p.replace(HttpResponseEncoder.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"wsencoder"</span>, <strong class="jxr_keyword">new</strong> WebSocket08FrameEncoder(false));
+<a class="jxr_linenumber" name="181" href="#181">181</a> 
+<a class="jxr_linenumber" name="182" href="#182">182</a>         <strong class="jxr_keyword">return</strong> future;
+<a class="jxr_linenumber" name="183" href="#183">183</a>     }
+<a class="jxr_linenumber" name="184" href="#184">184</a> 
+<a class="jxr_linenumber" name="185" href="#185">185</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="186" href="#186">186</a> <em class="jxr_javadoccomment">     * Echo back the closing frame and close the connection</em>
+<a class="jxr_linenumber" name="187" href="#187">187</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="188" href="#188">188</a> <em class="jxr_javadoccomment">     * @param channel</em>
+<a class="jxr_linenumber" name="189" href="#189">189</a> <em class="jxr_javadoccomment">     *            Channel</em>
+<a class="jxr_linenumber" name="190" href="#190">190</a> <em class="jxr_javadoccomment">     * @param frame</em>
+<a class="jxr_linenumber" name="191" href="#191">191</a> <em class="jxr_javadoccomment">     *            Web Socket frame that was received</em>
+<a class="jxr_linenumber" name="192" href="#192">192</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="193" href="#193">193</a>     @Override
+<a class="jxr_linenumber" name="194" href="#194">194</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> close(<a href="../../../../../../../org/jboss/netty/channel/Channel.html">Channel</a> channel, <a href="../../../../../../../org/jboss/netty/handler/codec/http/websocketx/CloseWebSocketFrame.html">CloseWebSocketFrame</a> frame) {
+<a class="jxr_linenumber" name="195" href="#195">195</a>         <a href="../../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> f = channel.write(frame);
+<a class="jxr_linenumber" name="196" href="#196">196</a>         f.addListener(ChannelFutureListener.CLOSE);
+<a class="jxr_linenumber" name="197" href="#197">197</a>         <strong class="jxr_keyword">return</strong> f;
+<a class="jxr_linenumber" name="198" href="#198">198</a>     }
+<a class="jxr_linenumber" name="199" href="#199">199</a> 
+<a class="jxr_linenumber" name="200" href="#200">200</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
