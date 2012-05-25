@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US" lang="en_US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de_DE" lang="de_DE">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>LinkedTransferQueue xref</title>
@@ -451,14 +451,14 @@
 <a class="jxr_linenumber" name="441" href="#441">441</a> <em class="jxr_javadoccomment">     * unnecessary ordering constraints: Writes that are intrinsically</em>
 <a class="jxr_linenumber" name="442" href="#442">442</a> <em class="jxr_javadoccomment">     * ordered wrt other accesses or CASes use simple relaxed forms.</em>
 <a class="jxr_linenumber" name="443" href="#443">443</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="444" href="#444">444</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> {
+<a class="jxr_linenumber" name="444" href="#444">444</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> {
 <a class="jxr_linenumber" name="445" href="#445">445</a>         <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">boolean</strong> isData;   <em class="jxr_comment">// false if this is a request node</em>
 <a class="jxr_linenumber" name="446" href="#446">446</a>         <strong class="jxr_keyword">volatile</strong> Object item;   <em class="jxr_comment">// initially non-null if isData; CASed to match</em>
-<a class="jxr_linenumber" name="447" href="#447">447</a>         <strong class="jxr_keyword">volatile</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> next;
+<a class="jxr_linenumber" name="447" href="#447">447</a>         <strong class="jxr_keyword">volatile</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> next;
 <a class="jxr_linenumber" name="448" href="#448">448</a>         <strong class="jxr_keyword">volatile</strong> Thread waiter; <em class="jxr_comment">// null until waiting</em>
 <a class="jxr_linenumber" name="449" href="#449">449</a> 
 <a class="jxr_linenumber" name="450" href="#450">450</a>         <em class="jxr_comment">// CAS methods for fields</em>
-<a class="jxr_linenumber" name="451" href="#451">451</a>         <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">boolean</strong> casNext(<a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> cmp, <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> val) {
+<a class="jxr_linenumber" name="451" href="#451">451</a>         <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">boolean</strong> casNext(<a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> cmp, <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> val) {
 <a class="jxr_linenumber" name="452" href="#452">452</a>             <strong class="jxr_keyword">return</strong> UNSAFE.compareAndSwapObject(<strong class="jxr_keyword">this</strong>, nextOffset, cmp, val);
 <a class="jxr_linenumber" name="453" href="#453">453</a>         }
 <a class="jxr_linenumber" name="454" href="#454">454</a> 
@@ -471,7 +471,7 @@
 <a class="jxr_linenumber" name="461" href="#461">461</a> <em class="jxr_javadoccomment">         * Constructs a new node.  Uses relaxed write because item can</em>
 <a class="jxr_linenumber" name="462" href="#462">462</a> <em class="jxr_javadoccomment">         * only be seen after publication via casNext.</em>
 <a class="jxr_linenumber" name="463" href="#463">463</a> <em class="jxr_javadoccomment">         */</em>
-<a class="jxr_linenumber" name="464" href="#464">464</a>         <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a>(Object item, <strong class="jxr_keyword">boolean</strong> isData) {
+<a class="jxr_linenumber" name="464" href="#464">464</a>         <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a>(Object item, <strong class="jxr_keyword">boolean</strong> isData) {
 <a class="jxr_linenumber" name="465" href="#465">465</a>             UNSAFE.putObject(<strong class="jxr_keyword">this</strong>, itemOffset, item); <em class="jxr_comment">// relaxed write</em>
 <a class="jxr_linenumber" name="466" href="#466">466</a>             <strong class="jxr_keyword">this</strong>.isData = isData;
 <a class="jxr_linenumber" name="467" href="#467">467</a>         }
@@ -560,20 +560,20 @@
 <a class="jxr_linenumber" name="550" href="#550">550</a>     }
 <a class="jxr_linenumber" name="551" href="#551">551</a> 
 <a class="jxr_linenumber" name="552" href="#552">552</a>     <em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> head of the queue; null until first enqueue */</em>
-<a class="jxr_linenumber" name="553" href="#553">553</a>     <strong class="jxr_keyword">transient</strong> <strong class="jxr_keyword">volatile</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> head;
+<a class="jxr_linenumber" name="553" href="#553">553</a>     <strong class="jxr_keyword">transient</strong> <strong class="jxr_keyword">volatile</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> head;
 <a class="jxr_linenumber" name="554" href="#554">554</a> 
 <a class="jxr_linenumber" name="555" href="#555">555</a>     <em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> tail of the queue; null until first append */</em>
-<a class="jxr_linenumber" name="556" href="#556">556</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">transient</strong> <strong class="jxr_keyword">volatile</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> tail;
+<a class="jxr_linenumber" name="556" href="#556">556</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">transient</strong> <strong class="jxr_keyword">volatile</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> tail;
 <a class="jxr_linenumber" name="557" href="#557">557</a> 
 <a class="jxr_linenumber" name="558" href="#558">558</a>     <em class="jxr_javadoccomment">/**</em><em class="jxr_javadoccomment"> The number of apparent failures to unsplice removed nodes */</em>
 <a class="jxr_linenumber" name="559" href="#559">559</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">transient</strong> <strong class="jxr_keyword">volatile</strong> <strong class="jxr_keyword">int</strong> sweepVotes;
 <a class="jxr_linenumber" name="560" href="#560">560</a> 
 <a class="jxr_linenumber" name="561" href="#561">561</a>     <em class="jxr_comment">// CAS methods for fields</em>
-<a class="jxr_linenumber" name="562" href="#562">562</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> casTail(<a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> cmp, <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> val) {
+<a class="jxr_linenumber" name="562" href="#562">562</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> casTail(<a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> cmp, <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> val) {
 <a class="jxr_linenumber" name="563" href="#563">563</a>         <strong class="jxr_keyword">return</strong> UNSAFE.compareAndSwapObject(<strong class="jxr_keyword">this</strong>, tailOffset, cmp, val);
 <a class="jxr_linenumber" name="564" href="#564">564</a>     }
 <a class="jxr_linenumber" name="565" href="#565">565</a> 
-<a class="jxr_linenumber" name="566" href="#566">566</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> casHead(<a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> cmp, <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> val) {
+<a class="jxr_linenumber" name="566" href="#566">566</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> casHead(<a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> cmp, <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> val) {
 <a class="jxr_linenumber" name="567" href="#567">567</a>         <strong class="jxr_keyword">return</strong> UNSAFE.compareAndSwapObject(<strong class="jxr_keyword">this</strong>, headOffset, cmp, val);
 <a class="jxr_linenumber" name="568" href="#568">568</a>     }
 <a class="jxr_linenumber" name="569" href="#569">569</a> 
@@ -609,7 +609,7 @@
 <a class="jxr_linenumber" name="599" href="#599">599</a>         <strong class="jxr_keyword">if</strong> (haveData &amp;&amp; e == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="600" href="#600">600</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> NullPointerException();
 <a class="jxr_linenumber" name="601" href="#601">601</a>         }
-<a class="jxr_linenumber" name="602" href="#602">602</a>         <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> s = <strong class="jxr_keyword">null</strong>;                        <em class="jxr_comment">// the node to append, if needed</em>
+<a class="jxr_linenumber" name="602" href="#602">602</a>         <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> s = <strong class="jxr_keyword">null</strong>;                        <em class="jxr_comment">// the node to append, if needed</em>
 <a class="jxr_linenumber" name="603" href="#603">603</a> 
 <a class="jxr_linenumber" name="604" href="#604">604</a>         retry:
 <a class="jxr_linenumber" name="605" href="#605">605</a>         <strong class="jxr_keyword">for</strong> (;;) {                            <em class="jxr_comment">// restart on append race</em>
@@ -623,7 +623,7 @@
 <a class="jxr_linenumber" name="613" href="#613">613</a>                     }
 <a class="jxr_linenumber" name="614" href="#614">614</a>                     <strong class="jxr_keyword">if</strong> (p.casItem(item, e)) { <em class="jxr_comment">// match</em>
 <a class="jxr_linenumber" name="615" href="#615">615</a>                         <strong class="jxr_keyword">for</strong> (Node q = p; q != h;) {
-<a class="jxr_linenumber" name="616" href="#616">616</a>                             <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> n = q.next;  <em class="jxr_comment">// update by 2 unless singleton</em>
+<a class="jxr_linenumber" name="616" href="#616">616</a>                             <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> n = q.next;  <em class="jxr_comment">// update by 2 unless singleton</em>
 <a class="jxr_linenumber" name="617" href="#617">617</a>                             <strong class="jxr_keyword">if</strong> (head == h &amp;&amp; casHead(h, n == <strong class="jxr_keyword">null</strong> ? q : n)) {
 <a class="jxr_linenumber" name="618" href="#618">618</a>                                 h.forgetNext();
 <a class="jxr_linenumber" name="619" href="#619">619</a>                                 <strong class="jxr_keyword">break</strong>;
@@ -638,15 +638,15 @@
 <a class="jxr_linenumber" name="628" href="#628">628</a>                         <strong class="jxr_keyword">return</strong> LinkedTransferQueue.&lt;E&gt;<strong class="jxr_keyword">cast</strong>(item);
 <a class="jxr_linenumber" name="629" href="#629">629</a>                     }
 <a class="jxr_linenumber" name="630" href="#630">630</a>                 }
-<a class="jxr_linenumber" name="631" href="#631">631</a>                 <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> n = p.next;
+<a class="jxr_linenumber" name="631" href="#631">631</a>                 <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> n = p.next;
 <a class="jxr_linenumber" name="632" href="#632">632</a>                 p = p != n ? n : (h = head); <em class="jxr_comment">// Use head if p offlist</em>
 <a class="jxr_linenumber" name="633" href="#633">633</a>             }
 <a class="jxr_linenumber" name="634" href="#634">634</a> 
 <a class="jxr_linenumber" name="635" href="#635">635</a>             <strong class="jxr_keyword">if</strong> (how != NOW) {                 <em class="jxr_comment">// No matches available</em>
 <a class="jxr_linenumber" name="636" href="#636">636</a>                 <strong class="jxr_keyword">if</strong> (s == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="637" href="#637">637</a>                     s = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a>(e, haveData);
+<a class="jxr_linenumber" name="637" href="#637">637</a>                     s = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a>(e, haveData);
 <a class="jxr_linenumber" name="638" href="#638">638</a>                 }
-<a class="jxr_linenumber" name="639" href="#639">639</a>                 <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> pred = tryAppend(s, haveData);
+<a class="jxr_linenumber" name="639" href="#639">639</a>                 <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> pred = tryAppend(s, haveData);
 <a class="jxr_linenumber" name="640" href="#640">640</a>                 <strong class="jxr_keyword">if</strong> (pred == <strong class="jxr_keyword">null</strong>)
 <a class="jxr_linenumber" name="641" href="#641">641</a>                  {
 <a class="jxr_linenumber" name="642" href="#642">642</a>                     <strong class="jxr_keyword">continue</strong> retry;           <em class="jxr_comment">// lost race vs opposite mode</em>
@@ -668,9 +668,9 @@
 <a class="jxr_linenumber" name="658" href="#658">658</a> <em class="jxr_javadoccomment">     * different mode, else s's predecessor, or s itself if no</em>
 <a class="jxr_linenumber" name="659" href="#659">659</a> <em class="jxr_javadoccomment">     * predecessor</em>
 <a class="jxr_linenumber" name="660" href="#660">660</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="661" href="#661">661</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> tryAppend(<a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> s, <strong class="jxr_keyword">boolean</strong> haveData) {
+<a class="jxr_linenumber" name="661" href="#661">661</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> tryAppend(<a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> s, <strong class="jxr_keyword">boolean</strong> haveData) {
 <a class="jxr_linenumber" name="662" href="#662">662</a>         <strong class="jxr_keyword">for</strong> (Node t = tail, p = t;;) {        <em class="jxr_comment">// move p to last node and append</em>
-<a class="jxr_linenumber" name="663" href="#663">663</a>             <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> n, u;                        <em class="jxr_comment">// temps for reads of next &amp; tail</em>
+<a class="jxr_linenumber" name="663" href="#663">663</a>             <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> n, u;                        <em class="jxr_comment">// temps for reads of next &amp; tail</em>
 <a class="jxr_linenumber" name="664" href="#664">664</a>             <strong class="jxr_keyword">if</strong> (p == <strong class="jxr_keyword">null</strong> &amp;&amp; (p = head) == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="665" href="#665">665</a>                 <strong class="jxr_keyword">if</strong> (casHead(<strong class="jxr_keyword">null</strong>, s))
 <a class="jxr_linenumber" name="666" href="#666">666</a>                  {
@@ -690,7 +690,7 @@
 <a class="jxr_linenumber" name="680" href="#680">680</a>                            (t = tail)   != <strong class="jxr_keyword">null</strong> &amp;&amp;
 <a class="jxr_linenumber" name="681" href="#681">681</a>                            (s = t.next) != <strong class="jxr_keyword">null</strong> &amp;&amp; <em class="jxr_comment">// advance and retry</em>
 <a class="jxr_linenumber" name="682" href="#682">682</a>                            (s = s.next) != <strong class="jxr_keyword">null</strong> &amp;&amp; s != t) {
-<a class="jxr_linenumber" name="683" href="#683">683</a>                         ;
+<a class="jxr_linenumber" name="683" href="#683">683</a>                         <strong class="jxr_keyword">continue</strong>;
 <a class="jxr_linenumber" name="684" href="#684">684</a>                     }
 <a class="jxr_linenumber" name="685" href="#685">685</a>                 }
 <a class="jxr_linenumber" name="686" href="#686">686</a>                 <strong class="jxr_keyword">return</strong> p;
@@ -710,7 +710,7 @@
 <a class="jxr_linenumber" name="700" href="#700">700</a> <em class="jxr_javadoccomment">     * @param nanos timeout in nanosecs, used only if timed is true</em>
 <a class="jxr_linenumber" name="701" href="#701">701</a> <em class="jxr_javadoccomment">     * @return matched item, or e if unmatched on interrupt or timeout</em>
 <a class="jxr_linenumber" name="702" href="#702">702</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="703" href="#703">703</a>     <strong class="jxr_keyword">private</strong> E awaitMatch(<a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> s, <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> pred, E e, <strong class="jxr_keyword">boolean</strong> timed, <strong class="jxr_keyword">long</strong> nanos) {
+<a class="jxr_linenumber" name="703" href="#703">703</a>     <strong class="jxr_keyword">private</strong> E awaitMatch(<a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> s, <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> pred, E e, <strong class="jxr_keyword">boolean</strong> timed, <strong class="jxr_keyword">long</strong> nanos) {
 <a class="jxr_linenumber" name="704" href="#704">704</a>         <strong class="jxr_keyword">long</strong> lastTime = timed ? System.nanoTime() : 0L;
 <a class="jxr_linenumber" name="705" href="#705">705</a>         Thread w = Thread.currentThread();
 <a class="jxr_linenumber" name="706" href="#706">706</a>         <strong class="jxr_keyword">int</strong> spins = -1; <em class="jxr_comment">// initialized after first item and cancel checks</em>
@@ -769,7 +769,7 @@
 <a class="jxr_linenumber" name="759" href="#759">759</a> <em class="jxr_javadoccomment">     * Returns spin/yield value for a node with given predecessor and</em>
 <a class="jxr_linenumber" name="760" href="#760">760</a> <em class="jxr_javadoccomment">     * data mode. See above for explanation.</em>
 <a class="jxr_linenumber" name="761" href="#761">761</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="762" href="#762">762</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> spinsFor(<a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> pred, <strong class="jxr_keyword">boolean</strong> haveData) {
+<a class="jxr_linenumber" name="762" href="#762">762</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> spinsFor(<a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> pred, <strong class="jxr_keyword">boolean</strong> haveData) {
 <a class="jxr_linenumber" name="763" href="#763">763</a>         <strong class="jxr_keyword">if</strong> (MP &amp;&amp; pred != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="764" href="#764">764</a>             <strong class="jxr_keyword">if</strong> (pred.isData != haveData) {
 <a class="jxr_linenumber" name="765" href="#765">765</a>                 <strong class="jxr_keyword">return</strong> FRONT_SPINS + CHAINED_SPINS;
@@ -791,8 +791,8 @@
 <a class="jxr_linenumber" name="781" href="#781">781</a> <em class="jxr_javadoccomment">     * linked to self, which will only be true if traversing with a</em>
 <a class="jxr_linenumber" name="782" href="#782">782</a> <em class="jxr_javadoccomment">     * stale pointer that is now off the list.</em>
 <a class="jxr_linenumber" name="783" href="#783">783</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="784" href="#784">784</a>     <strong class="jxr_keyword">final</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> succ(<a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> p) {
-<a class="jxr_linenumber" name="785" href="#785">785</a>         <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> next = p.next;
+<a class="jxr_linenumber" name="784" href="#784">784</a>     <strong class="jxr_keyword">final</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> succ(<a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> p) {
+<a class="jxr_linenumber" name="785" href="#785">785</a>         <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> next = p.next;
 <a class="jxr_linenumber" name="786" href="#786">786</a>         <strong class="jxr_keyword">return</strong> p == next ? head : next;
 <a class="jxr_linenumber" name="787" href="#787">787</a>     }
 <a class="jxr_linenumber" name="788" href="#788">788</a> 
@@ -800,7 +800,7 @@
 <a class="jxr_linenumber" name="790" href="#790">790</a> <em class="jxr_javadoccomment">     * Returns the first unmatched node of the given mode, or null if</em>
 <a class="jxr_linenumber" name="791" href="#791">791</a> <em class="jxr_javadoccomment">     * none.  Used by methods isEmpty, hasWaitingConsumer.</em>
 <a class="jxr_linenumber" name="792" href="#792">792</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="793" href="#793">793</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> firstOfMode(<strong class="jxr_keyword">boolean</strong> isData) {
+<a class="jxr_linenumber" name="793" href="#793">793</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> firstOfMode(<strong class="jxr_keyword">boolean</strong> isData) {
 <a class="jxr_linenumber" name="794" href="#794">794</a>         <strong class="jxr_keyword">for</strong> (Node p = head; p != <strong class="jxr_keyword">null</strong>; p = succ(p)) {
 <a class="jxr_linenumber" name="795" href="#795">795</a>             <strong class="jxr_keyword">if</strong> (!p.isMatched()) {
 <a class="jxr_linenumber" name="796" href="#796">796</a>                 <strong class="jxr_keyword">return</strong> p.isData == isData ? p : <strong class="jxr_keyword">null</strong>;
@@ -843,7 +843,7 @@
 <a class="jxr_linenumber" name="833" href="#833">833</a>                     <strong class="jxr_keyword">break</strong>;
 <a class="jxr_linenumber" name="834" href="#834">834</a>                 }
 <a class="jxr_linenumber" name="835" href="#835">835</a>             }
-<a class="jxr_linenumber" name="836" href="#836">836</a>             <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> n = p.next;
+<a class="jxr_linenumber" name="836" href="#836">836</a>             <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> n = p.next;
 <a class="jxr_linenumber" name="837" href="#837">837</a>             <strong class="jxr_keyword">if</strong> (n != p) {
 <a class="jxr_linenumber" name="838" href="#838">838</a>                 p = n;
 <a class="jxr_linenumber" name="839" href="#839">839</a>             } <strong class="jxr_keyword">else</strong> {
@@ -855,15 +855,15 @@
 <a class="jxr_linenumber" name="845" href="#845">845</a>     }
 <a class="jxr_linenumber" name="846" href="#846">846</a> 
 <a class="jxr_linenumber" name="847" href="#847">847</a>     <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Itr</a> <strong class="jxr_keyword">implements</strong> Iterator&lt;E&gt; {
-<a class="jxr_linenumber" name="848" href="#848">848</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> nextNode;   <em class="jxr_comment">// next node to return item for</em>
+<a class="jxr_linenumber" name="848" href="#848">848</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> nextNode;   <em class="jxr_comment">// next node to return item for</em>
 <a class="jxr_linenumber" name="849" href="#849">849</a>         <strong class="jxr_keyword">private</strong> E nextItem;      <em class="jxr_comment">// the corresponding item</em>
-<a class="jxr_linenumber" name="850" href="#850">850</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> lastRet;    <em class="jxr_comment">// last returned node, to support remove</em>
-<a class="jxr_linenumber" name="851" href="#851">851</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> lastPred;   <em class="jxr_comment">// predecessor to unlink lastRet</em>
+<a class="jxr_linenumber" name="850" href="#850">850</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> lastRet;    <em class="jxr_comment">// last returned node, to support remove</em>
+<a class="jxr_linenumber" name="851" href="#851">851</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> lastPred;   <em class="jxr_comment">// predecessor to unlink lastRet</em>
 <a class="jxr_linenumber" name="852" href="#852">852</a> 
 <a class="jxr_linenumber" name="853" href="#853">853</a>         <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="854" href="#854">854</a> <em class="jxr_javadoccomment">         * Moves to next node after prev, or first node if prev null.</em>
 <a class="jxr_linenumber" name="855" href="#855">855</a> <em class="jxr_javadoccomment">         */</em>
-<a class="jxr_linenumber" name="856" href="#856">856</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> advance(<a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> prev) {
+<a class="jxr_linenumber" name="856" href="#856">856</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> advance(<a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> prev) {
 <a class="jxr_linenumber" name="857" href="#857">857</a>             <em class="jxr_comment">/*</em>
 <a class="jxr_linenumber" name="858" href="#858">858</a> <em class="jxr_comment">             * To track and avoid buildup of deleted nodes in the face</em>
 <a class="jxr_linenumber" name="859" href="#859">859</a> <em class="jxr_comment">             * of calls to both Queue.remove and Itr.remove, we must</em>
@@ -874,13 +874,13 @@
 <a class="jxr_linenumber" name="864" href="#864">864</a> <em class="jxr_comment">             * found while advancing.</em>
 <a class="jxr_linenumber" name="865" href="#865">865</a> <em class="jxr_comment">             */</em>
 <a class="jxr_linenumber" name="866" href="#866">866</a> 
-<a class="jxr_linenumber" name="867" href="#867">867</a>             <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> r, b; <em class="jxr_comment">// reset lastPred upon possible deletion of lastRet</em>
+<a class="jxr_linenumber" name="867" href="#867">867</a>             <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> r, b; <em class="jxr_comment">// reset lastPred upon possible deletion of lastRet</em>
 <a class="jxr_linenumber" name="868" href="#868">868</a>             <strong class="jxr_keyword">if</strong> ((r = lastRet) != <strong class="jxr_keyword">null</strong> &amp;&amp; !r.isMatched()) {
 <a class="jxr_linenumber" name="869" href="#869">869</a>                 lastPred = r;    <em class="jxr_comment">// next lastPred is old lastRet</em>
 <a class="jxr_linenumber" name="870" href="#870">870</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> ((b = lastPred) == <strong class="jxr_keyword">null</strong> || b.isMatched()) {
 <a class="jxr_linenumber" name="871" href="#871">871</a>                 lastPred = <strong class="jxr_keyword">null</strong>; <em class="jxr_comment">// at start of list</em>
 <a class="jxr_linenumber" name="872" href="#872">872</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="873" href="#873">873</a>                 <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> s, n;       <em class="jxr_comment">// help with removal of lastPred.next</em>
+<a class="jxr_linenumber" name="873" href="#873">873</a>                 <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> s, n;       <em class="jxr_comment">// help with removal of lastPred.next</em>
 <a class="jxr_linenumber" name="874" href="#874">874</a>                 <strong class="jxr_keyword">while</strong> ((s = b.next) != <strong class="jxr_keyword">null</strong> &amp;&amp;
 <a class="jxr_linenumber" name="875" href="#875">875</a>                        s != b &amp;&amp; s.isMatched() &amp;&amp;
 <a class="jxr_linenumber" name="876" href="#876">876</a>                        (n = s.next) != <strong class="jxr_keyword">null</strong> &amp;&amp; n != s) {
@@ -933,7 +933,7 @@
 <a class="jxr_linenumber" name="923" href="#923">923</a>         }
 <a class="jxr_linenumber" name="924" href="#924">924</a> 
 <a class="jxr_linenumber" name="925" href="#925">925</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> E next() {
-<a class="jxr_linenumber" name="926" href="#926">926</a>             <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> p = nextNode;
+<a class="jxr_linenumber" name="926" href="#926">926</a>             <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> p = nextNode;
 <a class="jxr_linenumber" name="927" href="#927">927</a>             <strong class="jxr_keyword">if</strong> (p == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="928" href="#928">928</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> NoSuchElementException();
 <a class="jxr_linenumber" name="929" href="#929">929</a>             }
@@ -943,7 +943,7 @@
 <a class="jxr_linenumber" name="933" href="#933">933</a>         }
 <a class="jxr_linenumber" name="934" href="#934">934</a> 
 <a class="jxr_linenumber" name="935" href="#935">935</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> remove() {
-<a class="jxr_linenumber" name="936" href="#936">936</a>             <strong class="jxr_keyword">final</strong> <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> lastRet = <strong class="jxr_keyword">this</strong>.lastRet;
+<a class="jxr_linenumber" name="936" href="#936">936</a>             <strong class="jxr_keyword">final</strong> <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> lastRet = <strong class="jxr_keyword">this</strong>.lastRet;
 <a class="jxr_linenumber" name="937" href="#937">937</a>             <strong class="jxr_keyword">if</strong> (lastRet == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="938" href="#938">938</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalStateException();
 <a class="jxr_linenumber" name="939" href="#939">939</a>             }
@@ -964,7 +964,7 @@
 <a class="jxr_linenumber" name="954" href="#954">954</a> <em class="jxr_javadoccomment">     * predecessor of s, or null or s itself if s is/was at head</em>
 <a class="jxr_linenumber" name="955" href="#955">955</a> <em class="jxr_javadoccomment">     * @param s the node to be unspliced</em>
 <a class="jxr_linenumber" name="956" href="#956">956</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="957" href="#957">957</a>     <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> unsplice(<a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> pred, <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> s) {
+<a class="jxr_linenumber" name="957" href="#957">957</a>     <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> unsplice(<a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> pred, <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> s) {
 <a class="jxr_linenumber" name="958" href="#958">958</a>         s.forgetContents(); <em class="jxr_comment">// forget unneeded fields</em>
 <a class="jxr_linenumber" name="959" href="#959">959</a>         <em class="jxr_comment">/*</em>
 <a class="jxr_linenumber" name="960" href="#960">960</a> <em class="jxr_comment">         * See above for rationale. Briefly: if pred still points to</em>
@@ -974,11 +974,11 @@
 <a class="jxr_linenumber" name="964" href="#964">964</a> <em class="jxr_comment">         * votes have accumulated, sweep.</em>
 <a class="jxr_linenumber" name="965" href="#965">965</a> <em class="jxr_comment">         */</em>
 <a class="jxr_linenumber" name="966" href="#966">966</a>         <strong class="jxr_keyword">if</strong> (pred != <strong class="jxr_keyword">null</strong> &amp;&amp; pred != s &amp;&amp; pred.next == s) {
-<a class="jxr_linenumber" name="967" href="#967">967</a>             <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> n = s.next;
+<a class="jxr_linenumber" name="967" href="#967">967</a>             <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> n = s.next;
 <a class="jxr_linenumber" name="968" href="#968">968</a>             <strong class="jxr_keyword">if</strong> (n == <strong class="jxr_keyword">null</strong> ||
 <a class="jxr_linenumber" name="969" href="#969">969</a>                 n != s &amp;&amp; pred.casNext(s, n) &amp;&amp; pred.isMatched()) {
 <a class="jxr_linenumber" name="970" href="#970">970</a>                 <strong class="jxr_keyword">for</strong> (;;) {               <em class="jxr_comment">// check if at, or could be, head</em>
-<a class="jxr_linenumber" name="971" href="#971">971</a>                     <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> h = head;
+<a class="jxr_linenumber" name="971" href="#971">971</a>                     <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> h = head;
 <a class="jxr_linenumber" name="972" href="#972">972</a>                     <strong class="jxr_keyword">if</strong> (h == pred || h == s || h == <strong class="jxr_keyword">null</strong>)
 <a class="jxr_linenumber" name="973" href="#973">973</a>                      {
 <a class="jxr_linenumber" name="974" href="#974">974</a>                         <strong class="jxr_keyword">return</strong>;          <em class="jxr_comment">// at head or list empty</em>
@@ -986,7 +986,7 @@
 <a class="jxr_linenumber" name="976" href="#976">976</a>                     <strong class="jxr_keyword">if</strong> (!h.isMatched()) {
 <a class="jxr_linenumber" name="977" href="#977">977</a>                         <strong class="jxr_keyword">break</strong>;
 <a class="jxr_linenumber" name="978" href="#978">978</a>                     }
-<a class="jxr_linenumber" name="979" href="#979">979</a>                     <a href="../../../../../org/jboss/netty/util/internal/AtomicFieldUpdaterUtil.html">Node</a> hn = h.next;
+<a class="jxr_linenumber" name="979" href="#979">979</a>                     <a href="../../../../../org/jboss/netty/util/internal/LinkedTransferQueue.html">Node</a> hn = h.next;
 <a class="jxr_linenumber" name="980" href="#980">980</a>                     <strong class="jxr_keyword">if</strong> (hn == <strong class="jxr_keyword">null</strong>)
 <a class="jxr_linenumber" name="981" href="#981">981</a>                      {
 <a class="jxr_linenumber" name="982" href="#982">982</a>                         <strong class="jxr_keyword">return</strong>;          <em class="jxr_comment">// now empty</em>
@@ -1393,66 +1393,65 @@
 <a class="jxr_linenumber" name="1383" href="#1383">1383</a>         <strong class="jxr_keyword">throws</strong> java.io.IOException, ClassNotFoundException {
 <a class="jxr_linenumber" name="1384" href="#1384">1384</a>         s.defaultReadObject();
 <a class="jxr_linenumber" name="1385" href="#1385">1385</a>         <strong class="jxr_keyword">for</strong> (;;) {
-<a class="jxr_linenumber" name="1386" href="#1386">1386</a>             @SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
-<a class="jxr_linenumber" name="1387" href="#1387">1387</a>             E item = (E) s.readObject();
-<a class="jxr_linenumber" name="1388" href="#1388">1388</a>             <strong class="jxr_keyword">if</strong> (item == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="1389" href="#1389">1389</a>                 <strong class="jxr_keyword">break</strong>;
-<a class="jxr_linenumber" name="1390" href="#1390">1390</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="1391" href="#1391">1391</a>                 offer(item);
-<a class="jxr_linenumber" name="1392" href="#1392">1392</a>             }
-<a class="jxr_linenumber" name="1393" href="#1393">1393</a>         }
-<a class="jxr_linenumber" name="1394" href="#1394">1394</a>     }
-<a class="jxr_linenumber" name="1395" href="#1395">1395</a> 
-<a class="jxr_linenumber" name="1396" href="#1396">1396</a>     <em class="jxr_comment">// Unsafe mechanics</em>
-<a class="jxr_linenumber" name="1397" href="#1397">1397</a> 
-<a class="jxr_linenumber" name="1398" href="#1398">1398</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> sun.misc.Unsafe UNSAFE;
-<a class="jxr_linenumber" name="1399" href="#1399">1399</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> headOffset;
-<a class="jxr_linenumber" name="1400" href="#1400">1400</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> tailOffset;
-<a class="jxr_linenumber" name="1401" href="#1401">1401</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> sweepVotesOffset;
-<a class="jxr_linenumber" name="1402" href="#1402">1402</a>     <strong class="jxr_keyword">static</strong> {
-<a class="jxr_linenumber" name="1403" href="#1403">1403</a>         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="1404" href="#1404">1404</a>             UNSAFE = getUnsafe();
-<a class="jxr_linenumber" name="1405" href="#1405">1405</a>             Class&lt;?&gt; k = LinkedTransferQueue.<strong class="jxr_keyword">class</strong>;
-<a class="jxr_linenumber" name="1406" href="#1406">1406</a>             headOffset = UNSAFE.objectFieldOffset
-<a class="jxr_linenumber" name="1407" href="#1407">1407</a>                 (k.getDeclaredField(<span class="jxr_string">"head"</span>));
-<a class="jxr_linenumber" name="1408" href="#1408">1408</a>             tailOffset = UNSAFE.objectFieldOffset
-<a class="jxr_linenumber" name="1409" href="#1409">1409</a>                 (k.getDeclaredField(<span class="jxr_string">"tail"</span>));
-<a class="jxr_linenumber" name="1410" href="#1410">1410</a>             sweepVotesOffset = UNSAFE.objectFieldOffset
-<a class="jxr_linenumber" name="1411" href="#1411">1411</a>                 (k.getDeclaredField(<span class="jxr_string">"sweepVotes"</span>));
-<a class="jxr_linenumber" name="1412" href="#1412">1412</a>         } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="1413" href="#1413">1413</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> Error(e);
-<a class="jxr_linenumber" name="1414" href="#1414">1414</a>         }
-<a class="jxr_linenumber" name="1415" href="#1415">1415</a>     }
-<a class="jxr_linenumber" name="1416" href="#1416">1416</a> 
-<a class="jxr_linenumber" name="1417" href="#1417">1417</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1418" href="#1418">1418</a> <em class="jxr_javadoccomment">     * Returns a sun.misc.Unsafe.  Suitable for use in a 3rd party package.</em>
-<a class="jxr_linenumber" name="1419" href="#1419">1419</a> <em class="jxr_javadoccomment">     * Replace with a simple call to Unsafe.getUnsafe when integrating</em>
-<a class="jxr_linenumber" name="1420" href="#1420">1420</a> <em class="jxr_javadoccomment">     * into a jdk.</em>
-<a class="jxr_linenumber" name="1421" href="#1421">1421</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="1422" href="#1422">1422</a> <em class="jxr_javadoccomment">     * @return a sun.misc.Unsafe</em>
-<a class="jxr_linenumber" name="1423" href="#1423">1423</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="1424" href="#1424">1424</a>     <strong class="jxr_keyword">static</strong> sun.misc.Unsafe getUnsafe() {
-<a class="jxr_linenumber" name="1425" href="#1425">1425</a>         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="1426" href="#1426">1426</a>             <strong class="jxr_keyword">return</strong> sun.misc.Unsafe.getUnsafe();
-<a class="jxr_linenumber" name="1427" href="#1427">1427</a>         } <strong class="jxr_keyword">catch</strong> (SecurityException se) {
-<a class="jxr_linenumber" name="1428" href="#1428">1428</a>             <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="1429" href="#1429">1429</a>                 <strong class="jxr_keyword">return</strong> java.security.AccessController.doPrivileged
-<a class="jxr_linenumber" name="1430" href="#1430">1430</a>                     (<strong class="jxr_keyword">new</strong> java.security
-<a class="jxr_linenumber" name="1431" href="#1431">1431</a>                      .PrivilegedExceptionAction&lt;sun.misc.Unsafe&gt;() {
-<a class="jxr_linenumber" name="1432" href="#1432">1432</a>                         <strong class="jxr_keyword">public</strong> sun.misc.Unsafe run() <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="1433" href="#1433">1433</a>                             java.lang.reflect.Field f = sun.misc
-<a class="jxr_linenumber" name="1434" href="#1434">1434</a>                                 .Unsafe.<strong class="jxr_keyword">class</strong>.getDeclaredField(<span class="jxr_string">"theUnsafe"</span>);
-<a class="jxr_linenumber" name="1435" href="#1435">1435</a>                             f.setAccessible(<strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="1436" href="#1436">1436</a>                             <strong class="jxr_keyword">return</strong> (sun.misc.Unsafe) f.get(<strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="1437" href="#1437">1437</a>                         }});
-<a class="jxr_linenumber" name="1438" href="#1438">1438</a>             } <strong class="jxr_keyword">catch</strong> (java.security.PrivilegedActionException e) {
-<a class="jxr_linenumber" name="1439" href="#1439">1439</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException(<span class="jxr_string">"Could not initialize intrinsics"</span>,
-<a class="jxr_linenumber" name="1440" href="#1440">1440</a>                                            e.getCause());
-<a class="jxr_linenumber" name="1441" href="#1441">1441</a>             }
-<a class="jxr_linenumber" name="1442" href="#1442">1442</a>         }
-<a class="jxr_linenumber" name="1443" href="#1443">1443</a>     }
-<a class="jxr_linenumber" name="1444" href="#1444">1444</a> 
-<a class="jxr_linenumber" name="1445" href="#1445">1445</a> }
+<a class="jxr_linenumber" name="1386" href="#1386">1386</a>             E item = (E) s.readObject();
+<a class="jxr_linenumber" name="1387" href="#1387">1387</a>             <strong class="jxr_keyword">if</strong> (item == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="1388" href="#1388">1388</a>                 <strong class="jxr_keyword">break</strong>;
+<a class="jxr_linenumber" name="1389" href="#1389">1389</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="1390" href="#1390">1390</a>                 offer(item);
+<a class="jxr_linenumber" name="1391" href="#1391">1391</a>             }
+<a class="jxr_linenumber" name="1392" href="#1392">1392</a>         }
+<a class="jxr_linenumber" name="1393" href="#1393">1393</a>     }
+<a class="jxr_linenumber" name="1394" href="#1394">1394</a> 
+<a class="jxr_linenumber" name="1395" href="#1395">1395</a>     <em class="jxr_comment">// Unsafe mechanics</em>
+<a class="jxr_linenumber" name="1396" href="#1396">1396</a> 
+<a class="jxr_linenumber" name="1397" href="#1397">1397</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> sun.misc.Unsafe UNSAFE;
+<a class="jxr_linenumber" name="1398" href="#1398">1398</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> headOffset;
+<a class="jxr_linenumber" name="1399" href="#1399">1399</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> tailOffset;
+<a class="jxr_linenumber" name="1400" href="#1400">1400</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> sweepVotesOffset;
+<a class="jxr_linenumber" name="1401" href="#1401">1401</a>     <strong class="jxr_keyword">static</strong> {
+<a class="jxr_linenumber" name="1402" href="#1402">1402</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="1403" href="#1403">1403</a>             UNSAFE = getUnsafe();
+<a class="jxr_linenumber" name="1404" href="#1404">1404</a>             Class&lt;?&gt; k = LinkedTransferQueue.<strong class="jxr_keyword">class</strong>;
+<a class="jxr_linenumber" name="1405" href="#1405">1405</a>             headOffset = UNSAFE.objectFieldOffset
+<a class="jxr_linenumber" name="1406" href="#1406">1406</a>                 (k.getDeclaredField(<span class="jxr_string">"head"</span>));
+<a class="jxr_linenumber" name="1407" href="#1407">1407</a>             tailOffset = UNSAFE.objectFieldOffset
+<a class="jxr_linenumber" name="1408" href="#1408">1408</a>                 (k.getDeclaredField(<span class="jxr_string">"tail"</span>));
+<a class="jxr_linenumber" name="1409" href="#1409">1409</a>             sweepVotesOffset = UNSAFE.objectFieldOffset
+<a class="jxr_linenumber" name="1410" href="#1410">1410</a>                 (k.getDeclaredField(<span class="jxr_string">"sweepVotes"</span>));
+<a class="jxr_linenumber" name="1411" href="#1411">1411</a>         } <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a class="jxr_linenumber" name="1412" href="#1412">1412</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> Error(e);
+<a class="jxr_linenumber" name="1413" href="#1413">1413</a>         }
+<a class="jxr_linenumber" name="1414" href="#1414">1414</a>     }
+<a class="jxr_linenumber" name="1415" href="#1415">1415</a> 
+<a class="jxr_linenumber" name="1416" href="#1416">1416</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1417" href="#1417">1417</a> <em class="jxr_javadoccomment">     * Returns a sun.misc.Unsafe.  Suitable for use in a 3rd party package.</em>
+<a class="jxr_linenumber" name="1418" href="#1418">1418</a> <em class="jxr_javadoccomment">     * Replace with a simple call to Unsafe.getUnsafe when integrating</em>
+<a class="jxr_linenumber" name="1419" href="#1419">1419</a> <em class="jxr_javadoccomment">     * into a jdk.</em>
+<a class="jxr_linenumber" name="1420" href="#1420">1420</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="1421" href="#1421">1421</a> <em class="jxr_javadoccomment">     * @return a sun.misc.Unsafe</em>
+<a class="jxr_linenumber" name="1422" href="#1422">1422</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="1423" href="#1423">1423</a>     <strong class="jxr_keyword">static</strong> sun.misc.Unsafe getUnsafe() {
+<a class="jxr_linenumber" name="1424" href="#1424">1424</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="1425" href="#1425">1425</a>             <strong class="jxr_keyword">return</strong> sun.misc.Unsafe.getUnsafe();
+<a class="jxr_linenumber" name="1426" href="#1426">1426</a>         } <strong class="jxr_keyword">catch</strong> (SecurityException se) {
+<a class="jxr_linenumber" name="1427" href="#1427">1427</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="1428" href="#1428">1428</a>                 <strong class="jxr_keyword">return</strong> java.security.AccessController.doPrivileged
+<a class="jxr_linenumber" name="1429" href="#1429">1429</a>                     (<strong class="jxr_keyword">new</strong> java.security
+<a class="jxr_linenumber" name="1430" href="#1430">1430</a>                      .PrivilegedExceptionAction&lt;sun.misc.Unsafe&gt;() {
+<a class="jxr_linenumber" name="1431" href="#1431">1431</a>                         <strong class="jxr_keyword">public</strong> sun.misc.Unsafe run() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="1432" href="#1432">1432</a>                             java.lang.reflect.Field f = sun.misc
+<a class="jxr_linenumber" name="1433" href="#1433">1433</a>                                 .Unsafe.<strong class="jxr_keyword">class</strong>.getDeclaredField(<span class="jxr_string">"theUnsafe"</span>);
+<a class="jxr_linenumber" name="1434" href="#1434">1434</a>                             f.setAccessible(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="1435" href="#1435">1435</a>                             <strong class="jxr_keyword">return</strong> (sun.misc.Unsafe) f.get(<strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="1436" href="#1436">1436</a>                         }});
+<a class="jxr_linenumber" name="1437" href="#1437">1437</a>             } <strong class="jxr_keyword">catch</strong> (java.security.PrivilegedActionException e) {
+<a class="jxr_linenumber" name="1438" href="#1438">1438</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException(<span class="jxr_string">"Could not initialize intrinsics"</span>,
+<a class="jxr_linenumber" name="1439" href="#1439">1439</a>                                            e.getCause());
+<a class="jxr_linenumber" name="1440" href="#1440">1440</a>             }
+<a class="jxr_linenumber" name="1441" href="#1441">1441</a>         }
+<a class="jxr_linenumber" name="1442" href="#1442">1442</a>     }
+<a class="jxr_linenumber" name="1443" href="#1443">1443</a> 
+<a class="jxr_linenumber" name="1444" href="#1444">1444</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US" lang="en_US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de_DE" lang="de_DE">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>CookieDecoder xref</title>
@@ -204,7 +204,7 @@
 <a class="jxr_linenumber" name="194" href="#194">194</a>         <strong class="jxr_keyword">return</strong> cookies;
 <a class="jxr_linenumber" name="195" href="#195">195</a>     }
 <a class="jxr_linenumber" name="196" href="#196">196</a> 
-<a class="jxr_linenumber" name="197" href="#197">197</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> extractKeyValuePairs(
+<a class="jxr_linenumber" name="197" href="#197">197</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> extractKeyValuePairs(
 <a class="jxr_linenumber" name="198" href="#198">198</a>             String header, List&lt;String&gt; names, List&lt;String&gt; values) {
 <a class="jxr_linenumber" name="199" href="#199">199</a>         Matcher m = PATTERN.matcher(header);
 <a class="jxr_linenumber" name="200" href="#200">200</a>         <strong class="jxr_keyword">int</strong> pos = 0;
@@ -253,7 +253,7 @@
 <a class="jxr_linenumber" name="243" href="#243">243</a>         }
 <a class="jxr_linenumber" name="244" href="#244">244</a>     }
 <a class="jxr_linenumber" name="245" href="#245">245</a> 
-<a class="jxr_linenumber" name="246" href="#246">246</a>     <strong class="jxr_keyword">private</strong> String decodeValue(String value) {
+<a class="jxr_linenumber" name="246" href="#246">246</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String decodeValue(String value) {
 <a class="jxr_linenumber" name="247" href="#247">247</a>         <strong class="jxr_keyword">if</strong> (value == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="248" href="#248">248</a>             <strong class="jxr_keyword">return</strong> value;
 <a class="jxr_linenumber" name="249" href="#249">249</a>         }

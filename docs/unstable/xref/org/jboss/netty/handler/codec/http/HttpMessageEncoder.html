@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US" lang="en_US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de_DE" lang="de_DE">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>HttpMessageEncoder xref</title>
@@ -146,7 +146,7 @@
 <a class="jxr_linenumber" name="136" href="#136">136</a>         <strong class="jxr_keyword">return</strong> msg;
 <a class="jxr_linenumber" name="137" href="#137">137</a>     }
 <a class="jxr_linenumber" name="138" href="#138">138</a> 
-<a class="jxr_linenumber" name="139" href="#139">139</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> encodeHeaders(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buf, <a href="../../../../../../org/jboss/netty/handler/codec/http/HttpMessage.html">HttpMessage</a> message) {
+<a class="jxr_linenumber" name="139" href="#139">139</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> encodeHeaders(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buf, <a href="../../../../../../org/jboss/netty/handler/codec/http/HttpMessage.html">HttpMessage</a> message) {
 <a class="jxr_linenumber" name="140" href="#140">140</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="141" href="#141">141</a>             <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, String&gt; h: message.getHeaders()) {
 <a class="jxr_linenumber" name="142" href="#142">142</a>                 encodeHeader(buf, h.getKey(), h.getValue());
@@ -156,7 +156,7 @@
 <a class="jxr_linenumber" name="146" href="#146">146</a>         }
 <a class="jxr_linenumber" name="147" href="#147">147</a>     }
 <a class="jxr_linenumber" name="148" href="#148">148</a> 
-<a class="jxr_linenumber" name="149" href="#149">149</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> encodeTrailingHeaders(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buf, <a href="../../../../../../org/jboss/netty/handler/codec/http/HttpChunkTrailer.html">HttpChunkTrailer</a> trailer) {
+<a class="jxr_linenumber" name="149" href="#149">149</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> encodeTrailingHeaders(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buf, <a href="../../../../../../org/jboss/netty/handler/codec/http/HttpChunkTrailer.html">HttpChunkTrailer</a> trailer) {
 <a class="jxr_linenumber" name="150" href="#150">150</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="151" href="#151">151</a>             <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, String&gt; h: trailer.getHeaders()) {
 <a class="jxr_linenumber" name="152" href="#152">152</a>                 encodeHeader(buf, h.getKey(), h.getValue());
@@ -166,7 +166,7 @@
 <a class="jxr_linenumber" name="156" href="#156">156</a>         }
 <a class="jxr_linenumber" name="157" href="#157">157</a>     }
 <a class="jxr_linenumber" name="158" href="#158">158</a> 
-<a class="jxr_linenumber" name="159" href="#159">159</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> encodeHeader(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buf, String header, String value)
+<a class="jxr_linenumber" name="159" href="#159">159</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> encodeHeader(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buf, String header, String value)
 <a class="jxr_linenumber" name="160" href="#160">160</a>             <strong class="jxr_keyword">throws</strong> UnsupportedEncodingException {
 <a class="jxr_linenumber" name="161" href="#161">161</a>         buf.writeBytes(header.getBytes(<span class="jxr_string">"ASCII"</span>));
 <a class="jxr_linenumber" name="162" href="#162">162</a>         buf.writeByte(COLON);

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US" lang="en_US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de_DE" lang="de_DE">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>HttpMessageDecoder xref</title>
@@ -378,10 +378,10 @@
 <a class="jxr_linenumber" name="368" href="#368">368</a>         <strong class="jxr_keyword">if</strong> (msg instanceof HttpResponse) {
 <a class="jxr_linenumber" name="369" href="#369">369</a>             <a href="../../../../../../org/jboss/netty/handler/codec/http/HttpResponse.html">HttpResponse</a> res = (HttpResponse) msg;
 <a class="jxr_linenumber" name="370" href="#370">370</a>             <strong class="jxr_keyword">int</strong> code = res.getStatus().getCode();
-<a class="jxr_linenumber" name="371" href="#371">371</a>             
+<a class="jxr_linenumber" name="371" href="#371">371</a> 
 <a class="jxr_linenumber" name="372" href="#372">372</a>             <em class="jxr_comment">// Correctly handle return codes of 1xx.</em>
-<a class="jxr_linenumber" name="373" href="#373">373</a>             <em class="jxr_comment">// </em>
-<a class="jxr_linenumber" name="374" href="#374">374</a>             <em class="jxr_comment">// See: </em>
+<a class="jxr_linenumber" name="373" href="#373">373</a>             <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="374" href="#374">374</a>             <em class="jxr_comment">// See:</em>
 <a class="jxr_linenumber" name="375" href="#375">375</a>             <em class="jxr_comment">//     - http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html Section 4.4</em>
 <a class="jxr_linenumber" name="376" href="#376">376</a>             <em class="jxr_comment">//     - https://github.com/netty/netty/issues/222</em>
 <a class="jxr_linenumber" name="377" href="#377">377</a>             <strong class="jxr_keyword">if</strong> (code &gt;= 100 &amp;&amp; code &lt; 200) {
@@ -415,7 +415,7 @@
 <a class="jxr_linenumber" name="405" href="#405">405</a>         <strong class="jxr_keyword">return</strong> message;
 <a class="jxr_linenumber" name="406" href="#406">406</a>     }
 <a class="jxr_linenumber" name="407" href="#407">407</a> 
-<a class="jxr_linenumber" name="408" href="#408">408</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> skipControlCharacters(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buffer) {
+<a class="jxr_linenumber" name="408" href="#408">408</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> skipControlCharacters(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buffer) {
 <a class="jxr_linenumber" name="409" href="#409">409</a>         <strong class="jxr_keyword">for</strong> (;;) {
 <a class="jxr_linenumber" name="410" href="#410">410</a>             <strong class="jxr_keyword">char</strong> c = (<strong class="jxr_keyword">char</strong>) buffer.readUnsignedByte();
 <a class="jxr_linenumber" name="411" href="#411">411</a>             <strong class="jxr_keyword">if</strong> (!Character.isISOControl(c) &amp;&amp;
@@ -567,7 +567,7 @@
 <a class="jxr_linenumber" name="557" href="#557">557</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">boolean</strong> isDecodingRequest();
 <a class="jxr_linenumber" name="558" href="#558">558</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> <a href="../../../../../../org/jboss/netty/handler/codec/http/HttpMessage.html">HttpMessage</a> createMessage(String[] initialLine) <strong class="jxr_keyword">throws</strong> Exception;
 <a class="jxr_linenumber" name="559" href="#559">559</a> 
-<a class="jxr_linenumber" name="560" href="#560">560</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> getChunkSize(String hex) {
+<a class="jxr_linenumber" name="560" href="#560">560</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> getChunkSize(String hex) {
 <a class="jxr_linenumber" name="561" href="#561">561</a>         hex = hex.trim();
 <a class="jxr_linenumber" name="562" href="#562">562</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; hex.length(); i ++) {
 <a class="jxr_linenumber" name="563" href="#563">563</a>             <strong class="jxr_keyword">char</strong> c = hex.charAt(i);
@@ -580,7 +580,7 @@
 <a class="jxr_linenumber" name="570" href="#570">570</a>         <strong class="jxr_keyword">return</strong> Integer.parseInt(hex, 16);
 <a class="jxr_linenumber" name="571" href="#571">571</a>     }
 <a class="jxr_linenumber" name="572" href="#572">572</a> 
-<a class="jxr_linenumber" name="573" href="#573">573</a>     <strong class="jxr_keyword">private</strong> String readLine(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buffer, <strong class="jxr_keyword">int</strong> maxLineLength) <strong class="jxr_keyword">throws</strong> TooLongFrameException {
+<a class="jxr_linenumber" name="573" href="#573">573</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String readLine(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buffer, <strong class="jxr_keyword">int</strong> maxLineLength) <strong class="jxr_keyword">throws</strong> TooLongFrameException {
 <a class="jxr_linenumber" name="574" href="#574">574</a>         StringBuilder sb = <strong class="jxr_keyword">new</strong> StringBuilder(64);
 <a class="jxr_linenumber" name="575" href="#575">575</a>         <strong class="jxr_keyword">int</strong> lineLength = 0;
 <a class="jxr_linenumber" name="576" href="#576">576</a>         <strong class="jxr_keyword">while</strong> (<strong class="jxr_keyword">true</strong>) {
@@ -608,7 +608,7 @@
 <a class="jxr_linenumber" name="598" href="#598">598</a>         }
 <a class="jxr_linenumber" name="599" href="#599">599</a>     }
 <a class="jxr_linenumber" name="600" href="#600">600</a> 
-<a class="jxr_linenumber" name="601" href="#601">601</a>     <strong class="jxr_keyword">private</strong> String[] splitInitialLine(String sb) {
+<a class="jxr_linenumber" name="601" href="#601">601</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String[] splitInitialLine(String sb) {
 <a class="jxr_linenumber" name="602" href="#602">602</a>         <strong class="jxr_keyword">int</strong> aStart;
 <a class="jxr_linenumber" name="603" href="#603">603</a>         <strong class="jxr_keyword">int</strong> aEnd;
 <a class="jxr_linenumber" name="604" href="#604">604</a>         <strong class="jxr_keyword">int</strong> bStart;
@@ -631,7 +631,7 @@
 <a class="jxr_linenumber" name="621" href="#621">621</a>                 cStart &lt; cEnd? sb.substring(cStart, cEnd) : <span class="jxr_string">""</span> };
 <a class="jxr_linenumber" name="622" href="#622">622</a>     }
 <a class="jxr_linenumber" name="623" href="#623">623</a> 
-<a class="jxr_linenumber" name="624" href="#624">624</a>     <strong class="jxr_keyword">private</strong> String[] splitHeader(String sb) {
+<a class="jxr_linenumber" name="624" href="#624">624</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String[] splitHeader(String sb) {
 <a class="jxr_linenumber" name="625" href="#625">625</a>         <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> length = sb.length();
 <a class="jxr_linenumber" name="626" href="#626">626</a>         <strong class="jxr_keyword">int</strong> nameStart;
 <a class="jxr_linenumber" name="627" href="#627">627</a>         <strong class="jxr_keyword">int</strong> nameEnd;
@@ -669,7 +669,7 @@
 <a class="jxr_linenumber" name="659" href="#659">659</a>         };
 <a class="jxr_linenumber" name="660" href="#660">660</a>     }
 <a class="jxr_linenumber" name="661" href="#661">661</a> 
-<a class="jxr_linenumber" name="662" href="#662">662</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> findNonWhitespace(String sb, <strong class="jxr_keyword">int</strong> offset) {
+<a class="jxr_linenumber" name="662" href="#662">662</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> findNonWhitespace(String sb, <strong class="jxr_keyword">int</strong> offset) {
 <a class="jxr_linenumber" name="663" href="#663">663</a>         <strong class="jxr_keyword">int</strong> result;
 <a class="jxr_linenumber" name="664" href="#664">664</a>         <strong class="jxr_keyword">for</strong> (result = offset; result &lt; sb.length(); result ++) {
 <a class="jxr_linenumber" name="665" href="#665">665</a>             <strong class="jxr_keyword">if</strong> (!Character.isWhitespace(sb.charAt(result))) {
@@ -679,7 +679,7 @@
 <a class="jxr_linenumber" name="669" href="#669">669</a>         <strong class="jxr_keyword">return</strong> result;
 <a class="jxr_linenumber" name="670" href="#670">670</a>     }
 <a class="jxr_linenumber" name="671" href="#671">671</a> 
-<a class="jxr_linenumber" name="672" href="#672">672</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> findWhitespace(String sb, <strong class="jxr_keyword">int</strong> offset) {
+<a class="jxr_linenumber" name="672" href="#672">672</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> findWhitespace(String sb, <strong class="jxr_keyword">int</strong> offset) {
 <a class="jxr_linenumber" name="673" href="#673">673</a>         <strong class="jxr_keyword">int</strong> result;
 <a class="jxr_linenumber" name="674" href="#674">674</a>         <strong class="jxr_keyword">for</strong> (result = offset; result &lt; sb.length(); result ++) {
 <a class="jxr_linenumber" name="675" href="#675">675</a>             <strong class="jxr_keyword">if</strong> (Character.isWhitespace(sb.charAt(result))) {
@@ -689,7 +689,7 @@
 <a class="jxr_linenumber" name="679" href="#679">679</a>         <strong class="jxr_keyword">return</strong> result;
 <a class="jxr_linenumber" name="680" href="#680">680</a>     }
 <a class="jxr_linenumber" name="681" href="#681">681</a> 
-<a class="jxr_linenumber" name="682" href="#682">682</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> findEndOfString(String sb) {
+<a class="jxr_linenumber" name="682" href="#682">682</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> findEndOfString(String sb) {
 <a class="jxr_linenumber" name="683" href="#683">683</a>         <strong class="jxr_keyword">int</strong> result;
 <a class="jxr_linenumber" name="684" href="#684">684</a>         <strong class="jxr_keyword">for</strong> (result = sb.length(); result &gt; 0; result --) {
 <a class="jxr_linenumber" name="685" href="#685">685</a>             <strong class="jxr_keyword">if</strong> (!Character.isWhitespace(sb.charAt(result - 1))) {

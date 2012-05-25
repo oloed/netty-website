@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US" lang="en_US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de_DE" lang="de_DE">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>WebSocketSslServerHandler xref</title>
@@ -101,12 +101,12 @@
 <a class="jxr_linenumber" name="91" href="#91">91</a>  
 <a class="jxr_linenumber" name="92" href="#92">92</a>          <em class="jxr_comment">// Handshake</em>
 <a class="jxr_linenumber" name="93" href="#93">93</a>          <a href="../../../../../../../org/jboss/netty/handler/codec/http/websocketx/WebSocketServerHandshakerFactory.html">WebSocketServerHandshakerFactory</a> wsFactory = <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/jboss/netty/handler/codec/http/websocketx/WebSocketServerHandshakerFactory.html">WebSocketServerHandshakerFactory</a>(
-<a class="jxr_linenumber" name="94" href="#94">94</a>                  <strong class="jxr_keyword">this</strong>.getWebSocketLocation(req), <strong class="jxr_keyword">null</strong>, false);
-<a class="jxr_linenumber" name="95" href="#95">95</a>          <strong class="jxr_keyword">this</strong>.handshaker = wsFactory.newHandshaker(req);
-<a class="jxr_linenumber" name="96" href="#96">96</a>          <strong class="jxr_keyword">if</strong> (<strong class="jxr_keyword">this</strong>.handshaker == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="94" href="#94">94</a>                  getWebSocketLocation(req), <strong class="jxr_keyword">null</strong>, false);
+<a class="jxr_linenumber" name="95" href="#95">95</a>          handshaker = wsFactory.newHandshaker(req);
+<a class="jxr_linenumber" name="96" href="#96">96</a>          <strong class="jxr_keyword">if</strong> (handshaker == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="97" href="#97">97</a>              wsFactory.sendUnsupportedWebSocketVersionResponse(ctx.getChannel());
 <a class="jxr_linenumber" name="98" href="#98">98</a>          } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="99" href="#99">99</a>              <strong class="jxr_keyword">this</strong>.handshaker.handshake(ctx.getChannel(), req).addListener(WebSocketServerHandshaker.HANDSHAKE_LISTENER);
+<a class="jxr_linenumber" name="99" href="#99">99</a>              handshaker.handshake(ctx.getChannel(), req).addListener(WebSocketServerHandshaker.HANDSHAKE_LISTENER);
 <a class="jxr_linenumber" name="100" href="#100">100</a>         }
 <a class="jxr_linenumber" name="101" href="#101">101</a>     }
 <a class="jxr_linenumber" name="102" href="#102">102</a> 
@@ -114,7 +114,7 @@
 <a class="jxr_linenumber" name="104" href="#104">104</a> 
 <a class="jxr_linenumber" name="105" href="#105">105</a>         <em class="jxr_comment">// Check for closing frame</em>
 <a class="jxr_linenumber" name="106" href="#106">106</a>         <strong class="jxr_keyword">if</strong> (frame instanceof CloseWebSocketFrame) {
-<a class="jxr_linenumber" name="107" href="#107">107</a>             <strong class="jxr_keyword">this</strong>.handshaker.close(ctx.getChannel(), (CloseWebSocketFrame) frame);
+<a class="jxr_linenumber" name="107" href="#107">107</a>             handshaker.close(ctx.getChannel(), (CloseWebSocketFrame) frame);
 <a class="jxr_linenumber" name="108" href="#108">108</a>             <strong class="jxr_keyword">return</strong>;
 <a class="jxr_linenumber" name="109" href="#109">109</a>         } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (frame instanceof PingWebSocketFrame) {
 <a class="jxr_linenumber" name="110" href="#110">110</a>             ctx.getChannel().write(<strong class="jxr_keyword">new</strong> PongWebSocketFrame(frame.getBinaryData()));
@@ -132,7 +132,7 @@
 <a class="jxr_linenumber" name="122" href="#122">122</a>         ctx.getChannel().write(<strong class="jxr_keyword">new</strong> TextWebSocketFrame(request.toUpperCase()));
 <a class="jxr_linenumber" name="123" href="#123">123</a>     }
 <a class="jxr_linenumber" name="124" href="#124">124</a> 
-<a class="jxr_linenumber" name="125" href="#125">125</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> sendHttpResponse(<a href="../../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../../org/jboss/netty/handler/codec/http/HttpRequest.html">HttpRequest</a> req, <a href="../../../../../../../org/jboss/netty/handler/codec/http/HttpResponse.html">HttpResponse</a> res) {
+<a class="jxr_linenumber" name="125" href="#125">125</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> sendHttpResponse(<a href="../../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../../org/jboss/netty/handler/codec/http/HttpRequest.html">HttpRequest</a> req, <a href="../../../../../../../org/jboss/netty/handler/codec/http/HttpResponse.html">HttpResponse</a> res) {
 <a class="jxr_linenumber" name="126" href="#126">126</a>         <em class="jxr_comment">// Generate an error page if response status code is not OK (200).</em>
 <a class="jxr_linenumber" name="127" href="#127">127</a>         <strong class="jxr_keyword">if</strong> (res.getStatus().getCode() != 200) {
 <a class="jxr_linenumber" name="128" href="#128">128</a>             res.setContent(ChannelBuffers.copiedBuffer(res.getStatus().toString(), CharsetUtil.UTF_8));
@@ -152,7 +152,7 @@
 <a class="jxr_linenumber" name="142" href="#142">142</a>         e.getChannel().close();
 <a class="jxr_linenumber" name="143" href="#143">143</a>     }
 <a class="jxr_linenumber" name="144" href="#144">144</a> 
-<a class="jxr_linenumber" name="145" href="#145">145</a>     <strong class="jxr_keyword">private</strong> String getWebSocketLocation(<a href="../../../../../../../org/jboss/netty/handler/codec/http/HttpRequest.html">HttpRequest</a> req) {
+<a class="jxr_linenumber" name="145" href="#145">145</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String getWebSocketLocation(<a href="../../../../../../../org/jboss/netty/handler/codec/http/HttpRequest.html">HttpRequest</a> req) {
 <a class="jxr_linenumber" name="146" href="#146">146</a>         <strong class="jxr_keyword">return</strong> <span class="jxr_string">"wss://"</span> + req.getHeader(HttpHeaders.Names.HOST) + WEBSOCKET_PATH;
 <a class="jxr_linenumber" name="147" href="#147">147</a>     }
 <a class="jxr_linenumber" name="148" href="#148">148</a> }
