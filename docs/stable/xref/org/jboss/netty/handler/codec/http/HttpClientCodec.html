@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../../api/org/jboss/netty/handler/codec/http/HttpClientCodec.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -46,10 +46,10 @@
 <a class="jxr_linenumber" name="36" href="#36">36</a>  <em class="jxr_javadoccomment"> * {@link HttpResponseDecoder} to learn what additional state management needs</em>
 <a class="jxr_linenumber" name="37" href="#37">37</a>  <em class="jxr_javadoccomment"> * to be done for &lt;tt&gt;HEAD&lt;/tt&gt; and &lt;tt&gt;CONNECT&lt;/tt&gt; and why</em>
 <a class="jxr_linenumber" name="38" href="#38">38</a>  <em class="jxr_javadoccomment"> * {@link HttpResponseDecoder} can not handle it by itself.</em>
-<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment"> * If the {@link Channel} gets closed and there are requests missing for a response</em>
 <a class="jxr_linenumber" name="41" href="#41">41</a>  <em class="jxr_javadoccomment"> * a {@link PrematureChannelClosureException} is thrown.</em>
-<a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> * @see HttpServerCodec</em>
 <a class="jxr_linenumber" name="44" href="#44">44</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="45" href="#45">45</a>  <em class="jxr_javadoccomment"> * @apiviz.has org.jboss.netty.handler.codec.http.HttpResponseDecoder</em>
@@ -74,7 +74,7 @@
 <a class="jxr_linenumber" name="64" href="#64">64</a>  <em class="jxr_javadoccomment">     * Creates a new instance with the default decoder options</em>
 <a class="jxr_linenumber" name="65" href="#65">65</a>  <em class="jxr_javadoccomment">     * ({@code maxInitialLineLength (4096}}, {@code maxHeaderSize (8192)}, and</em>
 <a class="jxr_linenumber" name="66" href="#66">66</a>  <em class="jxr_javadoccomment">     * {@code maxChunkSize (8192)}).</em>
-<a class="jxr_linenumber" name="67" href="#67">67</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="67" href="#67">67</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="68" href="#68">68</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="69" href="#69">69</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/jboss/netty/handler/codec/http/HttpClientCodec.html">HttpClientCodec</a>() {
 <a class="jxr_linenumber" name="70" href="#70">70</a>          <strong class="jxr_keyword">this</strong>(4096, 8192, 8192, false);
@@ -119,9 +119,9 @@
 <a class="jxr_linenumber" name="109" href="#109">109</a>             <strong class="jxr_keyword">if</strong> (msg instanceof HttpRequest &amp;&amp; !done) {
 <a class="jxr_linenumber" name="110" href="#110">110</a>                 queue.offer(((HttpRequest) msg).getMethod());
 <a class="jxr_linenumber" name="111" href="#111">111</a>             }
-<a class="jxr_linenumber" name="112" href="#112">112</a>             
+<a class="jxr_linenumber" name="112" href="#112">112</a> 
 <a class="jxr_linenumber" name="113" href="#113">113</a>             Object obj =  <strong class="jxr_keyword">super</strong>.encode(ctx, channel, msg);
-<a class="jxr_linenumber" name="114" href="#114">114</a>             
+<a class="jxr_linenumber" name="114" href="#114">114</a> 
 <a class="jxr_linenumber" name="115" href="#115">115</a>             <strong class="jxr_keyword">if</strong> (failOnMissingResponse) {
 <a class="jxr_linenumber" name="116" href="#116">116</a>                 <em class="jxr_comment">// check if the request is chunked if so do not increment</em>
 <a class="jxr_linenumber" name="117" href="#117">117</a>                 <strong class="jxr_keyword">if</strong> (msg instanceof HttpRequest &amp;&amp; !((HttpRequest) msg).isChunked()) {
@@ -159,7 +159,7 @@
 <a class="jxr_linenumber" name="149" href="#149">149</a>             <strong class="jxr_keyword">if</strong> (msg == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="150" href="#150">150</a>                 <strong class="jxr_keyword">return</strong>;
 <a class="jxr_linenumber" name="151" href="#151">151</a>             }
-<a class="jxr_linenumber" name="152" href="#152">152</a>         
+<a class="jxr_linenumber" name="152" href="#152">152</a> 
 <a class="jxr_linenumber" name="153" href="#153">153</a>             <em class="jxr_comment">// check if its a HttpMessage and its not chunked</em>
 <a class="jxr_linenumber" name="154" href="#154">154</a>             <strong class="jxr_keyword">if</strong> (msg instanceof HttpMessage &amp;&amp; !((HttpMessage) msg).isChunked()) {
 <a class="jxr_linenumber" name="155" href="#155">155</a>                 requestResponseCounter.decrementAndGet();
@@ -222,19 +222,20 @@
 <a class="jxr_linenumber" name="212" href="#212">212</a> 
 <a class="jxr_linenumber" name="213" href="#213">213</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">super</strong>.isContentAlwaysEmpty(msg);
 <a class="jxr_linenumber" name="214" href="#214">214</a>         }
-<a class="jxr_linenumber" name="215" href="#215">215</a>         
+<a class="jxr_linenumber" name="215" href="#215">215</a> 
 <a class="jxr_linenumber" name="216" href="#216">216</a>         @Override
 <a class="jxr_linenumber" name="217" href="#217">217</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> channelClosed(<a href="../../../../../../org/jboss/netty/channel/ChannelHandlerContext.html">ChannelHandlerContext</a> ctx, <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> e) <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="218" href="#218">218</a>             <strong class="jxr_keyword">super</strong>.channelClosed(ctx, e);
 <a class="jxr_linenumber" name="219" href="#219">219</a>             <strong class="jxr_keyword">if</strong> (failOnMissingResponse) {
 <a class="jxr_linenumber" name="220" href="#220">220</a>                 <strong class="jxr_keyword">long</strong> missingResponses = requestResponseCounter.get();
 <a class="jxr_linenumber" name="221" href="#221">221</a>                 <strong class="jxr_keyword">if</strong> (missingResponses &gt; 0) {
-<a class="jxr_linenumber" name="222" href="#222">222</a>                     <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/PrematureChannelClosureException.html">PrematureChannelClosureException</a>(<span class="jxr_string">"Channel closed but still missing "</span> + missingResponses + <span class="jxr_string">" response(s)"</span>);
-<a class="jxr_linenumber" name="223" href="#223">223</a>                 }
-<a class="jxr_linenumber" name="224" href="#224">224</a>             }
-<a class="jxr_linenumber" name="225" href="#225">225</a>         }
-<a class="jxr_linenumber" name="226" href="#226">226</a>     }
-<a class="jxr_linenumber" name="227" href="#227">227</a> }
+<a class="jxr_linenumber" name="222" href="#222">222</a>                     <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/PrematureChannelClosureException.html">PrematureChannelClosureException</a>(
+<a class="jxr_linenumber" name="223" href="#223">223</a>                             <span class="jxr_string">"Channel closed but still missing "</span> + missingResponses + <span class="jxr_string">" response(s)"</span>);
+<a class="jxr_linenumber" name="224" href="#224">224</a>                 }
+<a class="jxr_linenumber" name="225" href="#225">225</a>             }
+<a class="jxr_linenumber" name="226" href="#226">226</a>         }
+<a class="jxr_linenumber" name="227" href="#227">227</a>     }
+<a class="jxr_linenumber" name="228" href="#228">228</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

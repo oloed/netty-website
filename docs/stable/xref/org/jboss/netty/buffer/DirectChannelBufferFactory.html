@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../api/org/jboss/netty/buffer/DirectChannelBufferFactory.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -66,11 +66,11 @@
 <a class="jxr_linenumber" name="56" href="#56">56</a>  
 <a class="jxr_linenumber" name="57" href="#57">57</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Object bigEndianLock = <strong class="jxr_keyword">new</strong> Object();
 <a class="jxr_linenumber" name="58" href="#58">58</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Object littleEndianLock = <strong class="jxr_keyword">new</strong> Object();
-<a class="jxr_linenumber" name="59" href="#59">59</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> preallocatedBufferCapacity;
-<a class="jxr_linenumber" name="60" href="#60">60</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> preallocatedBigEndianBuffer;
-<a class="jxr_linenumber" name="61" href="#61">61</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> preallocatedBigEndianBufferPosition;
-<a class="jxr_linenumber" name="62" href="#62">62</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> preallocatedLittleEndianBuffer;
-<a class="jxr_linenumber" name="63" href="#63">63</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> preallocatedLittleEndianBufferPosition;
+<a class="jxr_linenumber" name="59" href="#59">59</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> preallocatedBufCapacity;
+<a class="jxr_linenumber" name="60" href="#60">60</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> preallocatedBEBuf;
+<a class="jxr_linenumber" name="61" href="#61">61</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> preallocatedBEBufPos;
+<a class="jxr_linenumber" name="62" href="#62">62</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> preallocatedLEBuf;
+<a class="jxr_linenumber" name="63" href="#63">63</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> preallocatedLEBufPos;
 <a class="jxr_linenumber" name="64" href="#64">64</a>  
 <a class="jxr_linenumber" name="65" href="#65">65</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="66" href="#66">66</a>  <em class="jxr_javadoccomment">     * Creates a new factory whose default {@link ByteOrder} is</em>
@@ -106,10 +106,10 @@
 <a class="jxr_linenumber" name="96" href="#96">96</a>          <strong class="jxr_keyword">super</strong>(defaultOrder);
 <a class="jxr_linenumber" name="97" href="#97">97</a>          <strong class="jxr_keyword">if</strong> (preallocatedBufferCapacity &lt;= 0) {
 <a class="jxr_linenumber" name="98" href="#98">98</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalArgumentException(
-<a class="jxr_linenumber" name="99" href="#99">99</a>                      <span class="jxr_string">"preallocatedBufferCapacity must be greater than 0: "</span> + preallocatedBufferCapacity);
+<a class="jxr_linenumber" name="99" href="#99">99</a>                      <span class="jxr_string">"preallocatedBufCapacity must be greater than 0: "</span> + preallocatedBufferCapacity);
 <a class="jxr_linenumber" name="100" href="#100">100</a>         }
 <a class="jxr_linenumber" name="101" href="#101">101</a> 
-<a class="jxr_linenumber" name="102" href="#102">102</a>         <strong class="jxr_keyword">this</strong>.preallocatedBufferCapacity = preallocatedBufferCapacity;
+<a class="jxr_linenumber" name="102" href="#102">102</a>         <strong class="jxr_keyword">this</strong>.preallocatedBufCapacity = preallocatedBufferCapacity;
 <a class="jxr_linenumber" name="103" href="#103">103</a>     }
 <a class="jxr_linenumber" name="104" href="#104">104</a> 
 <a class="jxr_linenumber" name="105" href="#105">105</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> getBuffer(ByteOrder order, <strong class="jxr_keyword">int</strong> capacity) {
@@ -122,7 +122,7 @@
 <a class="jxr_linenumber" name="112" href="#112">112</a>         <strong class="jxr_keyword">if</strong> (capacity == 0) {
 <a class="jxr_linenumber" name="113" href="#113">113</a>             <strong class="jxr_keyword">return</strong> ChannelBuffers.EMPTY_BUFFER;
 <a class="jxr_linenumber" name="114" href="#114">114</a>         }
-<a class="jxr_linenumber" name="115" href="#115">115</a>         <strong class="jxr_keyword">if</strong> (capacity &gt;= preallocatedBufferCapacity) {
+<a class="jxr_linenumber" name="115" href="#115">115</a>         <strong class="jxr_keyword">if</strong> (capacity &gt;= preallocatedBufCapacity) {
 <a class="jxr_linenumber" name="116" href="#116">116</a>             <strong class="jxr_keyword">return</strong> ChannelBuffers.directBuffer(order, capacity);
 <a class="jxr_linenumber" name="117" href="#117">117</a>         }
 <a class="jxr_linenumber" name="118" href="#118">118</a> 
@@ -170,17 +170,17 @@
 <a class="jxr_linenumber" name="160" href="#160">160</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> allocateBigEndianBuffer(<strong class="jxr_keyword">int</strong> capacity) {
 <a class="jxr_linenumber" name="161" href="#161">161</a>         <a href="../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> slice;
 <a class="jxr_linenumber" name="162" href="#162">162</a>         <strong class="jxr_keyword">synchronized</strong> (bigEndianLock) {
-<a class="jxr_linenumber" name="163" href="#163">163</a>             <strong class="jxr_keyword">if</strong> (preallocatedBigEndianBuffer == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="164" href="#164">164</a>                 preallocatedBigEndianBuffer = ChannelBuffers.directBuffer(ByteOrder.BIG_ENDIAN, preallocatedBufferCapacity);
-<a class="jxr_linenumber" name="165" href="#165">165</a>                 slice = preallocatedBigEndianBuffer.slice(0, capacity);
-<a class="jxr_linenumber" name="166" href="#166">166</a>                 preallocatedBigEndianBufferPosition = capacity;
-<a class="jxr_linenumber" name="167" href="#167">167</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (preallocatedBigEndianBuffer.capacity() - preallocatedBigEndianBufferPosition &gt;= capacity) {
-<a class="jxr_linenumber" name="168" href="#168">168</a>                 slice = preallocatedBigEndianBuffer.slice(preallocatedBigEndianBufferPosition, capacity);
-<a class="jxr_linenumber" name="169" href="#169">169</a>                 preallocatedBigEndianBufferPosition += capacity;
+<a class="jxr_linenumber" name="163" href="#163">163</a>             <strong class="jxr_keyword">if</strong> (preallocatedBEBuf == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="164" href="#164">164</a>                 preallocatedBEBuf = ChannelBuffers.directBuffer(ByteOrder.BIG_ENDIAN, preallocatedBufCapacity);
+<a class="jxr_linenumber" name="165" href="#165">165</a>                 slice = preallocatedBEBuf.slice(0, capacity);
+<a class="jxr_linenumber" name="166" href="#166">166</a>                 preallocatedBEBufPos = capacity;
+<a class="jxr_linenumber" name="167" href="#167">167</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (preallocatedBEBuf.capacity() - preallocatedBEBufPos &gt;= capacity) {
+<a class="jxr_linenumber" name="168" href="#168">168</a>                 slice = preallocatedBEBuf.slice(preallocatedBEBufPos, capacity);
+<a class="jxr_linenumber" name="169" href="#169">169</a>                 preallocatedBEBufPos += capacity;
 <a class="jxr_linenumber" name="170" href="#170">170</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="171" href="#171">171</a>                 preallocatedBigEndianBuffer = ChannelBuffers.directBuffer(ByteOrder.BIG_ENDIAN, preallocatedBufferCapacity);
-<a class="jxr_linenumber" name="172" href="#172">172</a>                 slice = preallocatedBigEndianBuffer.slice(0, capacity);
-<a class="jxr_linenumber" name="173" href="#173">173</a>                 preallocatedBigEndianBufferPosition = capacity;
+<a class="jxr_linenumber" name="171" href="#171">171</a>                 preallocatedBEBuf = ChannelBuffers.directBuffer(ByteOrder.BIG_ENDIAN, preallocatedBufCapacity);
+<a class="jxr_linenumber" name="172" href="#172">172</a>                 slice = preallocatedBEBuf.slice(0, capacity);
+<a class="jxr_linenumber" name="173" href="#173">173</a>                 preallocatedBEBufPos = capacity;
 <a class="jxr_linenumber" name="174" href="#174">174</a>             }
 <a class="jxr_linenumber" name="175" href="#175">175</a>         }
 <a class="jxr_linenumber" name="176" href="#176">176</a>         <strong class="jxr_keyword">return</strong> slice;
@@ -189,17 +189,17 @@
 <a class="jxr_linenumber" name="179" href="#179">179</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> allocateLittleEndianBuffer(<strong class="jxr_keyword">int</strong> capacity) {
 <a class="jxr_linenumber" name="180" href="#180">180</a>         <a href="../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> slice;
 <a class="jxr_linenumber" name="181" href="#181">181</a>         <strong class="jxr_keyword">synchronized</strong> (littleEndianLock) {
-<a class="jxr_linenumber" name="182" href="#182">182</a>             <strong class="jxr_keyword">if</strong> (preallocatedLittleEndianBuffer == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="183" href="#183">183</a>                 preallocatedLittleEndianBuffer = ChannelBuffers.directBuffer(ByteOrder.LITTLE_ENDIAN, preallocatedBufferCapacity);
-<a class="jxr_linenumber" name="184" href="#184">184</a>                 slice = preallocatedLittleEndianBuffer.slice(0, capacity);
-<a class="jxr_linenumber" name="185" href="#185">185</a>                 preallocatedLittleEndianBufferPosition = capacity;
-<a class="jxr_linenumber" name="186" href="#186">186</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (preallocatedLittleEndianBuffer.capacity() - preallocatedLittleEndianBufferPosition &gt;= capacity) {
-<a class="jxr_linenumber" name="187" href="#187">187</a>                 slice = preallocatedLittleEndianBuffer.slice(preallocatedLittleEndianBufferPosition, capacity);
-<a class="jxr_linenumber" name="188" href="#188">188</a>                 preallocatedLittleEndianBufferPosition += capacity;
+<a class="jxr_linenumber" name="182" href="#182">182</a>             <strong class="jxr_keyword">if</strong> (preallocatedLEBuf == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="183" href="#183">183</a>                 preallocatedLEBuf = ChannelBuffers.directBuffer(ByteOrder.LITTLE_ENDIAN, preallocatedBufCapacity);
+<a class="jxr_linenumber" name="184" href="#184">184</a>                 slice = preallocatedLEBuf.slice(0, capacity);
+<a class="jxr_linenumber" name="185" href="#185">185</a>                 preallocatedLEBufPos = capacity;
+<a class="jxr_linenumber" name="186" href="#186">186</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (preallocatedLEBuf.capacity() - preallocatedLEBufPos &gt;= capacity) {
+<a class="jxr_linenumber" name="187" href="#187">187</a>                 slice = preallocatedLEBuf.slice(preallocatedLEBufPos, capacity);
+<a class="jxr_linenumber" name="188" href="#188">188</a>                 preallocatedLEBufPos += capacity;
 <a class="jxr_linenumber" name="189" href="#189">189</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="190" href="#190">190</a>                 preallocatedLittleEndianBuffer = ChannelBuffers.directBuffer(ByteOrder.LITTLE_ENDIAN, preallocatedBufferCapacity);
-<a class="jxr_linenumber" name="191" href="#191">191</a>                 slice = preallocatedLittleEndianBuffer.slice(0, capacity);
-<a class="jxr_linenumber" name="192" href="#192">192</a>                 preallocatedLittleEndianBufferPosition = capacity;
+<a class="jxr_linenumber" name="190" href="#190">190</a>                 preallocatedLEBuf = ChannelBuffers.directBuffer(ByteOrder.LITTLE_ENDIAN, preallocatedBufCapacity);
+<a class="jxr_linenumber" name="191" href="#191">191</a>                 slice = preallocatedLEBuf.slice(0, capacity);
+<a class="jxr_linenumber" name="192" href="#192">192</a>                 preallocatedLEBufPos = capacity;
 <a class="jxr_linenumber" name="193" href="#193">193</a>             }
 <a class="jxr_linenumber" name="194" href="#194">194</a>         }
 <a class="jxr_linenumber" name="195" href="#195">195</a>         <strong class="jxr_keyword">return</strong> slice;

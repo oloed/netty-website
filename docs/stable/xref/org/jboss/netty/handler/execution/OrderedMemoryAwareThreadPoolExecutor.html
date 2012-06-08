@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../api/org/jboss/netty/handler/execution/OrderedMemoryAwareThreadPoolExecutor.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -135,7 +135,7 @@
 <a class="jxr_linenumber" name="125" href="#125">125</a> <em class="jxr_javadoccomment"> * &lt;/pre&gt;</em>
 <a class="jxr_linenumber" name="126" href="#126">126</a> <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="127" href="#127">127</a> <em class="jxr_javadoccomment"> * If the expected maximum number of keys is small and deterministic, you could</em>
-<a class="jxr_linenumber" name="128" href="#128">128</a> <em class="jxr_javadoccomment"> * use a weak key map such as &lt;a href="<a href="http://viewvc.jboss.org/cgi-bin/viewvc.cgi/jbosscache/experimental/jsr166/src/jsr166y/ConcurrentWeakHashMap.java?view=markup" target="alexandria_uri">http://viewvc.jboss.org/cgi-bin/viewvc.cgi/jbosscache/experimental/jsr166/src/jsr166y/ConcurrentWeakHashMap.java?view=markup</a>"&gt;ConcurrentWeakHashMap&lt;/a&gt;</em>
+<a class="jxr_linenumber" name="128" href="#128">128</a> <em class="jxr_javadoccomment"> * use a weak key map such as &lt;a href="<a href="http://goo.gl/TqGl1" target="alexandria_uri">http://goo.gl/TqGl1</a>"&gt;ConcurrentWeakHashMap&lt;/a&gt;</em>
 <a class="jxr_linenumber" name="129" href="#129">129</a> <em class="jxr_javadoccomment"> * or synchronized {@link WeakHashMap} instead of managing the life cycle of the</em>
 <a class="jxr_linenumber" name="130" href="#130">130</a> <em class="jxr_javadoccomment"> * keys by yourself.</em>
 <a class="jxr_linenumber" name="131" href="#131">131</a> <em class="jxr_javadoccomment"> *</em>
@@ -292,11 +292,11 @@
 <a class="jxr_linenumber" name="282" href="#282">282</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/jboss/netty/handler/execution/OrderedMemoryAwareThreadPoolExecutor.html">ChildExecutor</a> <strong class="jxr_keyword">implements</strong> Executor, Runnable {
 <a class="jxr_linenumber" name="283" href="#283">283</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Queue&lt;Runnable&gt; tasks = QueueFactory.createQueue(Runnable.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="284" href="#284">284</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> AtomicBoolean isRunning = <strong class="jxr_keyword">new</strong> AtomicBoolean();
-<a class="jxr_linenumber" name="285" href="#285">285</a>         
+<a class="jxr_linenumber" name="285" href="#285">285</a> 
 <a class="jxr_linenumber" name="286" href="#286">286</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> execute(Runnable command) {
 <a class="jxr_linenumber" name="287" href="#287">287</a>             <em class="jxr_comment">// TODO: What todo if the add return false ?</em>
 <a class="jxr_linenumber" name="288" href="#288">288</a>             tasks.add(command);
-<a class="jxr_linenumber" name="289" href="#289">289</a>             
+<a class="jxr_linenumber" name="289" href="#289">289</a> 
 <a class="jxr_linenumber" name="290" href="#290">290</a> 
 <a class="jxr_linenumber" name="291" href="#291">291</a>             <strong class="jxr_keyword">if</strong> (!isRunning.get()) {
 <a class="jxr_linenumber" name="292" href="#292">292</a>                 doUnorderedExecute(<strong class="jxr_keyword">this</strong>);
@@ -318,7 +318,7 @@
 <a class="jxr_linenumber" name="308" href="#308">308</a>                         <strong class="jxr_keyword">if</strong> (task == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="309" href="#309">309</a>                             <strong class="jxr_keyword">break</strong>;
 <a class="jxr_linenumber" name="310" href="#310">310</a>                         }
-<a class="jxr_linenumber" name="311" href="#311">311</a>                         
+<a class="jxr_linenumber" name="311" href="#311">311</a> 
 <a class="jxr_linenumber" name="312" href="#312">312</a>                         <strong class="jxr_keyword">boolean</strong> ran = false;
 <a class="jxr_linenumber" name="313" href="#313">313</a>                         beforeExecute(thread, task);
 <a class="jxr_linenumber" name="314" href="#314">314</a>                         <strong class="jxr_keyword">try</strong> {
@@ -336,7 +336,7 @@
 <a class="jxr_linenumber" name="326" href="#326">326</a>                     <em class="jxr_comment">// set it back to not running</em>
 <a class="jxr_linenumber" name="327" href="#327">327</a>                     isRunning.set(false);
 <a class="jxr_linenumber" name="328" href="#328">328</a>                 }
-<a class="jxr_linenumber" name="329" href="#329">329</a>                 
+<a class="jxr_linenumber" name="329" href="#329">329</a> 
 <a class="jxr_linenumber" name="330" href="#330">330</a>                 <strong class="jxr_keyword">if</strong> (acquired &amp;&amp; !isRunning.get() &amp;&amp; tasks.peek() != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="331" href="#331">331</a>                     doUnorderedExecute(<strong class="jxr_keyword">this</strong>);
 <a class="jxr_linenumber" name="332" href="#332">332</a>                 }

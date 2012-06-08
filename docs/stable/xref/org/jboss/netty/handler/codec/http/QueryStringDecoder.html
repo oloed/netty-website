@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../../api/org/jboss/netty/handler/codec/http/QueryStringDecoder.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -57,10 +57,10 @@
 <a class="jxr_linenumber" name="47" href="#47">47</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="48" href="#48">48</a>  <em class="jxr_javadoccomment"> * &lt;h3&gt;HashDOS vulnerability fix&lt;/h3&gt;</em>
 <a class="jxr_linenumber" name="49" href="#49">49</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="50" href="#50">50</a>  <em class="jxr_javadoccomment"> * As a workaround to the &lt;a href="<a href="http://events.ccc.de/congress/2011/Fahrplan/attachments/2007_28C3_Effective_DoS_on_web_application_platforms.pdf" target="alexandria_uri">http://events.ccc.de/congress/2011/Fahrplan/attachments/2007_28C3_Effective_DoS_on_web_application_platforms.pdf</a>"&gt;HashDOS&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="51" href="#51">51</a>  <em class="jxr_javadoccomment"> * vulnerability, the decoder limits the maximum number of decoded key-value</em>
-<a class="jxr_linenumber" name="52" href="#52">52</a>  <em class="jxr_javadoccomment"> * parameter pairs, up to {@literal 1024} by default, and you can configure it</em>
-<a class="jxr_linenumber" name="53" href="#53">53</a>  <em class="jxr_javadoccomment"> * when you construct the decoder by passing an additional integer parameter.</em>
+<a class="jxr_linenumber" name="50" href="#50">50</a>  <em class="jxr_javadoccomment"> * As a workaround to the &lt;a href="<a href="http://goo.gl/I4Nky" target="alexandria_uri">http://goo.gl/I4Nky</a>"&gt;HashDOS&lt;/a&gt; vulnerability, the decoder</em>
+<a class="jxr_linenumber" name="51" href="#51">51</a>  <em class="jxr_javadoccomment"> * limits the maximum number of decoded key-value parameter pairs, up to {@literal 1024} by</em>
+<a class="jxr_linenumber" name="52" href="#52">52</a>  <em class="jxr_javadoccomment"> * default, and you can configure it when you construct the decoder by passing an additional</em>
+<a class="jxr_linenumber" name="53" href="#53">53</a>  <em class="jxr_javadoccomment"> * integer parameter.</em>
 <a class="jxr_linenumber" name="54" href="#54">54</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment"> * @see QueryStringEncoder</em>
 <a class="jxr_linenumber" name="56" href="#56">56</a>  <em class="jxr_javadoccomment"> *</em>
@@ -70,7 +70,7 @@
 <a class="jxr_linenumber" name="60" href="#60">60</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/jboss/netty/handler/codec/http/QueryStringDecoder.html">QueryStringDecoder</a> {
 <a class="jxr_linenumber" name="61" href="#61">61</a>  
 <a class="jxr_linenumber" name="62" href="#62">62</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> DEFAULT_MAX_PARAMS = 1024;
-<a class="jxr_linenumber" name="63" href="#63">63</a>      
+<a class="jxr_linenumber" name="63" href="#63">63</a>  
 <a class="jxr_linenumber" name="64" href="#64">64</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Charset charset;
 <a class="jxr_linenumber" name="65" href="#65">65</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> String uri;
 <a class="jxr_linenumber" name="66" href="#66">66</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">boolean</strong> hasPath;
@@ -84,7 +84,7 @@
 <a class="jxr_linenumber" name="74" href="#74">74</a>  <em class="jxr_javadoccomment">     * assume that the query string is encoded in UTF-8.</em>
 <a class="jxr_linenumber" name="75" href="#75">75</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="76" href="#76">76</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/jboss/netty/handler/codec/http/QueryStringDecoder.html">QueryStringDecoder</a>(String uri) {
-<a class="jxr_linenumber" name="77" href="#77">77</a>          <strong class="jxr_keyword">this</strong>(uri, HttpCodecUtil.DEFAULT_CHARSET);
+<a class="jxr_linenumber" name="77" href="#77">77</a>          <strong class="jxr_keyword">this</strong>(uri, HttpConstants.DEFAULT_CHARSET);
 <a class="jxr_linenumber" name="78" href="#78">78</a>      }
 <a class="jxr_linenumber" name="79" href="#79">79</a>  
 <a class="jxr_linenumber" name="80" href="#80">80</a>      <em class="jxr_javadoccomment">/**</em>
@@ -92,7 +92,7 @@
 <a class="jxr_linenumber" name="82" href="#82">82</a>  <em class="jxr_javadoccomment">     * specified charset.</em>
 <a class="jxr_linenumber" name="83" href="#83">83</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="84" href="#84">84</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/jboss/netty/handler/codec/http/QueryStringDecoder.html">QueryStringDecoder</a>(String uri, <strong class="jxr_keyword">boolean</strong> hasPath) {
-<a class="jxr_linenumber" name="85" href="#85">85</a>          <strong class="jxr_keyword">this</strong>(uri, HttpCodecUtil.DEFAULT_CHARSET, hasPath);
+<a class="jxr_linenumber" name="85" href="#85">85</a>          <strong class="jxr_keyword">this</strong>(uri, HttpConstants.DEFAULT_CHARSET, hasPath);
 <a class="jxr_linenumber" name="86" href="#86">86</a>      }
 <a class="jxr_linenumber" name="87" href="#87">87</a>  
 <a class="jxr_linenumber" name="88" href="#88">88</a>      <em class="jxr_javadoccomment">/**</em>
@@ -147,7 +147,7 @@
 <a class="jxr_linenumber" name="137" href="#137">137</a> <em class="jxr_javadoccomment">     * assume that the query string is encoded in UTF-8.</em>
 <a class="jxr_linenumber" name="138" href="#138">138</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="139" href="#139">139</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/jboss/netty/handler/codec/http/QueryStringDecoder.html">QueryStringDecoder</a>(URI uri) {
-<a class="jxr_linenumber" name="140" href="#140">140</a>         <strong class="jxr_keyword">this</strong>(uri, HttpCodecUtil.DEFAULT_CHARSET);
+<a class="jxr_linenumber" name="140" href="#140">140</a>         <strong class="jxr_keyword">this</strong>(uri, HttpConstants.DEFAULT_CHARSET);
 <a class="jxr_linenumber" name="141" href="#141">141</a>     }
 <a class="jxr_linenumber" name="142" href="#142">142</a> 
 <a class="jxr_linenumber" name="143" href="#143">143</a>     <em class="jxr_javadoccomment">/**</em>
@@ -157,7 +157,7 @@
 <a class="jxr_linenumber" name="147" href="#147">147</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/jboss/netty/handler/codec/http/QueryStringDecoder.html">QueryStringDecoder</a>(URI uri, Charset charset) {
 <a class="jxr_linenumber" name="148" href="#148">148</a>         <strong class="jxr_keyword">this</strong>(uri, charset, DEFAULT_MAX_PARAMS);
 <a class="jxr_linenumber" name="149" href="#149">149</a>     }
-<a class="jxr_linenumber" name="150" href="#150">150</a>     
+<a class="jxr_linenumber" name="150" href="#150">150</a> 
 <a class="jxr_linenumber" name="151" href="#151">151</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="152" href="#152">152</a> <em class="jxr_javadoccomment">     * Creates a new decoder that decodes the specified URI encoded in the</em>
 <a class="jxr_linenumber" name="153" href="#153">153</a> <em class="jxr_javadoccomment">     * specified charset.</em>
@@ -173,7 +173,7 @@
 <a class="jxr_linenumber" name="163" href="#163">163</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalArgumentException(
 <a class="jxr_linenumber" name="164" href="#164">164</a>                     <span class="jxr_string">"maxParams: "</span> + maxParams + <span class="jxr_string">" (expected: a positive integer)"</span>);
 <a class="jxr_linenumber" name="165" href="#165">165</a>         }
-<a class="jxr_linenumber" name="166" href="#166">166</a>         
+<a class="jxr_linenumber" name="166" href="#166">166</a> 
 <a class="jxr_linenumber" name="167" href="#167">167</a>         String rawPath = uri.getRawPath();
 <a class="jxr_linenumber" name="168" href="#168">168</a>         <strong class="jxr_keyword">if</strong> (rawPath != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="169" href="#169">169</a>             hasPath = <strong class="jxr_keyword">true</strong>;
@@ -181,7 +181,7 @@
 <a class="jxr_linenumber" name="171" href="#171">171</a>             rawPath = <span class="jxr_string">""</span>;
 <a class="jxr_linenumber" name="172" href="#172">172</a>             hasPath = false;
 <a class="jxr_linenumber" name="173" href="#173">173</a>         }
-<a class="jxr_linenumber" name="174" href="#174">174</a>         <em class="jxr_comment">// Also take care of cut of things like "http://localhost" </em>
+<a class="jxr_linenumber" name="174" href="#174">174</a>         <em class="jxr_comment">// Also take care of cut of things like "http://localhost"</em>
 <a class="jxr_linenumber" name="175" href="#175">175</a>         String newUri = rawPath + <span class="jxr_string">"?"</span> + uri.getRawQuery();
 <a class="jxr_linenumber" name="176" href="#176">176</a> 
 <a class="jxr_linenumber" name="177" href="#177">177</a>         <em class="jxr_comment">// http://en.wikipedia.org/wiki/Query_string</em>
@@ -315,7 +315,7 @@
 <a class="jxr_linenumber" name="305" href="#305">305</a> <em class="jxr_javadoccomment">     * escape sequence.</em>
 <a class="jxr_linenumber" name="306" href="#306">306</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="307" href="#307">307</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String decodeComponent(<strong class="jxr_keyword">final</strong> String s) {
-<a class="jxr_linenumber" name="308" href="#308">308</a>         <strong class="jxr_keyword">return</strong> decodeComponent(s, HttpCodecUtil.DEFAULT_CHARSET);
+<a class="jxr_linenumber" name="308" href="#308">308</a>         <strong class="jxr_keyword">return</strong> decodeComponent(s, HttpConstants.DEFAULT_CHARSET);
 <a class="jxr_linenumber" name="309" href="#309">309</a>     }
 <a class="jxr_linenumber" name="310" href="#310">310</a> 
 <a class="jxr_linenumber" name="311" href="#311">311</a>     <em class="jxr_javadoccomment">/**</em>

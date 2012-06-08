@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../../../api/org/jboss/netty/handler/codec/http/websocketx/CloseWebSocketFrame.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -44,7 +44,7 @@
 <a class="jxr_linenumber" name="34" href="#34">34</a>  
 <a class="jxr_linenumber" name="35" href="#35">35</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="36" href="#36">36</a>  <em class="jxr_javadoccomment">     * Creates a new empty close frame with closing status code and reason text</em>
-<a class="jxr_linenumber" name="37" href="#37">37</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="37" href="#37">37</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="38" href="#38">38</a>  <em class="jxr_javadoccomment">     * @param statusCode</em>
 <a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment">     *            Integer status code as per &lt;a href="<a href="http://tools.ietf.org/html/rfc6455" target="alexandria_uri">http://tools.ietf.org/html/rfc6455</a>#section-7.4"&gt;RFC 6455&lt;/a&gt;. For</em>
 <a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment">     *            example, &lt;tt&gt;1000&lt;/tt&gt; indicates normal closure.</em>
@@ -57,7 +57,7 @@
 <a class="jxr_linenumber" name="47" href="#47">47</a>  
 <a class="jxr_linenumber" name="48" href="#48">48</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="49" href="#49">49</a>  <em class="jxr_javadoccomment">     * Creates a new close frame with no losing status code and no reason text</em>
-<a class="jxr_linenumber" name="50" href="#50">50</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="50" href="#50">50</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="51" href="#51">51</a>  <em class="jxr_javadoccomment">     * @param finalFragment</em>
 <a class="jxr_linenumber" name="52" href="#52">52</a>  <em class="jxr_javadoccomment">     *            flag indicating if this frame is the final fragment</em>
 <a class="jxr_linenumber" name="53" href="#53">53</a>  <em class="jxr_javadoccomment">     * @param rsv</em>
@@ -69,7 +69,7 @@
 <a class="jxr_linenumber" name="59" href="#59">59</a>  
 <a class="jxr_linenumber" name="60" href="#60">60</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="61" href="#61">61</a>  <em class="jxr_javadoccomment">     * Creates a new close frame with closing status code and reason text</em>
-<a class="jxr_linenumber" name="62" href="#62">62</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="62" href="#62">62</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="63" href="#63">63</a>  <em class="jxr_javadoccomment">     * @param finalFragment</em>
 <a class="jxr_linenumber" name="64" href="#64">64</a>  <em class="jxr_javadoccomment">     *            flag indicating if this frame is the final fragment</em>
 <a class="jxr_linenumber" name="65" href="#65">65</a>  <em class="jxr_javadoccomment">     * @param rsv</em>
@@ -106,7 +106,7 @@
 <a class="jxr_linenumber" name="96" href="#96">96</a>  
 <a class="jxr_linenumber" name="97" href="#97">97</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="98" href="#98">98</a>  <em class="jxr_javadoccomment">     * Creates a new close frame</em>
-<a class="jxr_linenumber" name="99" href="#99">99</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="99" href="#99">99</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="100" href="#100">100</a> <em class="jxr_javadoccomment">     * @param finalFragment</em>
 <a class="jxr_linenumber" name="101" href="#101">101</a> <em class="jxr_javadoccomment">     *            flag indicating if this frame is the final fragment</em>
 <a class="jxr_linenumber" name="102" href="#102">102</a> <em class="jxr_javadoccomment">     * @param rsv</em>
@@ -129,7 +129,7 @@
 <a class="jxr_linenumber" name="119" href="#119">119</a> <em class="jxr_javadoccomment">     * a status code is set, -1 is returned.</em>
 <a class="jxr_linenumber" name="120" href="#120">120</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="121" href="#121">121</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getStatusCode() {
-<a class="jxr_linenumber" name="122" href="#122">122</a>         <a href="../../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> binaryData = <strong class="jxr_keyword">this</strong>.getBinaryData();
+<a class="jxr_linenumber" name="122" href="#122">122</a>         <a href="../../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> binaryData = getBinaryData();
 <a class="jxr_linenumber" name="123" href="#123">123</a>         <strong class="jxr_keyword">if</strong> (binaryData == <strong class="jxr_keyword">null</strong> || binaryData.capacity() == 0) {
 <a class="jxr_linenumber" name="124" href="#124">124</a>             <strong class="jxr_keyword">return</strong> -1;
 <a class="jxr_linenumber" name="125" href="#125">125</a>         }
@@ -146,7 +146,7 @@
 <a class="jxr_linenumber" name="136" href="#136">136</a> <em class="jxr_javadoccomment">     * text is not supplied, an empty string is returned.</em>
 <a class="jxr_linenumber" name="137" href="#137">137</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="138" href="#138">138</a>     <strong class="jxr_keyword">public</strong> String getReasonText() {
-<a class="jxr_linenumber" name="139" href="#139">139</a>         <a href="../../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> binaryData = <strong class="jxr_keyword">this</strong>.getBinaryData();
+<a class="jxr_linenumber" name="139" href="#139">139</a>         <a href="../../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> binaryData = getBinaryData();
 <a class="jxr_linenumber" name="140" href="#140">140</a>         <strong class="jxr_keyword">if</strong> (binaryData == <strong class="jxr_keyword">null</strong> || binaryData.capacity() &lt;= 2) {
 <a class="jxr_linenumber" name="141" href="#141">141</a>             <strong class="jxr_keyword">return</strong> <span class="jxr_string">""</span>;
 <a class="jxr_linenumber" name="142" href="#142">142</a>         }

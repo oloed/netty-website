@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../../api/org/jboss/netty/channel/socket/nio/NioServerSocketPipelineSink.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -57,7 +57,7 @@
 <a class="jxr_linenumber" name="47" href="#47">47</a>  
 <a class="jxr_linenumber" name="48" href="#48">48</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../../org/jboss/netty/logging/InternalLogger.html">InternalLogger</a> logger =
 <a class="jxr_linenumber" name="49" href="#49">49</a>          InternalLoggerFactory.getInstance(NioServerSocketPipelineSink.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="50" href="#50">50</a>      
+<a class="jxr_linenumber" name="50" href="#50">50</a>  
 <a class="jxr_linenumber" name="51" href="#51">51</a>      <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> id = nextId.incrementAndGet();
 <a class="jxr_linenumber" name="52" href="#52">52</a>  
 <a class="jxr_linenumber" name="53" href="#53">53</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> WorkerPool&lt;NioWorker&gt; workerPool;
@@ -105,7 +105,7 @@
 <a class="jxr_linenumber" name="95" href="#95">95</a>          }
 <a class="jxr_linenumber" name="96" href="#96">96</a>      }
 <a class="jxr_linenumber" name="97" href="#97">97</a>  
-<a class="jxr_linenumber" name="98" href="#98">98</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> handleAcceptedSocket(<a href="../../../../../../org/jboss/netty/channel/ChannelEvent.html">ChannelEvent</a> e) {
+<a class="jxr_linenumber" name="98" href="#98">98</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> handleAcceptedSocket(<a href="../../../../../../org/jboss/netty/channel/ChannelEvent.html">ChannelEvent</a> e) {
 <a class="jxr_linenumber" name="99" href="#99">99</a>          <strong class="jxr_keyword">if</strong> (e instanceof ChannelStateEvent) {
 <a class="jxr_linenumber" name="100" href="#100">100</a>             <a href="../../../../../../org/jboss/netty/channel/ChannelStateEvent.html">ChannelStateEvent</a> event = (ChannelStateEvent) e;
 <a class="jxr_linenumber" name="101" href="#101">101</a>             <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioSocketChannel.html">NioSocketChannel</a> channel = (NioSocketChannel) event.getChannel();
@@ -153,8 +153,8 @@
 <a class="jxr_linenumber" name="143" href="#143">143</a> 
 <a class="jxr_linenumber" name="144" href="#144">144</a>             Executor bossExecutor =
 <a class="jxr_linenumber" name="145" href="#145">145</a>                 ((<a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketChannelFactory.html">NioServerSocketChannelFactory</a>) channel.getFactory()).bossExecutor;
-<a class="jxr_linenumber" name="146" href="#146">146</a>             DeadLockProofWorker.start(bossExecutor, 
-<a class="jxr_linenumber" name="147" href="#147">147</a>                     <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/util/ThreadRenamingRunnable.html">ThreadRenamingRunnable</a>(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketPipelineSink.html">Boss</a>(channel), 
+<a class="jxr_linenumber" name="146" href="#146">146</a>             DeadLockProofWorker.start(bossExecutor,
+<a class="jxr_linenumber" name="147" href="#147">147</a>                     <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/util/ThreadRenamingRunnable.html">ThreadRenamingRunnable</a>(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketPipelineSink.html">Boss</a>(channel),
 <a class="jxr_linenumber" name="148" href="#148">148</a>                             <span class="jxr_string">"New I/O server boss #"</span> + id + <span class="jxr_string">" ("</span> + channel + ')'));
 <a class="jxr_linenumber" name="149" href="#149">149</a>             bossStarted = <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="150" href="#150">150</a>         } <strong class="jxr_keyword">catch</strong> (Throwable t) {
@@ -167,7 +167,7 @@
 <a class="jxr_linenumber" name="157" href="#157">157</a>         }
 <a class="jxr_linenumber" name="158" href="#158">158</a>     }
 <a class="jxr_linenumber" name="159" href="#159">159</a> 
-<a class="jxr_linenumber" name="160" href="#160">160</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> close(<a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketChannel.html">NioServerSocketChannel</a> channel, <a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> future) {
+<a class="jxr_linenumber" name="160" href="#160">160</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> close(<a href="../../../../../../org/jboss/netty/channel/socket/nio/NioServerSocketChannel.html">NioServerSocketChannel</a> channel, <a href="../../../../../../org/jboss/netty/channel/ChannelFuture.html">ChannelFuture</a> future) {
 <a class="jxr_linenumber" name="161" href="#161">161</a>         <strong class="jxr_keyword">boolean</strong> bound = channel.isBound();
 <a class="jxr_linenumber" name="162" href="#162">162</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="163" href="#163">163</a>             <strong class="jxr_keyword">if</strong> (channel.socket.isOpen()) {
@@ -235,7 +235,7 @@
 <a class="jxr_linenumber" name="225" href="#225">225</a>                 <strong class="jxr_keyword">for</strong> (;;) {
 <a class="jxr_linenumber" name="226" href="#226">226</a>                     <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="227" href="#227">227</a>                         <strong class="jxr_keyword">if</strong> (selector.select(1000) &gt; 0) {
-<a class="jxr_linenumber" name="228" href="#228">228</a>                             <em class="jxr_comment">// There was something selected if we reach this point, so clear </em>
+<a class="jxr_linenumber" name="228" href="#228">228</a>                             <em class="jxr_comment">// There was something selected if we reach this point, so clear</em>
 <a class="jxr_linenumber" name="229" href="#229">229</a>                             <em class="jxr_comment">// the selected keys</em>
 <a class="jxr_linenumber" name="230" href="#230">230</a>                             selector.selectedKeys().clear();
 <a class="jxr_linenumber" name="231" href="#231">231</a>                         }
@@ -247,7 +247,7 @@
 <a class="jxr_linenumber" name="237" href="#237">237</a>                                 <strong class="jxr_keyword">break</strong>;
 <a class="jxr_linenumber" name="238" href="#238">238</a>                             }
 <a class="jxr_linenumber" name="239" href="#239">239</a>                             registerAcceptedChannel(acceptedSocket, currentThread);
-<a class="jxr_linenumber" name="240" href="#240">240</a>                             
+<a class="jxr_linenumber" name="240" href="#240">240</a> 
 <a class="jxr_linenumber" name="241" href="#241">241</a>                         }
 <a class="jxr_linenumber" name="242" href="#242">242</a> 
 <a class="jxr_linenumber" name="243" href="#243">243</a>                     } <strong class="jxr_keyword">catch</strong> (SocketTimeoutException e) {

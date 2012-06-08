@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../../api/org/jboss/netty/channel/socket/oio/OioWorker.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -57,7 +57,7 @@
 <a class="jxr_linenumber" name="47" href="#47">47</a>               <em class="jxr_comment">// Fire the channelConnected event for OioAcceptedSocketChannel.</em>
 <a class="jxr_linenumber" name="48" href="#48">48</a>              <em class="jxr_comment">// See #287</em>
 <a class="jxr_linenumber" name="49" href="#49">49</a>              fireChannelConnected(channel, channel.getRemoteAddress());
-<a class="jxr_linenumber" name="50" href="#50">50</a>              
+<a class="jxr_linenumber" name="50" href="#50">50</a>  
 <a class="jxr_linenumber" name="51" href="#51">51</a>          }
 <a class="jxr_linenumber" name="52" href="#52">52</a>          <strong class="jxr_keyword">super</strong>.run();
 <a class="jxr_linenumber" name="53" href="#53">53</a>      }
@@ -80,7 +80,7 @@
 <a class="jxr_linenumber" name="70" href="#70">70</a>              <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="71" href="#71">71</a>          }
 <a class="jxr_linenumber" name="72" href="#72">72</a>          fireMessageReceived(channel, channel.getConfig().getBufferFactory().getBuffer(buf, 0, readBytes));
-<a class="jxr_linenumber" name="73" href="#73">73</a>          
+<a class="jxr_linenumber" name="73" href="#73">73</a>  
 <a class="jxr_linenumber" name="74" href="#74">74</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="75" href="#75">75</a>      }
 <a class="jxr_linenumber" name="76" href="#76">76</a>  
@@ -104,14 +104,14 @@
 <a class="jxr_linenumber" name="94" href="#94">94</a>          <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="95" href="#95">95</a>              <strong class="jxr_keyword">int</strong> length = 0;
 <a class="jxr_linenumber" name="96" href="#96">96</a>  
-<a class="jxr_linenumber" name="97" href="#97">97</a>              <em class="jxr_comment">// Add support to write a FileRegion. This in fact will not give any performance gain but at least it not fail and </em>
-<a class="jxr_linenumber" name="98" href="#98">98</a>              <em class="jxr_comment">// we did the best to emulate it</em>
+<a class="jxr_linenumber" name="97" href="#97">97</a>              <em class="jxr_comment">// Add support to write a FileRegion. This in fact will not give any performance gain</em>
+<a class="jxr_linenumber" name="98" href="#98">98</a>              <em class="jxr_comment">// but at least it not fail and we did the best to emulate it</em>
 <a class="jxr_linenumber" name="99" href="#99">99</a>              <strong class="jxr_keyword">if</strong> (message instanceof FileRegion) {
 <a class="jxr_linenumber" name="100" href="#100">100</a>                 <a href="../../../../../../org/jboss/netty/channel/FileRegion.html">FileRegion</a> fr = (FileRegion) message;
 <a class="jxr_linenumber" name="101" href="#101">101</a>                 <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="102" href="#102">102</a>                     <strong class="jxr_keyword">synchronized</strong> (out) {
 <a class="jxr_linenumber" name="103" href="#103">103</a>                         WritableByteChannel  bchannel = Channels.newChannel(out);
-<a class="jxr_linenumber" name="104" href="#104">104</a>                         
+<a class="jxr_linenumber" name="104" href="#104">104</a> 
 <a class="jxr_linenumber" name="105" href="#105">105</a>                         <strong class="jxr_keyword">long</strong> i = 0;
 <a class="jxr_linenumber" name="106" href="#106">106</a>                         <strong class="jxr_keyword">while</strong> ((i = fr.transferTo(bchannel, length)) &gt; 0) {
 <a class="jxr_linenumber" name="107" href="#107">107</a>                             length += i;
@@ -136,14 +136,14 @@
 <a class="jxr_linenumber" name="126" href="#126">126</a>                     a.getBytes(a.readerIndex(), out, length);
 <a class="jxr_linenumber" name="127" href="#127">127</a>                 }
 <a class="jxr_linenumber" name="128" href="#128">128</a>             }
-<a class="jxr_linenumber" name="129" href="#129">129</a>             
+<a class="jxr_linenumber" name="129" href="#129">129</a> 
 <a class="jxr_linenumber" name="130" href="#130">130</a>             future.setSuccess();
 <a class="jxr_linenumber" name="131" href="#131">131</a>             <strong class="jxr_keyword">if</strong> (iothread) {
 <a class="jxr_linenumber" name="132" href="#132">132</a>                 fireWriteComplete(channel, length);
 <a class="jxr_linenumber" name="133" href="#133">133</a>             } <strong class="jxr_keyword">else</strong> {
 <a class="jxr_linenumber" name="134" href="#134">134</a>                 fireWriteCompleteLater(channel, length);
 <a class="jxr_linenumber" name="135" href="#135">135</a>             }
-<a class="jxr_linenumber" name="136" href="#136">136</a>  
+<a class="jxr_linenumber" name="136" href="#136">136</a> 
 <a class="jxr_linenumber" name="137" href="#137">137</a>         } <strong class="jxr_keyword">catch</strong> (Throwable t) {
 <a class="jxr_linenumber" name="138" href="#138">138</a>             <em class="jxr_comment">// Convert 'SocketException: Socket closed' to</em>
 <a class="jxr_linenumber" name="139" href="#139">139</a>             <em class="jxr_comment">// ClosedChannelException.</em>

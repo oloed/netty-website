@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../../api/org/jboss/netty/handler/codec/http/CookieEncoder.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -92,7 +92,7 @@
 <a class="jxr_linenumber" name="82" href="#82">82</a>  <em class="jxr_javadoccomment">     * Encodes the {@link Cookie}s which were added by {@link #addCookie(Cookie)}</em>
 <a class="jxr_linenumber" name="83" href="#83">83</a>  <em class="jxr_javadoccomment">     * so far into an HTTP header value.  If no {@link Cookie}s were added,</em>
 <a class="jxr_linenumber" name="84" href="#84">84</a>  <em class="jxr_javadoccomment">     * an empty string is returned.</em>
-<a class="jxr_linenumber" name="85" href="#85">85</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="85" href="#85">85</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="86" href="#86">86</a>  <em class="jxr_javadoccomment">     * &lt;strong&gt;Be aware that calling this method will clear the content of the {@link CookieEncoder}&lt;/strong&gt;</em>
 <a class="jxr_linenumber" name="87" href="#87">87</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="88" href="#88">88</a>      <strong class="jxr_keyword">public</strong> String encode() {
@@ -140,11 +140,11 @@
 <a class="jxr_linenumber" name="130" href="#130">130</a>             }
 <a class="jxr_linenumber" name="131" href="#131">131</a>             <strong class="jxr_keyword">if</strong> (cookie.isSecure()) {
 <a class="jxr_linenumber" name="132" href="#132">132</a>                 sb.append(CookieHeaderNames.SECURE);
-<a class="jxr_linenumber" name="133" href="#133">133</a>                 sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.SEMICOLON);
+<a class="jxr_linenumber" name="133" href="#133">133</a>                 sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.SEMICOLON);
 <a class="jxr_linenumber" name="134" href="#134">134</a>             }
 <a class="jxr_linenumber" name="135" href="#135">135</a>             <strong class="jxr_keyword">if</strong> (cookie.isHttpOnly()) {
 <a class="jxr_linenumber" name="136" href="#136">136</a>                 sb.append(CookieHeaderNames.HTTPONLY);
-<a class="jxr_linenumber" name="137" href="#137">137</a>                 sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.SEMICOLON);
+<a class="jxr_linenumber" name="137" href="#137">137</a>                 sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.SEMICOLON);
 <a class="jxr_linenumber" name="138" href="#138">138</a>             }
 <a class="jxr_linenumber" name="139" href="#139">139</a>             <strong class="jxr_keyword">if</strong> (cookie.getVersion() &gt;= 1) {
 <a class="jxr_linenumber" name="140" href="#140">140</a>                 <strong class="jxr_keyword">if</strong> (cookie.getComment() != <strong class="jxr_keyword">null</strong>) {
@@ -159,18 +159,18 @@
 <a class="jxr_linenumber" name="149" href="#149">149</a> 
 <a class="jxr_linenumber" name="150" href="#150">150</a>                 <strong class="jxr_keyword">if</strong> (!cookie.getPorts().isEmpty()) {
 <a class="jxr_linenumber" name="151" href="#151">151</a>                     sb.append(CookieHeaderNames.PORT);
-<a class="jxr_linenumber" name="152" href="#152">152</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.EQUALS);
-<a class="jxr_linenumber" name="153" href="#153">153</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.DOUBLE_QUOTE);
+<a class="jxr_linenumber" name="152" href="#152">152</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.EQUALS);
+<a class="jxr_linenumber" name="153" href="#153">153</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.DOUBLE_QUOTE);
 <a class="jxr_linenumber" name="154" href="#154">154</a>                     <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> port: cookie.getPorts()) {
 <a class="jxr_linenumber" name="155" href="#155">155</a>                         sb.append(port);
-<a class="jxr_linenumber" name="156" href="#156">156</a>                         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.COMMA);
+<a class="jxr_linenumber" name="156" href="#156">156</a>                         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.COMMA);
 <a class="jxr_linenumber" name="157" href="#157">157</a>                     }
-<a class="jxr_linenumber" name="158" href="#158">158</a>                     sb.setCharAt(sb.length() - 1, (<strong class="jxr_keyword">char</strong>) HttpCodecUtil.DOUBLE_QUOTE);
-<a class="jxr_linenumber" name="159" href="#159">159</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.SEMICOLON);
+<a class="jxr_linenumber" name="158" href="#158">158</a>                     sb.setCharAt(sb.length() - 1, (<strong class="jxr_keyword">char</strong>) HttpConstants.DOUBLE_QUOTE);
+<a class="jxr_linenumber" name="159" href="#159">159</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.SEMICOLON);
 <a class="jxr_linenumber" name="160" href="#160">160</a>                 }
 <a class="jxr_linenumber" name="161" href="#161">161</a>                 <strong class="jxr_keyword">if</strong> (cookie.isDiscard()) {
 <a class="jxr_linenumber" name="162" href="#162">162</a>                     sb.append(CookieHeaderNames.DISCARD);
-<a class="jxr_linenumber" name="163" href="#163">163</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.SEMICOLON);
+<a class="jxr_linenumber" name="163" href="#163">163</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.SEMICOLON);
 <a class="jxr_linenumber" name="164" href="#164">164</a>                 }
 <a class="jxr_linenumber" name="165" href="#165">165</a>             }
 <a class="jxr_linenumber" name="166" href="#166">166</a>         }
@@ -204,14 +204,14 @@
 <a class="jxr_linenumber" name="194" href="#194">194</a>                 <strong class="jxr_keyword">if</strong> (!cookie.getPorts().isEmpty()) {
 <a class="jxr_linenumber" name="195" href="#195">195</a>                     sb.append('$');
 <a class="jxr_linenumber" name="196" href="#196">196</a>                     sb.append(CookieHeaderNames.PORT);
-<a class="jxr_linenumber" name="197" href="#197">197</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.EQUALS);
-<a class="jxr_linenumber" name="198" href="#198">198</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.DOUBLE_QUOTE);
+<a class="jxr_linenumber" name="197" href="#197">197</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.EQUALS);
+<a class="jxr_linenumber" name="198" href="#198">198</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.DOUBLE_QUOTE);
 <a class="jxr_linenumber" name="199" href="#199">199</a>                     <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> port: cookie.getPorts()) {
 <a class="jxr_linenumber" name="200" href="#200">200</a>                         sb.append(port);
-<a class="jxr_linenumber" name="201" href="#201">201</a>                         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.COMMA);
+<a class="jxr_linenumber" name="201" href="#201">201</a>                         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.COMMA);
 <a class="jxr_linenumber" name="202" href="#202">202</a>                     }
-<a class="jxr_linenumber" name="203" href="#203">203</a>                     sb.setCharAt(sb.length() - 1, (<strong class="jxr_keyword">char</strong>) HttpCodecUtil.DOUBLE_QUOTE);
-<a class="jxr_linenumber" name="204" href="#204">204</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.SEMICOLON);
+<a class="jxr_linenumber" name="203" href="#203">203</a>                     sb.setCharAt(sb.length() - 1, (<strong class="jxr_keyword">char</strong>) HttpConstants.DOUBLE_QUOTE);
+<a class="jxr_linenumber" name="204" href="#204">204</a>                     sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.SEMICOLON);
 <a class="jxr_linenumber" name="205" href="#205">205</a>                 }
 <a class="jxr_linenumber" name="206" href="#206">206</a>             }
 <a class="jxr_linenumber" name="207" href="#207">207</a>         }
@@ -245,9 +245,9 @@
 <a class="jxr_linenumber" name="235" href="#235">235</a> 
 <a class="jxr_linenumber" name="236" href="#236">236</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> addUnquoted(StringBuilder sb, String name, String val) {
 <a class="jxr_linenumber" name="237" href="#237">237</a>         sb.append(name);
-<a class="jxr_linenumber" name="238" href="#238">238</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.EQUALS);
+<a class="jxr_linenumber" name="238" href="#238">238</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.EQUALS);
 <a class="jxr_linenumber" name="239" href="#239">239</a>         sb.append(val);
-<a class="jxr_linenumber" name="240" href="#240">240</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.SEMICOLON);
+<a class="jxr_linenumber" name="240" href="#240">240</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.SEMICOLON);
 <a class="jxr_linenumber" name="241" href="#241">241</a>     }
 <a class="jxr_linenumber" name="242" href="#242">242</a> 
 <a class="jxr_linenumber" name="243" href="#243">243</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> addQuoted(StringBuilder sb, String name, String val) {
@@ -256,18 +256,18 @@
 <a class="jxr_linenumber" name="246" href="#246">246</a>         }
 <a class="jxr_linenumber" name="247" href="#247">247</a> 
 <a class="jxr_linenumber" name="248" href="#248">248</a>         sb.append(name);
-<a class="jxr_linenumber" name="249" href="#249">249</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.EQUALS);
-<a class="jxr_linenumber" name="250" href="#250">250</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.DOUBLE_QUOTE);
+<a class="jxr_linenumber" name="249" href="#249">249</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.EQUALS);
+<a class="jxr_linenumber" name="250" href="#250">250</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.DOUBLE_QUOTE);
 <a class="jxr_linenumber" name="251" href="#251">251</a>         sb.append(val.replace(<span class="jxr_string">"&#92;&#92;"</span>, <span class="jxr_string">"&#92;&#92;&#92;&#92;"</span>).replace(<span class="jxr_string">"\&quot;"</span>, <span class="jxr_string">"&#92;&#92;\&quot;"</span>));
-<a class="jxr_linenumber" name="252" href="#252">252</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.DOUBLE_QUOTE);
-<a class="jxr_linenumber" name="253" href="#253">253</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.SEMICOLON);
+<a class="jxr_linenumber" name="252" href="#252">252</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.DOUBLE_QUOTE);
+<a class="jxr_linenumber" name="253" href="#253">253</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.SEMICOLON);
 <a class="jxr_linenumber" name="254" href="#254">254</a>     }
 <a class="jxr_linenumber" name="255" href="#255">255</a> 
 <a class="jxr_linenumber" name="256" href="#256">256</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> add(StringBuilder sb, String name, <strong class="jxr_keyword">int</strong> val) {
 <a class="jxr_linenumber" name="257" href="#257">257</a>         sb.append(name);
-<a class="jxr_linenumber" name="258" href="#258">258</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.EQUALS);
+<a class="jxr_linenumber" name="258" href="#258">258</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.EQUALS);
 <a class="jxr_linenumber" name="259" href="#259">259</a>         sb.append(val);
-<a class="jxr_linenumber" name="260" href="#260">260</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpCodecUtil.SEMICOLON);
+<a class="jxr_linenumber" name="260" href="#260">260</a>         sb.append((<strong class="jxr_keyword">char</strong>) HttpConstants.SEMICOLON);
 <a class="jxr_linenumber" name="261" href="#261">261</a>     }
 <a class="jxr_linenumber" name="262" href="#262">262</a> }
 </pre>

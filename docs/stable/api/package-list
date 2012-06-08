@@ -13,8 +13,10 @@ org.jboss.netty.handler.codec.compression
 org.jboss.netty.handler.codec.embedder
 org.jboss.netty.handler.codec.frame
 org.jboss.netty.handler.codec.http
+org.jboss.netty.handler.codec.http.multipart
 org.jboss.netty.handler.codec.http.websocket
 org.jboss.netty.handler.codec.http.websocketx
+org.jboss.netty.handler.codec.marshalling
 org.jboss.netty.handler.codec.oneone
 org.jboss.netty.handler.codec.protobuf
 org.jboss.netty.handler.codec.replay
@@ -23,10 +25,12 @@ org.jboss.netty.handler.codec.serialization
 org.jboss.netty.handler.codec.spdy
 org.jboss.netty.handler.codec.string
 org.jboss.netty.handler.execution
+org.jboss.netty.handler.ipfilter
 org.jboss.netty.handler.logging
 org.jboss.netty.handler.queue
 org.jboss.netty.handler.ssl
 org.jboss.netty.handler.stream
 org.jboss.netty.handler.timeout
+org.jboss.netty.handler.traffic
 org.jboss.netty.logging
 org.jboss.netty.util

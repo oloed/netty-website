@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../api/org/jboss/netty/util/internal/LinkedTransferQueue.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -690,7 +690,7 @@
 <a class="jxr_linenumber" name="680" href="#680">680</a>                            (t = tail)   != <strong class="jxr_keyword">null</strong> &amp;&amp;
 <a class="jxr_linenumber" name="681" href="#681">681</a>                            (s = t.next) != <strong class="jxr_keyword">null</strong> &amp;&amp; <em class="jxr_comment">// advance and retry</em>
 <a class="jxr_linenumber" name="682" href="#682">682</a>                            (s = s.next) != <strong class="jxr_keyword">null</strong> &amp;&amp; s != t) {
-<a class="jxr_linenumber" name="683" href="#683">683</a>                         ;
+<a class="jxr_linenumber" name="683" href="#683">683</a>                         <strong class="jxr_keyword">continue</strong>;
 <a class="jxr_linenumber" name="684" href="#684">684</a>                     }
 <a class="jxr_linenumber" name="685" href="#685">685</a>                 }
 <a class="jxr_linenumber" name="686" href="#686">686</a>                 <strong class="jxr_keyword">return</strong> p;
@@ -1393,66 +1393,65 @@
 <a class="jxr_linenumber" name="1383" href="#1383">1383</a>         <strong class="jxr_keyword">throws</strong> java.io.IOException, ClassNotFoundException {
 <a class="jxr_linenumber" name="1384" href="#1384">1384</a>         s.defaultReadObject();
 <a class="jxr_linenumber" name="1385" href="#1385">1385</a>         <strong class="jxr_keyword">for</strong> (;;) {
-<a class="jxr_linenumber" name="1386" href="#1386">1386</a>             @SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
-<a class="jxr_linenumber" name="1387" href="#1387">1387</a>             E item = (E) s.readObject();
-<a class="jxr_linenumber" name="1388" href="#1388">1388</a>             <strong class="jxr_keyword">if</strong> (item == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="1389" href="#1389">1389</a>                 <strong class="jxr_keyword">break</strong>;
-<a class="jxr_linenumber" name="1390" href="#1390">1390</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="1391" href="#1391">1391</a>                 offer(item);
-<a class="jxr_linenumber" name="1392" href="#1392">1392</a>             }
-<a class="jxr_linenumber" name="1393" href="#1393">1393</a>         }
-<a class="jxr_linenumber" name="1394" href="#1394">1394</a>     }
-<a class="jxr_linenumber" name="1395" href="#1395">1395</a> 
-<a class="jxr_linenumber" name="1396" href="#1396">1396</a>     <em class="jxr_comment">// Unsafe mechanics</em>
-<a class="jxr_linenumber" name="1397" href="#1397">1397</a> 
-<a class="jxr_linenumber" name="1398" href="#1398">1398</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> sun.misc.Unsafe UNSAFE;
-<a class="jxr_linenumber" name="1399" href="#1399">1399</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> headOffset;
-<a class="jxr_linenumber" name="1400" href="#1400">1400</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> tailOffset;
-<a class="jxr_linenumber" name="1401" href="#1401">1401</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> sweepVotesOffset;
-<a class="jxr_linenumber" name="1402" href="#1402">1402</a>     <strong class="jxr_keyword">static</strong> {
-<a class="jxr_linenumber" name="1403" href="#1403">1403</a>         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="1404" href="#1404">1404</a>             UNSAFE = getUnsafe();
-<a class="jxr_linenumber" name="1405" href="#1405">1405</a>             Class&lt;?&gt; k = LinkedTransferQueue.<strong class="jxr_keyword">class</strong>;
-<a class="jxr_linenumber" name="1406" href="#1406">1406</a>             headOffset = UNSAFE.objectFieldOffset
-<a class="jxr_linenumber" name="1407" href="#1407">1407</a>                 (k.getDeclaredField(<span class="jxr_string">"head"</span>));
-<a class="jxr_linenumber" name="1408" href="#1408">1408</a>             tailOffset = UNSAFE.objectFieldOffset
-<a class="jxr_linenumber" name="1409" href="#1409">1409</a>                 (k.getDeclaredField(<span class="jxr_string">"tail"</span>));
-<a class="jxr_linenumber" name="1410" href="#1410">1410</a>             sweepVotesOffset = UNSAFE.objectFieldOffset
-<a class="jxr_linenumber" name="1411" href="#1411">1411</a>                 (k.getDeclaredField(<span class="jxr_string">"sweepVotes"</span>));
-<a class="jxr_linenumber" name="1412" href="#1412">1412</a>         } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="1413" href="#1413">1413</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> Error(e);
-<a class="jxr_linenumber" name="1414" href="#1414">1414</a>         }
-<a class="jxr_linenumber" name="1415" href="#1415">1415</a>     }
-<a class="jxr_linenumber" name="1416" href="#1416">1416</a> 
-<a class="jxr_linenumber" name="1417" href="#1417">1417</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1418" href="#1418">1418</a> <em class="jxr_javadoccomment">     * Returns a sun.misc.Unsafe.  Suitable for use in a 3rd party package.</em>
-<a class="jxr_linenumber" name="1419" href="#1419">1419</a> <em class="jxr_javadoccomment">     * Replace with a simple call to Unsafe.getUnsafe when integrating</em>
-<a class="jxr_linenumber" name="1420" href="#1420">1420</a> <em class="jxr_javadoccomment">     * into a jdk.</em>
-<a class="jxr_linenumber" name="1421" href="#1421">1421</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="1422" href="#1422">1422</a> <em class="jxr_javadoccomment">     * @return a sun.misc.Unsafe</em>
-<a class="jxr_linenumber" name="1423" href="#1423">1423</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="1424" href="#1424">1424</a>     <strong class="jxr_keyword">static</strong> sun.misc.Unsafe getUnsafe() {
-<a class="jxr_linenumber" name="1425" href="#1425">1425</a>         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="1426" href="#1426">1426</a>             <strong class="jxr_keyword">return</strong> sun.misc.Unsafe.getUnsafe();
-<a class="jxr_linenumber" name="1427" href="#1427">1427</a>         } <strong class="jxr_keyword">catch</strong> (SecurityException se) {
-<a class="jxr_linenumber" name="1428" href="#1428">1428</a>             <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="1429" href="#1429">1429</a>                 <strong class="jxr_keyword">return</strong> java.security.AccessController.doPrivileged
-<a class="jxr_linenumber" name="1430" href="#1430">1430</a>                     (<strong class="jxr_keyword">new</strong> java.security
-<a class="jxr_linenumber" name="1431" href="#1431">1431</a>                      .PrivilegedExceptionAction&lt;sun.misc.Unsafe&gt;() {
-<a class="jxr_linenumber" name="1432" href="#1432">1432</a>                         <strong class="jxr_keyword">public</strong> sun.misc.Unsafe run() <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="1433" href="#1433">1433</a>                             java.lang.reflect.Field f = sun.misc
-<a class="jxr_linenumber" name="1434" href="#1434">1434</a>                                 .Unsafe.<strong class="jxr_keyword">class</strong>.getDeclaredField(<span class="jxr_string">"theUnsafe"</span>);
-<a class="jxr_linenumber" name="1435" href="#1435">1435</a>                             f.setAccessible(<strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="1436" href="#1436">1436</a>                             <strong class="jxr_keyword">return</strong> (sun.misc.Unsafe) f.get(<strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="1437" href="#1437">1437</a>                         }});
-<a class="jxr_linenumber" name="1438" href="#1438">1438</a>             } <strong class="jxr_keyword">catch</strong> (java.security.PrivilegedActionException e) {
-<a class="jxr_linenumber" name="1439" href="#1439">1439</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException(<span class="jxr_string">"Could not initialize intrinsics"</span>,
-<a class="jxr_linenumber" name="1440" href="#1440">1440</a>                                            e.getCause());
-<a class="jxr_linenumber" name="1441" href="#1441">1441</a>             }
-<a class="jxr_linenumber" name="1442" href="#1442">1442</a>         }
-<a class="jxr_linenumber" name="1443" href="#1443">1443</a>     }
-<a class="jxr_linenumber" name="1444" href="#1444">1444</a> 
-<a class="jxr_linenumber" name="1445" href="#1445">1445</a> }
+<a class="jxr_linenumber" name="1386" href="#1386">1386</a>             E item = (E) s.readObject();
+<a class="jxr_linenumber" name="1387" href="#1387">1387</a>             <strong class="jxr_keyword">if</strong> (item == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="1388" href="#1388">1388</a>                 <strong class="jxr_keyword">break</strong>;
+<a class="jxr_linenumber" name="1389" href="#1389">1389</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="1390" href="#1390">1390</a>                 offer(item);
+<a class="jxr_linenumber" name="1391" href="#1391">1391</a>             }
+<a class="jxr_linenumber" name="1392" href="#1392">1392</a>         }
+<a class="jxr_linenumber" name="1393" href="#1393">1393</a>     }
+<a class="jxr_linenumber" name="1394" href="#1394">1394</a> 
+<a class="jxr_linenumber" name="1395" href="#1395">1395</a>     <em class="jxr_comment">// Unsafe mechanics</em>
+<a class="jxr_linenumber" name="1396" href="#1396">1396</a> 
+<a class="jxr_linenumber" name="1397" href="#1397">1397</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> sun.misc.Unsafe UNSAFE;
+<a class="jxr_linenumber" name="1398" href="#1398">1398</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> headOffset;
+<a class="jxr_linenumber" name="1399" href="#1399">1399</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> tailOffset;
+<a class="jxr_linenumber" name="1400" href="#1400">1400</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> sweepVotesOffset;
+<a class="jxr_linenumber" name="1401" href="#1401">1401</a>     <strong class="jxr_keyword">static</strong> {
+<a class="jxr_linenumber" name="1402" href="#1402">1402</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="1403" href="#1403">1403</a>             UNSAFE = getUnsafe();
+<a class="jxr_linenumber" name="1404" href="#1404">1404</a>             Class&lt;?&gt; k = LinkedTransferQueue.<strong class="jxr_keyword">class</strong>;
+<a class="jxr_linenumber" name="1405" href="#1405">1405</a>             headOffset = UNSAFE.objectFieldOffset
+<a class="jxr_linenumber" name="1406" href="#1406">1406</a>                 (k.getDeclaredField(<span class="jxr_string">"head"</span>));
+<a class="jxr_linenumber" name="1407" href="#1407">1407</a>             tailOffset = UNSAFE.objectFieldOffset
+<a class="jxr_linenumber" name="1408" href="#1408">1408</a>                 (k.getDeclaredField(<span class="jxr_string">"tail"</span>));
+<a class="jxr_linenumber" name="1409" href="#1409">1409</a>             sweepVotesOffset = UNSAFE.objectFieldOffset
+<a class="jxr_linenumber" name="1410" href="#1410">1410</a>                 (k.getDeclaredField(<span class="jxr_string">"sweepVotes"</span>));
+<a class="jxr_linenumber" name="1411" href="#1411">1411</a>         } <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a class="jxr_linenumber" name="1412" href="#1412">1412</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> Error(e);
+<a class="jxr_linenumber" name="1413" href="#1413">1413</a>         }
+<a class="jxr_linenumber" name="1414" href="#1414">1414</a>     }
+<a class="jxr_linenumber" name="1415" href="#1415">1415</a> 
+<a class="jxr_linenumber" name="1416" href="#1416">1416</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1417" href="#1417">1417</a> <em class="jxr_javadoccomment">     * Returns a sun.misc.Unsafe.  Suitable for use in a 3rd party package.</em>
+<a class="jxr_linenumber" name="1418" href="#1418">1418</a> <em class="jxr_javadoccomment">     * Replace with a simple call to Unsafe.getUnsafe when integrating</em>
+<a class="jxr_linenumber" name="1419" href="#1419">1419</a> <em class="jxr_javadoccomment">     * into a jdk.</em>
+<a class="jxr_linenumber" name="1420" href="#1420">1420</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="1421" href="#1421">1421</a> <em class="jxr_javadoccomment">     * @return a sun.misc.Unsafe</em>
+<a class="jxr_linenumber" name="1422" href="#1422">1422</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="1423" href="#1423">1423</a>     <strong class="jxr_keyword">static</strong> sun.misc.Unsafe getUnsafe() {
+<a class="jxr_linenumber" name="1424" href="#1424">1424</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="1425" href="#1425">1425</a>             <strong class="jxr_keyword">return</strong> sun.misc.Unsafe.getUnsafe();
+<a class="jxr_linenumber" name="1426" href="#1426">1426</a>         } <strong class="jxr_keyword">catch</strong> (SecurityException se) {
+<a class="jxr_linenumber" name="1427" href="#1427">1427</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="1428" href="#1428">1428</a>                 <strong class="jxr_keyword">return</strong> java.security.AccessController.doPrivileged
+<a class="jxr_linenumber" name="1429" href="#1429">1429</a>                     (<strong class="jxr_keyword">new</strong> java.security
+<a class="jxr_linenumber" name="1430" href="#1430">1430</a>                      .PrivilegedExceptionAction&lt;sun.misc.Unsafe&gt;() {
+<a class="jxr_linenumber" name="1431" href="#1431">1431</a>                         <strong class="jxr_keyword">public</strong> sun.misc.Unsafe run() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="1432" href="#1432">1432</a>                             java.lang.reflect.Field f = sun.misc
+<a class="jxr_linenumber" name="1433" href="#1433">1433</a>                                 .Unsafe.<strong class="jxr_keyword">class</strong>.getDeclaredField(<span class="jxr_string">"theUnsafe"</span>);
+<a class="jxr_linenumber" name="1434" href="#1434">1434</a>                             f.setAccessible(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="1435" href="#1435">1435</a>                             <strong class="jxr_keyword">return</strong> (sun.misc.Unsafe) f.get(<strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="1436" href="#1436">1436</a>                         }});
+<a class="jxr_linenumber" name="1437" href="#1437">1437</a>             } <strong class="jxr_keyword">catch</strong> (java.security.PrivilegedActionException e) {
+<a class="jxr_linenumber" name="1438" href="#1438">1438</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException(<span class="jxr_string">"Could not initialize intrinsics"</span>,
+<a class="jxr_linenumber" name="1439" href="#1439">1439</a>                                            e.getCause());
+<a class="jxr_linenumber" name="1440" href="#1440">1440</a>             }
+<a class="jxr_linenumber" name="1441" href="#1441">1441</a>         }
+<a class="jxr_linenumber" name="1442" href="#1442">1442</a>     }
+<a class="jxr_linenumber" name="1443" href="#1443">1443</a> 
+<a class="jxr_linenumber" name="1444" href="#1444">1444</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

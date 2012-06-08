@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../../api/org/jboss/netty/handler/codec/http/HttpContentEncoder.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -160,56 +160,57 @@
 <a class="jxr_linenumber" name="150" href="#150">150</a>                     <em class="jxr_comment">// the last product on closure,</em>
 <a class="jxr_linenumber" name="151" href="#151">151</a>                     <strong class="jxr_keyword">if</strong> (lastProduct.readable()) {
 <a class="jxr_linenumber" name="152" href="#152">152</a>                         Channels.write(
-<a class="jxr_linenumber" name="153" href="#153">153</a>                                 ctx, Channels.succeededFuture(e.getChannel()), <strong class="jxr_keyword">new</strong> DefaultHttpChunk(lastProduct), e.getRemoteAddress());
-<a class="jxr_linenumber" name="154" href="#154">154</a>                     }
-<a class="jxr_linenumber" name="155" href="#155">155</a> 
-<a class="jxr_linenumber" name="156" href="#156">156</a>                     <em class="jxr_comment">// Emit the last chunk.</em>
-<a class="jxr_linenumber" name="157" href="#157">157</a>                     ctx.sendDownstream(e);
-<a class="jxr_linenumber" name="158" href="#158">158</a>                 }
-<a class="jxr_linenumber" name="159" href="#159">159</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="160" href="#160">160</a>                 ctx.sendDownstream(e);
-<a class="jxr_linenumber" name="161" href="#161">161</a>             }
-<a class="jxr_linenumber" name="162" href="#162">162</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="163" href="#163">163</a>             ctx.sendDownstream(e);
-<a class="jxr_linenumber" name="164" href="#164">164</a>         }
-<a class="jxr_linenumber" name="165" href="#165">165</a>     }
-<a class="jxr_linenumber" name="166" href="#166">166</a> 
-<a class="jxr_linenumber" name="167" href="#167">167</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="168" href="#168">168</a> <em class="jxr_javadoccomment">     * Returns a new {@link EncoderEmbedder} that encodes the HTTP message</em>
-<a class="jxr_linenumber" name="169" href="#169">169</a> <em class="jxr_javadoccomment">     * content.</em>
-<a class="jxr_linenumber" name="170" href="#170">170</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="171" href="#171">171</a> <em class="jxr_javadoccomment">     * @param acceptEncoding</em>
-<a class="jxr_linenumber" name="172" href="#172">172</a> <em class="jxr_javadoccomment">     *        the value of the {@code "Accept-Encoding"} header</em>
-<a class="jxr_linenumber" name="173" href="#173">173</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="174" href="#174">174</a> <em class="jxr_javadoccomment">     * @return a new {@link EncoderEmbedder} if there is a supported encoding</em>
-<a class="jxr_linenumber" name="175" href="#175">175</a> <em class="jxr_javadoccomment">     *         in {@code acceptEncoding}.  {@code null} otherwise.</em>
-<a class="jxr_linenumber" name="176" href="#176">176</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="177" href="#177">177</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> EncoderEmbedder&lt;ChannelBuffer&gt; newContentEncoder(String acceptEncoding) <strong class="jxr_keyword">throws</strong> Exception;
-<a class="jxr_linenumber" name="178" href="#178">178</a> 
-<a class="jxr_linenumber" name="179" href="#179">179</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="180" href="#180">180</a> <em class="jxr_javadoccomment">     * Returns the expected content encoding of the encoded content.</em>
-<a class="jxr_linenumber" name="181" href="#181">181</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="182" href="#182">182</a> <em class="jxr_javadoccomment">     * @param acceptEncoding the value of the {@code "Accept-Encoding"} header</em>
-<a class="jxr_linenumber" name="183" href="#183">183</a> <em class="jxr_javadoccomment">     * @return the expected content encoding of the new content</em>
-<a class="jxr_linenumber" name="184" href="#184">184</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="185" href="#185">185</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> String getTargetContentEncoding(String acceptEncoding) <strong class="jxr_keyword">throws</strong> Exception;
-<a class="jxr_linenumber" name="186" href="#186">186</a> 
-<a class="jxr_linenumber" name="187" href="#187">187</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> encode(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buf) {
-<a class="jxr_linenumber" name="188" href="#188">188</a>         encoder.offer(buf);
-<a class="jxr_linenumber" name="189" href="#189">189</a>         <strong class="jxr_keyword">return</strong> ChannelBuffers.wrappedBuffer(encoder.pollAll(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a>[encoder.size()]));
-<a class="jxr_linenumber" name="190" href="#190">190</a>     }
-<a class="jxr_linenumber" name="191" href="#191">191</a> 
-<a class="jxr_linenumber" name="192" href="#192">192</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> finishEncode() {
-<a class="jxr_linenumber" name="193" href="#193">193</a>         <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> result;
-<a class="jxr_linenumber" name="194" href="#194">194</a>         <strong class="jxr_keyword">if</strong> (encoder.finish()) {
-<a class="jxr_linenumber" name="195" href="#195">195</a>             result = ChannelBuffers.wrappedBuffer(encoder.pollAll(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a>[encoder.size()]));
-<a class="jxr_linenumber" name="196" href="#196">196</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="197" href="#197">197</a>             result = ChannelBuffers.EMPTY_BUFFER;
-<a class="jxr_linenumber" name="198" href="#198">198</a>         }
-<a class="jxr_linenumber" name="199" href="#199">199</a>         encoder = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="200" href="#200">200</a>         <strong class="jxr_keyword">return</strong> result;
-<a class="jxr_linenumber" name="201" href="#201">201</a>     }
-<a class="jxr_linenumber" name="202" href="#202">202</a> }
+<a class="jxr_linenumber" name="153" href="#153">153</a>                                 ctx, Channels.succeededFuture(e.getChannel()),
+<a class="jxr_linenumber" name="154" href="#154">154</a>                                 <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/handler/codec/http/DefaultHttpChunk.html">DefaultHttpChunk</a>(lastProduct), e.getRemoteAddress());
+<a class="jxr_linenumber" name="155" href="#155">155</a>                     }
+<a class="jxr_linenumber" name="156" href="#156">156</a> 
+<a class="jxr_linenumber" name="157" href="#157">157</a>                     <em class="jxr_comment">// Emit the last chunk.</em>
+<a class="jxr_linenumber" name="158" href="#158">158</a>                     ctx.sendDownstream(e);
+<a class="jxr_linenumber" name="159" href="#159">159</a>                 }
+<a class="jxr_linenumber" name="160" href="#160">160</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="161" href="#161">161</a>                 ctx.sendDownstream(e);
+<a class="jxr_linenumber" name="162" href="#162">162</a>             }
+<a class="jxr_linenumber" name="163" href="#163">163</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="164" href="#164">164</a>             ctx.sendDownstream(e);
+<a class="jxr_linenumber" name="165" href="#165">165</a>         }
+<a class="jxr_linenumber" name="166" href="#166">166</a>     }
+<a class="jxr_linenumber" name="167" href="#167">167</a> 
+<a class="jxr_linenumber" name="168" href="#168">168</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="169" href="#169">169</a> <em class="jxr_javadoccomment">     * Returns a new {@link EncoderEmbedder} that encodes the HTTP message</em>
+<a class="jxr_linenumber" name="170" href="#170">170</a> <em class="jxr_javadoccomment">     * content.</em>
+<a class="jxr_linenumber" name="171" href="#171">171</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="172" href="#172">172</a> <em class="jxr_javadoccomment">     * @param acceptEncoding</em>
+<a class="jxr_linenumber" name="173" href="#173">173</a> <em class="jxr_javadoccomment">     *        the value of the {@code "Accept-Encoding"} header</em>
+<a class="jxr_linenumber" name="174" href="#174">174</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="175" href="#175">175</a> <em class="jxr_javadoccomment">     * @return a new {@link EncoderEmbedder} if there is a supported encoding</em>
+<a class="jxr_linenumber" name="176" href="#176">176</a> <em class="jxr_javadoccomment">     *         in {@code acceptEncoding}.  {@code null} otherwise.</em>
+<a class="jxr_linenumber" name="177" href="#177">177</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="178" href="#178">178</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> EncoderEmbedder&lt;ChannelBuffer&gt; newContentEncoder(String acceptEncoding) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="179" href="#179">179</a> 
+<a class="jxr_linenumber" name="180" href="#180">180</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="181" href="#181">181</a> <em class="jxr_javadoccomment">     * Returns the expected content encoding of the encoded content.</em>
+<a class="jxr_linenumber" name="182" href="#182">182</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="183" href="#183">183</a> <em class="jxr_javadoccomment">     * @param acceptEncoding the value of the {@code "Accept-Encoding"} header</em>
+<a class="jxr_linenumber" name="184" href="#184">184</a> <em class="jxr_javadoccomment">     * @return the expected content encoding of the new content</em>
+<a class="jxr_linenumber" name="185" href="#185">185</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="186" href="#186">186</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> String getTargetContentEncoding(String acceptEncoding) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="187" href="#187">187</a> 
+<a class="jxr_linenumber" name="188" href="#188">188</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> encode(<a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buf) {
+<a class="jxr_linenumber" name="189" href="#189">189</a>         encoder.offer(buf);
+<a class="jxr_linenumber" name="190" href="#190">190</a>         <strong class="jxr_keyword">return</strong> ChannelBuffers.wrappedBuffer(encoder.pollAll(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a>[encoder.size()]));
+<a class="jxr_linenumber" name="191" href="#191">191</a>     }
+<a class="jxr_linenumber" name="192" href="#192">192</a> 
+<a class="jxr_linenumber" name="193" href="#193">193</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> finishEncode() {
+<a class="jxr_linenumber" name="194" href="#194">194</a>         <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> result;
+<a class="jxr_linenumber" name="195" href="#195">195</a>         <strong class="jxr_keyword">if</strong> (encoder.finish()) {
+<a class="jxr_linenumber" name="196" href="#196">196</a>             result = ChannelBuffers.wrappedBuffer(encoder.pollAll(<strong class="jxr_keyword">new</strong> <a href="../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a>[encoder.size()]));
+<a class="jxr_linenumber" name="197" href="#197">197</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="198" href="#198">198</a>             result = ChannelBuffers.EMPTY_BUFFER;
+<a class="jxr_linenumber" name="199" href="#199">199</a>         }
+<a class="jxr_linenumber" name="200" href="#200">200</a>         encoder = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="201" href="#201">201</a>         <strong class="jxr_keyword">return</strong> result;
+<a class="jxr_linenumber" name="202" href="#202">202</a>     }
+<a class="jxr_linenumber" name="203" href="#203">203</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

@@ -15,7 +15,7 @@
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -92,7 +92,7 @@
 <a class="jxr_linenumber" name="82" href="#82">82</a>      <strong class="jxr_keyword">private</strong> UTF8Output fragmentedFramesText;
 <a class="jxr_linenumber" name="83" href="#83">83</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> fragmentedFramesCount;
 <a class="jxr_linenumber" name="84" href="#84">84</a>  
-<a class="jxr_linenumber" name="85" href="#85">85</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">long</strong> maxFramePayloadLength;
+<a class="jxr_linenumber" name="85" href="#85">85</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> maxFramePayloadLength;
 <a class="jxr_linenumber" name="86" href="#86">86</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> frameFinalFlag;
 <a class="jxr_linenumber" name="87" href="#87">87</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> frameRsv;
 <a class="jxr_linenumber" name="88" href="#88">88</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> frameOpcode;
@@ -111,7 +111,7 @@
 <a class="jxr_linenumber" name="101" href="#101">101</a> 
 <a class="jxr_linenumber" name="102" href="#102">102</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="103" href="#103">103</a> <em class="jxr_javadoccomment">     * Constructor with default values</em>
-<a class="jxr_linenumber" name="104" href="#104">104</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="104" href="#104">104</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="105" href="#105">105</a> <em class="jxr_javadoccomment">     * @param maskedPayload</em>
 <a class="jxr_linenumber" name="106" href="#106">106</a> <em class="jxr_javadoccomment">     *            Web socket servers must set this to true processed incoming masked payload. Client implementations</em>
 <a class="jxr_linenumber" name="107" href="#107">107</a> <em class="jxr_javadoccomment">     *            must set this to false.</em>
@@ -121,10 +121,10 @@
 <a class="jxr_linenumber" name="111" href="#111">111</a>     <strong class="jxr_keyword">public</strong> WebSocket08FrameDecoder(<strong class="jxr_keyword">boolean</strong> maskedPayload, <strong class="jxr_keyword">boolean</strong> allowExtensions) {
 <a class="jxr_linenumber" name="112" href="#112">112</a>         <strong class="jxr_keyword">this</strong>(maskedPayload, allowExtensions, Long.MAX_VALUE);
 <a class="jxr_linenumber" name="113" href="#113">113</a>     }
-<a class="jxr_linenumber" name="114" href="#114">114</a>     
+<a class="jxr_linenumber" name="114" href="#114">114</a> 
 <a class="jxr_linenumber" name="115" href="#115">115</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="116" href="#116">116</a> <em class="jxr_javadoccomment">     * Constructor</em>
-<a class="jxr_linenumber" name="117" href="#117">117</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="117" href="#117">117</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="118" href="#118">118</a> <em class="jxr_javadoccomment">     * @param maskedPayload</em>
 <a class="jxr_linenumber" name="119" href="#119">119</a> <em class="jxr_javadoccomment">     *            Web socket servers must set this to true processed incoming masked payload. Client implementations</em>
 <a class="jxr_linenumber" name="120" href="#120">120</a> <em class="jxr_javadoccomment">     *            must set this to false.</em>
@@ -248,8 +248,8 @@
 <a class="jxr_linenumber" name="238" href="#238">238</a>                 framePayloadLength = framePayloadLen1;
 <a class="jxr_linenumber" name="239" href="#239">239</a>             }
 <a class="jxr_linenumber" name="240" href="#240">240</a> 
-<a class="jxr_linenumber" name="241" href="#241">241</a>             <strong class="jxr_keyword">if</strong> (framePayloadLength &gt; <strong class="jxr_keyword">this</strong>.maxFramePayloadLength) {
-<a class="jxr_linenumber" name="242" href="#242">242</a>                 protocolViolation(channel, <span class="jxr_string">"Max frame length of "</span> + <strong class="jxr_keyword">this</strong>.maxFramePayloadLength + <span class="jxr_string">" has been exceeded."</span>);
+<a class="jxr_linenumber" name="241" href="#241">241</a>             <strong class="jxr_keyword">if</strong> (framePayloadLength &gt; maxFramePayloadLength) {
+<a class="jxr_linenumber" name="242" href="#242">242</a>                 protocolViolation(channel, <span class="jxr_string">"Max frame length of "</span> + maxFramePayloadLength + <span class="jxr_string">" has been exceeded."</span>);
 <a class="jxr_linenumber" name="243" href="#243">243</a>                 <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="244" href="#244">244</a>             }
 <a class="jxr_linenumber" name="245" href="#245">245</a>             <strong class="jxr_keyword">if</strong> (logger.isDebugEnabled()) {
@@ -398,7 +398,7 @@
 <a class="jxr_linenumber" name="388" href="#388">388</a>         <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/jboss/netty/handler/codec/frame/CorruptedFrameException.html">CorruptedFrameException</a>(reason);
 <a class="jxr_linenumber" name="389" href="#389">389</a>     }
 <a class="jxr_linenumber" name="390" href="#390">390</a> 
-<a class="jxr_linenumber" name="391" href="#391">391</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> toFrameLength(<strong class="jxr_keyword">long</strong> l) <strong class="jxr_keyword">throws</strong> TooLongFrameException {
+<a class="jxr_linenumber" name="391" href="#391">391</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> toFrameLength(<strong class="jxr_keyword">long</strong> l) <strong class="jxr_keyword">throws</strong> TooLongFrameException {
 <a class="jxr_linenumber" name="392" href="#392">392</a>         <strong class="jxr_keyword">if</strong> (l &gt; Integer.MAX_VALUE) {
 <a class="jxr_linenumber" name="393" href="#393">393</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/jboss/netty/handler/codec/frame/TooLongFrameException.html">TooLongFrameException</a>(<span class="jxr_string">"Length:"</span> + l);
 <a class="jxr_linenumber" name="394" href="#394">394</a>         } <strong class="jxr_keyword">else</strong> {
@@ -424,7 +424,7 @@
 <a class="jxr_linenumber" name="414" href="#414">414</a>             protocolViolation(channel, <span class="jxr_string">"invalid UTF-8 bytes"</span>);
 <a class="jxr_linenumber" name="415" href="#415">415</a>         }
 <a class="jxr_linenumber" name="416" href="#416">416</a>     }
-<a class="jxr_linenumber" name="417" href="#417">417</a>     
+<a class="jxr_linenumber" name="417" href="#417">417</a> 
 <a class="jxr_linenumber" name="418" href="#418">418</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> checkCloseFrameBody(<a href="../../../../../../../org/jboss/netty/channel/Channel.html">Channel</a> channel, <a href="../../../../../../../org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a> buffer) <strong class="jxr_keyword">throws</strong> CorruptedFrameException {
 <a class="jxr_linenumber" name="419" href="#419">419</a>         <strong class="jxr_keyword">if</strong> (buffer == <strong class="jxr_keyword">null</strong> || buffer.capacity() == 0) {
 <a class="jxr_linenumber" name="420" href="#420">420</a>             <strong class="jxr_keyword">return</strong>;
@@ -439,8 +439,8 @@
 <a class="jxr_linenumber" name="429" href="#429">429</a> 
 <a class="jxr_linenumber" name="430" href="#430">430</a>         <em class="jxr_comment">// Must have 2 byte integer within the valid range</em>
 <a class="jxr_linenumber" name="431" href="#431">431</a>         <strong class="jxr_keyword">int</strong> statusCode = buffer.readShort();
-<a class="jxr_linenumber" name="432" href="#432">432</a>         <strong class="jxr_keyword">if</strong> ((statusCode &gt;= 0 &amp;&amp; statusCode &lt;= 999) || (statusCode &gt;= 1004 &amp;&amp; statusCode &lt;= 1006)
-<a class="jxr_linenumber" name="433" href="#433">433</a>                 || (statusCode &gt;= 1012 &amp;&amp; statusCode &lt;= 2999)) {
+<a class="jxr_linenumber" name="432" href="#432">432</a>         <strong class="jxr_keyword">if</strong> (statusCode &gt;= 0 &amp;&amp; statusCode &lt;= 999 || statusCode &gt;= 1004 &amp;&amp; statusCode &lt;= 1006
+<a class="jxr_linenumber" name="433" href="#433">433</a>                 || statusCode &gt;= 1012 &amp;&amp; statusCode &lt;= 2999) {
 <a class="jxr_linenumber" name="434" href="#434">434</a>             protocolViolation(channel, <span class="jxr_string">"Invalid close frame status code: "</span> + statusCode);
 <a class="jxr_linenumber" name="435" href="#435">435</a>         }
 <a class="jxr_linenumber" name="436" href="#436">436</a> 
@@ -454,10 +454,10 @@
 <a class="jxr_linenumber" name="444" href="#444">444</a>                 protocolViolation(channel, <span class="jxr_string">"Invalid close frame reason text. Invalid UTF-8 bytes"</span>);
 <a class="jxr_linenumber" name="445" href="#445">445</a>             }
 <a class="jxr_linenumber" name="446" href="#446">446</a>         }
-<a class="jxr_linenumber" name="447" href="#447">447</a>         
+<a class="jxr_linenumber" name="447" href="#447">447</a> 
 <a class="jxr_linenumber" name="448" href="#448">448</a>         <em class="jxr_comment">// Restore reader index</em>
 <a class="jxr_linenumber" name="449" href="#449">449</a>         buffer.readerIndex(idx);
-<a class="jxr_linenumber" name="450" href="#450">450</a>     }    
+<a class="jxr_linenumber" name="450" href="#450">450</a>     }
 <a class="jxr_linenumber" name="451" href="#451">451</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>

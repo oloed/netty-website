@@ -9,13 +9,13 @@
 <div id="overview"><a href="../../../../../../../../api/org/jboss/netty/handler/codec/http/websocketx/WebSocketClientHandshaker08.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2011 The Netty Project</em>
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * Copyright 2012 The Netty Project</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * The Netty Project licenses this file to you under the Apache License,</em>
 <a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * version 2.0 (the "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * with the License. You may obtain a copy of the License at:</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT</em>
@@ -63,7 +63,7 @@
 <a class="jxr_linenumber" name="53" href="#53">53</a>  
 <a class="jxr_linenumber" name="54" href="#54">54</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment">     * Constructor with default values</em>
-<a class="jxr_linenumber" name="56" href="#56">56</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="56" href="#56">56</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="57" href="#57">57</a>  <em class="jxr_javadoccomment">     * @param webSocketURL</em>
 <a class="jxr_linenumber" name="58" href="#58">58</a>  <em class="jxr_javadoccomment">     *            URL for web socket communications. e.g "ws://myhost.com/mypath". Subsequent web socket frames will be</em>
 <a class="jxr_linenumber" name="59" href="#59">59</a>  <em class="jxr_javadoccomment">     *            sent to this URL.</em>
@@ -80,10 +80,10 @@
 <a class="jxr_linenumber" name="70" href="#70">70</a>              <strong class="jxr_keyword">boolean</strong> allowExtensions, Map&lt;String, String&gt; customHeaders) {
 <a class="jxr_linenumber" name="71" href="#71">71</a>          <strong class="jxr_keyword">this</strong>(webSocketURL, version, subprotocol, allowExtensions, customHeaders, Long.MAX_VALUE);
 <a class="jxr_linenumber" name="72" href="#72">72</a>      }
-<a class="jxr_linenumber" name="73" href="#73">73</a>      
+<a class="jxr_linenumber" name="73" href="#73">73</a>  
 <a class="jxr_linenumber" name="74" href="#74">74</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="75" href="#75">75</a>  <em class="jxr_javadoccomment">     * Constructor</em>
-<a class="jxr_linenumber" name="76" href="#76">76</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="76" href="#76">76</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="77" href="#77">77</a>  <em class="jxr_javadoccomment">     * @param webSocketURL</em>
 <a class="jxr_linenumber" name="78" href="#78">78</a>  <em class="jxr_javadoccomment">     *            URL for web socket communications. e.g "ws://myhost.com/mypath". Subsequent web socket frames will be</em>
 <a class="jxr_linenumber" name="79" href="#79">79</a>  <em class="jxr_javadoccomment">     *            sent to this URL.</em>
@@ -110,7 +110,7 @@
 <a class="jxr_linenumber" name="100" href="#100">100</a> <em class="jxr_javadoccomment">     * &lt;p&gt;</em>
 <a class="jxr_linenumber" name="101" href="#101">101</a> <em class="jxr_javadoccomment">     * Sends the opening request to the server:</em>
 <a class="jxr_linenumber" name="102" href="#102">102</a> <em class="jxr_javadoccomment">     * &lt;/p&gt;</em>
-<a class="jxr_linenumber" name="103" href="#103">103</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="103" href="#103">103</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="104" href="#104">104</a> <em class="jxr_javadoccomment">     * &lt;pre&gt;</em>
 <a class="jxr_linenumber" name="105" href="#105">105</a> <em class="jxr_javadoccomment">     * GET /chat HTTP/1.1</em>
 <a class="jxr_linenumber" name="106" href="#106">106</a> <em class="jxr_javadoccomment">     * Host: server.example.com</em>
@@ -121,7 +121,7 @@
 <a class="jxr_linenumber" name="111" href="#111">111</a> <em class="jxr_javadoccomment">     * Sec-WebSocket-Protocol: chat, superchat</em>
 <a class="jxr_linenumber" name="112" href="#112">112</a> <em class="jxr_javadoccomment">     * Sec-WebSocket-Version: 8</em>
 <a class="jxr_linenumber" name="113" href="#113">113</a> <em class="jxr_javadoccomment">     * &lt;/pre&gt;</em>
-<a class="jxr_linenumber" name="114" href="#114">114</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="114" href="#114">114</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="115" href="#115">115</a> <em class="jxr_javadoccomment">     * @param channel</em>
 <a class="jxr_linenumber" name="116" href="#116">116</a> <em class="jxr_javadoccomment">     *            Channel into which we can write our request</em>
 <a class="jxr_linenumber" name="117" href="#117">117</a> <em class="jxr_javadoccomment">     */</em>
@@ -161,16 +161,16 @@
 <a class="jxr_linenumber" name="151" href="#151">151</a>             <em class="jxr_comment">// See http://tools.ietf.org/html/rfc6454#section-6.2</em>
 <a class="jxr_linenumber" name="152" href="#152">152</a>             originValue = originValue + <span class="jxr_string">":"</span> + wsPort;
 <a class="jxr_linenumber" name="153" href="#153">153</a>         }
-<a class="jxr_linenumber" name="154" href="#154">154</a>         
+<a class="jxr_linenumber" name="154" href="#154">154</a> 
 <a class="jxr_linenumber" name="155" href="#155">155</a>         <em class="jxr_comment">// Use Sec-WebSocket-Origin</em>
 <a class="jxr_linenumber" name="156" href="#156">156</a>         <em class="jxr_comment">// See https://github.com/netty/netty/issues/264</em>
 <a class="jxr_linenumber" name="157" href="#157">157</a>         request.addHeader(Names.SEC_WEBSOCKET_ORIGIN, originValue);
-<a class="jxr_linenumber" name="158" href="#158">158</a>       
-<a class="jxr_linenumber" name="159" href="#159">159</a>         String expectedSubprotocol = <strong class="jxr_keyword">this</strong>.getExpectedSubprotocol(); 
+<a class="jxr_linenumber" name="158" href="#158">158</a> 
+<a class="jxr_linenumber" name="159" href="#159">159</a>         String expectedSubprotocol = getExpectedSubprotocol();
 <a class="jxr_linenumber" name="160" href="#160">160</a>         <strong class="jxr_keyword">if</strong> (expectedSubprotocol != <strong class="jxr_keyword">null</strong> &amp;&amp; !expectedSubprotocol.equals(<span class="jxr_string">""</span>)) {
 <a class="jxr_linenumber" name="161" href="#161">161</a>             request.addHeader(Names.SEC_WEBSOCKET_PROTOCOL, expectedSubprotocol);
 <a class="jxr_linenumber" name="162" href="#162">162</a>         }
-<a class="jxr_linenumber" name="163" href="#163">163</a>         
+<a class="jxr_linenumber" name="163" href="#163">163</a> 
 <a class="jxr_linenumber" name="164" href="#164">164</a>         request.addHeader(Names.SEC_WEBSOCKET_VERSION, <span class="jxr_string">"8"</span>);
 <a class="jxr_linenumber" name="165" href="#165">165</a> 
 <a class="jxr_linenumber" name="166" href="#166">166</a>         <strong class="jxr_keyword">if</strong> (customHeaders != <strong class="jxr_keyword">null</strong>) {
@@ -190,7 +190,7 @@
 <a class="jxr_linenumber" name="180" href="#180">180</a> <em class="jxr_javadoccomment">     * &lt;p&gt;</em>
 <a class="jxr_linenumber" name="181" href="#181">181</a> <em class="jxr_javadoccomment">     * Process server response:</em>
 <a class="jxr_linenumber" name="182" href="#182">182</a> <em class="jxr_javadoccomment">     * &lt;/p&gt;</em>
-<a class="jxr_linenumber" name="183" href="#183">183</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="183" href="#183">183</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="184" href="#184">184</a> <em class="jxr_javadoccomment">     * &lt;pre&gt;</em>
 <a class="jxr_linenumber" name="185" href="#185">185</a> <em class="jxr_javadoccomment">     * HTTP/1.1 101 Switching Protocols</em>
 <a class="jxr_linenumber" name="186" href="#186">186</a> <em class="jxr_javadoccomment">     * Upgrade: websocket</em>
@@ -198,7 +198,7 @@
 <a class="jxr_linenumber" name="188" href="#188">188</a> <em class="jxr_javadoccomment">     * Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=</em>
 <a class="jxr_linenumber" name="189" href="#189">189</a> <em class="jxr_javadoccomment">     * Sec-WebSocket-Protocol: chat</em>
 <a class="jxr_linenumber" name="190" href="#190">190</a> <em class="jxr_javadoccomment">     * &lt;/pre&gt;</em>
-<a class="jxr_linenumber" name="191" href="#191">191</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="191" href="#191">191</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="192" href="#192">192</a> <em class="jxr_javadoccomment">     * @param channel</em>
 <a class="jxr_linenumber" name="193" href="#193">193</a> <em class="jxr_javadoccomment">     *            Channel</em>
 <a class="jxr_linenumber" name="194" href="#194">194</a> <em class="jxr_javadoccomment">     * @param response</em>
@@ -215,14 +215,14 @@
 <a class="jxr_linenumber" name="205" href="#205">205</a> 
 <a class="jxr_linenumber" name="206" href="#206">206</a>         String upgrade = response.getHeader(Names.UPGRADE);
 <a class="jxr_linenumber" name="207" href="#207">207</a>         <em class="jxr_comment">// Upgrade header should be matched case-insensitive.</em>
-<a class="jxr_linenumber" name="208" href="#208">208</a>         <em class="jxr_comment">// See https://github.com/netty/netty/issues/278 </em>
+<a class="jxr_linenumber" name="208" href="#208">208</a>         <em class="jxr_comment">// See https://github.com/netty/netty/issues/278</em>
 <a class="jxr_linenumber" name="209" href="#209">209</a>         <strong class="jxr_keyword">if</strong> (upgrade == <strong class="jxr_keyword">null</strong> || !upgrade.toLowerCase().equals(Values.WEBSOCKET.toLowerCase())) {
 <a class="jxr_linenumber" name="210" href="#210">210</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/jboss/netty/handler/codec/http/websocketx/WebSocketHandshakeException.html">WebSocketHandshakeException</a>(<span class="jxr_string">"Invalid handshake response upgrade: "</span>
 <a class="jxr_linenumber" name="211" href="#211">211</a>                     + response.getHeader(Names.UPGRADE));
 <a class="jxr_linenumber" name="212" href="#212">212</a>         }
 <a class="jxr_linenumber" name="213" href="#213">213</a> 
 <a class="jxr_linenumber" name="214" href="#214">214</a>         <em class="jxr_comment">// Connection header should be matched case-insensitive.</em>
-<a class="jxr_linenumber" name="215" href="#215">215</a>         <em class="jxr_comment">// See https://github.com/netty/netty/issues/278 </em>
+<a class="jxr_linenumber" name="215" href="#215">215</a>         <em class="jxr_comment">// See https://github.com/netty/netty/issues/278</em>
 <a class="jxr_linenumber" name="216" href="#216">216</a>         String connection = response.getHeader(Names.CONNECTION);
 <a class="jxr_linenumber" name="217" href="#217">217</a>         <strong class="jxr_keyword">if</strong> (connection == <strong class="jxr_keyword">null</strong> || !connection.toLowerCase().equals(Values.UPGRADE.toLowerCase())) {
 <a class="jxr_linenumber" name="218" href="#218">218</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/jboss/netty/handler/codec/http/websocketx/WebSocketHandshakeException.html">WebSocketHandshakeException</a>(<span class="jxr_string">"Invalid handshake response connection: "</span>
@@ -238,12 +238,15 @@
 <a class="jxr_linenumber" name="228" href="#228">228</a>         String subprotocol = response.getHeader(Names.SEC_WEBSOCKET_PROTOCOL);
 <a class="jxr_linenumber" name="229" href="#229">229</a>         setActualSubprotocol(subprotocol);
 <a class="jxr_linenumber" name="230" href="#230">230</a> 
-<a class="jxr_linenumber" name="231" href="#231">231</a>         channel.getPipeline().replace(HttpResponseDecoder.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"ws-decoder"</span>,
-<a class="jxr_linenumber" name="232" href="#232">232</a>                 <strong class="jxr_keyword">new</strong> WebSocket08FrameDecoder(false, allowExtensions, <strong class="jxr_keyword">this</strong>.getMaxFramePayloadLength()));
+<a class="jxr_linenumber" name="231" href="#231">231</a> 
+<a class="jxr_linenumber" name="232" href="#232">232</a>         setHandshakeComplete();
 <a class="jxr_linenumber" name="233" href="#233">233</a> 
-<a class="jxr_linenumber" name="234" href="#234">234</a>         setHandshakeComplete();
-<a class="jxr_linenumber" name="235" href="#235">235</a>     }
-<a class="jxr_linenumber" name="236" href="#236">236</a> }
+<a class="jxr_linenumber" name="234" href="#234">234</a>         channel.getPipeline().get(HttpResponseDecoder.<strong class="jxr_keyword">class</strong>).replace(<span class="jxr_string">"ws-decoder"</span>,
+<a class="jxr_linenumber" name="235" href="#235">235</a>                 <strong class="jxr_keyword">new</strong> WebSocket08FrameDecoder(false, allowExtensions, getMaxFramePayloadLength()));
+<a class="jxr_linenumber" name="236" href="#236">236</a> 
+<a class="jxr_linenumber" name="237" href="#237">237</a> 
+<a class="jxr_linenumber" name="238" href="#238">238</a>     }
+<a class="jxr_linenumber" name="239" href="#239">239</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
